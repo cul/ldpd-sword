@@ -20,4 +20,4 @@
 /config
 
 # Ignore ~ files
-~
+*~
