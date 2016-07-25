@@ -31,7 +31,18 @@ ActiveRecord::Schema.define(version: 20160707205347) do
 
   add_index "depositors", ["name"], name: "index_depositors_on_name", unique: true, using: :btree
 
-  create_table "deposits", force: :cascade do |t|
+  create_table "packages", force: :cascade do |t|
+    t.integer  "sword_deposit_id", limit: 4
+    t.string   "filename",         limit: 255
+    t.text     "contents",         limit: 65535
+    t.string   "filepath",         limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "packages", ["sword_deposit_id"], name: "index_packages_on_sword_deposit_id", using: :btree
+
+  create_table "sword_deposits", force: :cascade do |t|
     t.integer  "depositor_id",                        limit: 4
     t.integer  "collection_id",                       limit: 4
     t.string   "title",                               limit: 255
@@ -50,18 +61,11 @@ ActiveRecord::Schema.define(version: 20160707205347) do
     t.datetime "updated_at",                                                        null: false
   end
 
-  add_index "deposits", ["collection_id"], name: "index_deposits_on_collection_id", using: :btree
-  add_index "deposits", ["depositor_id"], name: "index_deposits_on_depositor_id", using: :btree
-  add_index "deposits", ["status"], name: "index_deposits_on_status", using: :btree
+  add_index "sword_deposits", ["collection_id"], name: "index_sword_deposits_on_collection_id", using: :btree
+  add_index "sword_deposits", ["depositor_id"], name: "index_sword_deposits_on_depositor_id", using: :btree
+  add_index "sword_deposits", ["status"], name: "index_sword_deposits_on_status", using: :btree
 
-  create_table "packages", force: :cascade do |t|
-    t.string   "filename",   limit: 255
-    t.text     "contents",   limit: 65535
-    t.string   "filepath",   limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_foreign_key "deposits", "collections"
-  add_foreign_key "deposits", "depositors"
+  add_foreign_key "packages", "sword_deposits"
+  add_foreign_key "sword_deposits", "collections"
+  add_foreign_key "sword_deposits", "depositors"
 end
