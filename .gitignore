@@ -18,3 +18,6 @@
 
 # Ignore config files
 /config
+
+# Ignore ~ files
+~
