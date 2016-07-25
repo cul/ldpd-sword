@@ -2,6 +2,7 @@ class CreateCollections < ActiveRecord::Migration
   def change
     create_table :collections do |t|
       t.string :name, null: false
+      t.text :allowed_mime_types
 
       t.timestamps null: false
     end
