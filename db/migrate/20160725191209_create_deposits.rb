@@ -7,7 +7,7 @@ class CreateDeposits < ActiveRecord::Migration
       t.string :on_behalf_of
       t.string :item_in_hyacinth
       t.datetime :embargo_release_date
-      t.integer :status
+      t.integer :status, null: false, index: true, default: 0
       t.text :errors
 
       t.timestamps null: false
