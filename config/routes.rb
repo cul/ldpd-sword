@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :collections
   resources :depositors
   resources :sword_deposits
+  resources :packages
 
   # Example resource route with options:
   #   resources :products do
