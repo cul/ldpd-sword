@@ -1,0 +1,17 @@
+<%= form_for(@sword_deposit) do |f| %>
+  <% if @sword_deposit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sword_deposit.errors.count, "error") %> prohibited this sword_deposit from being saved:</h2>
+
+      <ul>
+      <% @sword_deposit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
