@@ -18,7 +18,7 @@ class DepositorsControllerTest < ActionController::TestCase
 
   test "should create depositor" do
     assert_difference('Depositor.count') do
-      post :create, depositor: {  }
+      post :create, depositor: { name: "Test Deposit" }
     end
 
     assert_redirected_to depositor_path(assigns(:depositor))
