@@ -18,7 +18,7 @@ class CollectionsControllerTest < ActionController::TestCase
 
   test "should create collection" do
     assert_difference('Collection.count') do
-      post :create, collection: {  }
+      post :create, collection: { name: "Test Collection"  }
     end
 
     assert_redirected_to collection_path(assigns(:collection))
@@ -35,7 +35,7 @@ class CollectionsControllerTest < ActionController::TestCase
   end
 
   test "should update collection" do
-    patch :update, id: @collection, collection: {  }
+    patch :update, id: @collection, collection: { name: "New Name Test Collection"  }
     assert_redirected_to collection_path(assigns(:collection))
   end
 
