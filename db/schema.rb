@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20160707205347) do
     t.string   "item_in_hyacinth",                    limit: 255
     t.datetime "embargo_release_date"
     t.integer  "status",                              limit: 4,     default: 0,     null: false
-    t.text     "errors",                              limit: 65535
+    t.text     "deposit_errors",                      limit: 65535
     t.string   "header_content_type",                 limit: 255
     t.string   "header_content_md5",                  limit: 255
     t.string   "header_user_agent",                   limit: 255

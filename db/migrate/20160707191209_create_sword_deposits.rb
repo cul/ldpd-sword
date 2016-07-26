@@ -7,7 +7,7 @@ class CreateSwordDeposits < ActiveRecord::Migration
       t.string :item_in_hyacinth
       t.datetime :embargo_release_date
       t.integer :status, null: false, index: true, default: 0
-      t.text :errors
+      t.text :deposit_errors
       t.string :header_content_type
       t.string :header_content_md5
       t.string :header_user_agent
