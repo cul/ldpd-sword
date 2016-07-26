@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160707205347) do
 
   create_table "packages", force: :cascade do |t|
     t.integer  "sword_deposit_id", limit: 4
-    t.string   "filename",         limit: 255
+    t.string   "filename",         limit: 255,   null: false
     t.text     "contents",         limit: 65535
     t.string   "filepath",         limit: 255
     t.datetime "created_at",                     null: false
