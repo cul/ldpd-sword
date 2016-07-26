@@ -12,6 +12,7 @@
   <tbody>
     <% @sword_deposits.each do |sword_deposit| %>
       <tr>
+	<td><%= sword_deposit.title %></td>
         <td><%= link_to 'Show', sword_deposit %></td>
         <td><%= link_to 'Edit', edit_sword_deposit_path(sword_deposit) %></td>
         <td><%= link_to 'Destroy', sword_deposit, method: :delete, data: { confirm: 'Are you sure?' } %></td>

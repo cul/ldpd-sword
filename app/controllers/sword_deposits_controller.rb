@@ -69,6 +69,6 @@ class SwordDepositsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sword_deposit_params
-      params.fetch(:sword_deposit, {})
+      params.fetch(:sword_deposit, {}).permit(:title)
     end
 end
