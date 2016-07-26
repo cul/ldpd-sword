@@ -4,18 +4,18 @@ one:
   depositor_id: 
   collection_id: 
   title: MyString
-  on_behalf_of: MyString
+  header_x_on_behalf_of: MyString
   item_in_hyacinth: MyString
   embargo_release_date: 2016-07-25 15:12:10
   status: 1
-  errors: MyText
+  deposit_errors: MyText
 
 two:
   depositor_id: 
   collection_id: 
   title: MyString
-  on_behalf_of: MyString
+  header_x_on_behalf_of: MyString
   item_in_hyacinth: MyString
   embargo_release_date: 2016-07-25 15:12:10
   status: 1
-  errors: MyText
+  deposit_errors: MyText

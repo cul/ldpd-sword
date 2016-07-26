@@ -1,13 +1,13 @@
-class CreateDeposits < ActiveRecord::Migration
+class CreateSwordDeposits < ActiveRecord::Migration
   def change
-    create_table :deposits do |t|
+    create_table :sword_deposits do |t|
       t.belongs_to :depositor, index: true, foreign_key: true
       t.belongs_to :collection, index: true, foreign_key: true
       t.string :title
       t.string :item_in_hyacinth
       t.datetime :embargo_release_date
       t.integer :status, null: false, index: true, default: 0
-      t.text :errors
+      t.text :deposit_errors
       t.string :header_content_type
       t.string :header_content_md5
       t.string :header_user_agent
