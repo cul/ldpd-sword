@@ -18,7 +18,7 @@ class PackagesControllerTest < ActionController::TestCase
 
   test "should create package" do
     assert_difference('Package.count') do
-      post :create, package: {  }
+      post :create, package: { filename: "thisisafilename" }
     end
 
     assert_redirected_to package_path(assigns(:package))
