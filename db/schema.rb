@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160707205347) do
   end
 
   add_index "collections", ["name"], name: "index_collections_on_name", unique: true, using: :btree
+  add_index "collections", ["slug"], name: "index_collections_on_slug", unique: true, using: :btree
 
   create_table "depositors", force: :cascade do |t|
     t.string   "name",               limit: 255,   null: false
