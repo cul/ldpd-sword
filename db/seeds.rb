@@ -6,5 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Collection.create(name: "A Collection")
-Collection.create(name: "Another Collection")
+Collection.create(name: "A Collection", slug: "a-collection")
+Collection.create(name: "Another Collection",slug: "another-collection")

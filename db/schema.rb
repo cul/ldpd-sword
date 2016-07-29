@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20160707205347) do
 
   create_table "collections", force: :cascade do |t|
     t.string   "name",               limit: 255,   null: false
+    t.string   "slug",               limit: 255,   null: false
     t.text     "allowed_mime_types", limit: 65535
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
