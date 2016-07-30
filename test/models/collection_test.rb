@@ -6,7 +6,8 @@ class CollectionTest < ActiveSupport::TestCase
   # end
 
   def setup
-    @collection = Collection.new(name: "Example Collection")
+    @collection = Collection.new(name: "Example Collection",
+                                 slug: "example-collection")
   end
 
   test "should be valid" do
