@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  get 'sword/deposit'
+  # get 'sword/deposit'
+  get 'sword/deposit/:collection_slug' => 'sword#deposit'
+  post 'sword/deposit/:collection_slug' => 'sword#deposit'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
