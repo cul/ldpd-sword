@@ -19,7 +19,7 @@ class DepositRequest
 # fcd1, 07/30/16: Do I really need the collection, it is not part of the request
   def initialize(request, collection)
     @request = request
-    pullCredentials(request)
+    @user_name, @password = self.class.pullCredentials(request)
     @on_behalf_of = request.headers["X-On-Behalf-Of"]
     @content_type = request.headers["CONTENT_TYPE"]
     @packaging = request.headers["X-Packaging"]
@@ -63,15 +63,14 @@ class DepositRequest
       return content_disposition
   end   
   
-  def pullCredentials(request)
+  def self.pullCredentials(request)
      authorization = String.new(request.headers["Authorization"].to_s)
      
      if(authorization.include? 'Basic ')
        authorization['Basic '] = ''
        authorization = Base64.decode64(authorization)
        credentials = authorization.split(":")
-       @user_name = credentials[0] 
-       @password = credentials[1]
+       [credentials[0] , credentials[1]]
      end
   end  
 
