@@ -25,12 +25,15 @@ ActiveRecord::Schema.define(version: 20160707205347) do
   add_index "collections", ["slug"], name: "index_collections_on_slug", unique: true, using: :btree
 
   create_table "depositors", force: :cascade do |t|
-    t.string   "name",               limit: 255,   null: false
-    t.text     "allowed_mime_types", limit: 65535
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "name",                          limit: 255,   null: false
+    t.string   "basic_authentication_user_id",  limit: 255,   null: false
+    t.string   "basic_authentication_password", limit: 255,   null: false
+    t.text     "allowed_mime_types",            limit: 65535
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
+  add_index "depositors", ["basic_authentication_user_id"], name: "index_depositors_on_basic_authentication_user_id", unique: true, using: :btree
   add_index "depositors", ["name"], name: "index_depositors_on_name", unique: true, using: :btree
 
   create_table "packages", force: :cascade do |t|

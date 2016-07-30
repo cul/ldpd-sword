@@ -2,6 +2,10 @@
 
 one:
   name: First Depositor
+  basic_authentication_user_id: firstd
+  basic_authentication_password: firstdpasswd
 
 two:
   name: Second Depositor
+  basic_authentication_user_id: secondd
+  basic_authentication_password: seconddpasswd

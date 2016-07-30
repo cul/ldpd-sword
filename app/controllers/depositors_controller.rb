@@ -69,6 +69,8 @@ class DepositorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def depositor_params
-      params.fetch(:depositor, {}).permit(:name)
+      params.fetch(:depositor, {}).permit(:name,
+                                          :basic_authentication_user_id,
+                                          :basic_authentication_password)
     end
 end
