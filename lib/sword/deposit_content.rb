@@ -1,4 +1,4 @@
-module Deposits
+module Sword
   class DepositContent
     DATE_PATTERN = '%Y-%m-%d'
     attr_accessor :title,
