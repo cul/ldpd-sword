@@ -1,4 +1,6 @@
 # fcd1, 07/30/16: Original code copied from hypatia-new from lib/deposits/sword/desposit.rb
+# for now, changes will be kept to the bare minimum. Removal of original code deemed
+# unnecessary will be removed later
 module Sword
 class DepositRequest
 
