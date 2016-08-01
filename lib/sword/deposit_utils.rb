@@ -1,7 +1,7 @@
 require "deposits/sword"
 require 'zip/zipfilesystem'
 require 'zip/zip'
-module Deposits
+module Sword
 module DepositUtils
   
   def self.unpackZip(zipFile, destinationPath)
