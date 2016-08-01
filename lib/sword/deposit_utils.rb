@@ -1,12 +1,11 @@
-require "deposits/sword"
-require 'zip/zipfilesystem'
-require 'zip/zip'
+# require "deposits/sword"
+require 'zip'
 module Sword
 module DepositUtils
   
   def self.unpackZip(zipFile, destinationPath)
     
-    Zip::ZipFile.open(zipFile) { |zip|
+    Zip::File.open(zipFile) { |zip|
       zip.each { |file|
         filePpath=File.join(destinationPath, file.name)
         FileUtils.mkdir_p(File.dirname(filePpath))
