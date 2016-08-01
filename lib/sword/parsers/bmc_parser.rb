@@ -3,7 +3,8 @@ require 'nokogiri'
 require 'deposits/deposit_utils'
 require 'deposits/deposit_content'
 require 'deposits/person'
-module Deposits
+module Sword
+module Parsers
 class BmcParser
   
   @@TYPE_OF_CONTENT = 'text'
