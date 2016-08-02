@@ -6,8 +6,7 @@ class SwordController < ApplicationController
 
   def deposit
     # puts request.inspect if Rails.env.development? or Rails.env.test?
-    # get authorization info
-    puts Sword::DepositRequest.new(request, @collection.slug).inspect
+    # puts Sword::DepositRequest.new(request, @collection.slug).inspect
   end
 
   private
