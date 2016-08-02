@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item"
+  PROFILE="DSpace METS SIP Profile 1.0" xmlns="http://www.loc.gov/METS/"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+
+  <metsHdr CREATEDATE="2007-09-01T00:00:00">
+    <agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+      <name>ETDAdmin, ProQuest</name>
+    </agent>
+  </metsHdr>
+
+  <dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX"
+      MIMETYPE="text/xml">
+      <xmlData>
+        <epdcx:descriptionSet
+          xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+          <epdcx:description
+            epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+  <epdcx:valueString><![CDATA[The Parity of Analytic Ranks among Quadratic Twists of Elliptic Curves over Number Fields]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+  <epdcx:valueString><![CDATA[The parity of the analytic rank of an elliptic curve is given by the root number in the
+functional equation L(E,s). Fixing an elliptic curve over any number eld and considering
+the family of its quadratic twists, it is natural to ask what the average analytic rank in this
+family is. A lower bound on this number is given by the average root number. In this paper,
+we investigate the root number in such families and derive an asymptotic formula for the
+proportion of curves in the family that have even rank. Our results are then used to support
+a conjecture about the average analytic rank in this family of elliptic curves.]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+  <epdcx:valueString><![CDATA[Balsam, Nava Kayla]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+  <epdcx:valueString><![CDATA[Mathematics]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+  <epdcx:valueString><![CDATA[Dorian Goldfeld]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1"><epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+  <epdcx:valueString><![CDATA[English]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" /></epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="ProQuest Metadata" MDTYPE="OTHER" OTHERMDTYPE="PROQUEST" MIMETYPE="text/xml">
+      <xmlData>
+<DISS_submission publishing_option="0" embargo_code="0" third_party_search="Y" xmlns="http://www.etdadmin.com/ns/etdsword">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Balsam</DISS_surname>
+        <DISS_fname>Nava</DISS_fname>
+        <DISS_middle>Kayla</DISS_middle>
+        <DISS_suffix/>
+        <DISS_affiliation>Columbia University</DISS_affiliation>
+      </DISS_name>
+      <DISS_contact type="current">
+        <DISS_contact_effdt>04/03/2015</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>347</DISS_area_code>
+          <DISS_phone_num>2243666</DISS_phone_num>
+          <DISS_phone_ext>2243666</DISS_phone_ext>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>549 Riverside Dr</DISS_addrline>
+          <DISS_city>New York</DISS_city>
+          <DISS_st>NY</DISS_st>
+          <DISS_pcode>10027</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>nava00@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>05/01/2015</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>347</DISS_area_code>
+          <DISS_phone_num>2243666</DISS_phone_num>
+          <DISS_phone_ext>2243666</DISS_phone_ext>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>730 Eastern Pkwy</DISS_addrline>
+          <DISS_city>Brooklyn</DISS_city>
+          <DISS_st>NY</DISS_st>
+          <DISS_pcode>11213</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>nava00@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship>US</DISS_citizenship>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="81" type="doctoral" external_id="http://dissertations.umi.com/columbia:12564" apply_for_copyright="no">
+    <DISS_title>The Parity of Analytic Ranks among Quadratic Twists of Elliptic Curves over Number Fields</DISS_title>
+    <DISS_dates>
+      <DISS_comp_date>2015</DISS_comp_date>
+      <DISS_accept_date>01/01/2015</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>Ph.D.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0054</DISS_inst_code>
+      <DISS_inst_name>Columbia University</DISS_inst_name>
+      <DISS_inst_contact>Mathematics</DISS_inst_contact>
+      <DISS_processing_code>D</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Goldfeld</DISS_surname>
+        <DISS_fname>Dorian</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0405</DISS_cat_code>
+        <DISS_cat_desc>Mathematics</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>Analytic Ranks, Automorphic Representation, Elliptic Curves, Number Theory</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>The parity of the analytic rank of an elliptic curve is given by the root number in the</DISS_para>
+      <DISS_para>functional equation L(E,s). Fixing an elliptic curve over any number eld and considering</DISS_para>
+      <DISS_para>the family of its quadratic twists, it is natural to ask what the average analytic rank in this</DISS_para>
+      <DISS_para>family is. A lower bound on this number is given by the average root number. In this paper,</DISS_para>
+      <DISS_para>we investigate the root number in such families and derive an asymptotic formula for the</DISS_para>
+      <DISS_para>proportion of curves in the family that have even rank. Our results are then used to support</DISS_para>
+      <DISS_para>a conjecture about the average analytic rank in this family of elliptic curves.</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Balsam_columbia_0054D_12564.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction/>
+  <DISS_repository>
+    <DISS_version/>
+    <DISS_agreement_decision_date/>
+    <DISS_acceptance/>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+</DISS_submission>
+
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+  <fileSec>
+    <fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+        <FLocat LOCTYPE="URL" xlink:href="Balsam_columbia_0054D_12564.pdf" />
+      </file>
+    </fileGrp>
+  </fileSec>
+  <structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+    <div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1 sword-mets-dmd-2" TYPE="SWORD Object">
+      <div ID="sword-mets-div-2" TYPE="File">
+        <fptr FILEID="sword-mets-file-1" />
+      </div>
+    </div>
+  </structMap>
+</mets>

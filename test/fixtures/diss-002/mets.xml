@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item"
+	PROFILE="DSpace METS SIP Profile 1.0" xmlns="http://www.loc.gov/METS/"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+
+	<metsHdr CREATEDATE="2007-09-01T00:00:00">
+		<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+			<name>ETDAdmin, ProQuest</name>
+		</agent>
+	</metsHdr>
+
+	<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+		<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX"
+			MIMETYPE="text/xml">
+			<xmlData>
+				<epdcx:descriptionSet
+					xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+					<epdcx:description
+						epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+	<epdcx:valueString><![CDATA[The Emancipation of Memory: Arnold Schoenberg and the Creation of 'A Survivor from Warsaw']]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+	<epdcx:valueString><![CDATA[This is a study of the ways in which the past is inscribed in sound. It is also an examination of the role of concert music in the invention of cultural memory in the wake of the Second World War. And finally, it is a study of the creation and early American reception of A Survivor from Warsaw, a cantata written in 1947 that became the first major musical memorial to the Holocaust. It remains uniquely significant and controversial within the larger oeuvre of its composer, Arnold Schoenberg (1874-1951). 
+
+Historians interested in the chronologies and modalities of Holocaust memory have tended to overlook music’s role as a carrier of meaning about the past, while other media of commemoration have received far greater scrutiny, be they literary, cinematic, or architectural. And yet,  A Survivor from Warsaw predated almost all of its sibling memorials, crystallizing and anticipating the range of aesthetic and ethical concerns that would define the study of postwar memory and representation for decades to come. It also constituted a uniquely personal memorial that may be read not only as a work of Holocaust art but also as a profoundly autobiographical document, one that sheds light on constellations of particularist identities often hidden beneath the “universalist” veil of one of the twentieth-century’s most iconic musical figures. Ultimately, this study seeks to articulate an under-examined linkage between modernism and memory, while arguing methodologically for the importance of sound in the contemporary practice of cultural history.]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+	<epdcx:valueString><![CDATA[Eichler, Jeremy Adam]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[History]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Holocaust studies]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Music]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+	<epdcx:valueString><![CDATA[Volker Berghahn]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1"><epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+	<epdcx:valueString><![CDATA[English]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" /></epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="ProQuest Metadata" MDTYPE="OTHER" OTHERMDTYPE="PROQUEST" MIMETYPE="text/xml">
+      <xmlData>
+<DISS_submission publishing_option="0" embargo_code="4" third_party_search="N" xmlns="http://www.etdadmin.com/ns/etdsword">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Eichler</DISS_surname>
+        <DISS_fname>Jeremy</DISS_fname>
+        <DISS_middle>Adam</DISS_middle>
+        <DISS_suffix/>
+        <DISS_affiliation>Columbia University</DISS_affiliation>
+      </DISS_name>
+      <DISS_contact type="current">
+        <DISS_contact_effdt>05/05/2015</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>917</DISS_area_code>
+          <DISS_phone_num>4005701</DISS_phone_num>
+          <DISS_phone_ext/>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>15 Burr Rd</DISS_addrline>
+          <DISS_city>Newton</DISS_city>
+          <DISS_st>MA</DISS_st>
+          <DISS_pcode>02459</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>jeremy.eichler@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>05/05/2015</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>917</DISS_area_code>
+          <DISS_phone_num>4005701</DISS_phone_num>
+          <DISS_phone_ext/>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>15 Burr Rd</DISS_addrline>
+          <DISS_city>Newton</DISS_city>
+          <DISS_st>MA</DISS_st>
+          <DISS_pcode>02459</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>jeremy.eichler@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship>US</DISS_citizenship>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="231" type="doctoral" external_id="http://dissertations.umi.com/columbia:12688" apply_for_copyright="yes">
+    <DISS_title>The Emancipation of Memory: Arnold Schoenberg and the Creation of 'A Survivor from Warsaw'</DISS_title>
+    <DISS_dates>
+      <DISS_comp_date>2015</DISS_comp_date>
+      <DISS_accept_date>01/01/2015</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>Ph.D.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0054</DISS_inst_code>
+      <DISS_inst_name>Columbia University</DISS_inst_name>
+      <DISS_inst_contact>History</DISS_inst_contact>
+      <DISS_processing_code>D</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Berghahn</DISS_surname>
+        <DISS_fname>Volker</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0578</DISS_cat_code>
+        <DISS_cat_desc>History</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0507</DISS_cat_code>
+        <DISS_cat_desc>Holocaust studies</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0413</DISS_cat_code>
+        <DISS_cat_desc>Music</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>A Survivor from Warsaw, exile, memory, modernism, music, Schoenberg</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>This is a study of the ways in which the past is inscribed in sound. It is also an examination of the role of concert music in the invention of cultural memory in the wake of the Second World War. And finally, it is a study of the creation and early American reception of A Survivor from Warsaw, a cantata written in 1947 that became the first major musical memorial to the Holocaust. It remains uniquely significant and controversial within the larger oeuvre of its composer, Arnold Schoenberg (1874-1951). </DISS_para>
+      <DISS_para>Historians interested in the chronologies and modalities of Holocaust memory have tended to overlook music’s role as a carrier of meaning about the past, while other media of commemoration have received far greater scrutiny, be they literary, cinematic, or architectural. And yet,  A Survivor from Warsaw predated almost all of its sibling memorials, crystallizing and anticipating the range of aesthetic and ethical concerns that would define the study of postwar memory and representation for decades to come. It also constituted a uniquely personal memorial that may be read not only as a work of Holocaust art but also as a profoundly autobiographical document, one that sheds light on constellations of particularist identities often hidden beneath the “universalist” veil of one of the twentieth-century’s most iconic musical figures. Ultimately, this study seeks to articulate an under-examined linkage between modernism and memory, while arguing methodologically for the importance of sound in the contemporary practice of cultural history.</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Eichler_columbia_0054D_12688.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction>
+    <DISS_sales_restriction code="1" remove="05/05/2017"/>
+  </DISS_restriction>
+  <DISS_repository>
+    <DISS_version/>
+    <DISS_agreement_decision_date/>
+    <DISS_acceptance/>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+</DISS_submission>
+
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+	<fileSec>
+		<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+			<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+				<FLocat LOCTYPE="URL" xlink:href="Eichler_columbia_0054D_12688.pdf" />
+			</file>
+		</fileGrp>
+	</fileSec>
+	<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+		<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1 sword-mets-dmd-2" TYPE="SWORD Object">
+			<div ID="sword-mets-div-2" TYPE="File">
+				<fptr FILEID="sword-mets-file-1" />
+			</div>
+		</div>
+	</structMap>
+</mets>
