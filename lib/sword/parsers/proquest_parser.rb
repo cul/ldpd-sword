@@ -1,8 +1,8 @@
 require 'rake'
 require 'nokogiri'
-require 'deposits/deposit_utils'
-require 'deposits/deposit_content'
-require 'deposits/person'
+require 'sword/deposit_utils'
+require 'sword/deposit_content'
+require 'sword/person'
 module Sword
 module Parsers
 class ProquestParser
