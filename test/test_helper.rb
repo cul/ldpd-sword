@@ -7,4 +7,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def fixture_path_for(fixture_name)
+    File.dirname(__FILE__) + '/fixtures/' + fixture_name
+  end
 end
