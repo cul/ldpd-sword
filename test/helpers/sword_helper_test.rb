@@ -15,6 +15,6 @@ class SwordHelperTest < ActionView::TestCase
     test_info['sword_packaging_accepted'] = ['application/zip']
     test_info['sword_mediation'] = 'false'
     # puts servicedocument_xml(test_info,test_http_host)
-    servicedocument_xml(test_info,test_http_host)
+    service_document_xml(test_info,test_http_host)
   end
 end

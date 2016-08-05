@@ -1,6 +1,6 @@
 require 'builder'
 module SwordHelper
-  def servicedocument_xml(user_conf, http_host)
+  def service_document_xml(user_conf, http_host)
 
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"

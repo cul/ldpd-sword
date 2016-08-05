@@ -9,6 +9,32 @@ class SwordController < ApplicationController
     # puts Sword::DepositRequest.new(request, @collection.slug).inspect
   end
 
+  def service_document
+    # Remove below when develop beyond barebones
+    test_info = {}
+    test_info['sword_verbose'] = 'false'
+    test_info['sword_verbose'] = 'false'
+    test_info['collection'] = 'Test Collection'
+    test_info['atom_title'] = 'Test Title'
+    test_info['dcterms_abstract'] = 'Test DC Terms abstract'
+    test_info['sword_content_types_supported'] = ['http://support-test-package-one', 'http://support-test-package-two']
+    test_info['sword_packaging_accepted'] = ['application/zip']
+    test_info['sword_mediation'] = 'false'
+    # Remove above when develop beyond barebones
+    puts view_context.service_document_xml test_info, request.env["HTTP_HOST"]
+    render xml: view_context.service_document_xml(test_info, request.env["HTTP_HOST"])
+
+  end
+
+  # replace the above method with this one once the following has been done:
+  # the needed attributes have been added to the collection model.
+  # also, if needed (not sure), add needed attributes to the depositor model
+  # finally, need to create the has_and_belongs_to_many relationship.
+  def service_document_new
+    puts view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
+    render xml: view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
+  end
+
   private
     def check_for_valid_collection_slug
       @collection = Collection.find_by slug: params[:collection_slug]
