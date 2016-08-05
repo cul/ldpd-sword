@@ -1,5 +1,6 @@
+require 'builder'
 module SwordHelper
-  def servicedocument_xml(user_conf) 
+  def servicedocument_xml(user_conf, http_host)
 
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"
@@ -15,7 +16,7 @@ module SwordHelper
   
       service.workspace do |workspace|
         workspace.tag!("atom:title", "Academic Commons - SWORD Service")
-        workspace.tag!("collection", {"href"=> "http://" + request.env['HTTP_HOST'] + "/sword/deposit/" + user_conf["collection"]}) do |collection|
+        workspace.tag!("collection", {"href"=> "http://" + http_host + "/sword/deposit/" + user_conf["collection"]}) do |collection|
           collection.tag!("atom:title", user_conf["atom_title"])
           collection.tag!("dcterms:abstract", user_conf["dcterms_abstract"])
           
