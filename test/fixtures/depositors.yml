@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+first_depositor:
   name: First Depositor
   basic_authentication_user_id: firstd
   basic_authentication_password: firstdpasswd
 
-two:
+second_depositor:
   name: Second Depositor
   basic_authentication_user_id: secondd
   basic_authentication_password: seconddpasswd

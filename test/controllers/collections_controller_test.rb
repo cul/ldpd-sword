@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CollectionsControllerTest < ActionController::TestCase
   setup do
-    @collection = collections(:one)
+    @collection = collections(:first_collection)
   end
 
   test "should get index" do

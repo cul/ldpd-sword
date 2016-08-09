@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  depositor_id: one
+  collection_id: two
+
+two:
+  depositor_id: two
+  collection_id: one

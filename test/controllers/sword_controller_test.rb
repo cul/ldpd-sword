@@ -5,8 +5,8 @@ class SwordControllerTest < ActionController::TestCase
   def setup_auth(bad_passwd = false)
     # config = YAML.load_file(fixture_path_for('sword/config.yml'))
     # Deposits::Sword::SwordTools.instance_variable_set(:@all_config,config)
-    @user_id = depositors(:one).basic_authentication_user_id
-    @password = depositors(:one).basic_authentication_password
+    @user_id = depositors(:first_depositor).basic_authentication_user_id
+    @password = depositors(:first_depositor).basic_authentication_password
     # @password = rand(10000).to_s(16)
     # testuser = Deposits::Sword::SwordTools.getUserConfig.detect do |m|
     # m['name'] == @user
@@ -24,7 +24,7 @@ class SwordControllerTest < ActionController::TestCase
   test "should post deposit" do
     setup_auth
     @request.env['HTTP_AUTHORIZATION'] = @auth_header
-    post :deposit, collection_slug: 'collection-one'
+    post :deposit, collection_slug: 'first-collection'
     assert_response :success
   end
 
@@ -38,7 +38,7 @@ class SwordControllerTest < ActionController::TestCase
   test "should post deposit, authentication failure" do
     setup_auth true
     @request.env['HTTP_AUTHORIZATION'] = @auth_header
-    post :deposit, collection_slug: 'collection-one'
+    post :deposit, collection_slug: 'first-collection'
     assert_response 511
   end
 

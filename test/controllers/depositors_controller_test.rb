@@ -2,7 +2,7 @@ require 'test_helper'
 
 class DepositorsControllerTest < ActionController::TestCase
   setup do
-    @depositor = depositors(:one)
+    @depositor = depositors(:first_depositor)
   end
 
   test "should get index" do

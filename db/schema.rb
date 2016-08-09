@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707205347) do
+ActiveRecord::Schema.define(version: 20160806004053) do
 
   create_table "collections", force: :cascade do |t|
     t.string   "name",               limit: 255,   null: false
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160707205347) do
 
   add_index "collections", ["name"], name: "index_collections_on_name", unique: true, using: :btree
   add_index "collections", ["slug"], name: "index_collections_on_slug", unique: true, using: :btree
+
+  create_table "depositor_collection_permissions", force: :cascade do |t|
+    t.integer  "depositor_id",  limit: 4
+    t.integer  "collection_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "depositor_collection_permissions", ["collection_id"], name: "index_depositor_collection_permissions_on_collection_id", using: :btree
+  add_index "depositor_collection_permissions", ["depositor_id"], name: "index_depositor_collection_permissions_on_depositor_id", using: :btree
 
   create_table "depositors", force: :cascade do |t|
     t.string   "name",                          limit: 255,   null: false
@@ -70,6 +80,8 @@ ActiveRecord::Schema.define(version: 20160707205347) do
   add_index "sword_deposits", ["depositor_id"], name: "index_sword_deposits_on_depositor_id", using: :btree
   add_index "sword_deposits", ["status"], name: "index_sword_deposits_on_status", using: :btree
 
+  add_foreign_key "depositor_collection_permissions", "collections"
+  add_foreign_key "depositor_collection_permissions", "depositors"
   add_foreign_key "packages", "sword_deposits"
   add_foreign_key "sword_deposits", "collections"
   add_foreign_key "sword_deposits", "depositors"
