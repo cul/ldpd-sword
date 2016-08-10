@@ -3,6 +3,7 @@ require "sword/deposit_request"
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
   before_action :check_basic_http_authentication, only: [:deposit]
+  before_action :check_depositor_collection_permission, only: [:deposit]
 
   def deposit
     # puts request.inspect if Rails.env.development? or Rails.env.test?
@@ -48,6 +49,11 @@ class SwordController < ApplicationController
       @depositor = Depositor.find_by(basic_authentication_user_id: @user_id)
       result = (@depositor.basic_authentication_password == @password) unless @depositor.nil?
       head 511 unless result
+    end
+    
+    def check_depositor_collection_permission
+      # fcd1, 08/09/16: Change behavior if needed. Check standard/existing code
+      head :bad_request unless @depositor.collections.include? @collection
     end
 end
 

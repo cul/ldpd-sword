@@ -2,6 +2,12 @@ require 'test_helper'
 
 class SwordControllerTest < ActionController::TestCase
 
+  setup do
+    @depositor =  depositors(:first_depositor)
+    @collection = collections(:first_collection)
+    @depositor.collections << @collection
+  end
+
   def setup_auth(bad_passwd = false)
     # config = YAML.load_file(fixture_path_for('sword/config.yml'))
     # Deposits::Sword::SwordTools.instance_variable_set(:@all_config,config)
@@ -21,13 +27,6 @@ class SwordControllerTest < ActionController::TestCase
     @auth_header = "Basic #{b64}".strip
   end
 
-  test "should post deposit" do
-    setup_auth
-    @request.env['HTTP_AUTHORIZATION'] = @auth_header
-    post :deposit, collection_slug: 'first-collection'
-    assert_response :success
-  end
-
   test "should post deposit, failure, unknown collection slug" do
     setup_auth
     @request.env['HTTP_AUTHORIZATION'] = @auth_header
@@ -42,4 +41,17 @@ class SwordControllerTest < ActionController::TestCase
     assert_response 511
   end
 
+  test "should post deposit, failure, no access to specified collection" do
+    setup_auth
+    @request.env['HTTP_AUTHORIZATION'] = @auth_header
+    post :deposit, collection_slug: 'second-collection'
+    assert_response 400
+  end
+
+  test "should post deposit" do
+    setup_auth
+    @request.env['HTTP_AUTHORIZATION'] = @auth_header
+    post :deposit, collection_slug: 'first-collection'
+    assert_response :success
+  end
 end
