@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 20160806004053) do
   create_table "depositor_collection_permissions", force: :cascade do |t|
     t.integer  "depositor_id",  limit: 4
     t.integer  "collection_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "project",       limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "depositor_collection_permissions", ["collection_id"], name: "index_depositor_collection_permissions_on_collection_id", using: :btree
