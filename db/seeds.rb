@@ -18,3 +18,5 @@ second_depositor = Depositor.create(name: "Second Depositor",
                                     basic_authentication_password: "secondpasswd")
 
 first_depositor.collections << first_collection
+first_depositor.collections << second_collection
+second_depositor.collections << second_collection

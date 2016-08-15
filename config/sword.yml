@@ -1,5 +1,8 @@
 development:
   unzip_dir: "/tmp/sword"
+  service_document:
+    sword_version: 1.444
+    sword_verbose: false
 test:
   unzip_dir: "/tmp/sword"
 production:

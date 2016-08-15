@@ -1,6 +1,6 @@
 require 'builder'
 module SwordHelper
-  def service_document_xml(user_conf, http_host)
+  def service_document_xml(content, http_host)
 
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"
@@ -10,26 +10,28 @@ module SwordHelper
                "xmlns:sword" => "http://purl.org/net/sword/",
                "xmlns:dcterms" => "http://purl.org/dc/terms/"}) do |service|
   
-      service.tag!("sword:version", "1.3") 
-      service.tag!("sword:verbose", user_conf["sword_verbose"])
-      service.tag!("sword:noOp", user_conf["sword_noOp"])
+      service.tag!("sword:version", content[:sword_version]) 
+      service.tag!("sword:verbose", content["sword_verbose"])
+      service.tag!("sword:noOp", content["sword_noOp"])
   
       service.workspace do |workspace|
         workspace.tag!("atom:title", "Academic Commons - SWORD Service")
-        workspace.tag!("collection", {"href"=> "http://" + http_host + "/sword/deposit/" + user_conf["collection"]}) do |collection|
-          collection.tag!("atom:title", user_conf["atom_title"])
-          collection.tag!("dcterms:abstract", user_conf["dcterms_abstract"])
+        content[:collection_slugs].each do |collection_slug|
+          workspace.tag!("collection", {"href"=> "http://" + http_host + "/sword/deposit/" + collection_slug}) do |collection|
+            collection.tag!("atom:title", content["atom_title"])
+            collection.tag!("dcterms:abstract", content["dcterms_abstract"])
+            
+            content["sword_content_types_supported"].each do |content_type|
+              collection.accept content_type 
+            end 
+            
+            content["sword_packaging_accepted"].each do |packaging_accepted|
+              collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
+            end 
           
-          user_conf["sword_content_types_supported"].each do |content_type|
-            collection.accept content_type 
+            collection.tag!("sword:mediation", content["sword_mediation"])
           end 
-          
-          user_conf["sword_packaging_accepted"].each do |packaging_accepted|
-            collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
-          end 
-          
-          collection.tag!("sword:mediation", user_conf["sword_mediation"])
-        end 
+        end
    
       end
     end

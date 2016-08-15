@@ -12,18 +12,29 @@ class SwordController < ApplicationController
 
   def service_document
     # Remove below when develop beyond barebones
-    test_info = {}
-    test_info['sword_verbose'] = 'false'
-    test_info['sword_verbose'] = 'false'
-    test_info['collection'] = 'Test Collection'
-    test_info['atom_title'] = 'Test Title'
-    test_info['dcterms_abstract'] = 'Test DC Terms abstract'
-    test_info['sword_content_types_supported'] = ['http://support-test-package-one', 'http://support-test-package-two']
-    test_info['sword_packaging_accepted'] = ['application/zip']
-    test_info['sword_mediation'] = 'false'
+    content = HashWithIndifferentAccess.new
+    # puts SWORD_CONFIG
+    # puts SWORD_CONFIG[:unzip_dir]
+    # For site-specific values, read from the config files. For values that depend
+    # on the depositor (for example, available collections), read from the
+    # database
+    # site wide
+    content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
+    content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
+    # fcd1, 08/15/16: For now, enter Depositor by hand in code. Later, before_action will do it
+    depositor = Depositor.find_by(id: 1)
+    # puts depositor
+    content[:collection_slugs] = []
+    depositor.collections.each { |collection| content[:collection_slugs] << collection.slug }
+    # content[:collections] = depositor.collections.to_a
+    content['atom_title'] = 'Test Title'
+    content['dcterms_abstract'] = 'Test DC Terms abstract'
+    content['sword_content_types_supported'] = ['http://support-test-package-one', 'http://support-test-package-two']
+    content['sword_packaging_accepted'] = ['application/zip']
+    content['sword_mediation'] = 'false'
     # Remove above when develop beyond barebones
-    puts view_context.service_document_xml test_info, request.env["HTTP_HOST"]
-    render xml: view_context.service_document_xml(test_info, request.env["HTTP_HOST"])
+    puts view_context.service_document_xml content, request.env["HTTP_HOST"]
+    render xml: view_context.service_document_xml(content, request.env["HTTP_HOST"])
 
   end
 
@@ -54,6 +65,14 @@ class SwordController < ApplicationController
     def check_depositor_collection_permission
       # fcd1, 08/09/16: Change behavior if needed. Check standard/existing code
       head :bad_request unless @depositor.collections.include? @collection
+    end
+
+    def collection_content_for_service_document
+      # depositor = @depositor
+      # fcd1, 08/15/16: For now, enter Depositor by hand in code. Later, use above set by before_action
+      # depositor = Depositor.find_by(id: 1)
+      # content = []
+      # depositor.
     end
 end
 
