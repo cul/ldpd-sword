@@ -7,7 +7,7 @@ class HyacinthIngest
     payload = {}
     payload[:digital_object_data_json] = data_json
     payload_json = JSON.generate payload
-    puts payload_json
+    # puts payload_json
     uri = URI('http://localhost:3000/digital_objects')
     # res = Net::HTTP.get(uri)
     # puts res
@@ -17,7 +17,7 @@ class HyacinthIngest
 
     res = Net::HTTP.start(uri.hostname, uri.port) { |http| http.request(post_req) }
 
-    puts res
+    # puts res
     
 
   end

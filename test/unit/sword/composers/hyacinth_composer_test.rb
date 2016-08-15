@@ -10,7 +10,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
   end
 
   test "assert true" do
-    result = @hyacinth_composer.compose_json( @deposit_content, 'test-project')
-    assert_equal result, '{"project":{"string_key":"test-project"},"title":"Testing the Hyacinth Composer"}'
+    result = @hyacinth_composer.compose_json( @deposit_content, 'test-project','item')
+    assert_equal result, '{"digital_object_type":{"string_key":"item"},"project":{"string_key":"test-project"},"dynamic_field_data":{"title":[{"title_non_sort_portion":null,"title_sort_portion":"Testing the Hyacinth Composer"}]}}'
   end
 end

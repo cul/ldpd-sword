@@ -6,14 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Collection.create(name: "A Collection", slug: "a-collection")
-Collection.create(name: "Another Collection",slug: "another-collection")
+first_collection = Collection.create(name: "First Collection", slug: "first-collection")
+second_collection =Collection.create(name: "Second Collection",slug: "second-collection")
 
-Depositor.create(name: "First Depositor",
-                 basic_authentication_user_id: "firstdid",
-                 basic_authentication_password: "firstdpasswd")
+first_depositor = Depositor.create(name: "First Depositor",
+                                   basic_authentication_user_id: "firstdid",
+                                   basic_authentication_password: "firstdpasswd")
 
-Depositor.create(name: "Second Depositor",
-                 basic_authentication_user_id: "seconddid",
-                 basic_authentication_password: "secondpasswd")
+second_depositor = Depositor.create(name: "Second Depositor",
+                                    basic_authentication_user_id: "seconddid",
+                                    basic_authentication_password: "secondpasswd")
 
+first_depositor.collections << first_collection
