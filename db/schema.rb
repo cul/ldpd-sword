@@ -14,11 +14,15 @@
 ActiveRecord::Schema.define(version: 20160806004053) do
 
   create_table "collections", force: :cascade do |t|
-    t.string   "name",               limit: 255,   null: false
-    t.string   "slug",               limit: 255,   null: false
-    t.text     "allowed_mime_types", limit: 65535
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "name",                limit: 255,                   null: false
+    t.string   "atom_title",          limit: 255,                   null: false
+    t.string   "slug",                limit: 255,                   null: false
+    t.text     "abstract",            limit: 65535
+    t.text     "mime_types",          limit: 65535
+    t.text     "sword_package_types", limit: 65535
+    t.boolean  "mediation_enabled",                 default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
   end
 
   add_index "collections", ["name"], name: "index_collections_on_name", unique: true, using: :btree

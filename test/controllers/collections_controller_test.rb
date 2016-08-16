@@ -19,7 +19,8 @@ class CollectionsControllerTest < ActionController::TestCase
   test "should create collection" do
     assert_difference('Collection.count') do
       post :create, collection: { name: "Test Collection",
-                                  slug: "test-collection" }
+                                  slug: "test-collection",
+                                  atom_title: "Atom Title of the Test Collection" }
     end
 
     assert_redirected_to collection_path(assigns(:collection))

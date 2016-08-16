@@ -6,8 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-first_collection = Collection.create(name: "First Collection", slug: "first-collection")
-second_collection =Collection.create(name: "Second Collection",slug: "second-collection")
+first_collection = Collection.create(name: "First Collection",
+                                     slug: "first-collection",
+                                     atom_title: "Atom Title of First Collection")
+second_collection =Collection.create(name: "Second Collection",
+                                     slug: "second-collection",
+                                     atom_title: "Atom Title of Second Collection")
 
 first_depositor = Depositor.create(name: "First Depositor",
                                    basic_authentication_user_id: "firstdid",

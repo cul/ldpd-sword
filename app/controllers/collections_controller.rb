@@ -70,6 +70,12 @@ class CollectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def collection_params
       # params.fetch(:collection, {})
-      params.require(:collection).permit(:name, :slug)
+      params.require(:collection).permit(:name,
+                                         :atom_title,
+                                         :slug,
+                                         :abstract,
+                                         :mime_types,
+                                         :sword_package_types,
+                                         :mediation_enabled )
     end
 end

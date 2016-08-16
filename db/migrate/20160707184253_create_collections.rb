@@ -2,8 +2,12 @@ class CreateCollections < ActiveRecord::Migration
   def change
     create_table :collections do |t|
       t.string :name, null: false
+      t.string :atom_title, null: false
       t.string :slug, null: false
-      t.text :allowed_mime_types
+      t.text :abstract
+      t.text :mime_types
+      t.text :sword_package_types
+      t.boolean :mediation_enabled, default: false
 
       t.timestamps null: false
     end

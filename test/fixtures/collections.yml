@@ -3,7 +3,9 @@
 first_collection:
   name: First Collection
   slug: first-collection
+  atom_title: Atom Title of First Collection
 
 second_collection:
   name: Second Collection
   slug: second-collection
+  atom_title: Atom Title of Second Collection
