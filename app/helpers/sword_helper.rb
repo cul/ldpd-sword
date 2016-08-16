@@ -19,18 +19,18 @@ module SwordHelper
         content[:collections].each do |collection_info|
           puts collection_info.inspect
           workspace.tag!("collection", {"href"=> "http://" + http_host + "/sword/deposit/" + collection_info[:slug]}) do |collection|
-            collection.tag!("atom:title", content["atom_title"])
-            collection.tag!("dcterms:abstract", content["dcterms_abstract"])
-            
-            content["sword_content_types_supported"].each do |content_type|
+            collection.tag!("atom:title", collection_info[:atom_title])
+            collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].nil?
+          
+            collection_info[:mime_types].each do |content_type|
               collection.accept content_type 
-            end 
+            end
             
-            content["sword_packaging_accepted"].each do |packaging_accepted|
+            collection_info[:sword_package_types].each do |packaging_accepted|
               collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
             end 
           
-            collection.tag!("sword:mediation", content["sword_mediation"])
+            collection.tag!("sword:mediation", collection_info[:mediation_enabled])
           end 
         end
    

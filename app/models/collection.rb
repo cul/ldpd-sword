@@ -15,6 +15,7 @@ class Collection < ActiveRecord::Base
     info[:mime_types] = mime_types
     info[:sword_package_types] = sword_package_types
     info[:abstract] = abstract
+    info[:mediation_enabled] = mediation_enabled
     info
   end
 end
