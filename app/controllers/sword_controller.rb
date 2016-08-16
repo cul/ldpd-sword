@@ -20,12 +20,7 @@ class SwordController < ApplicationController
     content[:collections] = []
     @depositor.collections.each { |collection| content[:collections] << collection.info_for_service_document }
     # content[:collections] = depositor.collections.to_a
-    content['atom_title'] = 'Test Title'
-    content['dcterms_abstract'] = 'Test DC Terms abstract'
-    content['sword_content_types_supported'] = ['http://support-test-package-one', 'http://support-test-package-two']
-    content['sword_packaging_accepted'] = ['application/zip']
-    content['sword_mediation'] = 'false'
-    puts view_context.service_document_xml content, request.env["HTTP_HOST"]
+    # puts view_context.service_document_xml content, request.env["HTTP_HOST"]
     render xml: view_context.service_document_xml(content, request.env["HTTP_HOST"])
 
   end
