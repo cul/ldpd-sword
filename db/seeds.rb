@@ -1,26 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+if Rails.env.development?
+  first_dev_collection = Collection.create(name: "First Dev Collection",
+                                       slug: "first-dev-collection",
+                                       atom_title: "Atom Title of First Dev Collection",
+                                       abstract: "This is the abstract for the First Dev Collection",
+                                       mime_types: ["application/zip", "application/pdf"],
+                                       sword_package_types: ["http://purl.org/net/sword-types/METSDSpaceSIP",
+                                                             "http://purl.org/net/sword-types/mets/dspace"])
 
-first_collection = Collection.create(name: "First Collection",
-                                     slug: "first-collection",
-                                     atom_title: "Atom Title of First Collection")
-second_collection =Collection.create(name: "Second Collection",
-                                     slug: "second-collection",
-                                     atom_title: "Atom Title of Second Collection")
+  second_dev_collection =Collection.create(name: "Second Dev Collection",
+                                       slug: "second-dev-collection",
+                                       atom_title: "Atom Title of Second Dev Collection")
 
-first_depositor = Depositor.create(name: "First Depositor",
-                                   basic_authentication_user_id: "firstdid",
-                                   basic_authentication_password: "firstdpasswd")
+  first_dev_depositor = Depositor.create(name: "First Dev Depositor",
+                                     basic_authentication_user_id: "firstdid",
+                                     basic_authentication_password: "firstdpasswd")
 
-second_depositor = Depositor.create(name: "Second Depositor",
-                                    basic_authentication_user_id: "seconddid",
-                                    basic_authentication_password: "secondpasswd")
+  second_dev_depositor = Depositor.create(name: "Second Dev Depositor",
+                                      basic_authentication_user_id: "seconddid",
+                                      basic_authentication_password: "secondpasswd")
 
-first_depositor.collections << first_collection
-first_depositor.collections << second_collection
-second_depositor.collections << second_collection
+  first_dev_depositor.collections << first_dev_collection
+  first_dev_depositor.collections << second_dev_collection
+  second_dev_depositor.collections << second_dev_collection
+end
+
