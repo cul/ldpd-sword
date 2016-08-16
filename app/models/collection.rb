@@ -1,5 +1,7 @@
 class Collection < ActiveRecord::Base
-  # fcd1, 07/26/16: Remove this if decide to use a MimeType table instead, though don't think will go the table way
+  validates :name, presence: true
+  validates :atom_title, presence: true
+  validates :slug, presence: true
   serialize :mime_types, Array
   serialize :sword_package_types, Array
   has_many :depositor_collection_permissions

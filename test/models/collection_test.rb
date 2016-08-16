@@ -7,6 +7,7 @@ class CollectionTest < ActiveSupport::TestCase
 
   def setup
     @collection = Collection.new(name: "Example Collection",
+                                 atom_title: "Atom Title of Example Collection",
                                  slug: "example-collection")
   end
 
