@@ -1,6 +1,6 @@
 require 'builder'
 module SwordHelper
-  def service_document_xml(content, http_host)
+  def service_document_xml(content)
 
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"
@@ -18,7 +18,7 @@ module SwordHelper
         workspace.tag!("atom:title", "Academic Commons - SWORD Service")
         content[:collections].each do |collection_info|
           puts collection_info.inspect
-          workspace.tag!("collection", {"href"=> "http://" + http_host + "/sword/deposit/" + collection_info[:slug]}) do |collection|
+          workspace.tag!("collection", {"href"=> "http://" + content[:http_host] + "/sword/deposit/" + collection_info[:slug]}) do |collection|
             collection.tag!("atom:title", collection_info[:atom_title])
             collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].nil?
           

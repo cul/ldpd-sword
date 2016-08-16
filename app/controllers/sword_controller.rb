@@ -17,11 +17,14 @@ class SwordController < ApplicationController
     # For site-specific values, read from the config file:
     content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
     content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
+    
+    content[:http_host] = request.env["HTTP_HOST"]
+
     content[:collections] = []
     @depositor.collections.each { |collection| content[:collections] << collection.info_for_service_document }
     # content[:collections] = depositor.collections.to_a
     # puts view_context.service_document_xml content, request.env["HTTP_HOST"]
-    render xml: view_context.service_document_xml(content, request.env["HTTP_HOST"])
+    render xml: view_context.service_document_xml(content)
 
   end
 
