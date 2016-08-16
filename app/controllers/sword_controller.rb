@@ -4,6 +4,8 @@ class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
   before_action :check_basic_http_authentication, only: [:deposit]
   before_action :check_depositor_collection_permission, only: [:deposit]
+  # fcd1, 08/16/16: following sets up a hard coded Depositor, for testing
+  before_action :setup_depositor_for_testing_service_document, only: [:service_document]
 
   def deposit
     # puts request.inspect if Rails.env.development? or Rails.env.test?
@@ -11,28 +13,18 @@ class SwordController < ApplicationController
   end
 
   def service_document
-    # Remove below when develop beyond barebones
     content = HashWithIndifferentAccess.new
-    # puts SWORD_CONFIG
-    # puts SWORD_CONFIG[:unzip_dir]
-    # For site-specific values, read from the config files. For values that depend
-    # on the depositor (for example, available collections), read from the
-    # database
-    # site wide
+    # For site-specific values, read from the config file:
     content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
     content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
-    # fcd1, 08/15/16: For now, enter Depositor by hand in code. Later, before_action will do it
-    depositor = Depositor.find_by(id: 1)
-    # puts depositor
-    content[:collection_slugs] = []
-    depositor.collections.each { |collection| content[:collection_slugs] << collection.slug }
+    content[:collections] = []
+    @depositor.collections.each { |collection| content[:collections] << collection.info_for_service_document }
     # content[:collections] = depositor.collections.to_a
     content['atom_title'] = 'Test Title'
     content['dcterms_abstract'] = 'Test DC Terms abstract'
     content['sword_content_types_supported'] = ['http://support-test-package-one', 'http://support-test-package-two']
     content['sword_packaging_accepted'] = ['application/zip']
     content['sword_mediation'] = 'false'
-    # Remove above when develop beyond barebones
     puts view_context.service_document_xml content, request.env["HTTP_HOST"]
     render xml: view_context.service_document_xml(content, request.env["HTTP_HOST"])
 
@@ -73,6 +65,12 @@ class SwordController < ApplicationController
       # depositor = Depositor.find_by(id: 1)
       # content = []
       # depositor.
+    end
+
+    def setup_depositor_for_testing_service_document
+      puts "Called setup_depositor_for_testing_service_document"
+      @depositor = Depositor.find_by(id: 1)
+      puts @depositor.inspect
     end
 end
 
