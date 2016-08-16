@@ -1,6 +1,6 @@
-class CreateSwordDeposits < ActiveRecord::Migration
+class CreateDeposits < ActiveRecord::Migration
   def change
-    create_table :sword_deposits do |t|
+    create_table :deposits do |t|
       t.belongs_to :depositor, index: true, foreign_key: true
       t.belongs_to :collection, index: true, foreign_key: true
       t.string :title

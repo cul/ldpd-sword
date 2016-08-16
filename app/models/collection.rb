@@ -4,6 +4,7 @@ class Collection < ActiveRecord::Base
   validates :slug, presence: true
   serialize :mime_types, Array
   serialize :sword_package_types, Array
+  has_many :deposits
   has_many :depositor_collection_permissions
   has_many :depositors, through: :depositor_collection_permissions
 end

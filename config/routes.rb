@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #   resources :products
   resources :collections
   resources :depositors
-  resources :sword_deposits
+  resources :deposits
   resources :packages
 
   # Example resource route with options:
