@@ -1,0 +1,17 @@
+{
+    "title":
+    [
+	{
+	    "title_non_sort_portion":null,
+	    "title_sort_portion":"Title for Testing the Hyacinth Composer"
+	}
+    ]
+    ,
+    "abstract":
+    [
+	{
+	    "abstract_value":"Abstract for Testing the Hyacinth Composer"
+	}
+    ]
+}
+
