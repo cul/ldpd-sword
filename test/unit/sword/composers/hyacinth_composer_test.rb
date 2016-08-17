@@ -10,12 +10,9 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new
     # temporarily bypass private method restriction in order to test private method
     Sword::Composers::HyacinthComposer.send(:public, :compose_dynamic_field_data)
-    @actual_result = @hyacinth_composer.compose_dynamic_field_data  @deposit_content
+    @hyacinth_composer.compose_dynamic_field_data  @deposit_content
+    @actual_result = @hyacinth_composer.dynamic_field_data
     @expected_result = JSON.parse(fixture_file('hyacinth_data/dynamic_field_data_test_case_1.json'), symbolize_names: true)
-    # puts "!!!!!!!!!!!!!!!!!!!! Expected:"
-    # puts expected_result
-    # puts "!!!!!!!!!!!!!!!!!!!! Actual:"
-    # puts actual_result
   end
 
   test "#compose_dynamic_field_data via #set_title encodes title correctly" do
@@ -26,10 +23,11 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
   end
 
-  test "#compose_dynamic_field_data encodes correctly" do
+  test "should #compose_dynamic_field_data encodes correctly" do
     # temporarily bypass private method restriction in order to test private method
     Sword::Composers::HyacinthComposer.send(:public, :compose_dynamic_field_data)
-    actual_result = @hyacinth_composer.compose_dynamic_field_data  @deposit_content
+    @hyacinth_composer.compose_dynamic_field_data  @deposit_content
+    actual_result = @hyacinth_composer.dynamic_field_data
     expected_result = JSON.parse(fixture_file('hyacinth_data/dynamic_field_data_test_case_1.json'), symbolize_names: true)
     assert_equal actual_result, expected_result
   end
