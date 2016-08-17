@@ -4,7 +4,6 @@ class CreateDepositors < ActiveRecord::Migration
       t.string :name, null: false
       t.string :basic_authentication_user_id, null: false
       t.string :basic_authentication_password, null: false
-      t.text :allowed_mime_types
 
       t.timestamps null: false
     end
