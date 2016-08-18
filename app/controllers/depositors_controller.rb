@@ -71,6 +71,7 @@ class DepositorsController < ApplicationController
     def depositor_params
       params.fetch(:depositor, {}).permit(:name,
                                           :basic_authentication_user_id,
-                                          :basic_authentication_password)
+                                          :password,
+                                          :password_confirmation)
     end
 end

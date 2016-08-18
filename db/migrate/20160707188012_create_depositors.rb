@@ -3,7 +3,7 @@ class CreateDepositors < ActiveRecord::Migration
     create_table :depositors do |t|
       t.string :name, null: false
       t.string :basic_authentication_user_id, null: false
-      t.string :basic_authentication_password, null: false
+      t.string :password_digest, null: false
 
       t.timestamps null: false
     end

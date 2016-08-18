@@ -3,9 +3,9 @@
 first_depositor:
   name: First Depositor
   basic_authentication_user_id: firstd
-  basic_authentication_password: firstdpasswd
+  password_digest: <%=Depositor.create_password_digest 'firstdpasswd' %>
 
 second_depositor:
   name: Second Depositor
   basic_authentication_user_id: secondd
-  basic_authentication_password: seconddpasswd
+  password_digest: <%= Depositor.create_password_digest 'seconddpasswd' %>

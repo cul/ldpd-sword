@@ -12,12 +12,14 @@ if Rails.env.development?
                                        atom_title: "Atom Title of Second Dev Collection")
 
   first_dev_depositor = Depositor.create(name: "First Dev Depositor",
-                                     basic_authentication_user_id: "firstdid",
-                                     basic_authentication_password: "firstdpasswd")
+                                         basic_authentication_user_id: "firstdid",
+                                         password: "firstdpasswd",
+                                         password_confirmation: "firstdpasswd")
 
   second_dev_depositor = Depositor.create(name: "Second Dev Depositor",
-                                      basic_authentication_user_id: "seconddid",
-                                      basic_authentication_password: "secondpasswd")
+                                          basic_authentication_user_id: "seconddid",
+                                          password: "secondpasswd",
+                                          password_confirmation: "secondpasswd")
 
   first_dev_depositor.collections << first_dev_collection
   first_dev_depositor.collections << second_dev_collection

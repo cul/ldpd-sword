@@ -12,7 +12,8 @@ class SwordControllerTest < ActionController::TestCase
     # config = YAML.load_file(fixture_path_for('sword/config.yml'))
     # Deposits::Sword::SwordTools.instance_variable_set(:@all_config,config)
     @user_id = depositors(:first_depositor).basic_authentication_user_id
-    @password = depositors(:first_depositor).basic_authentication_password
+    # copied the clear text password from the fixtures file depositors.yml
+    @password = 'firstdpasswd'
     # @password = rand(10000).to_s(16)
     # testuser = Deposits::Sword::SwordTools.getUserConfig.detect do |m|
     # m['name'] == @user
