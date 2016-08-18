@@ -48,7 +48,7 @@ class SwordController < ApplicationController
       result = false
       @user_id, @password = Sword::DepositRequest.pullCredentials(request)
       @depositor = Depositor.find_by(basic_authentication_user_id: @user_id)
-      result = (@depositor.basic_authentication_password == @password) unless @depositor.nil?
+      result = @depositor.authenticate(@password) unless @depositor.nil?
       head 511 unless result
     end
     

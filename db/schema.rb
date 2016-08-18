@@ -40,11 +40,11 @@ ActiveRecord::Schema.define(version: 20160806004053) do
   add_index "depositor_collection_permissions", ["depositor_id"], name: "index_depositor_collection_permissions_on_depositor_id", using: :btree
 
   create_table "depositors", force: :cascade do |t|
-    t.string   "name",                          limit: 255, null: false
-    t.string   "basic_authentication_user_id",  limit: 255, null: false
-    t.string   "basic_authentication_password", limit: 255, null: false
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
+    t.string   "name",                         limit: 255, null: false
+    t.string   "basic_authentication_user_id", limit: 255, null: false
+    t.string   "password_digest",              limit: 255, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "depositors", ["basic_authentication_user_id"], name: "index_depositors_on_basic_authentication_user_id", unique: true, using: :btree
