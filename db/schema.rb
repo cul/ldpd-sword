@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160806004053) do
   add_index "collections", ["name"], name: "index_collections_on_name", unique: true, using: :btree
   add_index "collections", ["slug"], name: "index_collections_on_slug", unique: true, using: :btree
 
-  create_table "depositor_collection_permissions", force: :cascade do |t|
+  create_table "depositor_collection_pairings", force: :cascade do |t|
     t.integer  "depositor_id",  limit: 4
     t.integer  "collection_id", limit: 4
     t.string   "project",       limit: 255
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20160806004053) do
     t.datetime "updated_at",                null: false
   end
 
-  add_index "depositor_collection_permissions", ["collection_id"], name: "index_depositor_collection_permissions_on_collection_id", using: :btree
-  add_index "depositor_collection_permissions", ["depositor_id"], name: "index_depositor_collection_permissions_on_depositor_id", using: :btree
+  add_index "depositor_collection_pairings", ["collection_id"], name: "index_depositor_collection_pairings_on_collection_id", using: :btree
+  add_index "depositor_collection_pairings", ["depositor_id"], name: "index_depositor_collection_pairings_on_depositor_id", using: :btree
 
   create_table "depositors", force: :cascade do |t|
     t.string   "name",                         limit: 255, null: false
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 20160806004053) do
 
   add_index "packages", ["deposit_id"], name: "index_packages_on_deposit_id", using: :btree
 
-  add_foreign_key "depositor_collection_permissions", "collections"
-  add_foreign_key "depositor_collection_permissions", "depositors"
+  add_foreign_key "depositor_collection_pairings", "collections"
+  add_foreign_key "depositor_collection_pairings", "depositors"
   add_foreign_key "deposits", "collections"
   add_foreign_key "deposits", "depositors"
   add_foreign_key "packages", "deposits"

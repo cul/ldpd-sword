@@ -5,8 +5,8 @@ class Collection < ActiveRecord::Base
   serialize :mime_types, Array
   serialize :sword_package_types, Array
   has_many :deposits
-  has_many :depositor_collection_permissions
-  has_many :depositors, through: :depositor_collection_permissions
+  has_many :depositor_collection_pairings
+  has_many :depositors, through: :depositor_collection_pairings
 
   def info_for_service_document
     info = HashWithIndifferentAccess.new
