@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  depositor_id: one
-  collection_id: two
+first_depostitor_first_collection:
+  depositor: first_depositor
+  collection: first_collection
 
-two:
-  depositor_id: two
-  collection_id: one
+first_depostitor_second_collection:
+  depositor: first_depositor
+  collection: second_collection
+
+second_depostitor_second_collection:
+  depositor: second_depositor
+  collection_id: second_collection

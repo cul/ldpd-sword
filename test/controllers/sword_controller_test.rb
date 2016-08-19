@@ -3,56 +3,49 @@ require 'test_helper'
 class SwordControllerTest < ActionController::TestCase
 
   setup do
-    @depositor =  depositors(:first_depositor)
-    @collection = collections(:first_collection)
-    @depositor.collections << @collection
+    # see depositor_collection_pairings.yml for pairings
+    # between depositor and collection (i.e. which collections
+    # are accessible to a depositor
+    @first_depositor =  depositors(:first_depositor)
+    @first_collection = collections(:first_collection)
+    @second_depositor = depositors(:first_depositor)
   end
 
-  def setup_auth(bad_passwd = false)
-    # config = YAML.load_file(fixture_path_for('sword/config.yml'))
-    # Deposits::Sword::SwordTools.instance_variable_set(:@all_config,config)
-    @user_id = depositors(:first_depositor).basic_authentication_user_id
+  def setup_auth(depositor_fixture_name, depositor_passwd, bad_passwd = false)
+    @user_id = depositors(depositor_fixture_name).basic_authentication_user_id
     # copied the clear text password from the fixtures file depositors.yml
-    @password = 'firstdpasswd'
-    # @password = rand(10000).to_s(16)
-    # testuser = Deposits::Sword::SwordTools.getUserConfig.detect do |m|
-    # m['name'] == @user
-    # end
-    # testuser['password'] = @password
-    # b64 = Base64.encode64("#{@user_id}:#{@password}")
     if bad_passwd
-      b64 = Base64.encode64("#{@user_id}:#{@password}foo")
+      b64 = Base64.encode64("#{@user_id}:#{depositor_passwd}foo")
     else
-      b64 = Base64.encode64("#{@user_id}:#{@password}")
+      b64 = Base64.encode64("#{@user_id}:#{depositor_passwd}")
     end
-    @auth_header = "Basic #{b64}".strip
+    @request.env['HTTP_AUTHORIZATION'] = "Basic #{b64}".strip
+  end
+
+  test "should post deposit succesfully" do
+    setup_auth :first_depositor, 'firstdpasswd'
+    post :deposit, collection_slug: 'first-collection'
+    assert_response :success
   end
 
   test "should post deposit, failure, unknown collection slug" do
-    setup_auth
-    @request.env['HTTP_AUTHORIZATION'] = @auth_header
+    setup_auth :first_depositor, 'firstdpasswd'
     post :deposit, collection_slug: 'collection-on'
-    assert_response 400
+    # assert_response 400
+    assert_response :bad_request
   end
 
   test "should post deposit, authentication failure" do
-    setup_auth true
-    @request.env['HTTP_AUTHORIZATION'] = @auth_header
+    setup_auth :first_depositor, 'firstdpasswd', true
     post :deposit, collection_slug: 'first-collection'
     assert_response 511
   end
 
   test "should post deposit, failure, no access to specified collection" do
-    setup_auth
-    @request.env['HTTP_AUTHORIZATION'] = @auth_header
+    # fixture :second_depositor does not have access to fixture :first_collection
+    # see depositor_collection_pairings.yml
+    setup_auth :second_depositor, 'seconddpasswd'
     post :deposit, collection_slug: 'second-collection'
-    assert_response 400
-  end
-
-  test "should post deposit" do
-    setup_auth
-    @request.env['HTTP_AUTHORIZATION'] = @auth_header
-    post :deposit, collection_slug: 'first-collection'
-    assert_response :success
+    assert_response :bad_request
   end
 end
