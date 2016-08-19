@@ -3,11 +3,14 @@
 first_depostitor_first_collection:
   depositor: first_depositor
   collection: first_collection
+  project: first_hyacinth_test_project
 
 first_depostitor_second_collection:
   depositor: first_depositor
   collection: second_collection
+  project: first_hyacinth_test_project
 
 second_depostitor_second_collection:
   depositor: second_depositor
   collection: second_collection
+  project: second_hyacinth_test_project

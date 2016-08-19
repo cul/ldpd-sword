@@ -10,6 +10,17 @@ class SwordController < ApplicationController
   def deposit
     # puts request.inspect if Rails.env.development? or Rails.env.test?
     # puts Sword::DepositRequest.new(request, @collection.slug).inspect
+
+    # at this, with all the before_action filters, we have the following invariant conditions:
+    # collection slug in URL was valid, and @collection is set
+    # authentication has passed, and @depositor is set
+
+    # Get info out of the reqest: 
+    
+    # retrieve the hyacinth project. Need a try exception statement around the following line
+    # also, can get if instance variable and use func return straight.
+    @hyacinth_project = hyacinth_project
+    # puts @hyacinth_project.inspect
   end
 
   def service_document
@@ -70,5 +81,8 @@ class SwordController < ApplicationController
       @depositor = Depositor.find_by(id: 1)
       puts @depositor.inspect
     end
-end
 
+    def hyacinth_project
+      DepositorCollectionPairing.find_by(depositor: @depositor, collection: @collection).project
+    end
+end

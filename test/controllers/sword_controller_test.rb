@@ -9,6 +9,7 @@ class SwordControllerTest < ActionController::TestCase
     @first_depositor =  depositors(:first_depositor)
     @first_collection = collections(:first_collection)
     @second_depositor = depositors(:first_depositor)
+    @second_collection = collections(:second_collection)
   end
 
   def setup_auth(depositor_fixture_name, depositor_passwd, bad_passwd = false)
@@ -22,9 +23,16 @@ class SwordControllerTest < ActionController::TestCase
     @request.env['HTTP_AUTHORIZATION'] = "Basic #{b64}".strip
   end
 
-  test "should post deposit succesfully" do
+  test "first depositor should post deposit succesfully into first collection" do
     setup_auth :first_depositor, 'firstdpasswd'
     post :deposit, collection_slug: @first_collection.slug
+    # puts @controller.inspect
+    assert_response :success
+  end
+
+  test "second depositor should post deposit succesfully into second collection" do
+    setup_auth :second_depositor, 'seconddpasswd'
+    post :deposit, collection_slug: @second_collection.slug
     assert_response :success
   end
 
