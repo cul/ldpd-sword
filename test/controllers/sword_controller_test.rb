@@ -24,7 +24,7 @@ class SwordControllerTest < ActionController::TestCase
 
   test "should post deposit succesfully" do
     setup_auth :first_depositor, 'firstdpasswd'
-    post :deposit, collection_slug: 'first-collection'
+    post :deposit, collection_slug: @first_collection.slug
     assert_response :success
   end
 
@@ -37,7 +37,7 @@ class SwordControllerTest < ActionController::TestCase
 
   test "should post deposit, authentication failure" do
     setup_auth :first_depositor, 'firstdpasswd', true
-    post :deposit, collection_slug: 'first-collection'
+    post :deposit, collection_slug: @first_collection.slug
     assert_response 511
   end
 
@@ -45,7 +45,7 @@ class SwordControllerTest < ActionController::TestCase
     # fixture :second_depositor does not have access to fixture :first_collection
     # see depositor_collection_pairings.yml
     setup_auth :second_depositor, 'seconddpasswd'
-    post :deposit, collection_slug: 'second-collection'
+    post :deposit, collection_slug: @first_collection.slug
     assert_response :bad_request
   end
 end

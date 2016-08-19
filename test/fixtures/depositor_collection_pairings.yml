@@ -10,4 +10,4 @@ first_depostitor_second_collection:
 
 second_depostitor_second_collection:
   depositor: second_depositor
-  collection_id: second_collection
+  collection: second_collection
