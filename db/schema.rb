@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160806004053) do
     t.string   "atom_title",                  limit: 255,                   null: false
     t.string   "slug",                        limit: 255,                   null: false
     t.string   "hyacinth_project_string_key", limit: 255
+    t.string   "parser",                      limit: 255
     t.text     "abstract",                    limit: 65535
     t.text     "mime_types",                  limit: 65535
     t.text     "sword_package_types",         limit: 65535
