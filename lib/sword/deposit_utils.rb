@@ -58,5 +58,27 @@ module DepositUtils
     return exports
   end  
 
+  # fcd1, 08/19/16: in hypatia-new, #save_file was defined in app/helpers/sword_helper.rb
+  # The version here has been tweaked.
+  def self.save_file(content, file_name, save_path)
+    
+    FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
+    
+    file = save_path + '/' + file_name
+    
+    # logger.info "file full path: " + file
+    
+    begin
+      file = File.open(file, "w")
+      file.write(content)
+    rescue IOError => e
+      # logger.info "========= ERROR writing file ========== : " + e.to_s
+      raise
+    ensure
+      file.close unless file == nil
+    end
+    
+  end
+
 end
 end

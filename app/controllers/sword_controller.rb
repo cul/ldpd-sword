@@ -9,7 +9,15 @@ class SwordController < ApplicationController
 
   def deposit
     # puts request.inspect if Rails.env.development? or Rails.env.test?
-    # puts Sword::DepositRequest.new(request, @collection.slug).inspect
+    # puts request.env.inspect if Rails.env.development? or Rails.env.test?
+    # puts request.headers.inspect if Rails.env.development? or Rails.env.test?
+    # puts request.headers["SERVER_PORT"] if Rails.env.development? or Rails.env.test?
+    # puts request.headers["X-On-Behalf-Of"] if Rails.env.development? or Rails.env.test?
+    # file = request.body.read if Rails.env.development? or Rails.env.test?
+    # puts file.inspect
+    @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
+    # puts @deposit_request.inspect
+    # puts @deposit_request.content.class
 
     # at this, with all the before_action filters, we have the following invariant conditions:
     # collection slug in URL was valid, and @collection is set

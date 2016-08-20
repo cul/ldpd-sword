@@ -10,6 +10,8 @@ class SwordControllerTest < ActionController::TestCase
     @first_collection = collections(:first_collection)
     @second_depositor = depositors(:first_depositor)
     @second_collection = collections(:second_collection)
+    @request.headers["X-On-Behalf-Of"] = "FFFFFFFFFFFFFFFFFFFFFFFFOOOOOOOOOOOOOOOOOOOOOOOOOOBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRR"
+    @request.body.write( "Hi, Fred")
   end
 
   def setup_auth(depositor_fixture_name, depositor_passwd, bad_passwd = false)
