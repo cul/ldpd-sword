@@ -1,4 +1,5 @@
 require "sword/deposit_request"
+require 'sword/deposit_utils'
 
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
@@ -16,6 +17,9 @@ class SwordController < ApplicationController
     # file = request.body.read if Rails.env.development? or Rails.env.test?
     # puts file.inspect
     @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
+    Sword::DepositUtils.save_file(@deposit_request.content,
+                                  @deposit_request.file_name,
+                                  SWORD_CONFIG[:unzip_dir])
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class
 

@@ -69,7 +69,7 @@ module DepositUtils
     # logger.info "file full path: " + file
     
     begin
-      file = File.open(file, "w")
+      file = File.open(file, "wb")
       file.write(content)
     rescue IOError => e
       # logger.info "========= ERROR writing file ========== : " + e.to_s
