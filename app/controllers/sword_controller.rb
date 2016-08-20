@@ -1,5 +1,7 @@
 require "sword/deposit_request"
 require 'sword/deposit_utils'
+require 'sword/composers/hyacinth_composer'
+require 'sword/ingest/hyacinth_ingest'
 
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
@@ -35,8 +37,18 @@ class SwordController < ApplicationController
     @deposit_content = Sword::DepositContent.new
     @parser.new_parse_content(@deposit_content,'/tmp/sword/mets.xml')
     puts @deposit_content.inspect
-    
 
+    # compose hyacinth data
+    @hyacinth_composer = Sword::Composers::HyacinthComposer.new
+    @json_for_hyacinth = @hyacinth_composer.compose_json(@deposit_content,
+                                                         @collection.hyacinth_project_string_key,
+                                                         'item')
+    puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
+    puts @json_for_hyacinth
+
+    @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
+    @hyacinth_ingest.ingest_json @json_for_hyacinth if Rails.env.development?
+    
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class
 
