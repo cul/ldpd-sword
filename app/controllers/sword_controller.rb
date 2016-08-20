@@ -9,6 +9,9 @@ class SwordController < ApplicationController
   before_action :setup_depositor_for_testing_service_document, only: [:service_document]
 
   def deposit
+    # at this, with all the before_action filters, the following instance variables are set:
+    # @collection, @depositor
+
     # puts request.inspect if Rails.env.development? or Rails.env.test?
     # puts request.env.inspect if Rails.env.development? or Rails.env.test?
     # puts request.headers.inspect if Rails.env.development? or Rails.env.test?
@@ -17,15 +20,25 @@ class SwordController < ApplicationController
     # file = request.body.read if Rails.env.development? or Rails.env.test?
     # puts file.inspect
     @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
+
+    @zip_dir = SWORD_CONFIG[:unzip_dir]
     Sword::DepositUtils.save_file(@deposit_request.content,
                                   @deposit_request.file_name,
-                                  SWORD_CONFIG[:unzip_dir])
+                                  @zip_dir)
+
+    Sword::DepositUtils.unpackZip("#{@zip_dir}/#{@deposit_request.file_name}",
+                                  @zip_dir)
+                                  
+    @parser = Sword::DepositUtils.getParser @collection.parser
+    puts @collection.hyacinth_project_string_key
+    puts @parser.inspect
+    @deposit_content = Sword::DepositContent.new
+    @parser.new_parse_content(@deposit_content,'/tmp/sword/mets.xml')
+    puts @deposit_content.inspect
+    
+
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class
-
-    # at this, with all the before_action filters, we have the following invariant conditions:
-    # collection slug in URL was valid, and @collection is set
-    # authentication has passed, and @depositor is set
 
     # Get info out of the reqest: 
     

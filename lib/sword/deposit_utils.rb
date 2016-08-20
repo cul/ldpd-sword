@@ -1,10 +1,12 @@
 # require "deposits/sword"
+require "sword/parsers/proquest_parser"
 require 'zip'
 module Sword
 module DepositUtils
   
   def self.unpackZip(zipFile, destinationPath)
-    
+    puts zipFile
+    destinationPath = destinationPath + '/'
     Zip::File.open(zipFile) { |zip|
       zip.each { |file|
         filePpath=File.join(destinationPath, file.name)
@@ -60,6 +62,9 @@ module DepositUtils
 
   # fcd1, 08/19/16: in hypatia-new, #save_file was defined in app/helpers/sword_helper.rb
   # The version here has been tweaked.
+  # probably want to have this method return the path to the zip file, which 
+  # should vary for each deposit to prevent overwriting. See how hypatia-new handles it
+  # for now, just /tmp/sword, as set in sword.yml
   def self.save_file(content, file_name, save_path)
     
     FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
@@ -80,5 +85,21 @@ module DepositUtils
     
   end
 
+  # fcd1, 08/20/16: Possibly move this into a (needs to be written) parent class for all Parsers, make it a
+  # class method.
+  def self.getParser parser_name
+    case parser_name
+    when "proquest"
+      Sword::Parsers::ProquestParser.new
+    when "bmc"
+      Sword::Parsers::ProquestParser.new
+    else
+      # raise an exception here
+    end
+  end
+
+  def self.xml_file
+    File.open('/tmp/sword/mets.xml')
+  end
 end
 end

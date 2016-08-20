@@ -85,6 +85,49 @@ class ProquestParser
     
   end
   
+  # fcd1, 08/20/16: my attempt at cleaning up the above parse_content
+  def new_parse_content(deposit_content, dataFile)
+    
+    # dataFile = findDataFile(content_dir)
+    contentXml = nil
+    open(dataFile) do |b|
+      contentXml = b.read
+      contentXml.sub!('xmlns="http://www.etdadmin.com/ns/etdsword"', '')
+      # substitute CRNL for NL
+      contentXml.gsub!(/\x0D(\x0A)?/,0x0A.chr)
+      # replace all control characters but NL and TAB
+      contentXml.gsub!(/[\x01-\x08]/,'')
+      contentXml.gsub!(/[\x0B-\x1F]/,'')
+      contentXml = Nokogiri::XML(contentXml)
+    end
+    
+    deposit_content.type_of_content = TYPE_OF_CONTENT
+    deposit_content.genre = GENRE
+    deposit_content.language = LANGUAGE
+    deposit_content.physicalLocation = PHYSICAL_LOCATION
+    deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
+    deposit_content.languageOfCataloging = LANGUAGE_OF_CATALOGING
+    deposit_content.title = (contentXml.css("DISS_title").first || DEFAULT_NODE).text
+    deposit_content.abstract = (contentXml.css("DISS_content>DISS_abstract").first || DEFAULT_NODE).text
+    deposit_content.subjects = getSubjects(contentXml)
+    deposit_content.dateIssued = (contentXml.css("DISS_description>DISS_dates>DISS_comp_date").first || DEFAULT_NODE).text
+    deposit_content.corparate_name = getAffiliation(contentXml)
+    deposit_content.corparate_role = CORPORATE_ROLE
+    
+    deposit_content.authors = getAuthors(contentXml)
+    deposit_content.advisors = getAdvisors(contentXml)
+    # fcd1, 08/20/16: I commented this out
+    # deposit_content.attachments = getAttachments(content_dir)
+    deposit_content.embargo_code = (contentXml.css("DISS_submission").first || DEFAULT_NODE)["embargo_code"]
+    if contentXml.at_css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt")
+      deposit_content.embargo_start_date = contentXml.css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt").first.text
+    end
+    if contentXml.at_css("DISS_restriction>DISS_sales_restriction")
+      deposit_content.sales_restriction_date = (contentXml.css("DISS_restriction>DISS_sales_restriction").first || DEFAULT_NODE)["remove"].to_s
+    end
+    
+  end
+  
   def getAttachments(content_dir)
     
       file_list = FileList.new(content_dir + "/*").exclude('**/mets.xml', '**/*DATA.xml')

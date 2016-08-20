@@ -4,8 +4,10 @@ first_collection:
   name: First Collection
   slug: first-collection
   atom_title: Atom Title of First Collection
+  parser: proquest
 
 second_collection:
   name: Second Collection
   slug: second-collection
   atom_title: Atom Title of Second Collection
+  parser: proquest
