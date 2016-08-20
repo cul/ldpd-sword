@@ -1,28 +1,28 @@
 if Rails.env.development?
-  first_dev_collection = Collection.create(name: "First Dev Collection",
-                                       slug: "first-dev-collection",
-                                       atom_title: "Atom Title of First Dev Collection",
-                                       abstract: "This is the abstract for the First Dev Collection",
+  first_collection = Collection.create(name: "First Collection",
+                                       slug: "first-collection",
+                                       atom_title: "Atom Title of First Collection",
+                                       abstract: "This is the abstract for the First Collection",
                                        mime_types: ["application/zip", "application/pdf"],
                                        sword_package_types: ["http://purl.org/net/sword-types/METSDSpaceSIP",
                                                              "http://purl.org/net/sword-types/mets/dspace"])
 
-  second_dev_collection =Collection.create(name: "Second Dev Collection",
-                                       slug: "second-dev-collection",
-                                       atom_title: "Atom Title of Second Dev Collection")
+  second_collection =Collection.create(name: "Second Collection",
+                                       slug: "second-collection",
+                                       atom_title: "Atom Title of Second Collection")
 
-  first_dev_depositor = Depositor.create(name: "First Dev Depositor",
-                                         basic_authentication_user_id: "firstdid",
-                                         password: "firstdpasswd",
-                                         password_confirmation: "firstdpasswd")
+  first_depositor = Depositor.create(name: "First Depositor",
+                                     basic_authentication_user_id: "firstdid",
+                                     password: "firstdpasswd",
+                                     password_confirmation: "firstdpasswd")
 
-  second_dev_depositor = Depositor.create(name: "Second Dev Depositor",
-                                          basic_authentication_user_id: "seconddid",
-                                          password: "secondpasswd",
-                                          password_confirmation: "secondpasswd")
+  second_depositor = Depositor.create(name: "Second Depositor",
+                                      basic_authentication_user_id: "seconddid",
+                                      password: "secondpasswd",
+                                      password_confirmation: "secondpasswd")
 
-  first_dev_depositor.collections << first_dev_collection
-  first_dev_depositor.collections << second_dev_collection
-  second_dev_depositor.collections << second_dev_collection
+  first_depositor.collections << first_collection
+  first_depositor.collections << second_collection
+  second_depositor.collections << second_collection
 end
 
