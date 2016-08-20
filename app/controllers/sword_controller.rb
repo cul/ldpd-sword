@@ -27,7 +27,6 @@ class SwordController < ApplicationController
     
     # retrieve the hyacinth project. Need a try exception statement around the following line
     # also, can get if instance variable and use func return straight.
-    @hyacinth_project = hyacinth_project
     # puts @hyacinth_project.inspect
   end
 
@@ -88,9 +87,5 @@ class SwordController < ApplicationController
       puts "Called setup_depositor_for_testing_service_document"
       @depositor = Depositor.find_by(id: 1)
       puts @depositor.inspect
-    end
-
-    def hyacinth_project
-      DepositorCollectionPairing.find_by(depositor: @depositor, collection: @collection).project
     end
 end
