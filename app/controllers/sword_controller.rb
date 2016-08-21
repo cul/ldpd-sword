@@ -45,7 +45,9 @@ class SwordController < ApplicationController
     # puts @json_for_hyacinth
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
-    @hyacinth_ingest.ingest_json @json_for_hyacinth if Rails.env.development?
+    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth if Rails.env.development?
+    puts @hyacinth_response.inspect if Rails.env.development?
+    puts @hyacinth_response.body if Rails.env.development?
     
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class

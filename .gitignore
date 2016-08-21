@@ -20,6 +20,7 @@
 /config/database.yml
 /config/secrets.yml
 /config/sword.yml
+/config/hyacinth.yml
 
 
 # Ignore ~ files
