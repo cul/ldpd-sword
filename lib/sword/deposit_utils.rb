@@ -101,5 +101,47 @@ module DepositUtils
   def self.xml_file
     File.open('/tmp/sword/mets.xml')
   end
+
+  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # Not sure if I'm gonna use it, and it may need tweaks
+  def self.download(sword_pid)
+    zip_dir = SwordTools.makeZipPath(sword_pid)
+
+    FileUtils.mkdir_p(zip_dir) unless File.directory?(zip_dir)
+    swordZipFile = zip_dir + SwordTools.normalizePid(sword_pid) + '.zip'
+
+    # download
+    open(swordZipFile, 'wb') do |file|
+      file << open(SwordTools.getSwordConfig['fedora_source_base'] + sword_pid + '/datastreams/content/content').read
+    end
+
+    # unzip
+    Zip::ZipFile.open(swordZipFile) { |zip_file|
+      zip_file.each { |f|
+        f_path=File.join(zip_dir, f.name)
+        FileUtils.mkdir_p(File.dirname(f_path))
+        zip_file.extract(f, f_path) unless File.exist?(f_path)
+      }
+    }
+
+  end
+
+  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # Not sure if I'm gonna use it, and it may need tweaks
+ def self.makeZipPath(sword_pid)
+
+    normilizedPid = SwordTools.normalizePid(sword_pid)
+    base_dir = SwordTools.getSwordConfig['tmp_base']
+    zip_dir = base_dir + normilizedPid + "/"
+    return zip_dir
+ end
+
+  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # Not sure if I'm gonna use it, and it may need tweaks
+  def self.removeDownloadedFiles(sword_pid)
+    #FileUtils.remove_dir(SwordTools.makeZipPath(sword_pid))
+    command = "rm -rf " + SwordTools.makeZipPath(sword_pid)
+    system command
+  end
 end
 end
