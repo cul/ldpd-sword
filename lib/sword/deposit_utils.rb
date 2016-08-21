@@ -93,6 +93,9 @@ module DepositUtils
     # puts "!!!!!!!!!!!!!!!!!! Filepath !!!!!!!!!!!!!!!!!"
     # puts zip_file
     File.open(zip_file, "wb") { |file| file.write(content) }
+    unpackZip(zip_file,
+              File.join(save_path,SWORD_CONFIG[:contents_zipfile_subdir]))
+    save_path
   end
 
   # fcd1, 08/20/16: Possibly move this into a (needs to be written) parent class for all Parsers, make it a
