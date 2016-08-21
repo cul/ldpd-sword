@@ -23,28 +23,26 @@ class SwordController < ApplicationController
     # puts file.inspect
     @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
 
-    @zip_dir = SWORD_CONFIG[:unzip_dir]
-    Sword::DepositUtils.save_file(@deposit_request.content,
-                                  @deposit_request.file_name,
-                                  @zip_dir)
-
-    Sword::DepositUtils.unpackZip("#{@zip_dir}/#{@deposit_request.file_name}",
-                                  @zip_dir)
+    # @zip_dir = SWORD_CONFIG[:unzip_dir]
+    # Sword::DepositUtils.save_file(@deposit_request.content, @deposit_request.file_name, @zip_dir)
+    # Sword::DepositUtils.unpackZip("#{@zip_dir}/#{@deposit_request.file_name}", @zip_dir)
+    # fcd1, 08/21/16: above 3 lines of code replaced with the following single line:
+    Sword::DepositUtils.process_package_file(@deposit_request.content, @deposit_request.file_name)
                                   
     @parser = Sword::DepositUtils.getParser @collection.parser
-    puts @collection.hyacinth_project_string_key
-    puts @parser.inspect
+    # puts @collection.hyacinth_project_string_key
+    # puts @parser.inspect
     @deposit_content = Sword::DepositContent.new
     @parser.new_parse_content(@deposit_content,'/tmp/sword/mets.xml')
-    puts @deposit_content.inspect
+    # puts @deposit_content.inspect
 
     # compose hyacinth data
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new
     @json_for_hyacinth = @hyacinth_composer.compose_json(@deposit_content,
                                                          @collection.hyacinth_project_string_key,
                                                          'item')
-    puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
-    puts @json_for_hyacinth
+    # puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
+    # puts @json_for_hyacinth
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_ingest.ingest_json @json_for_hyacinth if Rails.env.development?
@@ -80,7 +78,7 @@ class SwordController < ApplicationController
   # also, if needed (not sure), add needed attributes to the depositor model
   # finally, need to create the has_and_belongs_to_many relationship.
   def service_document_new
-    puts view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
+    # puts view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
     render xml: view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
   end
 
@@ -113,8 +111,8 @@ class SwordController < ApplicationController
     end
 
     def setup_depositor_for_testing_service_document
-      puts "Called setup_depositor_for_testing_service_document"
+      # puts "Called setup_depositor_for_testing_service_document"
       @depositor = Depositor.find_by(id: 1)
-      puts @depositor.inspect
+      # puts @depositor.inspect
     end
 end

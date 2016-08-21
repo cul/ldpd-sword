@@ -5,7 +5,7 @@ module Sword
 module DepositUtils
   
   def self.unpackZip(zipFile, destinationPath)
-    puts zipFile
+    # puts zipFile
     destinationPath = destinationPath + '/'
     Zip::File.open(zipFile) { |zip|
       zip.each { |file|
@@ -83,6 +83,16 @@ module DepositUtils
       file.close unless file == nil
     end
     
+  end
+
+  def self.process_package_file(content, file_name)
+    save_path = File.join(SWORD_CONFIG[:unzip_dir],"tmp_#{Time.now.to_i}")
+    FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
+    
+    zip_file = File.join(save_path, file_name)
+    # puts "!!!!!!!!!!!!!!!!!! Filepath !!!!!!!!!!!!!!!!!"
+    # puts zip_file
+    File.open(zip_file, "wb") { |file| file.write(content) }
   end
 
   # fcd1, 08/20/16: Possibly move this into a (needs to be written) parent class for all Parsers, make it a
