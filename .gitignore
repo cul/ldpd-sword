@@ -19,6 +19,7 @@
 # Ignore config files
 /config/database.yml
 /config/secrets.yml
+/config/sword.yml
 
 
 # Ignore ~ files
