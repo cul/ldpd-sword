@@ -16,6 +16,35 @@ module DepositUtils
     }
   end
   
+  def self.process_package_file(content, file_name)
+    save_path = File.join(SWORD_CONFIG[:unzip_dir],"tmp_#{Time.now.to_i}")
+    FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
+    
+    zip_file = File.join(save_path, file_name)
+    # puts "!!!!!!!!!!!!!!!!!! Filepath !!!!!!!!!!!!!!!!!"
+    # puts zip_file
+    File.open(zip_file, "wb") { |file| file.write(content) }
+    unpackZip(zip_file,
+              File.join(save_path,SWORD_CONFIG[:contents_zipfile_subdir]))
+    save_path
+  end
+
+  # fcd1, 08/22/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
+  # Gonna try to use it, and it may need tweaks
+  # def self.getAllFilesList(sword_pid)
+  def self.getAllFilesList(path)
+    mets = Nokogiri::XML(File.read(SwordTools.makeZipPath(sword_pid) + 'mets.xml'))
+    files = []
+    mets.css("FLocat[@LOCTYPE='URL']").each do |file_node|
+      file = file_node["href"]
+      if(file == nil)
+        file = file_node["xlink:href"]
+      end
+      files.push(file)
+    end
+    return files   
+  end
+
   def self.removeDir(directory)
     FileUtils.remove_dir(directory, force = false)
   end
@@ -85,19 +114,6 @@ module DepositUtils
     
   end
 
-  def self.process_package_file(content, file_name)
-    save_path = File.join(SWORD_CONFIG[:unzip_dir],"tmp_#{Time.now.to_i}")
-    FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
-    
-    zip_file = File.join(save_path, file_name)
-    # puts "!!!!!!!!!!!!!!!!!! Filepath !!!!!!!!!!!!!!!!!"
-    # puts zip_file
-    File.open(zip_file, "wb") { |file| file.write(content) }
-    unpackZip(zip_file,
-              File.join(save_path,SWORD_CONFIG[:contents_zipfile_subdir]))
-    save_path
-  end
-
   # fcd1, 08/20/16: Possibly move this into a (needs to be written) parent class for all Parsers, make it a
   # class method.
   def self.getParser parser_name
@@ -115,7 +131,7 @@ module DepositUtils
     File.open('/tmp/sword/mets.xml')
   end
 
-  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # fcd1, 08/21/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
   # Not sure if I'm gonna use it, and it may need tweaks
   def self.download(sword_pid)
     zip_dir = SwordTools.makeZipPath(sword_pid)
@@ -139,7 +155,7 @@ module DepositUtils
 
   end
 
-  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # fcd1, 08/21/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
   # Not sure if I'm gonna use it, and it may need tweaks
  def self.makeZipPath(sword_pid)
 
@@ -149,7 +165,7 @@ module DepositUtils
     return zip_dir
  end
 
-  # fcd1, 08/21/16: Original code came from ib/deposits/sword/sword_tools.rb in hypatia-new
+  # fcd1, 08/21/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
   # Not sure if I'm gonna use it, and it may need tweaks
   def self.removeDownloadedFiles(sword_pid)
     #FileUtils.remove_dir(SwordTools.makeZipPath(sword_pid))
