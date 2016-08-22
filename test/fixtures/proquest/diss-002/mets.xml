@@ -22,15 +22,15 @@
 					<epdcx:description
 						epdcx:resourceId="sword-mets-epdcx-1">
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
-	<epdcx:valueString><![CDATA[The Emancipation of Memory: Arnold Schoenberg and the Creation of 'A Survivor from Warsaw']]></epdcx:valueString>
+	<epdcx:valueString><![CDATA[The Emancipation of Stuff']]></epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
-	<epdcx:valueString><![CDATA[This is a study of the ways in which the past is inscribed in sound. It is also an examination of the role of concert music in the invention of cultural memory in the wake of the Second World War. And finally, it is a study of the creation and early American reception of A Survivor from Warsaw, a cantata written in 1947 that became the first major musical memorial to the Holocaust. It remains uniquely significant and controversial within the larger oeuvre of its composer, Arnold Schoenberg (1874-1951). 
+	<epdcx:valueString><![CDATA[This is a study of the ways in which the stuff is inscribed in sound. 
 
-Historians interested in the chronologies and modalities of Holocaust memory have tended to overlook music’s role as a carrier of meaning about the past, while other media of commemoration have received far greater scrutiny, be they literary, cinematic, or architectural. And yet,  A Survivor from Warsaw predated almost all of its sibling memorials, crystallizing and anticipating the range of aesthetic and ethical concerns that would define the study of postwar memory and representation for decades to come. It also constituted a uniquely personal memorial that may be read not only as a work of Holocaust art but also as a profoundly autobiographical document, one that sheds light on constellations of particularist identities often hidden beneath the “universalist” veil of one of the twentieth-century’s most iconic musical figures. Ultimately, this study seeks to articulate an under-examined linkage between modernism and memory, while arguing methodologically for the importance of sound in the contemporary practice of cultural history.]]></epdcx:valueString>
+Historians interested in the chronologies of stuff have tended to overlook music’s.]]></epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
-	<epdcx:valueString><![CDATA[Eichler, Jeremy Adam]]></epdcx:valueString>
+	<epdcx:valueString><![CDATA[Stufflast, Stufffirst]]></epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
 	<epdcx:valueString><![CDATA[History]]></epdcx:valueString>
@@ -42,7 +42,7 @@ Historians interested in the chronologies and modalities of Holocaust memory hav
 	<epdcx:valueString><![CDATA[Music]]></epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
-	<epdcx:valueString><![CDATA[Volker Berghahn]]></epdcx:valueString>
+	<epdcx:valueString><![CDATA[Stufffirst Stufflast]]></epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
 </epdcx:description>
@@ -62,9 +62,9 @@ Historians interested in the chronologies and modalities of Holocaust memory hav
   <DISS_authorship>
     <DISS_author type="primary">
       <DISS_name>
-        <DISS_surname>Eichler</DISS_surname>
-        <DISS_fname>Jeremy</DISS_fname>
-        <DISS_middle>Adam</DISS_middle>
+        <DISS_surname>Stufflast</DISS_surname>
+        <DISS_fname>Middle</DISS_fname>
+        <DISS_middle>Stufflast</DISS_middle>
         <DISS_suffix/>
         <DISS_affiliation>Columbia University</DISS_affiliation>
       </DISS_name>
@@ -72,41 +72,41 @@ Historians interested in the chronologies and modalities of Holocaust memory hav
         <DISS_contact_effdt>05/05/2015</DISS_contact_effdt>
         <DISS_phone_fax type="P">
           <DISS_cntry_cd>1</DISS_cntry_cd>
-          <DISS_area_code>917</DISS_area_code>
-          <DISS_phone_num>4005701</DISS_phone_num>
+          <DISS_area_code>800</DISS_area_code>
+          <DISS_phone_num>8888888</DISS_phone_num>
           <DISS_phone_ext/>
         </DISS_phone_fax>
         <DISS_address>
-          <DISS_addrline>15 Burr Rd</DISS_addrline>
-          <DISS_city>Newton</DISS_city>
+          <DISS_addrline>0 Main Street</DISS_addrline>
+          <DISS_city>Some Town</DISS_city>
           <DISS_st>MA</DISS_st>
-          <DISS_pcode>02459</DISS_pcode>
+          <DISS_pcode>12345</DISS_pcode>
           <DISS_country>US</DISS_country>
         </DISS_address>
-        <DISS_email>jeremy.eichler@gmail.com</DISS_email>
+        <DISS_email>abcd@example.com</DISS_email>
       </DISS_contact>
       <DISS_contact type="future">
         <DISS_contact_effdt>05/05/2015</DISS_contact_effdt>
         <DISS_phone_fax type="P">
           <DISS_cntry_cd>1</DISS_cntry_cd>
-          <DISS_area_code>917</DISS_area_code>
-          <DISS_phone_num>4005701</DISS_phone_num>
+          <DISS_area_code>800</DISS_area_code>
+          <DISS_phone_num>8888888</DISS_phone_num>
           <DISS_phone_ext/>
         </DISS_phone_fax>
         <DISS_address>
-          <DISS_addrline>15 Burr Rd</DISS_addrline>
-          <DISS_city>Newton</DISS_city>
+          <DISS_addrline>0 Main Street</DISS_addrline>
+          <DISS_city>Some Town</DISS_city>
           <DISS_st>MA</DISS_st>
-          <DISS_pcode>02459</DISS_pcode>
+          <DISS_pcode>12345</DISS_pcode>
           <DISS_country>US</DISS_country>
         </DISS_address>
-        <DISS_email>jeremy.eichler@gmail.com</DISS_email>
+        <DISS_email>abcd@example.com</DISS_email>
       </DISS_contact>
       <DISS_citizenship>US</DISS_citizenship>
     </DISS_author>
   </DISS_authorship>
-  <DISS_description page_count="231" type="doctoral" external_id="http://dissertations.umi.com/columbia:12688" apply_for_copyright="yes">
-    <DISS_title>The Emancipation of Memory: Arnold Schoenberg and the Creation of 'A Survivor from Warsaw'</DISS_title>
+  <DISS_description page_count="231" type="doctoral" external_id="http://dissertations.umi.com/columbia:00000" apply_for_copyright="yes">
+    <DISS_title>The Emancipation of Stuff</DISS_title>
     <DISS_dates>
       <DISS_comp_date>2015</DISS_comp_date>
       <DISS_accept_date>01/01/2015</DISS_accept_date>
@@ -120,8 +120,8 @@ Historians interested in the chronologies and modalities of Holocaust memory hav
     </DISS_institution>
     <DISS_advisor>
       <DISS_name>
-        <DISS_surname>Berghahn</DISS_surname>
-        <DISS_fname>Volker</DISS_fname>
+        <DISS_surname>Advisorlast</DISS_surname>
+        <DISS_fname>Advisorfirst</DISS_fname>
         <DISS_middle/>
       </DISS_name>
     </DISS_advisor>
@@ -144,10 +144,10 @@ Historians interested in the chronologies and modalities of Holocaust memory hav
   </DISS_description>
   <DISS_content>
     <DISS_abstract>
-      <DISS_para>This is a study of the ways in which the past is inscribed in sound. It is also an examination of the role of concert music in the invention of cultural memory in the wake of the Second World War. And finally, it is a study of the creation and early American reception of A Survivor from Warsaw, a cantata written in 1947 that became the first major musical memorial to the Holocaust. It remains uniquely significant and controversial within the larger oeuvre of its composer, Arnold Schoenberg (1874-1951). </DISS_para>
-      <DISS_para>Historians interested in the chronologies and modalities of Holocaust memory have tended to overlook music’s role as a carrier of meaning about the past, while other media of commemoration have received far greater scrutiny, be they literary, cinematic, or architectural. And yet,  A Survivor from Warsaw predated almost all of its sibling memorials, crystallizing and anticipating the range of aesthetic and ethical concerns that would define the study of postwar memory and representation for decades to come. It also constituted a uniquely personal memorial that may be read not only as a work of Holocaust art but also as a profoundly autobiographical document, one that sheds light on constellations of particularist identities often hidden beneath the “universalist” veil of one of the twentieth-century’s most iconic musical figures. Ultimately, this study seeks to articulate an under-examined linkage between modernism and memory, while arguing methodologically for the importance of sound in the contemporary practice of cultural history.</DISS_para>
+      <DISS_para>This is a study of the ways in which stuff is inscribed in sound. It is also an examination of the role of stuff. </DISS_para>
+      <DISS_para>Historians interested in the chronologies of stuff have tended to overlook stuff'sy.</DISS_para>
     </DISS_abstract>
-    <DISS_binary type="PDF">Eichler_columbia_0054D_12688.pdf</DISS_binary>
+    <DISS_binary type="PDF">Stuff.pdf</DISS_binary>
   </DISS_content>
   <DISS_restriction>
     <DISS_sales_restriction code="1" remove="05/05/2017"/>

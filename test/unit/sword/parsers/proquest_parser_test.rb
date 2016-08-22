@@ -11,7 +11,7 @@ class ProquestParserTest < ActiveSupport::TestCase
     parser = Sword::Parsers::ProquestParser.new
     deposit = parser.parse(content_dir, nil)
     assert deposit.is_a? Sword::DepositContent
-    assert_equal 'The Parity of Analytic Ranks among Quadratic Twists of Elliptic Curves over Number Fields', deposit.title
+    assert_equal 'The Parity of Stuff', deposit.title
     assert_equal '0', deposit.embargo_code, "Embargo code mismatch: #{deposit.embargo_code}"
     assert_equal '04/03/2015', deposit.embargo_start_date, "Embargo start mismatch: #{deposit.embargo_start_date}"
     # fcd1, 08/02/16: This is original code from hypatia-new, as is the sample fixture file. However, doesn't pass
@@ -24,7 +24,7 @@ class ProquestParserTest < ActiveSupport::TestCase
     parser = Sword::Parsers::ProquestParser.new
     deposit = parser.parse(content_dir, nil)
     assert deposit.is_a? Sword::DepositContent
-    assert_equal 'The Emancipation of Memory: Arnold Schoenberg and the Creation of \'A Survivor from Warsaw\'', deposit.title
+    assert_equal 'The Emancipation of Stuff', deposit.title
     assert_equal '4', deposit.embargo_code, "Embargo code mismatch: #{deposit.embargo_code}"
     assert_equal '05/05/2015', deposit.embargo_start_date, "Embargo start mismatch: #{deposit.embargo_start_date}"
     assert_equal '2017-05-05', deposit.embargo_release_date, "Embargo release mismatch: #{deposit.embargo_start_date}"
