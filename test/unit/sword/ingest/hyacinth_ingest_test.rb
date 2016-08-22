@@ -12,7 +12,7 @@ class HyacinthIngestTest < ActiveSupport::TestCase
   end
 
   test "assert true" do
-    result = @hyacinth_composer.compose_json( @deposit_content, 'test-project', 'item')
+    result = @hyacinth_composer.compose_json_item( @deposit_content, 'test-project')
     # fcd1, 08/15/16: Following makes an actual ingest to running Hyacinth dev server
     # @hyacinth_ingest.ingest_json result
     assert true

@@ -8,9 +8,9 @@ class HyacinthComposer
 
   # takes a DepositContent that was populated via one of the parsers
   # development heuristic: for now, will handle all attributes in DepositContent
-  def compose_json(deposit_content, project, digital_object_type)
+  def compose_json_item(deposit_content, project)
     data = {}
-    data[:digital_object_type] = {string_key: digital_object_type}
+    data[:digital_object_type] = {string_key: 'item'}
     data[:project] = {string_key: project}
     compose_dynamic_field_data deposit_content
     data[:dynamic_field_data] = @dynamic_field_data
