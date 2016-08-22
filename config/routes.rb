@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # get 'sword/deposit'
-  get 'sword/deposit/:collection_slug' => 'sword#deposit'
+  # get 'sword/deposit/:collection_slug' => 'sword#deposit'
   post 'sword/deposit/:collection_slug' => 'sword#deposit'
   get 'sword/service_document' => 'sword#service_document'
 
