@@ -69,8 +69,8 @@ class ProquestParser
     deposit_content.abstract = (contentXml.css("DISS_content>DISS_abstract").first || DEFAULT_NODE).text
     deposit_content.subjects = getSubjects(contentXml)
     deposit_content.dateIssued = (contentXml.css("DISS_description>DISS_dates>DISS_comp_date").first || DEFAULT_NODE).text
-    deposit_content.corparate_name = getAffiliation(contentXml)
-    deposit_content.corparate_role = CORPORATE_ROLE
+    deposit_content.corporate_name = getAffiliation(contentXml)
+    deposit_content.corporate_role = CORPORATE_ROLE
     
     deposit_content.authors = getAuthors(contentXml)
     deposit_content.advisors = getAdvisors(contentXml)
@@ -111,8 +111,8 @@ class ProquestParser
     deposit_content.abstract = (contentXml.css("DISS_content>DISS_abstract").first || DEFAULT_NODE).text
     deposit_content.subjects = getSubjects(contentXml)
     deposit_content.dateIssued = (contentXml.css("DISS_description>DISS_dates>DISS_comp_date").first || DEFAULT_NODE).text
-    deposit_content.corparate_name = getAffiliation(contentXml)
-    deposit_content.corparate_role = CORPORATE_ROLE
+    deposit_content.corporate_name = getAffiliation(contentXml)
+    deposit_content.corporate_role = CORPORATE_ROLE
     
     deposit_content.authors = getAuthors(contentXml)
     deposit_content.advisors = getAdvisors(contentXml)

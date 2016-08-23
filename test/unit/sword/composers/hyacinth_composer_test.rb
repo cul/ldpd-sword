@@ -1,11 +1,29 @@
 require 'test_helper'
 require 'sword/composers/hyacinth_composer'
 require 'sword/deposit_content'
+require 'sword/person'
 
 class HyacinthComposerTest < ActiveSupport::TestCase
   setup do
     @deposit_content = Sword::DepositContent.new
     @deposit_content.title = 'Title for Testing the Hyacinth Composer'
+    @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
+    @deposit_content.corporate_name = 'Columbia University'
+    @deposit_content.corporate_role = 'originator'
+    first_author = Sword::Person.new
+    first_author.last_name = 'Smith'
+    first_author.first_name = 'John'
+    first_author.middle_name = 'Howard'
+    first_author.role = 'should not see this'
+    first_author.affiliation = 'should not see this'
+    second_author = Sword::Person.new
+    second_author.last_name = 'Doe'
+    second_author.first_name = 'Jane'
+    second_author.middle_name = 'Harriet'
+    second_author.role = 'should not see this'
+    first_author.affiliation = 'should not see this'
+    @deposit_content.authors = []
+    @deposit_content.authors << first_author << second_author
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project')
@@ -22,6 +40,10 @@ class HyacinthComposerTest < ActiveSupport::TestCase
 
   test "#compose_dynamic_field_data via #set_abstract encodes abstract correctly" do
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
+  end
+
+  test "#compose_dynamic_field_data via #set_name encodes name correctly" do
+    assert_equal @actual_result[:name], @expected_result[:name]
   end
 
   test "should #compose_dynamic_field_data encodes correctly" do

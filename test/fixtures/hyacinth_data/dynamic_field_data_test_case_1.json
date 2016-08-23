@@ -7,6 +7,64 @@
 	}
     ]
     ,
+    "name": 
+    [
+	{
+	    "name_term": 
+	    {
+		"value": "Columbia University",
+		"name_type": "corporate"
+	    }
+	    ,
+	    "name_role": 
+	    [
+		{
+		    "name_role_term": 
+		    {
+			"value": "originator"
+		    }
+		}
+	    ]
+	}
+	,
+	{
+            "name_term":
+            {
+                "value": "Smith, John Howard",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "value": "author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Doe, Jane Harriet",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "value": "author"
+                    }
+                }
+            ]
+        }
+
+    ]
+    ,
     "abstract":
     [
 	{

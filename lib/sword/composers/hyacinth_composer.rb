@@ -16,6 +16,7 @@ class HyacinthComposer
     data[:project] = {string_key: @project}
     compose_dynamic_field_data 
     data[:dynamic_field_data] = @dynamic_field_data
+    # puts "!!!!!!!!!!!!!!!!!!inside compose_json_item, here is the JSON data!!!!!!!!!!!!!!"
     # puts JSON.generate data
     JSON.generate data
   end
@@ -40,7 +41,8 @@ class HyacinthComposer
   private
   def compose_dynamic_field_data
     set_title 
-    set_abstract 
+    set_name
+    set_abstract
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -49,6 +51,47 @@ class HyacinthComposer
     @dynamic_field_data[:title] = []
     @dynamic_field_data[:title] << { title_non_sort_portion: nil,
                                      title_sort_portion:  @deposit_content.title }
+  end
+
+  def set_name
+    @dynamic_field_data[:name] = []
+
+    # only one corporate name
+    set_corporate_name_and_originator_role
+
+    # multiple authors allowed, deposit_content.authors in an array of
+    # Deposit::Person
+    @deposit_content.authors.each do |author|
+      set_personal_name_and_author_role author
+    end
+    # puts "!!!!!!!!!!!! dynamic_field_data after set_name is done !!!!!!!!!!!"
+    # puts @dynamic_field_data[:name].inspect
+  end
+
+  def set_corporate_name_and_originator_role
+    corporate_name_data = { value: @deposit_content.corporate_name,
+                            name_type: 'corporate' }
+    name_role_data = []
+    name_role_data << set_name_role('originator')
+    @dynamic_field_data[:name] << { name_term: corporate_name_data,
+                                    name_role: name_role_data }
+  end
+  
+  # multiple authors allowed, deposit_content.authors in an array of
+  # Deposit::Person
+  def set_personal_name_and_author_role author
+    value_data = "#{author.last_name}, #{author.first_name} #{author.middle_name}"
+    personal_name_data = { value: value_data,
+                           name_type: 'personal' }
+    name_role_data = []
+    name_role_data << set_name_role('author')
+    @dynamic_field_data[:name] << { name_term: personal_name_data,
+                                    name_role: name_role_data }
+  end
+  
+  def set_name_role role
+    name_role_term_data = { value: role }
+    { name_role_term: name_role_term_data }
   end
   
   def set_abstract

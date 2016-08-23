@@ -50,7 +50,7 @@ class SwordController < ApplicationController
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
 
     # puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
-    # puts @json_for_hyacinth
+    # puts @json_for_hyacinth_item
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item if Rails.env.development?
