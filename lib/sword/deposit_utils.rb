@@ -30,10 +30,10 @@ module DepositUtils
   end
 
   # fcd1, 08/22/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
-  # Gonna try to use it, and it may need tweaks
+  # Made tweaks to it
   # def self.getAllFilesList(sword_pid)
   def self.getAllFilesList(path)
-    mets = Nokogiri::XML(File.read(SwordTools.makeZipPath(sword_pid) + 'mets.xml'))
+    mets = Nokogiri::XML(File.read(File.join(path,'mets.xml')))
     files = []
     mets.css("FLocat[@LOCTYPE='URL']").each do |file_node|
       file = file_node["href"]
@@ -43,6 +43,20 @@ module DepositUtils
       files.push(file)
     end
     return files   
+  end
+
+  def self.cp_files_to_hyacinth_upload_dir(zip_file_path, filenames)
+
+    filenames.each do |file|
+      FileUtils.cp( File.join(zip_file_path,
+                              SWORD_CONFIG[:contents_zipfile_subdir],
+                              file
+                              ),
+                    File.join(HYACINTH_CONFIG[:sword_import_dir],
+                              file
+                              )
+                    )
+    end
   end
 
   def self.removeDir(directory)

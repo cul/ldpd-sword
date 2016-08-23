@@ -59,18 +59,16 @@ class SwordController < ApplicationController
     @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid'] if Rails.env.development?
     puts "!!!!!!! Hyacinth pid !!!!: #{@hyacinth_pid}" if Rails.env.development?
 
-    FileUtils.cp( File.join(@zip_file_path,
-                            SWORD_CONFIG[:contents_zipfile_subdir],
-                            'Hello.pdf'
-                            ),
-                  File.join(HYACINTH_CONFIG[:sword_import_dir],
-                            'Hello.pdf'
-                            )
-                  )
+    # puts "!!!!!!!!!!!!!!!!!!!!!!!!!self.getAllFilesList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
 
-    @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset('Hello.pdf', @hyacinth_pid)
-    @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
-    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
+    Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
+                                                        files)
+
+    files.each do |file|
+      @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(file, @hyacinth_pid)
+      @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
+    end
     
 
     
