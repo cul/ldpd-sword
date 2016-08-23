@@ -9,6 +9,8 @@ class HyacinthIngestTest < ActiveSupport::TestCase
     @deposit_content.title = 'Testing the Hyacinth Composer'
     # Need following because authors initialized to []
     @deposit_content.authors = []
+    # Need following because advisors initialized to []
+    @deposit_content.advisors = []
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project')
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new

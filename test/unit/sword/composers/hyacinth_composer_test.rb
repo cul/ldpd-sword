@@ -10,6 +10,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
     @deposit_content.corporate_name = 'Columbia University'
     @deposit_content.corporate_role = 'originator'
+
     first_author = Sword::Person.new
     first_author.last_name = 'Smith'
     first_author.first_name = 'John'
@@ -21,9 +22,25 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     second_author.first_name = 'Jane'
     second_author.middle_name = 'Harriet'
     second_author.role = 'should not see this'
-    first_author.affiliation = 'should not see this'
+    second_author.affiliation = 'should not see this'
     @deposit_content.authors = []
     @deposit_content.authors << first_author << second_author
+
+    first_advisor = Sword::Person.new
+    first_advisor.last_name = 'Smithy'
+    first_advisor.first_name = 'Johny'
+    first_advisor.middle_name = 'Howardy'
+    first_advisor.role = 'should not see this'
+    first_advisor.affiliation = 'should not see this'
+    second_advisor = Sword::Person.new
+    second_advisor.last_name = 'Doey'
+    second_advisor.first_name = 'Janey'
+    second_advisor.middle_name = 'Harriety'
+    second_advisor.role = 'should not see this'
+    second_advisor.affiliation = 'should not see this'
+    @deposit_content.advisors = []
+    @deposit_content.advisors << first_advisor << second_advisor
+
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project')

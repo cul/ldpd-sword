@@ -62,7 +62,42 @@
                 }
             ]
         }
-
+	,
+	{
+            "name_term":
+            {
+                "value": "Smithy, Johny Howardy",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "value": "advisor"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Doey, Janey Harriety",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "value": "advisor"
+                    }
+                }
+            ]
+        }
     ]
     ,
     "abstract":

@@ -59,11 +59,18 @@ class HyacinthComposer
     # only one corporate name
     set_corporate_name_and_originator_role
 
-    # multiple authors allowed, deposit_content.authors in an array of
+    # multiple authors allowed, deposit_content.authors is an array of
     # Deposit::Person
     @deposit_content.authors.each do |author|
       set_personal_name_and_author_role author
     end
+
+    # multiple advisors allowed, deposit_content.advisors is an array of
+    # Deposit::Person
+    @deposit_content.advisors.each do |advisor|
+      set_personal_name_and_advisor_role advisor
+    end
+
     # puts "!!!!!!!!!!!! dynamic_field_data after set_name is done !!!!!!!!!!!"
     # puts @dynamic_field_data[:name].inspect
   end
@@ -77,14 +84,22 @@ class HyacinthComposer
                                     name_role: name_role_data }
   end
   
-  # multiple authors allowed, deposit_content.authors in an array of
-  # Deposit::Person
   def set_personal_name_and_author_role author
     value_data = "#{author.last_name}, #{author.first_name} #{author.middle_name}"
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
     name_role_data << set_name_role('author')
+    @dynamic_field_data[:name] << { name_term: personal_name_data,
+                                    name_role: name_role_data }
+  end
+  
+  def set_personal_name_and_advisor_role advisor
+    value_data = "#{advisor.last_name}, #{advisor.first_name} #{advisor.middle_name}"
+    personal_name_data = { value: value_data,
+                           name_type: 'personal' }
+    name_role_data = []
+    name_role_data << set_name_role('advisor')
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
