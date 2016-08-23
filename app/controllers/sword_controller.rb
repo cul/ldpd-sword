@@ -45,9 +45,10 @@ class SwordController < ApplicationController
     # puts @deposit_content.inspect
 
     # compose hyacinth data
-    @hyacinth_composer = Sword::Composers::HyacinthComposer.new
-    @json_for_hyacinth_item = @hyacinth_composer.compose_json_item(@deposit_content,
-                                                         @collection.hyacinth_project_string_key)
+    @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
+                                                                @collection.hyacinth_project_string_key)
+    @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
+
     # puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
     # puts @json_for_hyacinth
 
@@ -67,11 +68,7 @@ class SwordController < ApplicationController
                             )
                   )
 
-    @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(@deposit_content,
-                                                                     @collection.hyacinth_project_string_key,
-                                                                     'Hello.pdf',
-                                                                     @hyacinth_pid
-                                                                     )
+    @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset('Hello.pdf', @hyacinth_pid)
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
     

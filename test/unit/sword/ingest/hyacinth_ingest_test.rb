@@ -7,12 +7,13 @@ class HyacinthIngestTest < ActiveSupport::TestCase
   setup do
     @deposit_content = Sword::DepositContent.new
     @deposit_content.title = 'Testing the Hyacinth Composer'
-    @hyacinth_composer = Sword::Composers::HyacinthComposer.new
+    @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
+                                                                'test-project')
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
   end
 
   test "assert true" do
-    result = @hyacinth_composer.compose_json_item( @deposit_content, 'test-project')
+    result = @hyacinth_composer.compose_json_item
     # fcd1, 08/15/16: Following makes an actual ingest to running Hyacinth dev server
     # @hyacinth_ingest.ingest_json result
     assert true
