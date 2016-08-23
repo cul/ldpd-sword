@@ -18,6 +18,23 @@ class HyacinthComposer
     JSON.generate data
   end
 
+  # fcd1, 08/22/16: may not need deposit_content for asset
+  # also, may set project in initialize method
+  def compose_json_asset(deposit_content, project, filename, parent_pid)
+    data = {}
+    data[:digital_object_type] = {string_key: 'asset'}
+    data[:project] = {string_key: project}
+    data[:parent_digital_objects] = [{identifier: parent_pid}]
+    data[:import_file] = compose_import_file_data filename
+
+    # puts data.inspect
+    # fcd1, 08/22/16: can add select dynamic fields if needed
+    # compose_dynamic_field_data deposit_content
+    # data[:dynamic_field_data] = @dynamic_field_data
+    # puts JSON.generate data
+    JSON.generate data
+  end
+
   private
   def compose_dynamic_field_data(deposit_content)
     set_title deposit_content.title
@@ -37,6 +54,14 @@ class HyacinthComposer
 
   def set_subject
     # ISSUE!!!!: How do I know which subject category to use? Is it always the same one?
+  end
+
+  def compose_import_file_data(filename)
+    # puts "!!!!!!!!!!!!!!!!!!!! Filename: #{filename} !!!!!!!!!!!!!!!!!"
+    import_file_data = {}
+    import_file_data[:import_path]=filename
+    import_file_data[:import_type]='upload_directory'
+    import_file_data
   end
 
   def set_genre

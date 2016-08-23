@@ -46,17 +46,36 @@ class SwordController < ApplicationController
 
     # compose hyacinth data
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new
-    @json_for_hyacinth = @hyacinth_composer.compose_json_item(@deposit_content,
+    @json_for_hyacinth_item = @hyacinth_composer.compose_json_item(@deposit_content,
                                                          @collection.hyacinth_project_string_key)
     # puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
     # puts @json_for_hyacinth
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
-    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth if Rails.env.development?
+    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item if Rails.env.development?
     puts @hyacinth_response.inspect if Rails.env.development?
     puts @hyacinth_response.body if Rails.env.development?
     @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid'] if Rails.env.development?
     puts "!!!!!!! Hyacinth pid !!!!: #{@hyacinth_pid}" if Rails.env.development?
+
+    FileUtils.cp( File.join(@zip_file_path,
+                            SWORD_CONFIG[:contents_zipfile_subdir],
+                            'Hello.pdf'
+                            ),
+                  File.join(HYACINTH_CONFIG[:sword_import_dir],
+                            'Hello.pdf'
+                            )
+                  )
+
+    @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(@deposit_content,
+                                                                     @collection.hyacinth_project_string_key,
+                                                                     'Hello.pdf',
+                                                                     @hyacinth_pid
+                                                                     )
+    @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
+    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
+    
+
     
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class
