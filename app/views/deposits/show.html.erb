@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_deposit_path(@deposit) %> |
-<%= link_to 'Back', deposits_path %>
+<p>
+  <strong>Title:</strong>
+  <%= @deposit.title %>
+</p>
+
+<p>
+  <strong>Item in Hyacinth:</strong>
+  <%= link_to(@deposit.item_in_hyacinth,
+      'http://10.211.55.49:3000/digital_objects#'+
+      Rack::Utils.escape('{"controller":"digital_objects","action":"show","pid":"'+ "#{@deposit.item_in_hyacinth}"+'"}')) %>
+</p>
+
+<p>
+  <strong>Depositor:</strong>
+  <%= @deposit.depositor.name if @deposit.depositor%>
+</p>
+
+<p>
+  <strong>Deposit date:</strong>
+  <%= @deposit.created_at %>
+</p>

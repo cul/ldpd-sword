@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 first_collection:
-  name: First Collection
+  name: First Collection (Proquest)
   slug: first-collection
   atom_title: Atom Title of First Collection
   parser: proquest
 
 second_collection:
-  name: Second Collection
+  name: Second Collection (BMC)
   slug: second-collection
   atom_title: Atom Title of Second Collection
-  parser: proquest
+  parser: bmc

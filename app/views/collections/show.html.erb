@@ -1,4 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
+<p>
+  <strong>Name:</strong>
+  <%= @collection.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @collection.slug %>
+</p>
+
+<p>
+  <strong>Hyacinth Project (string key):</strong>
+  <%= @collection.hyacinth_project_string_key %>
+</p>
+
+<p>
+  <strong>Parser:</strong>
+  <%= @collection.parser %>
+</p>

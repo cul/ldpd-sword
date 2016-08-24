@@ -1,6 +1,6 @@
 if Rails.env.development?
-  first_collection = Collection.create(name: "First Collection",
-                                       slug: "first-collection",
+  first_collection = Collection.create(name: "First Collection (Proquest)",
+                                       slug: "first-collection-pro",
                                        atom_title: "Atom Title of First Collection",
                                        hyacinth_project_string_key: "first_project",
                                        parser: "proquest",
@@ -9,8 +9,8 @@ if Rails.env.development?
                                        sword_package_types: ["http://purl.org/net/sword-types/METSDSpaceSIP",
                                                              "http://purl.org/net/sword-types/mets/dspace"])
 
-  second_collection =Collection.create(name: "Second Collection",
-                                       slug: "second-collection",
+  second_collection =Collection.create(name: "Second Collection (BMC)",
+                                       slug: "second-collection-bmc",
                                        atom_title: "Atom Title of Second Collection",
                                        hyacinth_project_string_key: "first_project",
                                        parser: "bmc")

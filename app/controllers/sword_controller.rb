@@ -74,8 +74,12 @@ class SwordController < ApplicationController
       @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
     end
     
+    @deposit = Deposit.new
+    @deposit.title = @deposit_content.title
+    @deposit.item_in_hyacinth = @hyacinth_pid
+    @depositor.deposits << @deposit
+    @collection.deposits << @deposit
 
-    
     # puts @deposit_request.inspect
     # puts @deposit_request.content.class
 

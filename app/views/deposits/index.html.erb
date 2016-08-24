@@ -2,25 +2,24 @@
 
 <h1>Listing Deposits</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>Title</th>
+      <th>Depositor</th>
+      <th>Date Deposited</th>
+      <th>Collection</th>
     </tr>
   </thead>
 
   <tbody>
     <% @deposits.each do |deposit| %>
       <tr>
-	<td><%= deposit.title %></td>
-        <td><%= link_to 'Show', deposit %></td>
-        <td><%= link_to 'Edit', edit_deposit_path(deposit) %></td>
-        <td><%= link_to 'Destroy', deposit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to deposit.title, deposit %></td>
+        <td><%= link_to(deposit.depositor.name, deposit.depositor) if deposit.depositor %></td>
+        <td><%= deposit.created_at %></td>
+        <td><%= link_to(deposit.collection.name, deposit.collection) if deposit.collection %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New deposit', new_deposit_path %>
