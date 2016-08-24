@@ -13,7 +13,7 @@ class SwordController < ApplicationController
   def deposit
     # at this, with all the before_action filters, the following instance variables are set:
     # @collection, @depositor
-
+    # puts @collection.inspect
     # puts request.inspect if Rails.env.development? or Rails.env.test?
     # puts request.env.inspect if Rails.env.development? or Rails.env.test?
     # puts request.headers.inspect if Rails.env.development? or Rails.env.test?
@@ -34,15 +34,17 @@ class SwordController < ApplicationController
     @parser = Sword::DepositUtils.getParser @collection.parser
     # puts @collection.hyacinth_project_string_key
     # puts @parser.inspect
+    # raise
     @deposit_content = Sword::DepositContent.new
     # @parser.new_parse_content(@deposit_content,'/tmp/sword/mets.xml')
     @parser.new_parse_content(@deposit_content,
                               File.join(@zip_file_path,
-                                        SWORD_CONFIG[:contents_zipfile_subdir],
-                                        'mets.xml'
+                                        SWORD_CONFIG[:contents_zipfile_subdir]
                                         )
                               )
+
     # puts @deposit_content.inspect
+    # raise
 
     # compose hyacinth data
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
@@ -54,10 +56,12 @@ class SwordController < ApplicationController
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item if Rails.env.development?
-    puts @hyacinth_response.inspect if Rails.env.development?
-    puts @hyacinth_response.body if Rails.env.development?
+    # puts @hyacinth_response.inspect if Rails.env.development?
+    # puts @hyacinth_response.body if Rails.env.development?
+
+    # need to add a check here for 200 response
     @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid'] if Rails.env.development?
-    puts "!!!!!!! Hyacinth pid !!!!: #{@hyacinth_pid}" if Rails.env.development?
+    # puts "!!!!!!! Hyacinth pid !!!!: #{@hyacinth_pid}" if Rails.env.development?
 
     # puts "!!!!!!!!!!!!!!!!!!!!!!!!!self.getAllFilesList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))

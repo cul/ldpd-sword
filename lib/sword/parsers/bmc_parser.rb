@@ -1,8 +1,8 @@
 require 'rake'
 require 'nokogiri'
-require 'deposits/deposit_utils'
-require 'deposits/deposit_content'
-require 'deposits/person'
+require 'sword/deposit_utils'
+require 'sword/deposit_content'
+require 'sword/person'
 module Sword
 module Parsers
 class BmcParser
@@ -29,7 +29,7 @@ class BmcParser
   
 
   def parse_content(deposit_content, content_dir)  
-    
+
     deposit_content.type_of_content = @@TYPE_OF_CONTENT
     deposit_content.genre = @@GENRE
     deposit_content.language = @@LANGUAGE
@@ -53,6 +53,46 @@ class BmcParser
     deposit_content.authors = getAuthors(contentXml)
     
     deposit_content.attachments = getAttachments(content_dir)
+    
+    deposit_content.embargo_code = '0'
+    
+    start_date = DateTime.now
+    deposit_content.embargo_start_date = start_date.strftime('%m/%d/%Y')
+    
+    deposit_content.note = keywords(contentXml)
+
+    return deposit_content
+  end  
+  
+  # fcd1, 08/23/16: my attempt at cleaning up the above parse_content 
+  def new_parse_content(deposit_content, content_dir)  
+
+    # puts"!!!!!!!!!!!!!!!!!!!!! USING BMC PARSER  !!!!!!!!!!!!!!!!!!!!!!!!"
+    
+    deposit_content.type_of_content = @@TYPE_OF_CONTENT
+    deposit_content.genre = @@GENRE
+    deposit_content.language = @@LANGUAGE
+    
+    contentFileName = getContentFileName(content_dir) 
+    contentXml = Nokogiri::XML(File.read(content_dir + "/" + contentFileName))
+    
+    deposit_content.title = contentXml.css("art>fm>bibl>title>p").text
+    deposit_content.abstract = getAbstract(contentXml)
+    
+    deposit_content.source = contentXml.css("art>fm>bibl>source").text
+    deposit_content.issn = contentXml.css("art>fm>bibl>issn").text
+    deposit_content.pubdate = contentXml.css("art>fm>bibl>pubdate").text
+    deposit_content.volume = contentXml.css("art>fm>bibl>volume").text
+    deposit_content.issue = contentXml.css("art>fm>bibl>issue").text   
+    deposit_content.fpage = contentXml.css("art>fm>bibl>fpage").text
+    deposit_content.pub_doi = contentXml.css("art>fm>bibl>xrefbib>pubidlist>pubid[@idtype='doi']").text
+    
+    deposit_content.copyrightNotice = contentXml.css("art>fm>cpyrt>note").text
+
+    deposit_content.authors = getAuthors(contentXml)
+    
+    # fcd1, 08/23/16: I commented this out
+    # deposit_content.attachments = getAttachments(content_dir)
     
     deposit_content.embargo_code = '0'
     

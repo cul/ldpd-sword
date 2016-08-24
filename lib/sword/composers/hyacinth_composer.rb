@@ -57,19 +57,19 @@ class HyacinthComposer
     @dynamic_field_data[:name] = []
 
     # only one corporate name
-    set_corporate_name_and_originator_role
+    set_corporate_name_and_originator_role if @deposit_content.corporate_name
 
     # multiple authors allowed, deposit_content.authors is an array of
     # Deposit::Person
     @deposit_content.authors.each do |author|
       set_personal_name_and_author_role author
-    end
+    end if @deposit_content.authors
 
     # multiple advisors allowed, deposit_content.advisors is an array of
     # Deposit::Person
     @deposit_content.advisors.each do |advisor|
       set_personal_name_and_advisor_role advisor
-    end
+    end if @deposit_content.advisors
 
     # puts "!!!!!!!!!!!! dynamic_field_data after set_name is done !!!!!!!!!!!"
     # puts @dynamic_field_data[:name].inspect

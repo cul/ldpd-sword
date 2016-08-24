@@ -86,9 +86,11 @@ class ProquestParser
   end
   
   # fcd1, 08/20/16: my attempt at cleaning up the above parse_content
-  def new_parse_content(deposit_content, dataFile)
+  def new_parse_content(deposit_content, content_dir)
     
-    # dataFile = findDataFile(content_dir)
+    # puts"!!!!!!!!!!!!!!!!!!!!! USING PROQUEST PARSER  !!!!!!!!!!!!!!!!!!!!!!!!"
+
+    dataFile = findDataFile(content_dir)
     contentXml = nil
     open(dataFile) do |b|
       contentXml = b.read

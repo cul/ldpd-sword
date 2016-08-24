@@ -1,5 +1,6 @@
 # require "deposits/sword"
 require "sword/parsers/proquest_parser"
+require "sword/parsers/bmc_parser"
 require 'zip'
 module Sword
 module DepositUtils
@@ -135,7 +136,7 @@ module DepositUtils
     when "proquest"
       Sword::Parsers::ProquestParser.new
     when "bmc"
-      Sword::Parsers::ProquestParser.new
+      Sword::Parsers::BmcParser.new
     else
       # raise an exception here
     end
