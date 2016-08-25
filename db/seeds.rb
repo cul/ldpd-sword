@@ -22,8 +22,8 @@ if Rails.env.development?
 
   second_depositor = Depositor.create(name: "Second Depositor",
                                       basic_authentication_user_id: "seconddid",
-                                      password: "secondpasswd",
-                                      password_confirmation: "secondpasswd")
+                                      password: "seconddpasswd",
+                                      password_confirmation: "seconddpasswd")
 
   first_depositor.collections << first_collection
   first_depositor.collections << second_collection
