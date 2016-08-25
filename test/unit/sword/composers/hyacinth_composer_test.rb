@@ -10,7 +10,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
     @deposit_content.corporate_name = 'Columbia University'
     @deposit_content.corporate_role = 'originator'
-
+    
     first_author = Sword::Person.new
     first_author.last_name = 'Smith'
     first_author.first_name = 'John'
@@ -42,6 +42,8 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.advisors << first_advisor << second_advisor
 
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
+    @deposit_content.note = 'Copyright: 2016 Hyacinth Composer'
+
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project')
     # temporarily bypass private method restriction in order to test private method
@@ -55,12 +57,16 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:title], @expected_result[:title]
   end
 
+  test "#compose_dynamic_field_data via #set_name encodes name correctly" do
+    assert_equal @actual_result[:name], @expected_result[:name]
+  end
+
   test "#compose_dynamic_field_data via #set_abstract encodes abstract correctly" do
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
   end
 
-  test "#compose_dynamic_field_data via #set_name encodes name correctly" do
-    assert_equal @actual_result[:name], @expected_result[:name]
+  test "#compose_dynamic_field_data via #set_note encodes abstract correctly" do
+    assert_equal @actual_result[:note], @expected_result[:note]
   end
 
   test "should #compose_dynamic_field_data encodes correctly" do

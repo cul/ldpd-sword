@@ -106,5 +106,12 @@
 	    "abstract_value":"Abstract for Testing the Hyacinth Composer"
 	}
     ]
+    ,
+    "note": 
+    [
+	{
+	    "note_value": "Copyright: 2016 Hyacinth Composer"
+	}
+    ]
 }
 

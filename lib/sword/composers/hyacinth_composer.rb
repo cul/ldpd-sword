@@ -43,6 +43,7 @@ class HyacinthComposer
     set_title 
     set_name
     set_abstract
+    set_note
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -116,6 +117,14 @@ class HyacinthComposer
 
   def set_subject
     # ISSUE!!!!: How do I know which subject category to use? Is it always the same one?
+  end
+
+  # Currently, DepositContent contains only one note. In Hyacinth, note is a repeatable field,
+  # in case DepositContent contains multiple notes in the future. However, for now, the following
+  # code will assume just one note, contained in DepositContent.note
+  def set_note
+    @dynamic_field_data[:note] = []
+    @dynamic_field_data[:note] << { note_value: @deposit_content.note }
   end
 
   def compose_import_file_data(filename)
