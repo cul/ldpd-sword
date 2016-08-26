@@ -42,6 +42,8 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.advisors << first_advisor << second_advisor
 
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
+    @deposit_content.subjects = []
+    @deposit_content.subjects << 'Subject one' << 'Subject two'
     @deposit_content.note = 'Copyright: 2016 Hyacinth Composer'
 
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
@@ -57,12 +59,16 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:title], @expected_result[:title]
   end
 
-  test "#compose_dynamic_field_data via #set_name encodes name correctly" do
+  test "#compose_dynamic_field_data via #set_names encodes names correctly" do
     assert_equal @actual_result[:name], @expected_result[:name]
   end
 
   test "#compose_dynamic_field_data via #set_abstract encodes abstract correctly" do
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
+  end
+
+  test "#compose_dynamic_field_data via #set_subjects encodes subject topics correctly" do
+    assert_equal @actual_result[:subject_topic], @expected_result[:subject_topic]
   end
 
   test "#compose_dynamic_field_data via #set_note encodes abstract correctly" do

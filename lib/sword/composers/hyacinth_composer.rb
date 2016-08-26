@@ -41,8 +41,9 @@ class HyacinthComposer
   private
   def compose_dynamic_field_data
     set_title 
-    set_name
+    set_names
     set_abstract
+    set_subjects
     set_note
   end
 
@@ -54,7 +55,7 @@ class HyacinthComposer
                                      title_sort_portion:  @deposit_content.title }
   end
 
-  def set_name
+  def set_names
     @dynamic_field_data[:name] = []
 
     # only one corporate name
@@ -104,7 +105,7 @@ class HyacinthComposer
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
-  
+
   def set_name_role role
     name_role_term_data = { value: role }
     { name_role_term: name_role_term_data }
@@ -115,16 +116,26 @@ class HyacinthComposer
     @dynamic_field_data[:abstract] << { abstract_value: @deposit_content.abstract }
   end
 
-  def set_subject
-    # ISSUE!!!!: How do I know which subject category to use? Is it always the same one?
-  end
-
   # Currently, DepositContent contains only one note. In Hyacinth, note is a repeatable field,
   # in case DepositContent contains multiple notes in the future. However, for now, the following
   # code will assume just one note, contained in DepositContent.note
   def set_note
     @dynamic_field_data[:note] = []
     @dynamic_field_data[:note] << { note_value: @deposit_content.note }
+  end
+
+  def set_subject_topic topic
+    subject_topic_term_data = { value:  topic }
+    @dynamic_field_data[:subject_topic] << { subject_topic_term: subject_topic_term_data }
+  end
+
+  def set_subjects
+    @dynamic_field_data[:subject_topic] = []
+
+    # multiple subjects allowed, deposit_content.subjects is an array
+    @deposit_content.subjects.each do |subject|
+      set_subject_topic subject
+    end if @deposit_content.subjects
   end
 
   def compose_import_file_data(filename)

@@ -107,6 +107,25 @@
 	}
     ]
     ,
+    "subject_topic": 
+    [
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Subject one"
+
+	    }
+	}
+	,
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Subject two"
+
+	    }
+	}
+    ]
+    ,
     "note": 
     [
 	{
