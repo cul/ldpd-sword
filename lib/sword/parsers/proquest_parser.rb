@@ -16,7 +16,8 @@ class ProquestParser
   TYPE_OF_CONTENT = 'text'
   # GENRE = 'Dissertations'
   GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
-  LANGUAGE = 'English'
+  # LANGUAGE = 'English'
+  LANGUAGE_URI = SWORD_CONFIG[:metadata_values][:language_uri]
   PHYSICAL_LOCATION = 'NNC'
   RECORD_CONTENT_SOURCE = 'NNC'
   LANGUAGE_OF_CATALOGING = 'eng'
@@ -63,7 +64,7 @@ class ProquestParser
     deposit_content.type_of_content = TYPE_OF_CONTENT
     # deposit_content.genre = GENRE
     deposit_content.genre_uri = GENRE_URI
-    deposit_content.language = LANGUAGE
+    deposit_content.language_uri = LANGUAGE_URI
     deposit_content.physicalLocation = PHYSICAL_LOCATION
     deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
     deposit_content.languageOfCataloging = LANGUAGE_OF_CATALOGING

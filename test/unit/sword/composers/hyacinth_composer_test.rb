@@ -42,10 +42,12 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.advisors << first_advisor << second_advisor
 
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
+    @deposit_content.genre_uri = 'http://vocab.getty.edu/aat/300048715'
+    @deposit_content.language_uri = 'http://id.loc.gov/vocabulary/iso639-2/eng'
     @deposit_content.subjects = []
     @deposit_content.subjects << 'Subject one' << 'Subject two'
     @deposit_content.note = 'Copyright: 2016 Hyacinth Composer'
-
+  
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project')
     # temporarily bypass private method restriction in order to test private method
@@ -65,6 +67,14 @@ class HyacinthComposerTest < ActiveSupport::TestCase
 
   test "#compose_dynamic_field_data via #set_abstract encodes abstract correctly" do
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
+  end
+
+  test "#compose_dynamic_field_data via #set_genre encodes genre correctly" do
+    assert_equal @actual_result[:genre], @expected_result[:genre]
+  end
+
+  test "#compose_dynamic_field_data via #set_language encodes language correctly" do
+    assert_equal @actual_result[:language], @expected_result[:language]
   end
 
   test "#compose_dynamic_field_data via #set_subjects encodes subject topics correctly" do

@@ -10,7 +10,8 @@ class BmcParser
   @@TYPE_OF_CONTENT = 'text'
   # @@GENRE = 'Articles'
   @@GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
-  @@LANGUAGE = 'English'
+  # @@LANGUAGE = 'English'
+  @@LANGUAGE_URI = SWORD_CONFIG[:metadata_values][:language_uri]
   
   @deposit_content = nil
   @zip_file = nil
@@ -33,7 +34,7 @@ class BmcParser
 
     deposit_content.type_of_content = @@TYPE_OF_CONTENT
     deposit_content.genre_uri = @@GENRE_URI
-    deposit_content.language = @@LANGUAGE
+    deposit_content.language_uri = @@LANGUAGE_URI
     
     contentFileName = getContentFileName(content_dir) 
     contentXml = Nokogiri::XML(File.read(content_dir + "/" + contentFileName))

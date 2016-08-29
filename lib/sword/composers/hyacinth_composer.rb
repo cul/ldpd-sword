@@ -43,6 +43,8 @@ class HyacinthComposer
     set_title 
     set_names
     set_abstract
+    set_genre
+    set_language
     set_subjects
     set_note
   end
@@ -116,9 +118,18 @@ class HyacinthComposer
     @dynamic_field_data[:abstract] << { abstract_value: @deposit_content.abstract }
   end
 
-  # Currently, DepositContent contains only one note. In Hyacinth, note is a repeatable field,
-  # in case DepositContent contains multiple notes in the future. However, for now, the following
-  # code will assume just one note, contained in DepositContent.note
+  def set_genre
+    genre_data = { uri: @deposit_content.genre_uri }
+    @dynamic_field_data[:genre] = []
+    @dynamic_field_data[:genre] << { genre_term: genre_data }
+  end
+
+  def set_language
+    language_data = { uri: @deposit_content.language_uri }
+    @dynamic_field_data[:language] = []
+    @dynamic_field_data[:language] << { language_term: language_data }
+  end
+
   def set_note
     @dynamic_field_data[:note] = []
     @dynamic_field_data[:note] << { note_value: @deposit_content.note }
@@ -146,8 +157,6 @@ class HyacinthComposer
     import_file_data
   end
 
-  def set_genre
-  end
 end
 end
 end

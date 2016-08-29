@@ -107,6 +107,26 @@
 	}
     ]
     ,
+    "genre": 
+    [
+	{
+	    "genre_term": 
+	    {
+		"uri": "http://vocab.getty.edu/aat/300048715"
+	    }
+	}
+    ]
+    ,
+    "language": 
+    [
+	{
+	    "language_term": 
+	    {
+		"uri": "http://id.loc.gov/vocabulary/iso639-2/eng"
+	    }
+	}
+    ]
+    ,
     "subject_topic": 
     [
 	{

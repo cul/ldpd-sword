@@ -6,7 +6,7 @@ module Sword
                   :subjects,
                   :genre_uri,
                   :source,
-                  :language,
+                  :language_uri,
                   :physicalLocation,
                   :recordContentSource,
                   :languageOfCataloging,
