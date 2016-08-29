@@ -35,13 +35,10 @@ class SwordController < ApplicationController
     # puts @collection.hyacinth_project_string_key
     # puts @parser.inspect
     # raise
-    @deposit_content = Sword::DepositContent.new
-    # @parser.new_parse_content(@deposit_content,'/tmp/sword/mets.xml')
-    @parser.new_parse_content(@deposit_content,
-                              File.join(@zip_file_path,
-                                        SWORD_CONFIG[:contents_zipfile_subdir]
-                                        )
-                              )
+    # @deposit_content = Sword::DepositContent.new
+    # @parser.new_parse_content(@deposit_content, File.join(@zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir]))
+    @deposit_content = @parser.parse(File.join(@zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir]),
+                                     File.join(@zip_file_path, @deposit_request.file_name))
 
     # puts @deposit_content.inspect
     # raise
