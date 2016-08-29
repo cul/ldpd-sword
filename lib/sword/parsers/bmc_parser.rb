@@ -8,7 +8,8 @@ module Parsers
 class BmcParser
   
   @@TYPE_OF_CONTENT = 'text'
-  @@GENRE = 'Articles'
+  # @@GENRE = 'Articles'
+  @@GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
   @@LANGUAGE = 'English'
   
   @deposit_content = nil
@@ -70,7 +71,8 @@ class BmcParser
     # puts"!!!!!!!!!!!!!!!!!!!!! USING BMC PARSER  !!!!!!!!!!!!!!!!!!!!!!!!"
     
     deposit_content.type_of_content = @@TYPE_OF_CONTENT
-    deposit_content.genre = @@GENRE
+    # deposit_content.genre = @@GENRE
+    deposit_content.genre_uri = @@GENRE_URI
     deposit_content.language = @@LANGUAGE
     
     contentFileName = getContentFileName(content_dir) 

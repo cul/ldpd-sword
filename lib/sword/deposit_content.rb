@@ -4,7 +4,7 @@ module Sword
     attr_accessor :title,
                   :abstract,
                   :subjects,
-                  :genre,
+                  :genre_uri,
                   :source,
                   :language,
                   :physicalLocation,

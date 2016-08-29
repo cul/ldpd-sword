@@ -14,7 +14,8 @@ class ProquestParser
   DEFAULT_NODE = Nokogiri::XML("<foo></foo>").css("foo").first
 
   TYPE_OF_CONTENT = 'text'
-  GENRE = 'Dissertations'
+  # GENRE = 'Dissertations'
+  GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
   LANGUAGE = 'English'
   PHYSICAL_LOCATION = 'NNC'
   RECORD_CONTENT_SOURCE = 'NNC'
@@ -60,7 +61,9 @@ class ProquestParser
     end
     
     deposit_content.type_of_content = TYPE_OF_CONTENT
-    deposit_content.genre = GENRE
+    # fcd1, 08/26/16: old version of parse_content is called because #parse (which calls this version) is called
+    # within test/unit/sword/parsers/proquest_parser_test.rb
+    # deposit_content.genre = GENRE
     deposit_content.language = LANGUAGE
     deposit_content.physicalLocation = PHYSICAL_LOCATION
     deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
@@ -104,7 +107,8 @@ class ProquestParser
     end
     
     deposit_content.type_of_content = TYPE_OF_CONTENT
-    deposit_content.genre = GENRE
+    # deposit_content.genre = GENRE
+    deposit_content.genre_uri = GENRE_URI
     deposit_content.language = LANGUAGE
     deposit_content.physicalLocation = PHYSICAL_LOCATION
     deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
