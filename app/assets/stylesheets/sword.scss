@@ -1,3 +1,33 @@
-// Place all the styles related to the sword controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  border-bottom: solid;
+}
+
+span.logo {
+  font-family: "Times New Roman", Serif;
+  font-size: xx-large;
+  vertical-align: middle;
+}
+
+h1.top {
+  text-align: center;
+}
+
+nav {
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    padding-left: 10%;
+  }
+}
+
+tbody.index {
+
+  td {
+    padding: 5px;
+  }
+}
+  

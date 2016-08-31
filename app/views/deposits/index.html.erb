@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Deposits</h1>
+<h1 class="top">Deposits</h1>
 
-<table class="table">
+<table>
   <thead>
     <tr>
       <th>Title</th>
@@ -12,13 +12,13 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="index">
     <% @deposits.each do |deposit| %>
       <tr>
         <td><%= link_to deposit.title, deposit %></td>
-        <td><%= link_to(deposit.depositor.name, deposit.depositor) if deposit.depositor %></td>
+        <td><%= deposit.depositor.name if deposit.depositor %></td>
         <td><%= deposit.created_at %></td>
-        <td><%= link_to(deposit.collection.name, deposit.collection) if deposit.collection %></td>
+        <td><%= deposit.collection.name if deposit.collection %></td>
       </tr>
     <% end %>
   </tbody>

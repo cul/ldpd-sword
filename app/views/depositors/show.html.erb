@@ -11,4 +11,6 @@
 </p>
 
 <%= link_to 'Edit', edit_depositor_path(@depositor) %> |
+<td><%= link_to 'Edit Permisisons', edit_permissions_depositor_path(@depositor) %></td>
+<td><%= link_to 'Delete', @depositor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <%= link_to 'List of Depositors', depositors_path %>

@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     member do
       get 'edit_permissions', action: 'edit_permissions', as: 'edit_permissions'
       # get 'update_permissions', action: 'update_permissions', as: 'update_permissions'
-      get 'remove_permission', action: 'remove_permission', as: 'remove_permission'
-      get 'add_permission', action: 'add_permission', as: 'add_permission'
+      post 'remove_permission', action: 'remove_permission', as: 'remove_permission'
+      post 'add_permission', action: 'add_permission', as: 'add_permission'
     end
   end
   resources :deposits

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Collections</h1>
+<h1 class="top">Collections</h1>
 
 <table>
   <thead>
@@ -9,7 +9,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="index">
     <% @collections.each do |collection| %>
       <tr>
 	<td><%= link_to collection.name, collection %></td>

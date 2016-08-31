@@ -1,14 +1,27 @@
-<h1>Editing Permission for <%= @depositor.name %> </h1>
+<h1 class=top>Permissions: <%= @depositor.name %> </h1>
 
-<% @has_access_to_collection.each do |collection, access| %>
-  <p><%= collection.name %>
-  <% if access %>
-    <%= link_to 'Remove Access', remove_permission_depositor_path(@depositor,
-	                                                          collection_id: collection) %></p>
-  <% else %>
-    <%= link_to 'Add Access', add_permission_depositor_path(@depositor,
-                                                            collection_id: collection) %></p>
-  <% end %>
-<% end %>
+<table>
+
+  <thead>
+    <th colspan="2"></th>
+  </thead>
+
+  <tbody class="index">
+    <% @has_access_to_collection.each do |collection, access| %>
+    <tr>
+      <td><%= collection.name %></td>
+      <td>
+	<% if access %>
+	<%= button_to 'Remove Access', remove_permission_depositor_path(@depositor,
+	                                                              collection_id: collection) %>
+	<% else %>
+	<%= button_to 'Add Access', add_permission_depositor_path(@depositor,
+                                                                collection_id: collection) %>
+	<% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Back to listing of Depositors', depositors_path %>

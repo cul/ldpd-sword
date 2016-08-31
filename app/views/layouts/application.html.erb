@@ -8,6 +8,17 @@
 </head>
 <body>
 
+  <header>
+    <span class="logo">Sword App</span>
+    <nav>
+      <ul>
+	<li><%= link_to 'Deposits', deposits_path %></li>
+	<li><%= link_to 'Collections', collections_path %></li>
+	<li><%= link_to 'Depositors', depositors_path %></li>
+      </ul>
+    </nav>
+  </header>
+
 <%= yield %>
 
 <%= debug(params) if Rails.env.development? %>
