@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160806004053) do
     t.integer  "depositor_id",                        limit: 4
     t.integer  "collection_id",                       limit: 4
     t.string   "title",                               limit: 255
+    t.text     "abstract",                            limit: 65535
     t.string   "item_in_hyacinth",                    limit: 255
     t.datetime "embargo_release_date"
     t.integer  "status",                              limit: 4,     default: 0,     null: false
