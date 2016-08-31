@@ -15,6 +15,8 @@ class CollectionsController < ApplicationController
   # GET /collections/new
   def new
     @collection = Collection.new
+    @parsers = SWORD_CONFIG[:parsers]
+    @list_of_parsers
   end
 
   # GET /collections/1/edit
@@ -74,6 +76,8 @@ class CollectionsController < ApplicationController
                                          :atom_title,
                                          :slug,
                                          :abstract,
+                                         :hyacinth_project_string_key,
+                                         :parser,
                                          :mime_types,
                                          :sword_package_types,
                                          :mediation_enabled )

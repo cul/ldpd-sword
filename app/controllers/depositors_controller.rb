@@ -1,5 +1,6 @@
 class DepositorsController < ApplicationController
-  before_action :set_depositor, only: [:show, :edit, :update, :destroy]
+  before_action :set_depositor, only: [:show, :edit, :update, :destroy,
+                                       :edit_permissions, :remove_permission, :add_permission]
 
   # GET /depositors
   # GET /depositors.json
@@ -59,6 +60,31 @@ class DepositorsController < ApplicationController
       format.html { redirect_to depositors_url, notice: 'Depositor was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def edit_permissions
+    @has_access_to_collection = {}
+    Collection.all.each do |collection|
+      if @depositor.collections.include? collection
+        @has_access_to_collection[collection] = true
+      else
+        @has_access_to_collection[collection] = false
+      end
+    end
+  end
+
+  def add_permission
+    collection = Collection.find_by(id: params[:collection_id])
+    @depositor.collections << collection
+    @depositor.save
+    redirect_to action: :edit_permissions
+  end
+
+  def remove_permission
+    collection = Collection.find_by(id: params[:collection_id])
+    @depositor.collections.delete(collection)
+    @depositor.save
+    redirect_to action: :edit_permissions
   end
 
   private

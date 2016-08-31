@@ -10,8 +10,17 @@
       </ul>
     </div>
   <% end %>
-  <%= f.label :name %>
+  <%= f.label :name, "Full Name" %>
   <%= f.text_field :name %>
+  <br/>
+  <%= f.label :username %>
+  <%= f.text_field :basic_authentication_user_id %>
+  <br/>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <br/>
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
 
   <div class="actions">
     <%= f.submit %>

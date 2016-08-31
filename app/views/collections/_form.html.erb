@@ -10,8 +10,21 @@
       </ul>
     </div>
   <% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
+  <br/>
+  <%= f.label :atom_title %>
+  <%= f.text_field :atom_title %>
+  <br/>
+  <%= f.label :slug %>
+  <%= f.text_field :slug %>
+  <br/>
+  <%= f.label :hyacinth_project_string_key %>
+  <%= f.text_field :hyacinth_project_string_key %>
+  <br/>
+  <%= f.label :parser %>
+  <%= f.select(:parser, SWORD_CONFIG[:parsers]) %>
 
   <div class="actions">
     <%= f.submit %>

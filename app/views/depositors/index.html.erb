@@ -12,10 +12,9 @@
   <tbody>
     <% @depositors.each do |depositor| %>
       <tr>
-        <td><%= depositor.name %></td>
-        <td><%= link_to 'Show', depositor %></td>
-        <td><%= link_to 'Edit', edit_depositor_path(depositor) %></td>
-        <td><%= link_to 'Destroy', depositor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to depositor.name, depositor %></td>
+        <td><%= link_to 'Edit Permisisons', edit_permissions_depositor_path(depositor) %></td>
+        <td><%= link_to 'Delete', depositor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,14 @@
+<h1>Editing Permission for <%= @depositor.name %> </h1>
+
+<% @has_access_to_collection.each do |collection, access| %>
+  <p><%= collection.name %>
+  <% if access %>
+    <%= link_to 'Remove Access', remove_permission_depositor_path(@depositor,
+	                                                          collection_id: collection) %></p>
+  <% else %>
+    <%= link_to 'Add Access', add_permission_depositor_path(@depositor,
+                                                            collection_id: collection) %></p>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back to listing of Depositors', depositors_path %>
