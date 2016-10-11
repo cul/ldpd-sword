@@ -34,5 +34,10 @@ if Rails.env.development?
   first_depositor.collections << first_collection
   second_depositor.collections << second_collection
   first_depositor.collections << third_collection
+
+  admin = User.create(email: "admin@example.com",
+                      admin: true,
+                      password: "admin1234",
+                      password_confirmation: "admin1234")
 end
 
