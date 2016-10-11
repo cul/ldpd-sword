@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # get 'sword/deposit'
   # get 'sword/deposit/:collection_slug' => 'sword#deposit'
   post 'sword/deposit/:collection_slug' => 'sword#deposit'
