@@ -39,5 +39,9 @@ if Rails.env.development?
                       admin: true,
                       password: "admin1234",
                       password_confirmation: "admin1234")
+
+  test_user = User.create(email: "test@example.com",
+                      password: "test1234",
+                      password_confirmation: "test1234")
 end
 
