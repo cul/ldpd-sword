@@ -20,4 +20,6 @@
   <%= @collection.parser %>
 </p>
 
-<p><%= link_to 'Delete', @collection, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% if current_user.admin? %>
+  <p><%= link_to 'Delete', @collection, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>

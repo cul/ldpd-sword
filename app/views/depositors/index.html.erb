@@ -20,4 +20,6 @@
 
 <br>
 
-<%= link_to 'New Depositor', new_depositor_path %>
+<% if current_user.admin? %>
+  <%= link_to 'New Depositor', new_depositor_path %>
+<% end %>

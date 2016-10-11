@@ -15,6 +15,7 @@
 	<li><%= link_to 'Deposits', deposits_path %></li>
 	<li><%= link_to 'Collections', collections_path %></li>
 	<li><%= link_to 'Depositors', depositors_path %></li>
+	<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
     </nav>
   </header>
