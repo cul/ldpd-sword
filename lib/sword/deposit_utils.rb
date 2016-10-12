@@ -53,7 +53,7 @@ module DepositUtils
                               SWORD_CONFIG[:contents_zipfile_subdir],
                               file
                               ),
-                    File.join(HYACINTH_CONFIG[:sword_import_dir],
+                    File.join(HYACINTH_CONFIG[:upload_directory],
                               file
                               )
                     )
