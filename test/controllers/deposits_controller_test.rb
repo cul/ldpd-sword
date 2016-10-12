@@ -3,6 +3,7 @@ require 'test_helper'
 class DepositsControllerTest < ActionController::TestCase
   setup do
     @deposit = deposits(:one)
+    sign_in users(:test_user)
   end
 
   test "should get index" do

@@ -14,3 +14,7 @@ class ActiveSupport::TestCase
     File.read(Rails.root.to_s + "/test/fixtures/#{name}")
   end
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

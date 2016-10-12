@@ -3,6 +3,7 @@ require 'test_helper'
 class CollectionsControllerTest < ActionController::TestCase
   setup do
     @collection = collections(:first_collection)
+    sign_in users(:test_user)
   end
 
   test "should get index" do
