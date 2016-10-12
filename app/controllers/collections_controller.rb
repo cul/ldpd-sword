@@ -1,4 +1,6 @@
 class CollectionsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :restrict_to_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
   # GET /collections
@@ -67,6 +69,10 @@ class CollectionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_collection
       @collection = Collection.find(params[:id])
+    end
+
+    def restrict_to_admin
+      redirect_to(collections_path, notice: "Only admin can perform this action") unless current_user.admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

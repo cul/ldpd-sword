@@ -1,4 +1,7 @@
 class DepositorsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :restrict_to_admin, only: [:new, :create, :edit, :update, :destroy,
+                                           :edit_permissions, :remove_permission, :add_permission]
   before_action :set_depositor, only: [:show, :edit, :update, :destroy,
                                        :edit_permissions, :remove_permission, :add_permission]
 
@@ -91,6 +94,10 @@ class DepositorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_depositor
       @depositor = Depositor.find(params[:id])
+    end
+
+    def restrict_to_admin
+      redirect_to(depositors_path, notice: "Only admin can perform this action") unless current_user.admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

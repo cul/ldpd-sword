@@ -1,6 +1,7 @@
 class DepositsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_deposit, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :restrict_to_admin, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /deposits
   # GET /deposits.json
@@ -66,6 +67,10 @@ class DepositsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_deposit
       @deposit = Deposit.find(params[:id])
+    end
+
+    def restrict_to_admin
+      redirect_to(deposits_path, notice: "Only admin can perform this action") unless current_user.admin?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
