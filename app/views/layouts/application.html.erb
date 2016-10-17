@@ -11,12 +11,17 @@
   <header>
     <span class="logo">Sword App</span>
     <nav>
+      <% if user_signed_in? %>
       <ul>
 	<li><%= link_to 'Deposits', deposits_path %></li>
 	<li><%= link_to 'Collections', collections_path %></li>
 	<li><%= link_to 'Depositors', depositors_path %></li>
+	<% if current_user.admin? %>
+	<li><%= link_to 'Users', users_path %></li>
+	<% end %>
 	<li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
       </ul>
+      <% end %>
     </nav>
   </header>
 
