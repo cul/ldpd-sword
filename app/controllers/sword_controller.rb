@@ -13,54 +13,26 @@ class SwordController < ApplicationController
   def deposit
     # at this, with all the before_action filters, the following instance variables are set:
     # @collection, @depositor
-    # puts @collection.inspect
-    # puts request.inspect if Rails.env.development? or Rails.env.test?
-    # puts request.env.inspect if Rails.env.development? or Rails.env.test?
-    # puts request.headers.inspect if Rails.env.development? or Rails.env.test?
-    # puts request.headers["SERVER_PORT"] if Rails.env.development? or Rails.env.test?
-    # puts request.headers["X-On-Behalf-Of"] if Rails.env.development? or Rails.env.test?
-    # file = request.body.read if Rails.env.development? or Rails.env.test?
-    # puts file.inspect
     @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
 
-    # @zip_dir = SWORD_CONFIG[:unzip_dir]
-    # Sword::DepositUtils.save_file(@deposit_request.content, @deposit_request.file_name, @zip_dir)
-    # Sword::DepositUtils.unpackZip("#{@zip_dir}/#{@deposit_request.file_name}", @zip_dir)
-    # fcd1, 08/21/16: above 3 lines of code replaced with the following single line:
     @zip_file_path = Sword::DepositUtils.process_package_file(@deposit_request.content, @deposit_request.file_name)
-    # puts "!!!!!!!!!!!!!!!!!!!! ZIP_FILE_PATH !!!!!!!!!!!!!!!!!!!"
-    # puts @zip_file_path
                                   
     @parser = Sword::DepositUtils.getParser @collection.parser
-    # puts @collection.hyacinth_project_string_key
-    # puts @parser.inspect
-    # raise
-    # @deposit_content = Sword::DepositContent.new
-    # @parser.new_parse_content(@deposit_content, File.join(@zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir]))
+
     @deposit_content = @parser.parse(File.join(@zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir]),
                                      File.join(@zip_file_path, @deposit_request.file_name))
-
-    # puts @deposit_content.inspect
-    # raise
 
     # compose hyacinth data
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 @collection.hyacinth_project_string_key)
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
 
-    # puts "!!!!!!!!!!!!!!!!!!!! Hyacinth JSON !!!!!!!!!!!!!!!!!!!"
-    # puts @json_for_hyacinth_item
-
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item if Rails.env.development?
-    # puts @hyacinth_response.inspect if Rails.env.development?
-    # puts @hyacinth_response.body if Rails.env.development?
 
     # need to add a check here for 200 response
     @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid'] if Rails.env.development?
-    # puts "!!!!!!! Hyacinth pid !!!!: #{@hyacinth_pid}" if Rails.env.development?
 
-    # puts "!!!!!!!!!!!!!!!!!!!!!!!!!self.getAllFilesList!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
 
     Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
@@ -77,15 +49,6 @@ class SwordController < ApplicationController
     @deposit.item_in_hyacinth = @hyacinth_pid
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
-
-    # puts @deposit_request.inspect
-    # puts @deposit_request.content.class
-
-    # Get info out of the reqest: 
-    
-    # retrieve the hyacinth project. Need a try exception statement around the following line
-    # also, can get if instance variable and use func return straight.
-    # puts @hyacinth_project.inspect
   end
 
   def service_document
