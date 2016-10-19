@@ -21,6 +21,7 @@
 /config/secrets.yml
 /config/sword.yml
 /config/hyacinth.yml
+/config/seeds.yml
 
 
 # Ignore ~ files

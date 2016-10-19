@@ -40,7 +40,8 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
   'config/hyacinth.yml',
   'config/secrets.yml',
-  'config/sword.yml'
+  'config/sword.yml',
+  'config/seeds.yml'
 )
 
 namespace :deploy do
