@@ -16,7 +16,7 @@ class HyacinthIngest
     post_req.basic_auth(HYACINTH_CONFIG[:username],
                         HYACINTH_CONFIG[:password])
 
-    res = Net::HTTP.start(uri.hostname, uri.port) { |http| http.request(post_req) }
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(post_req) }
   end
 end
 end
