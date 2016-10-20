@@ -7,8 +7,6 @@ class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
   before_action :check_basic_http_authentication, only: [:deposit]
   before_action :check_depositor_collection_permission, only: [:deposit]
-  # fcd1, 08/16/16: following sets up a hard coded Depositor, for testing
-  before_action :setup_depositor_for_testing_service_document, only: [:service_document]
 
   def deposit
     # at this, with all the before_action filters, the following instance variables are set:
@@ -28,10 +26,10 @@ class SwordController < ApplicationController
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
 
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
-    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item if Rails.env.development?
+    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
 
     # need to add a check here for 200 response
-    @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid'] if Rails.env.development?
+    @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid']
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
 
@@ -40,7 +38,7 @@ class SwordController < ApplicationController
 
     files.each do |file|
       @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(file, @hyacinth_pid)
-      @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset if Rails.env.development?
+      @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
     end
     
     @deposit = Deposit.new
@@ -102,11 +100,5 @@ class SwordController < ApplicationController
       # depositor = Depositor.find_by(id: 1)
       # content = []
       # depositor.
-    end
-
-    def setup_depositor_for_testing_service_document
-      # puts "Called setup_depositor_for_testing_service_document"
-      @depositor = Depositor.find_by(id: 1)
-      # puts @depositor.inspect
     end
 end
