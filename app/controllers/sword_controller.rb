@@ -5,7 +5,7 @@ require 'sword/ingest/hyacinth_ingest'
 
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
-  before_action :check_basic_http_authentication, only: [:deposit]
+  before_action :check_basic_http_authentication, only: [:deposit, :service_document]
   before_action :check_depositor_collection_permission, only: [:deposit]
 
   def deposit
