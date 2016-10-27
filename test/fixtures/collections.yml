@@ -4,10 +4,12 @@ first_collection:
   name: First Collection (Proquest)
   slug: first-collection
   atom_title: Atom Title of First Collection
+  hyacinth_project_string_key: academic_commons
   parser: proquest
 
 second_collection:
   name: Second Collection (BMC)
   slug: second-collection
   atom_title: Atom Title of Second Collection
+  hyacinth_project_string_key: academic_commons
   parser: bmc
