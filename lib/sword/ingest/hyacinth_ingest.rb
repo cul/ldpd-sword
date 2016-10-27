@@ -15,11 +15,9 @@ class HyacinthIngest
     post_req.set_form_data("digital_object_data_json" => data_json)
     post_req.basic_auth(HYACINTH_CONFIG[:username],
                         HYACINTH_CONFIG[:password])
-    if Rails.env.development? or Rails.env.test?
-      res = Net::HTTP.start(uri.hostname, uri.port) { |http| http.request(post_req) }
-    else
-      res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) { |http| http.request(post_req) }
-    end
+    res = Net::HTTP.start(uri.hostname,
+                          uri.port,
+                          use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
   end
 end
 end
