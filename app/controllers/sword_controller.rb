@@ -29,7 +29,10 @@ class SwordController < ApplicationController
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
 
     # need to add a check here for 200 response
-    @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid']
+    # @hyacinth_pid = JSON.parse(@hyacinth_response.body)['pid']
+    @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
+    Rails.logger.info "response body from Hyacinth is: " +  @hyacinth_response.body
+    Rails.logger.info "pid from Hyacinth is: " +  @hyacinth_pid.inspect
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
 
