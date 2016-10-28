@@ -42,6 +42,7 @@ class SwordController < ApplicationController
     files.each do |file|
       @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(file, @hyacinth_pid)
       @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
+      Rails.logger.info "response body from Hyacinth is: " +  @hyacinth_response.body
     end
     
     @deposit = Deposit.new
