@@ -25,6 +25,10 @@ class HyacinthIngest
     def body
       @response.body
     end
+
+    def code
+      @response.code
+    end
   end
 
   # takes a  HyacinthCompose object and the project in hyacinth
