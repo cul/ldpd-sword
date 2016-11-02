@@ -11,6 +11,12 @@ class SwordController < ApplicationController
   def deposit
     # at this, with all the before_action filters, the following instance variables are set:
     # @collection, @depositor
+    Rails.logger.info "!!!!****!!!!Received request (inspect): "
+    Rails.logger.info request.inspect
+    Rails.logger.info "!!!!****!!!!Received request (env.inspect): "
+    Rails.logger.info request.env.inspect
+    Rails.logger.info "!!!!****!!!!Received request, @_headers: "
+    Rails.logger.info @_headers
     @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
 
     @zip_file_path = Sword::DepositUtils.process_package_file(@deposit_request.content, @deposit_request.file_name)
