@@ -13,7 +13,7 @@
 <p>
   <strong>Item in Hyacinth:</strong>
   <%= link_to(@deposit.item_in_hyacinth,
-      'http://10.211.55.49:3000/digital_objects#'+
+      HYACINTH_CONFIG[:url] + '#' +
       Rack::Utils.escape('{"controller":"digital_objects","action":"show","pid":"'+ "#{@deposit.item_in_hyacinth}"+'"}'),
       target: '_blank') %>
 </p>
