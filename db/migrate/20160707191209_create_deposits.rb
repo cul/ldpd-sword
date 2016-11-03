@@ -9,13 +9,6 @@ class CreateDeposits < ActiveRecord::Migration
       t.datetime :embargo_release_date
       t.integer :status, null: false, index: true, default: 0
       t.text :deposit_errors
-      t.string :header_content_type
-      t.string :header_content_md5
-      t.string :header_user_agent
-      t.string :header_content_disposition_filename
-      t.string :header_x_on_behalf_of
-      t.boolean :header_x_verbose, default: false
-      t.boolean :header_x_no_op, default: false
 
       t.timestamps null: false
     end

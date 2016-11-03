@@ -52,23 +52,16 @@ ActiveRecord::Schema.define(version: 20161011172922) do
   add_index "depositors", ["name"], name: "index_depositors_on_name", unique: true, using: :btree
 
   create_table "deposits", force: :cascade do |t|
-    t.integer  "depositor_id",                        limit: 4
-    t.integer  "collection_id",                       limit: 4
-    t.string   "title",                               limit: 255
-    t.text     "abstract",                            limit: 65535
-    t.string   "item_in_hyacinth",                    limit: 255
+    t.integer  "depositor_id",         limit: 4
+    t.integer  "collection_id",        limit: 4
+    t.string   "title",                limit: 255
+    t.text     "abstract",             limit: 65535
+    t.string   "item_in_hyacinth",     limit: 255
     t.datetime "embargo_release_date"
-    t.integer  "status",                              limit: 4,     default: 0,     null: false
-    t.text     "deposit_errors",                      limit: 65535
-    t.string   "header_content_type",                 limit: 255
-    t.string   "header_content_md5",                  limit: 255
-    t.string   "header_user_agent",                   limit: 255
-    t.string   "header_content_disposition_filename", limit: 255
-    t.string   "header_x_on_behalf_of",               limit: 255
-    t.boolean  "header_x_verbose",                                  default: false
-    t.boolean  "header_x_no_op",                                    default: false
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.integer  "status",               limit: 4,     default: 0, null: false
+    t.text     "deposit_errors",       limit: 65535
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   add_index "deposits", ["collection_id"], name: "index_deposits_on_collection_id", using: :btree
