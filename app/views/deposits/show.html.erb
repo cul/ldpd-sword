@@ -11,6 +11,11 @@
 </p>
 
 <p>
+  <strong>Files in deposit:</strong>
+  <%= @deposit.deposit_files %>
+</p>
+
+<p>
   <strong>Item in Hyacinth:</strong>
   <%= link_to(@deposit.item_in_hyacinth,
       HYACINTH_CONFIG[:url] + '#' +

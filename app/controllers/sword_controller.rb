@@ -53,6 +53,7 @@ class SwordController < ApplicationController
     end
     
     @deposit = Deposit.new
+    @deposit.deposit_files = files
     @deposit.title = @deposit_content.title
     @deposit.abstract = @deposit_content.abstract
     @deposit.item_in_hyacinth = @hyacinth_pid
