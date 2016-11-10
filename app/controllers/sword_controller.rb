@@ -77,15 +77,6 @@ class SwordController < ApplicationController
 
   end
 
-  # replace the above method with this one once the following has been done:
-  # the needed attributes have been added to the collection model.
-  # also, if needed (not sure), add needed attributes to the depositor model
-  # finally, need to create the has_and_belongs_to_many relationship.
-  def service_document_new
-    # puts view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
-    render xml: view_context.service_document_xml(@depositor, request.env["HTTP_HOST"])
-  end
-
   private
     def check_for_valid_collection_slug
       @collection = Collection.find_by slug: params[:collection_slug]
