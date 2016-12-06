@@ -6,7 +6,6 @@ module Sword
 module DepositUtils
   
   def self.unpackZip(zipFile, destinationPath)
-    # puts zipFile
     destinationPath = destinationPath + '/'
     Zip::File.open(zipFile) { |zip|
       zip.each { |file|
@@ -22,8 +21,6 @@ module DepositUtils
     FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
     
     zip_file = File.join(save_path, file_name)
-    # puts "!!!!!!!!!!!!!!!!!! Filepath !!!!!!!!!!!!!!!!!"
-    # puts zip_file
     File.open(zip_file, "wb") { |file| file.write(content) }
     unpackZip(zip_file,
               File.join(save_path,SWORD_CONFIG[:contents_zipfile_subdir]))
@@ -32,7 +29,6 @@ module DepositUtils
 
   # fcd1, 08/22/16: Original code came from lib/deposits/sword/sword_tools.rb in hypatia-new
   # Made tweaks to it
-  # def self.getAllFilesList(sword_pid)
   def self.getAllFilesList(path)
     mets = Nokogiri::XML(File.read(File.join(path,'mets.xml')))
     files = []

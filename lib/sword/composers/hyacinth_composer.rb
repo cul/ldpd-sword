@@ -16,8 +16,6 @@ class HyacinthComposer
     data[:project] = {string_key: @project}
     compose_dynamic_field_data 
     data[:dynamic_field_data] = @dynamic_field_data
-    # puts "!!!!!!!!!!!!!!!!!!inside compose_json_item, here is the JSON data!!!!!!!!!!!!!!"
-    # puts JSON.generate data
     JSON.generate data
   end
 
@@ -30,11 +28,10 @@ class HyacinthComposer
     data[:parent_digital_objects] = [{identifier: parent_pid}]
     data[:import_file] = compose_import_file_data filename
 
-    # puts data.inspect
-    # fcd1, 08/22/16: can add select dynamic fields if needed
+    # fcd1, 08/22/16: Currently, do not add metadata to asset
+    # if this is needed, the following lines can be uncommented
     # compose_dynamic_field_data deposit_content
     # data[:dynamic_field_data] = @dynamic_field_data
-    # puts JSON.generate data
     JSON.generate data
   end
 
@@ -74,9 +71,6 @@ class HyacinthComposer
     @deposit_content.advisors.each do |advisor|
       set_personal_name_and_advisor_role advisor
     end if @deposit_content.advisors
-
-    # puts "!!!!!!!!!!!! dynamic_field_data after set_name is done !!!!!!!!!!!"
-    # puts @dynamic_field_data[:name].inspect
   end
 
   def set_corporate_name_and_originator_role
@@ -150,13 +144,11 @@ class HyacinthComposer
   end
 
   def compose_import_file_data(filename)
-    # puts "!!!!!!!!!!!!!!!!!!!! Filename: #{filename} !!!!!!!!!!!!!!!!!"
     import_file_data = {}
     import_file_data[:import_path]=filename
     import_file_data[:import_type]='upload_directory'
     import_file_data
   end
-
 end
 end
 end
