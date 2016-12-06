@@ -1,0 +1,21 @@
+black studies:
+  topic:
+    - label: Blacks
+      uri: http://id.worldcat.org/fast/833880
+canadian studies:
+  geographic:
+    - label: Canada
+      uri: http://id.worldcat.org/fast/1204310
+  topic:
+    - label: Canadians
+      uri: http://id.worldcat.org/fast/845200
+caribbean studies:
+  geographic:
+    - label: Caribbean Area
+      uri: http://id.worldcat.org/fast/1244080
+classical studies:
+  topic:
+    - label: Civilization, Classical
+      uri: http://id.worldcat.org/fast/862996
+    - label: Classical antiquities
+      uri: http://id.worldcat.org/fast/863445

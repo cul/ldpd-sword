@@ -133,7 +133,6 @@
 	    "subject_topic_term": 
 	    {
 		"value": "Subject one"
-
 	    }
 	}
 	,
@@ -141,7 +140,25 @@
 	    "subject_topic_term": 
 	    {
 		"value": "Subject two"
-
+	    }
+	}
+	,
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Canadians",
+		"uri": "http://id.worldcat.org/fast/845200"
+	    }
+	}
+    ]
+    ,
+    "subject_geographic": 
+    [
+	{
+	    "subject_geographic_term": 
+	    {
+		"value": "Canada",
+		"uri": "http://id.worldcat.org/fast/1204310"
 	    }
 	}
     ]

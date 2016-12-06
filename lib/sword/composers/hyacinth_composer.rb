@@ -129,17 +129,31 @@ class HyacinthComposer
     @dynamic_field_data[:note] << { note_value: @deposit_content.note }
   end
 
-  def set_subject_topic topic
-    subject_topic_term_data = { value:  topic }
+  def set_subject_topic(topic_value, topic_uri = nil)
+    subject_topic_term_data = { value:  topic_value }
+    subject_topic_term_data[:uri] = topic_uri if topic_uri
     @dynamic_field_data[:subject_topic] << { subject_topic_term: subject_topic_term_data }
+  end
+
+  def set_subject_geographic(geographic_value, geographic_uri = nil)
+    subject_geographic_term_data = { value:  geographic_value }
+    subject_geographic_term_data[:uri] = geographic_uri if geographic_uri
+    @dynamic_field_data[:subject_geographic] << { subject_geographic_term: subject_geographic_term_data }
   end
 
   def set_subjects
     @dynamic_field_data[:subject_topic] = []
+    @dynamic_field_data[:subject_geographic] = []
 
     # multiple subjects allowed, deposit_content.subjects is an array
     @deposit_content.subjects.each do |subject|
-      set_subject_topic subject
+      # hash will return nil if key not present
+      proquest_fast_mapping = PROQUEST_FAST_MAP[subject.downcase]
+      if proquest_fast_mapping
+        fast_subject proquest_fast_mapping
+      else
+        set_subject_topic subject
+      end
     end if @deposit_content.subjects
   end
 
@@ -149,6 +163,20 @@ class HyacinthComposer
     import_file_data[:import_type]='upload_directory'
     import_file_data
   end
+
+  def fast_subject proquest_fast_mapping
+    # handle fast topic subjects
+    proquest_fast_mapping[:topic].each do |fast_topic|
+      set_subject_topic(fast_topic[:label],
+                        fast_topic[:uri])
+    end if proquest_fast_mapping[:topic]
+    # handle fast geographic subjects
+    proquest_fast_mapping[:geographic].each do |fast_geographic|
+      set_subject_geographic(fast_geographic[:label],
+                             fast_geographic[:uri])
+    end if proquest_fast_mapping[:geographic]
+  end
+
 end
 end
 end
