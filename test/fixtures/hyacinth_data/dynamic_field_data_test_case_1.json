@@ -169,5 +169,12 @@
 	    "note_value": "Copyright: 2016 Hyacinth Composer"
 	}
     ]
+    ,
+    "source_of_deposit": 
+    [
+	{
+	    "source_of_deposit_value": "First Test Depositor"
+	}
+    ]
 }
 

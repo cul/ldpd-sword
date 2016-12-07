@@ -12,7 +12,8 @@ class HyacinthIngestTest < ActiveSupport::TestCase
     # Need following because advisors initialized to []
     @deposit_content.advisors = []
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
-                                                                'test-project')
+                                                                'test-project',
+                                                                'First Test Depositor')
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
   end
 

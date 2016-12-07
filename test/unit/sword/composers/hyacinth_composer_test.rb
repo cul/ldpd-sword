@@ -49,7 +49,8 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.note = 'Copyright: 2016 Hyacinth Composer'
   
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
-                                                                'test-project')
+                                                                'test-project',
+                                                                'First Test Depositor')
     # temporarily bypass private method restriction in order to test private method
     Sword::Composers::HyacinthComposer.send(:public, :compose_dynamic_field_data)
     @hyacinth_composer.compose_dynamic_field_data  
@@ -83,6 +84,10 @@ class HyacinthComposerTest < ActiveSupport::TestCase
 
   test "#compose_dynamic_field_data via #set_note encodes abstract correctly" do
     assert_equal @actual_result[:note], @expected_result[:note]
+  end
+
+  test "#compose_dynamic_field_data via #set_source_of_deposit encodes sourcce_of_deposit correctly" do
+    assert_equal @actual_result[:source_of_deposit], @expected_result[:source_of_deposit]
   end
 
   test "should #compose_dynamic_field_data encodes correctly" do

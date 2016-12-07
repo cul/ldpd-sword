@@ -19,7 +19,8 @@ class SwordController < ApplicationController
                                      File.join(@zip_file_path, @deposit_request.file_name))
     # compose hyacinth data
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
-                                                                @collection.hyacinth_project_string_key)
+                                                                @collection.hyacinth_project_string_key,
+                                                                @depositor.name)
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
