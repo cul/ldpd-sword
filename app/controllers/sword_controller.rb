@@ -26,7 +26,9 @@ class SwordController < ApplicationController
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
     @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
+    @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
     Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
+                                                        @temp_subdir_in_hyacinth_upload_dir,
                                                         files)
 
     files.each do |file|
@@ -34,6 +36,10 @@ class SwordController < ApplicationController
       @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
     end
     
+    # fcd1, 12/07/16: Remove files and tmp dir from hyacinth upload directory.
+    Sword::DepositUtils.removeHyacinthFilesAndSubir(@temp_subdir_in_hyacinth_upload_dir,
+                                                    files)
+
     @deposit = Deposit.new
     @deposit.deposit_files = files
     @deposit.title = @deposit_content.title

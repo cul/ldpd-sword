@@ -42,14 +42,18 @@ module DepositUtils
     return files   
   end
 
-  def self.cp_files_to_hyacinth_upload_dir(zip_file_path, filenames)
-
+  def self.cp_files_to_hyacinth_upload_dir(zip_file_path,
+                                           hyacinth_upload_subdir,
+                                           filenames)
+    FileUtils.mkpath(File.join(HYACINTH_CONFIG[:upload_directory],
+                               hyacinth_upload_subdir) )
     filenames.each do |file|
       FileUtils.cp( File.join(zip_file_path,
                               SWORD_CONFIG[:contents_zipfile_subdir],
                               file
                               ),
                     File.join(HYACINTH_CONFIG[:upload_directory],
+                              hyacinth_upload_subdir,
                               file
                               )
                     )
@@ -58,6 +62,21 @@ module DepositUtils
 
   def self.removeDir(directory)
     FileUtils.remove_dir(directory, force = false)
+  end
+  
+  def self.removeHyacinthFilesAndSubir(hyacinth_upload_subdir,
+                                       filenames)
+    filenames.each do |file|
+      FileUtils.remove_file(File.join(HYACINTH_CONFIG[:upload_directory],
+                                      hyacinth_upload_subdir,
+                                      file
+                                      ) 
+                            )
+    end
+    FileUtils.remove_dir(File.join(HYACINTH_CONFIG[:upload_directory],
+                                      hyacinth_upload_subdir
+                                   )
+                         )
   end
   
   def self.removeDir(directory, trash_dir)
