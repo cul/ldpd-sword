@@ -25,6 +25,20 @@ class SwordController < ApplicationController
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
     @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
+
+    # fcd1, 12/09/16: Initially, log both success and failure.
+    # later, when prod has been up for a while, maybe can get stop logging
+    # success, and instead just log the failures
+    if @hyacinth_response.success?
+      Rails.logger.info "Hyacinth request was successful"
+      Rails.logger.info "Inspect hyacinth_response: #{@hyacinth_response.inspect}"
+      Rails.logger.info "Inspect hyacinth_response.body: #{@hyacinth_response.body.inspect}"
+    else
+      Rails.logger.info "Hyacinth request was not successful"
+      Rails.logger.info "Inspect hyacinth_response: #{@hyacinth_response.inspect}"
+      Rails.logger.info "Inspect hyacinth_response.body: #{@hyacinth_response.body.inspect}"
+    end
+
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
     @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
     Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
