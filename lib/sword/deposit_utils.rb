@@ -45,6 +45,10 @@ module DepositUtils
   def self.cp_files_to_hyacinth_upload_dir(zip_file_path,
                                            hyacinth_upload_subdir,
                                            filenames)
+    Rails.logger.info("#{__FILE__},#{__LINE__}:")
+    Rails.logger.info "Inspect @zip_file_path: #{zip_file_path.inspect}"
+    Rails.logger.info "Inspect hyacinth_upload_subdir: #{hyacinth_upload_subdir.inspect}"
+    Rails.logger.info "Inspect filenames: #{filenames.inspect}"
     FileUtils.mkpath(File.join(HYACINTH_CONFIG[:upload_directory],
                                hyacinth_upload_subdir) )
     filenames.each do |file|
