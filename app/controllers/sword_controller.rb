@@ -40,7 +40,9 @@ class SwordController < ApplicationController
     end
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
-    @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
+    # fcd1, 12/09/16: Let's simplify this
+    # @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
+    @temp_subdir_in_hyacinth_upload_dir = "tmp_#{Time.now.to_i}"
     Rails.logger.info("#{__FILE__},#{__LINE__}:")
     Rails.logger.info "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
     Rails.logger.info "Inspect @zip_file_path: #{@zip_file_path}"
