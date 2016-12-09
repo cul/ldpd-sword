@@ -41,6 +41,7 @@ class SwordController < ApplicationController
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
     @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
+    Rails.logger.info("#{__FILE__},#{__LINE__}:")
     Rails.logger.info "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
     Rails.logger.info "Inspect @zip_file_path: #{@zip_file_path}"
     Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
@@ -53,8 +54,7 @@ class SwordController < ApplicationController
     end
     
     # fcd1, 12/07/16: Remove files and tmp dir from hyacinth upload directory.
-    Sword::DepositUtils.removeHyacinthFilesAndSubir(@temp_subdir_in_hyacinth_upload_dir,
-                                                    files)
+    # Sword::DepositUtils.removeHyacinthFilesAndSubir(@temp_subdir_in_hyacinth_upload_dir, files)
 
     @deposit = Deposit.new
     @deposit.deposit_files = files
