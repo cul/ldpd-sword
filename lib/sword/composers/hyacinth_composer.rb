@@ -117,13 +117,15 @@ class HyacinthComposer
   end
 
   def set_genre
-    genre_data = { uri: @deposit_content.genre_uri }
+    genre_data = { value: @deposit_content.genre_value,
+                   uri: @deposit_content.genre_uri }
     @dynamic_field_data[:genre] = []
     @dynamic_field_data[:genre] << { genre_term: genre_data }
   end
 
   def set_language
-    language_data = { uri: @deposit_content.language_uri }
+    language_data = { value: @deposit_content.language_value,
+                      uri: @deposit_content.language_uri }
     @dynamic_field_data[:language] = []
     @dynamic_field_data[:language] << { language_term: language_data }
   end

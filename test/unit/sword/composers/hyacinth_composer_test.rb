@@ -42,7 +42,9 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.advisors << first_advisor << second_advisor
 
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
+    @deposit_content.genre_value = 'articles'
     @deposit_content.genre_uri = 'http://vocab.getty.edu/aat/300048715'
+    @deposit_content.language_value = 'English'
     @deposit_content.language_uri = 'http://id.loc.gov/vocabulary/iso639-2/eng'
     @deposit_content.subjects = []
     @deposit_content.subjects << 'Subject one' << 'Subject two' << 'Canadian Studies'

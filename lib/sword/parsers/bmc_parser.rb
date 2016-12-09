@@ -9,8 +9,10 @@ class BmcParser
   
   @@TYPE_OF_CONTENT = 'text'
   # @@GENRE = 'Articles'
+  @@GENRE_VALUE = SWORD_CONFIG[:metadata_values][:genre_value_bmc]
   @@GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
   # @@LANGUAGE = 'English'
+  @@LANGUAGE_VALUE = SWORD_CONFIG[:metadata_values][:language_value]
   @@LANGUAGE_URI = SWORD_CONFIG[:metadata_values][:language_uri]
   
   @deposit_content = nil
@@ -33,7 +35,9 @@ class BmcParser
   def parse_content(deposit_content, content_dir)  
 
     deposit_content.type_of_content = @@TYPE_OF_CONTENT
+    deposit_content.genre_value = @@GENRE_VALUE
     deposit_content.genre_uri = @@GENRE_URI
+    deposit_content.language_value = @@LANGUAGE_VALUE
     deposit_content.language_uri = @@LANGUAGE_URI
     
     contentFileName = getContentFileName(content_dir) 

@@ -112,6 +112,7 @@
 	{
 	    "genre_term": 
 	    {
+		"value": "articles",
 		"uri": "http://vocab.getty.edu/aat/300048715"
 	    }
 	}
@@ -122,6 +123,7 @@
 	{
 	    "language_term": 
 	    {
+		"value": "English",
 		"uri": "http://id.loc.gov/vocabulary/iso639-2/eng"
 	    }
 	}
