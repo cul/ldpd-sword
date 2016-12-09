@@ -49,15 +49,17 @@ module DepositUtils
     Rails.logger.info "Inspect @zip_file_path: #{zip_file_path.inspect}"
     Rails.logger.info "Inspect hyacinth_upload_subdir: #{hyacinth_upload_subdir.inspect}"
     Rails.logger.info "Inspect filenames: #{filenames.inspect}"
-    FileUtils.mkpath(File.join(HYACINTH_CONFIG[:upload_directory],
-                               hyacinth_upload_subdir) )
+    source_path = File.join(zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir])
+    destination_path = File.join(HYACINTH_CONFIG[:upload_directory], hyacinth_upload_subdir)
+    Rails.logger.info("#{__FILE__},#{__LINE__}:")
+    Rails.logger.info "Inspect source_path: #{source_path.inspect}"
+    Rails.logger.info "Inspect destination_path: #{destination_path.inspect}"
+    FileUtils.mkpath(destination_path)
     filenames.each do |file|
-      FileUtils.cp( File.join(zip_file_path,
-                              SWORD_CONFIG[:contents_zipfile_subdir],
+      FileUtils.cp( File.join(source_path,
                               file
                               ),
-                    File.join(HYACINTH_CONFIG[:upload_directory],
-                              hyacinth_upload_subdir,
+                    File.join(destination_path,
                               file
                               )
                     )
