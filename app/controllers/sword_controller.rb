@@ -42,7 +42,7 @@ class SwordController < ApplicationController
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
     # fcd1, 12/09/16: Let's simplify this
     # @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
-    @temp_subdir_in_hyacinth_upload_dir = "tmp_#{Time.now.to_i}"
+    @temp_subdir_in_hyacinth_upload_dir = "swordtmp_#{Time.now.to_i}"
     Rails.logger.info("#{__FILE__},#{__LINE__}:")
     Rails.logger.info "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
     Rails.logger.info "Inspect @zip_file_path: #{@zip_file_path}"
@@ -51,7 +51,8 @@ class SwordController < ApplicationController
                                                         files)
 
     files.each do |file|
-      @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(file, @hyacinth_pid)
+      filepath = File.join(@temp_subdir_in_hyacinth_upload_dir, file)
+      @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(filepath, @hyacinth_pid)
       @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
     end
     

@@ -24,12 +24,14 @@ class HyacinthComposer
 
   # fcd1, 08/22/16: may not need deposit_content for asset
   # also, may set project in initialize method
-  def compose_json_asset(filename, parent_pid)
+  def compose_json_asset(filepath, parent_pid)
     data = {}
     data[:digital_object_type] = {string_key: 'asset'}
     data[:project] = {string_key: @project}
     data[:parent_digital_objects] = [{identifier: parent_pid}]
-    data[:import_file] = compose_import_file_data filename
+    data[:import_file] = compose_import_file_data filepath
+    Rails.logger.info "!!!!!!!!!!!!!!!!!! import_file!!!!!!!!"
+    Rails.logger.info "#{data[:import_file]}"
 
     # fcd1, 08/22/16: Currently, do not add metadata to asset
     # if this is needed, the following lines can be uncommented
@@ -163,9 +165,9 @@ class HyacinthComposer
     end if @deposit_content.subjects
   end
 
-  def compose_import_file_data(filename)
+  def compose_import_file_data(filepath)
     import_file_data = {}
-    import_file_data[:import_path]=filename
+    import_file_data[:import_path]=filepath
     import_file_data[:import_type]='upload_directory'
     import_file_data
   end
