@@ -37,9 +37,10 @@ african literature:
   - label: African literature
     uri: http://id.worldcat.org/fast/799832
 african studies:
-  topic:
+  geographic:
   - label: Africa
     uri: http://id.worldcat.org/fast/1239509
+  topic:
   - label: Africans
     uri: http://id.worldcat.org/fast/799938
 aging:
@@ -77,9 +78,10 @@ american literature:
   - label: American literature
     uri: http://id.worldcat.org/fast/807113
 american studies:
-  topic:
+  geographic:
   - label: America
     uri: http://id.worldcat.org/fast/1239786
+  topic:
   - label: Americans
     uri: http://id.worldcat.org/fast/807488
 analytical chemistry:
@@ -161,9 +163,10 @@ asian literature:
   - label: Oriental literature
     uri: http://id.worldcat.org/fast/1048102
 asian studies:
-  topic:
+  geographic:
   - label: Asia
     uri: http://id.worldcat.org/fast/1240495
+  topic:
   - label: Asians
     uri: http://id.worldcat.org/fast/818693
 astronomy:
@@ -195,9 +198,10 @@ automotive engineering:
   - label: Automobiles--Design and construction
     uri: http://id.worldcat.org/fast/823374
 baltic studies:
-  topic:
+  geographic:
   - label: Baltic States
     uri: http://id.worldcat.org/fast/1241546
+  topic:
   - label: Balts Indo-European people
     uri: http://id.worldcat.org/fast/826267
 banking:
@@ -293,9 +297,10 @@ canadian literature:
   - label: Canadian literature
     uri: http://id.worldcat.org/fast/845111
 canadian studies:
-  topic:
+  geographic:
   - label: Canada
     uri: http://id.worldcat.org/fast/1204310
+  topic:
   - label: Canadians
     uri: http://id.worldcat.org/fast/845200
 canon law:
@@ -307,7 +312,7 @@ caribbean literature:
   - label: Caribbean literature
     uri: http://id.worldcat.org/fast/847469
 caribbean studies:
-  topic:
+  geographic:
   - label: Caribbean Area
     uri: http://id.worldcat.org/fast/1244080
 cellular biology:
@@ -459,9 +464,10 @@ early childhood education:
   - label: Early childhood education
     uri: http://id.worldcat.org/fast/900596
 east european studies:
-  topic:
+  geographic:
   - label: Europe, Eastern
     uri: http://id.worldcat.org/fast/1245079
+  topic:
   - label: East Europeans
     uri: http://id.worldcat.org/fast/901032
 ecology:
@@ -629,9 +635,10 @@ ethnic studies:
   - label: Ethnicity
     uri: http://id.worldcat.org/fast/916034
 european history:
-  topic:
+  geographic:
   - label: Europe
     uri: http://id.worldcat.org/fast/1245064
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 european studies:
@@ -941,9 +948,10 @@ latin american literature:
   - label: Latin American literature
     uri: http://id.worldcat.org/fast/993031
 latin american studies:
-  topic:
+  geographic:
   - label: Latin America
     uri: http://id.worldcat.org/fast/1245945
+  topic:
   - label: Latin Americans
     uri: http://id.worldcat.org/fast/993069
 law:
@@ -1069,7 +1077,7 @@ middle eastern literature:
   - label: Middle Eastern literature
     uri: http://id.worldcat.org/fast/1020340
 middle eastern studies:
-  topic:
+  geographic:
   - label: Middle East
     uri: http://id.worldcat.org/fast/1241586
 middle school education:
@@ -1165,7 +1173,7 @@ naval engineering:
   - label: Marine engineering
     uri: http://id.worldcat.org/fast/1009532
 near eastern studies:
-  topic:
+  geographic:
   - label: Middle East
     uri: http://id.worldcat.org/fast/1241586
 neurosciences:
@@ -1173,9 +1181,10 @@ neurosciences:
   - label: Neurosciences
     uri: http://id.worldcat.org/fast/1036509
 north african studies:
-  topic:
+  geographic:
   - label: Africa, North
     uri: http://id.worldcat.org/fast/1239515
+  topic:
   - label: North Africans
     uri: http://id.worldcat.org/fast/1039163
 nuclear chemistry:
@@ -1253,7 +1262,7 @@ osteopathic medicine:
   - label: Osteopathic medicine
     uri: http://id.worldcat.org/fast/1048799
 pacific rim studies:
-  topic:
+  geographic:
   - label: Pacific Area
     uri: http://id.worldcat.org/fast/1243504
 packaging:
@@ -1511,9 +1520,10 @@ russian history:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 scandinavian studies:
-  topic:
+  geographic:
   - label: Scandinavia
     uri: http://id.worldcat.org/fast/1242804
+  topic:
   - label: Scandinavians
     uri: http://id.worldcat.org/fast/1106459
 school counseling:
@@ -1579,9 +1589,10 @@ soil sciences:
   - label: Soil science
     uri: http://id.worldcat.org/fast/1124601
 south african studies:
-  topic:
+  geographic:
   - label: South Africa
     uri: http://id.worldcat.org/fast/1204616
+  topic:
   - label: South Africans
     uri: http://id.worldcat.org/fast/1127226
 south asian studies:
@@ -1611,9 +1622,10 @@ statistics:
   - label: Statistics
     uri: http://id.worldcat.org/fast/1132103
 sub saharan africa studies:
-  topic:
+  geographic:
   - label: Africa, Sub-Saharan
     uri: http://id.worldcat.org/fast/1239520
+  topic:
   - label: Africans
     uri: http://id.worldcat.org/fast/799938
 surgery:
