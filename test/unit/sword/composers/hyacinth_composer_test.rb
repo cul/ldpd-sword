@@ -88,8 +88,8 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:note], @expected_result[:note]
   end
 
-  test "#compose_dynamic_field_data via #set_source_of_deposit encodes sourcce_of_deposit correctly" do
-    assert_equal @actual_result[:source_of_deposit], @expected_result[:source_of_deposit]
+  test "#compose_dynamic_field_data via #set_deposited_by encodes deposited_by correctly" do
+    assert_equal @actual_result[:deposited_by], @expected_result[:deposited_by]
   end
 
   test "should #compose_dynamic_field_data encodes correctly" do

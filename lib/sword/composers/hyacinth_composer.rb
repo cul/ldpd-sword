@@ -7,7 +7,7 @@ class HyacinthComposer
                  depositor_name)
     @deposit_content = deposit_content
     @project = hyacinth_project
-    @source_of_deposit = depositor_name
+    @deposited_by = depositor_name
     @dynamic_field_data = {}
   end
 
@@ -49,7 +49,7 @@ class HyacinthComposer
     set_language
     set_subjects
     set_note
-    set_source_of_deposit
+    set_deposited_by
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -185,9 +185,9 @@ class HyacinthComposer
     end if proquest_fast_mapping[:geographic]
   end
 
-  def set_source_of_deposit
-    @dynamic_field_data[:source_of_deposit] = []
-    @dynamic_field_data[:source_of_deposit] << { source_of_deposit_value: @source_of_deposit }
+  def set_deposited_by
+    @dynamic_field_data[:deposited_by] = []
+    @dynamic_field_data[:deposited_by] << { deposited_by_value: @deposited_by }
   end
 end
 end

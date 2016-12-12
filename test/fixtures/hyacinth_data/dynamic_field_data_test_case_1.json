@@ -172,10 +172,10 @@
 	}
     ]
     ,
-    "source_of_deposit": 
+    "deposited_by": 
     [
 	{
-	    "source_of_deposit_value": "First Test Depositor"
+	    "deposited_by_value": "First Test Depositor"
 	}
     ]
 }
