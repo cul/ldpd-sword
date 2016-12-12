@@ -27,9 +27,10 @@ african american studies:
   - label: African Americans
     uri: http://id.worldcat.org/fast/799558
 african history:
-  topic:
+  geographic:
   - label: Africa
     uri: http://id.worldcat.org/fast/1239509
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 african literature:
@@ -68,9 +69,10 @@ alternative medicine:
   - label: Alternative medicine
     uri: http://id.worldcat.org/fast/806153
 american history:
-  topic:
+  geographic:
   - label: United States
     uri: http://id.worldcat.org/fast/1204155
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 american literature:
@@ -153,9 +155,10 @@ asian american studies:
   - label: Asian Americans
     uri: http://id.worldcat.org/fast/818620
 asian history:
-  topic:
+  geographic:
   - label: Asia
     uri: http://id.worldcat.org/fast/1240495
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 asian literature:
@@ -287,9 +290,10 @@ business education:
   - label: Business education
     uri: http://id.worldcat.org/fast/842480
 canadian history:
-  topic:
+  geographic:
   - label: Canada
     uri: http://id.worldcat.org/fast/1204310
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 canadian literature:
@@ -642,9 +646,10 @@ european history:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 european studies:
-  topic:
+  geographic:
   - label: Europe
     uri: http://id.worldcat.org/fast/1245064
+  topic:
   - label: Europeans
     uri: http://id.worldcat.org/fast/916820
 evolution & development:
@@ -819,6 +824,7 @@ history of oceania:
   topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
+  geographic:
   - label: Oceania
     uri: http://id.worldcat.org/fast/1242982
 history of science:
@@ -938,9 +944,10 @@ language arts:
   - label: Language arts
     uri: http://id.worldcat.org/fast/992284
 latin american history:
-  topic:
+  geographic:
   - label: Latin America
     uri: http://id.worldcat.org/fast/1245945
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 latin american literature:
@@ -1067,9 +1074,10 @@ microbiology:
   - label: Microbiology
     uri: http://id.worldcat.org/fast/1019576
 middle eastern history:
-  topic:
+  geographic:
   - label: Middle East
     uri: http://id.worldcat.org/fast/1241586
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 middle eastern literature:
@@ -1514,9 +1522,10 @@ romance literature:
   - label: Romance literature
     uri: http://id.worldcat.org/fast/1099871
 russian history:
-  topic:
+  geographic:
   - label: Russia
     uri: http://id.worldcat.org/fast/1207312
+  topic:
   - label: History
     uri: http://id.worldcat.org/fast/958235
 scandinavian studies:
