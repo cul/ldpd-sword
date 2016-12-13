@@ -40,7 +40,9 @@ class SwordController < ApplicationController
     end
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
-    # fcd1, 12/09/16: Let's simplify this
+    # fcd1, 12/13/16: Add the mets.xml file to the list of files to ingest into Hyacinth
+    files.push 'mets.xml'
+    # fcd1, 12/09/16: Let's simplify this, just use Time.now. Can revert later to also using Process.pid
     # @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
     @temp_subdir_in_hyacinth_upload_dir = "swordtmp_#{Time.now.to_i}"
     Rails.logger.info("#{__FILE__},#{__LINE__}:")
