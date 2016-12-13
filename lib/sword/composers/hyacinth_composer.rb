@@ -193,7 +193,7 @@ class HyacinthComposer
 
   def set_embargo_release_date
     @dynamic_field_data[:embargo_release_date] = []
-    @dynamic_field_data[:embargo_release_date] << { embargo_release_date: @deposit_content.embargo_release_date }
+    @dynamic_field_data[:embargo_release_date] << { embargo_release_date_value: @deposit_content.embargo_release_date }
   end
 end
 end
