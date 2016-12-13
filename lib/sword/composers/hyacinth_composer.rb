@@ -50,6 +50,7 @@ class HyacinthComposer
     set_subjects
     set_note
     set_deposited_by
+    set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -188,6 +189,11 @@ class HyacinthComposer
   def set_deposited_by
     @dynamic_field_data[:deposited_by] = []
     @dynamic_field_data[:deposited_by] << { deposited_by_value: @deposited_by }
+  end
+
+  def set_embargo_release_date
+    @dynamic_field_data[:embargo_release_date] = []
+    @dynamic_field_data[:embargo_release_date] << { embargo_release_date: @deposit_content.embargo_release_date }
   end
 end
 end

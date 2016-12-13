@@ -39,7 +39,8 @@ module Sword
 
       embargo_release_date = nil
 
-      start_date = Date.parse(deposit_content.embargo_start_date)
+      # start_date = Date.parse(deposit_content.embargo_start_date)
+      start_date = Date.strptime(deposit_content.embargo_start_date, "%m/%d/%Y")
 
       if(deposit_content.embargo_code == '1')
         embargo_release_date = (start_date + 6.month)
@@ -60,7 +61,7 @@ module Sword
       if(deposit_content.embargo_code == '4')
         if deposit_content.sales_restriction_date
           embargo_release_date =
-            Date.parse(deposit_content.sales_restriction_date)
+            Date.strptime(deposit_content.sales_restriction_date, "%m/%d/%Y")
         end
       end
 
