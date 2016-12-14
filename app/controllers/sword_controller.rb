@@ -24,20 +24,36 @@ class SwordController < ApplicationController
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
-    @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
 
+    # fcd1, 12/14/16: check the http status code. Log and raise if it is not in the 200 range
+    if not @hyacinth_response.http_code_success_2xx?
+      Rails.logger.info("Hyacinth did not return a 2XX HTTP status code -- " \
+                        "Status Code: #{@hyacinth_response.code}, " \
+                        "Status Message: #{@hyacinth_response.message}, " \
+                        "#{@hyacinth_response.hint}")
+      raise "Hyacinth returned a non 2XX HTTP status code, please see log"
+    end
+    
+    
+    # fcd1, 12/14/16: hyacinth will return a 200 if it accepted the request,
+    # but there still may have been problems when processing the request
+    # so need to check the body of the response to see result of request
+    # If request failed, body will also contain the error message(s)
     # fcd1, 12/09/16: Initially, log both success and failure.
     # later, when prod has been up for a while, maybe can get stop logging
     # success, and instead just log the failures
     if @hyacinth_response.success?
-      Rails.logger.info "Hyacinth request was successful"
-      Rails.logger.info "Inspect hyacinth_response: #{@hyacinth_response.inspect}"
-      Rails.logger.info "Inspect hyacinth_response.body: #{@hyacinth_response.body.inspect}"
+      Rails.logger.info("Hyacinth request successful: " \
+                        "hyacinth_response: #{@hyacinth_response.inspect}, " \
+                        "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
     else
-      Rails.logger.info "Hyacinth request was not successful"
-      Rails.logger.info "Inspect hyacinth_response: #{@hyacinth_response.inspect}"
-      Rails.logger.info "Inspect hyacinth_response.body: #{@hyacinth_response.body.inspect}"
+      Rails.logger.info("Hyacinth request unsuccessful: " \
+                        "hyacinth_response: #{@hyacinth_response.inspect}, " \
+                        "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
+      raise "Hyacinth request was not successful, please see log"
     end
+
+    @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
 
     files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
     # fcd1, 12/13/16: Add the mets.xml file to the list of files to ingest into Hyacinth

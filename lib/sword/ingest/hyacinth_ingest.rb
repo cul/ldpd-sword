@@ -8,9 +8,6 @@ class HyacinthIngest
     end
 
     def http_code_success_2xx?
-      Rails.logger.info"response: " +  @response.inspect
-      Rails.logger.info"response code as int: " +  String(Integer(@response.code))
-      Rails.logger.info"response code as int / 200: " +  String(Integer(@response.code)/200)
       return (Integer(@response.code)/100) == 2
     end
 
@@ -28,6 +25,21 @@ class HyacinthIngest
 
     def code
       @response.code
+    end
+
+    def message
+      @response.message
+    end
+
+    def hint
+      case code
+      when '401'
+        "HINT: Check hyacinth credentials (hyacinth.yml)-- credentials correct and user exists in hyacinth"
+      when '403'
+        "HINT: Check hyacinth user has create privs in the hyacinth project"
+      else
+        "HINT: Sorry, no hint available"
+      end
     end
   end
 
