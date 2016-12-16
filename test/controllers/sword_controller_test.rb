@@ -10,9 +10,10 @@ class SwordControllerTest < ActionController::TestCase
     @first_collection = collections(:first_collection)
     @second_depositor = depositors(:first_depositor)
     @second_collection = collections(:second_collection)
-    @request.headers["X-On-Behalf-Of"] = "FFFFFFFFFFFFFFFFFFFFFFFFOOOOOOOOOOOOOOOOOOOOOOOOOOBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAARRRRRRRRRRRRRRRRRR"
-    @request.body.write( "Hi, Fred")
-    @test_file = fixture_file_upload('/zip_files/test_one.zip')
+    @request.headers["X-On-Behalf-Of"] = "John Smith"
+    # @request.body.write( "Hi, Fred")
+    @test_file_one = fixture_file_upload('/zip_files/test_one_proquest.zip')
+    @test_file_two = fixture_file_upload('/zip_files/test_two_bmc.zip')
   end
 
   def setup_auth(depositor_fixture_name, depositor_passwd, bad_passwd = false)
@@ -28,7 +29,7 @@ class SwordControllerTest < ActionController::TestCase
 
   test "first depositor should post deposit succesfully into first collection" do
     setup_auth :first_depositor, 'firstdpasswd'
-    @request.env['RAW_POST_DATA'] = @test_file.read
+    @request.env['RAW_POST_DATA'] = @test_file_one.read
     @request.env['CONTENT_TYPE'] = "application/zip"
     post :deposit, collection_slug: @first_collection.slug
     # puts @controller.inspect
@@ -37,7 +38,8 @@ class SwordControllerTest < ActionController::TestCase
 
   test "second depositor should post deposit succesfully into second collection" do
     setup_auth :second_depositor, 'seconddpasswd'
-    @request.env['RAW_POST_DATA'] = @test_file.read
+    @request.env['RAW_POST_DATA'] = @test_file_two.read
+    @request.env['CONTENT_TYPE'] = "application/zip"
     post :deposit, collection_slug: @second_collection.slug
     assert_response :success
   end
