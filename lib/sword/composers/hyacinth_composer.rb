@@ -51,6 +51,7 @@ class HyacinthComposer
     set_note
     set_deposited_by
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
+    set_degree_info unless @deposit_content.corporate_name.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -194,6 +195,14 @@ class HyacinthComposer
   def set_embargo_release_date
     @dynamic_field_data[:embargo_release_date] = []
     @dynamic_field_data[:embargo_release_date] << { embargo_release_date_value: @deposit_content.embargo_release_date }
+  end
+
+  def set_degree_info
+    @dynamic_field_data[:degree] = []
+    @dynamic_field_data[:degree] << { degree_name: 'PHD',
+                                      degree_level: 2,
+                                      degree_discipline: @deposit_content.corporate_name.partition('.').last,
+                                      degree_grantor: 'Columbia University' }
   end
 end
 end
