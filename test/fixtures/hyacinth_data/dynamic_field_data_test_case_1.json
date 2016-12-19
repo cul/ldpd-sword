@@ -12,7 +12,7 @@
 	{
 	    "name_term": 
 	    {
-		"value": "Columbia University",
+		"value": "Columbia University. Microbiology, Immunology and Infection",
 		"name_type": "corporate"
 	    }
 	    ,
@@ -169,6 +169,16 @@
     [
 	{
 	    "note_value": "Copyright: 2016 Hyacinth Composer"
+	}
+    ]
+    ,
+    "degree": 
+    [
+	{
+	    "degree_name": "PHD",
+	    "degree_level": 2,
+	    "degree_discipline": " Microbiology, Immunology and Infection",
+	    "degree_grantor": "Columbia University"
 	}
     ]
     ,

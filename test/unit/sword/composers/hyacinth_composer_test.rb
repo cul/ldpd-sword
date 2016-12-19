@@ -8,7 +8,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content = Sword::DepositContent.new
     @deposit_content.title = 'Title for Testing the Hyacinth Composer'
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
-    @deposit_content.corporate_name = 'Columbia University'
+    @deposit_content.corporate_name = 'Columbia University. Microbiology, Immunology and Infection'
     @deposit_content.corporate_role = 'originator'
     
     first_author = Sword::Person.new
