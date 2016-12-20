@@ -108,7 +108,8 @@ class ProquestParser
   def getAffiliation(contentXml)
     
     affiliation = (contentXml.css("DISS_description>DISS_institution>DISS_inst_name").first || DEFAULT_NODE).text
-    affiliation = affiliation + ". " + (contentXml.css("DISS_description>DISS_institution>DISS_inst_contact").first || DEFAULT_NODE).text
+    institutional_contact = (contentXml.css("DISS_description>DISS_institution>DISS_inst_contact").first || DEFAULT_NODE).text
+    affiliation = affiliation + ". " + institutional_contact
   end  
   
   def getAdvisors(contentXml)
