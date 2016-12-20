@@ -28,6 +28,7 @@ class SwordControllerTest < ActionController::TestCase
   end
 
   test "first depositor should post deposit succesfully into first collection" do
+    skip "This test needs a running instance of hyacinth in order to create the item/assets"
     setup_auth :first_depositor, 'firstdpasswd'
     @request.env['RAW_POST_DATA'] = @test_file_one.read
     @request.env['CONTENT_TYPE'] = "application/zip"
@@ -37,6 +38,7 @@ class SwordControllerTest < ActionController::TestCase
   end
 
   test "second depositor should post deposit succesfully into second collection" do
+    skip "This test needs a running instance of hyacinth in order to create the item/assets"
     setup_auth :second_depositor, 'seconddpasswd'
     @request.env['RAW_POST_DATA'] = @test_file_two.read
     @request.env['CONTENT_TYPE'] = "application/zip"
