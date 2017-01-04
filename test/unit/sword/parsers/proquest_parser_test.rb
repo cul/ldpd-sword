@@ -26,4 +26,11 @@ class ProquestParserTest < ActiveSupport::TestCase
     assert_equal '05/05/2015', deposit.embargo_start_date, "Embargo start mismatch: #{deposit.embargo_start_date}"
     assert_equal '2017-05-05', deposit.embargo_release_date, "Embargo release mismatch: #{deposit.embargo_start_date}"
   end
+  test "parse TC as Teacher College in corporate name" do
+    content_dir = File.dirname(fixture_path_for('proquest/diss-003/mets.xml'))
+    parser = Sword::Parsers::ProquestParser.new
+    deposit = parser.parse(content_dir, nil)
+    assert deposit.is_a? Sword::DepositContent
+    assert_equal 'Teachers College. Science Education', deposit.corporate_name
+  end
 end

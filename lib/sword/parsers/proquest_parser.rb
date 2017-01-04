@@ -109,7 +109,13 @@ class ProquestParser
     
     affiliation = (contentXml.css("DISS_description>DISS_institution>DISS_inst_name").first || DEFAULT_NODE).text
     institutional_contact = (contentXml.css("DISS_description>DISS_institution>DISS_inst_contact").first || DEFAULT_NODE).text
-    affiliation = affiliation + ". " + institutional_contact
+
+    # fcd1, 04Jan17: Need to handle Teachers College a bit differently
+    if institutional_contact.partition(':').first == 'TC'
+      affiliation = 'Teachers College' + "." + institutional_contact.partition(':').third
+    else
+      affiliation = affiliation + ". " + institutional_contact
+    end
   end  
   
   def getAdvisors(contentXml)
