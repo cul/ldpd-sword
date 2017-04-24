@@ -55,15 +55,7 @@ module DepositUtils
     Rails.logger.info "Inspect source_path: #{source_path.inspect}"
     Rails.logger.info "Inspect destination_path: #{destination_path.inspect}"
     FileUtils.mkpath(destination_path)
-    filenames.each do |file|
-      FileUtils.cp( File.join(source_path,
-                              file
-                              ),
-                    File.join(destination_path,
-                              file
-                              )
-                    )
-    end
+    FileUtils.cp_r("#{source_path}/.",destination_path)
   end
 
   def self.removeDir(directory)
