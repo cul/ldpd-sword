@@ -86,7 +86,8 @@ class HyacinthComposer
     corporate_name_data = { value: @deposit_content.corporate_name,
                             name_type: 'corporate' }
     name_role_data = []
-    name_role_data << set_name_role('originator')
+    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_originator_value],
+                                    SWORD_CONFIG[:metadata_values][:name_role_originator_uri])
     @dynamic_field_data[:name] << { name_term: corporate_name_data,
                                     name_role: name_role_data }
   end
@@ -96,7 +97,8 @@ class HyacinthComposer
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
-    name_role_data << set_name_role('author')
+    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_author_value],
+                                    SWORD_CONFIG[:metadata_values][:name_role_author_uri])
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
@@ -106,16 +108,18 @@ class HyacinthComposer
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
-    name_role_data << set_name_role('advisor')
+    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_thesis_advisor_value],
+                                    SWORD_CONFIG[:metadata_values][:name_role_thesis_advisor_uri])
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
 
-  def set_name_role role
-    name_role_term_data = { value: role }
+  def set_name_role(name_role_value, name_role_uri = nil)
+    name_role_term_data = { value:  name_role_value }
+    name_role_term_data[:uri] = name_role_uri if name_role_uri
     { name_role_term: name_role_term_data }
   end
-  
+
   def set_abstract
     @dynamic_field_data[:abstract] = []
     @dynamic_field_data[:abstract] << { abstract_value: @deposit_content.abstract }

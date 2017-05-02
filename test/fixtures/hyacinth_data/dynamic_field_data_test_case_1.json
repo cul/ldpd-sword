@@ -21,7 +21,8 @@
 		{
 		    "name_role_term": 
 		    {
-			"value": "originator"
+			"uri": "http://id.loc.gov/vocabulary/relators/org",
+			"value": "Originator"
 		    }
 		}
 	    ]
@@ -39,7 +40,8 @@
                 {
                     "name_role_term":
                     {
-                        "value": "author"
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
                     }
                 }
             ]
@@ -57,7 +59,8 @@
                 {
                     "name_role_term":
                     {
-                        "value": "author"
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
                     }
                 }
             ]
@@ -75,7 +78,8 @@
                 {
                     "name_role_term":
                     {
-                        "value": "advisor"
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
                     }
                 }
             ]
@@ -93,7 +97,8 @@
                 {
                     "name_role_term":
                     {
-                        "value": "advisor"
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
                     }
                 }
             ]
