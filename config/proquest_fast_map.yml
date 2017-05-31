@@ -1605,9 +1605,10 @@ south african studies:
   - label: South Africans
     uri: http://id.worldcat.org/fast/1127226
 south asian studies:
-  topic:
+  geographic:
   - label: South Asia
     uri: http://id.worldcat.org/fast/1244520
+  topic:
   - label: South Asians
     uri: http://id.worldcat.org/fast/1127244
 special education:
