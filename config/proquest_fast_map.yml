@@ -81,8 +81,8 @@ american literature:
     uri: http://id.worldcat.org/fast/807113
 american studies:
   geographic:
-  - label: America
-    uri: http://id.worldcat.org/fast/1239786
+  - label: United States
+    uri: http://id.worldcat.org/fast/1204155
   topic:
   - label: Americans
     uri: http://id.worldcat.org/fast/807488
