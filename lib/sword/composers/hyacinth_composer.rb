@@ -204,7 +204,7 @@ class HyacinthComposer
 
   def set_degree_info
     @dynamic_field_data[:degree] = []
-    @dynamic_field_data[:degree] << { degree_name: 'PHD',
+    @dynamic_field_data[:degree] << { degree_name: 'Ph.D.',
                                       degree_level: 2,
                                       degree_discipline: @deposit_content.corporate_name.partition('.').last,
                                       degree_grantor: 'Columbia University' }
