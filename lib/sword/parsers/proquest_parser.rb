@@ -15,14 +15,13 @@ class ProquestParser
 
   TYPE_OF_CONTENT = 'text'
   # GENRE = 'Dissertations'
-  GENRE_VALUE = SWORD_CONFIG[:metadata_values][:genre_value_proquest]
-  GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_proquest]
+  GENRE_VALUE = METADATA_VALUES[:genre_value_proquest]
+  GENRE_URI = METADATA_VALUES[:genre_uri_proquest]
   # LANGUAGE = 'English'
-  LANGUAGE_VALUE = SWORD_CONFIG[:metadata_values][:language_value]
-  LANGUAGE_URI = SWORD_CONFIG[:metadata_values][:language_uri]
+  LANGUAGE_VALUE = METADATA_VALUES[:language_value]
+  LANGUAGE_URI = METADATA_VALUES[:language_uri]
   PHYSICAL_LOCATION = 'NNC'
   RECORD_CONTENT_SOURCE = 'NNC'
-  LANGUAGE_OF_CATALOGING = 'eng'
   DEGREE = 'Ph.D.'
   DEGREE_GRANTOR = 'Columbia University'
   CORPORATE_ROLE = 'originator'
@@ -71,7 +70,6 @@ class ProquestParser
     deposit_content.language_uri = LANGUAGE_URI
     deposit_content.physicalLocation = PHYSICAL_LOCATION
     deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
-    deposit_content.languageOfCataloging = LANGUAGE_OF_CATALOGING
     deposit_content.title = (contentXml.css("DISS_title").first || DEFAULT_NODE).text
     deposit_content.abstract = (contentXml.css("DISS_content>DISS_abstract").first || DEFAULT_NODE).text
     deposit_content.subjects = getSubjects(contentXml)

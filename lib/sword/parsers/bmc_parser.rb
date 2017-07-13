@@ -9,11 +9,11 @@ class BmcParser
   
   @@TYPE_OF_CONTENT = 'text'
   # @@GENRE = 'Articles'
-  @@GENRE_VALUE = SWORD_CONFIG[:metadata_values][:genre_value_bmc]
-  @@GENRE_URI = SWORD_CONFIG[:metadata_values][:genre_uri_bmc]
+  @@GENRE_VALUE = METADATA_VALUES[:genre_value_bmc]
+  @@GENRE_URI = METADATA_VALUES[:genre_uri_bmc]
   # @@LANGUAGE = 'English'
-  @@LANGUAGE_VALUE = SWORD_CONFIG[:metadata_values][:language_value]
-  @@LANGUAGE_URI = SWORD_CONFIG[:metadata_values][:language_uri]
+  @@LANGUAGE_VALUE = METADATA_VALUES[:language_value]
+  @@LANGUAGE_URI = METADATA_VALUES[:language_uri]
   
   @deposit_content = nil
   @zip_file = nil

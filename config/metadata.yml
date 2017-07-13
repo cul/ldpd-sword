@@ -1,0 +1,12 @@
+genre_value_bmc: articles
+genre_uri_bmc: 'http://vocab.getty.edu/aat/300048715'
+genre_value_proquest: theses
+genre_uri_proquest: 'http://vocab.getty.edu/aat/300028028'
+language_value: English
+language_uri: 'http://id.loc.gov/vocabulary/iso639-2/eng'
+name_role_originator_uri: 'http://id.loc.gov/vocabulary/relators/org'
+name_role_thesis_advisor_uri: 'http://id.loc.gov/vocabulary/relators/ths'
+name_role_author_uri: 'http://id.loc.gov/vocabulary/relators/aut'
+name_role_originator_value: 'Originator'
+name_role_thesis_advisor_value: 'Thesis advisor'
+name_role_author_value: 'Author'

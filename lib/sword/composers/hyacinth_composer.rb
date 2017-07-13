@@ -86,8 +86,8 @@ class HyacinthComposer
     corporate_name_data = { value: @deposit_content.corporate_name,
                             name_type: 'corporate' }
     name_role_data = []
-    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_originator_value],
-                                    SWORD_CONFIG[:metadata_values][:name_role_originator_uri])
+    name_role_data << set_name_role(METADATA_VALUES[:name_role_originator_value],
+                                    METADATA_VALUES[:name_role_originator_uri])
     @dynamic_field_data[:name] << { name_term: corporate_name_data,
                                     name_role: name_role_data }
   end
@@ -97,8 +97,8 @@ class HyacinthComposer
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
-    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_author_value],
-                                    SWORD_CONFIG[:metadata_values][:name_role_author_uri])
+    name_role_data << set_name_role(METADATA_VALUES[:name_role_author_value],
+                                    METADATA_VALUES[:name_role_author_uri])
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
@@ -108,8 +108,8 @@ class HyacinthComposer
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
-    name_role_data << set_name_role(SWORD_CONFIG[:metadata_values][:name_role_thesis_advisor_value],
-                                    SWORD_CONFIG[:metadata_values][:name_role_thesis_advisor_uri])
+    name_role_data << set_name_role(METADATA_VALUES[:name_role_thesis_advisor_value],
+                                    METADATA_VALUES[:name_role_thesis_advisor_uri])
     @dynamic_field_data[:name] << { name_term: personal_name_data,
                                     name_role: name_role_data }
   end
