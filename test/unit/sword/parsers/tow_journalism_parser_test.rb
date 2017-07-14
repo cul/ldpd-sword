@@ -13,17 +13,14 @@ class TowJournalismParserTest < ActiveSupport::TestCase
     assert deposit.is_a? Sword::DepositContent
     assert_equal 'Tow Journalism: The Title That Was', deposit.title
     first_author = Sword::Person.new
-    # first_author.first_name = 'John'
-    # first_author.middle_name = 'Fritz'
-    # first_author.first_name = 'Smith'
     result =  deposit.authors.any? do |person|
-      person.first_name == 'John'  && person.middle_name == 'Fritz' && person.last_name == 'Smith'
+      person.first_name == 'Hermione'  && person.middle_name == 'Jean' && person.last_name == 'Granger'
     end
-    assert result, 'Author Smith not found'
+    assert result, 'Author Granger not found'
 
     result =  deposit.authors.any? do |person|
-      person.first_name == 'Jane'  && person.middle_name == 'Freeda' && person.last_name == 'Doe'
+      person.first_name == 'Harry'  && person.middle_name == 'James' && person.last_name == 'Potter'
     end
-    assert result, 'Author Doe not found'
+    assert result, 'Author Potter not found'
   end
 end

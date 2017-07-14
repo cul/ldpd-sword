@@ -14,19 +14,12 @@ class TowJournalismParser
   DEFAULT_NODE = Nokogiri::XML("<foo></foo>").css("foo").first
 
   TYPE_OF_CONTENT = 'text'
-  # GENRE = 'Dissertations'
-  GENRE_VALUE = METADATA_VALUES[:genre_value_proquest]
-  GENRE_URI = METADATA_VALUES[:genre_uri_proquest]
-  # LANGUAGE = 'English'
+  GENRE_VALUE = METADATA_VALUES[:genre_value_tow_journalism]
+  GENRE_URI = METADATA_VALUES[:genre_uri_tow_journalism]
   LANGUAGE_VALUE = METADATA_VALUES[:language_value]
   LANGUAGE_URI = METADATA_VALUES[:language_uri]
   PHYSICAL_LOCATION = 'NNC'
   RECORD_CONTENT_SOURCE = 'NNC'
-  DEGREE = 'Ph.D.'
-  DEGREE_GRANTOR = 'Columbia University'
-  CORPORATE_ROLE = 'originator'
-  ADVISOR_ROLE = 'thesis advisor'
-  AUTHOR_ROLE = 'author'
   
   @deposit_content = nil
   
@@ -73,24 +66,11 @@ class TowJournalismParser
     deposit_content.title = (contentXml.css("title").first || DEFAULT_NODE).text
     deposit_content.abstract = (contentXml.css("content>abstract").first || DEFAULT_NODE).text
     deposit_content.subjects = getSubjects(contentXml)
-    deposit_content.dateIssued = (contentXml.css("DISS_description>DISS_dates>DISS_comp_date").first || DEFAULT_NODE).text
+    deposit_content.dateIssued = (contentXml.css("description>dates>date").first || DEFAULT_NODE).text
     # fcd1, 07/07/17: No equivalent field in sample Tow mets file, so will not set it
     # deposit_content.corporate_name = getAffiliation(contentXml)
-    deposit_content.corporate_role = CORPORATE_ROLE
     
     deposit_content.authors = getAuthors(contentXml)
-    # fcd1, 07/07/17: These are not theses, so no need to set advisors
-    # deposit_content.advisors = getAdvisors(contentXml)
-    # fcd1, 07/07/17: deposit_content.attachments is not used anywhere, so no need to set it
-    # deposit_content.attachments = getAttachments(content_dir)
-    # fcd1, 07/07/17: no embargo or restriction for this type of deposit
-    # deposit_content.embargo_code = (contentXml.css("DISS_submission").first || DEFAULT_NODE)["embargo_code"]
-    # if contentXml.at_css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt")
-    # deposit_content.embargo_start_date = contentXml.css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt").first.text
-    # end
-    # if contentXml.at_css("DISS_restriction>DISS_sales_restriction")
-    # deposit_content.sales_restriction_date = (contentXml.css("DISS_restriction>DISS_sales_restriction").first || DEFAULT_NODE)["remove"].to_s
-    # end
     
   end
   
@@ -132,7 +112,6 @@ class TowJournalismParser
       person.first_name = advisor.css("DISS_fname").text
       person.middle_name = advisor.css("DISS_middle").text
       person.affiliation = getAffiliation(contentXml)
-      person.role = ADVISOR_ROLE
       
       advisors.push(person)
     end     
@@ -151,10 +130,6 @@ class TowJournalismParser
       person.first_name = author.css("fname").text
       person.middle_name = author.css("middle").text
       person.affiliation = getAffiliation(contentXml)
-      person.role = AUTHOR_ROLE 
-      # fcd1, 07/07/17: Following two attributes are irrelevant, since we are not talking about dissertations
-      # person.degree = DEGREE
-      # person.degree_grantor = DEGREE_GRANTOR
       
       authors.push(person)
     end     

@@ -1,0 +1,93 @@
+{
+    "title" :
+    [
+	{
+	    "title_non_sort_portion" : null,
+	    "title_sort_portion" : "Tow Journalism: The Title That Was"
+	}
+    ]
+    ,
+    "name" : 
+    [
+	{
+	    "name_term" : 
+	    {
+		"value" : "Granger, Hermione Jean",
+		"name_type" : "personal"
+	    }
+	    ,
+	    "name_role" : 
+	    [
+		{
+		    "name_role_term" : 
+		    {
+			"uri" : "http://id.loc.gov/vocabulary/relators/aut",
+			"value" : "Author"
+		    }
+		}
+	    ]
+	}
+	,
+	{
+            "name_term" :
+            {
+                "value" : "Potter, Harry James",
+                "name_type" : "personal"
+            }
+            ,
+            "name_role" :
+            [
+                {
+                    "name_role_term" :
+                    {
+                        "uri" : "http://id.loc.gov/vocabulary/relators/aut",
+                        "value" : "Author"
+                    }
+                }
+            ]
+        }
+    ]
+    ,
+    "abstract" :
+    [
+	{
+	    "abstract_value" : "\n    This is the first paragraph that is, it seems.\n    This is the second paragraph that may have been.\n            "
+	}
+    ]
+    ,
+    "genre" : 
+    [
+	{
+	    "genre_term" : 
+	    {
+		"value" : "reports",
+		"uri" : "http://vocab.getty.edu/aat/300027267"
+	    }
+	}
+    ]
+    ,
+    "language" : 
+    [
+	{
+	    "language_term" : 
+	    {
+		"value" : "English",
+		"uri" : "http://id.loc.gov/vocabulary/iso639-2/eng"
+	    }
+	}
+    ]
+    ,
+    "date_issued" : 
+    [
+	{
+	    "date_issued_start_value" : "20/03/2015"
+	}
+    ]
+    ,
+    "deposited_by" : 
+    [
+	{
+	    "deposited_by_value" : "Tow Center for Digital Journalism"
+	}
+    ]
+}
