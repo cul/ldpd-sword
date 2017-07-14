@@ -47,8 +47,8 @@ class HyacinthComposer
     set_abstract
     set_genre
     set_language
-    set_subjects
-    set_note
+    set_subjects unless @deposit_content.subjects.nil?
+    set_note unless @deposit_content.note.nil?
     set_deposited_by
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
     set_degree_info unless @deposit_content.corporate_name.nil?

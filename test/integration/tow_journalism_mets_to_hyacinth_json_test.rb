@@ -51,4 +51,8 @@ class TowJournalismMetsToHyacinthJsonTest < ActionDispatch::IntegrationTest
     assert_equal @actual_result[:deposited_by], @expected_result[:deposited_by]
   end
 
+  test "verify JSON generated from mets is correct" do
+    assert_equal @actual_result, @expected_result
+  end
+
 end

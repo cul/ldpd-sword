@@ -65,7 +65,6 @@ class TowJournalismParser
     deposit_content.recordContentSource = RECORD_CONTENT_SOURCE
     deposit_content.title = (contentXml.css("title").first || DEFAULT_NODE).text
     deposit_content.abstract = (contentXml.css("content>abstract").first || DEFAULT_NODE).text
-    deposit_content.subjects = getSubjects(contentXml)
     deposit_content.dateIssued = (contentXml.css("description>dates>date").first || DEFAULT_NODE).text
     # fcd1, 07/07/17: No equivalent field in sample Tow mets file, so will not set it
     # deposit_content.corporate_name = getAffiliation(contentXml)
@@ -100,25 +99,6 @@ class TowJournalismParser
     end
   end  
   
-  def getAdvisors(contentXml)
-    
-    advisors = []
-    
-    contentXml.css("DISS_description>DISS_advisor").each do |advisor|
-      
-      person = Person.new
-      
-      person.last_name = advisor.css("DISS_surname").text
-      person.first_name = advisor.css("DISS_fname").text
-      person.middle_name = advisor.css("DISS_middle").text
-      person.affiliation = getAffiliation(contentXml)
-      
-      advisors.push(person)
-    end     
-    
-    return advisors
-  end    
- 
   def getAuthors(contentXml)
     
     authors = []
@@ -137,18 +117,6 @@ class TowJournalismParser
     return authors
   end   
  
-  def getSubjects(contentXml)
-     
-    subjects = []
-    
-    contentXml.css("DISS_description>DISS_categorization>DISS_category").each do |category|
-      subjects.push(category.css("DISS_cat_desc").text)
-    end     
-    
-    return subjects
-  end  
-  
-
 end
 end
 end
