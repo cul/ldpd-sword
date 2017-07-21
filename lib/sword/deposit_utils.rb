@@ -1,6 +1,7 @@
 # require "deposits/sword"
 require "sword/parsers/proquest_parser"
 require "sword/parsers/bmc_parser"
+require "sword/parsers/tow_journalism_parser"
 require 'zip'
 module Sword
 module DepositUtils
