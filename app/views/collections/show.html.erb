@@ -21,5 +21,6 @@
 </p>
 
 <% if current_user.admin? %>
-  <p><%= link_to 'Delete', @collection, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <%= link_to 'Edit', edit_collection_path(@collection) %> |
+  <%= link_to 'Delete', @collection, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
