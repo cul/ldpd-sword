@@ -150,6 +150,8 @@ module DepositUtils
       Sword::Parsers::ProquestParser.new
     when "bmc"
       Sword::Parsers::BmcParser.new
+    when "tow-journalism"
+      Sword::Parsers::TowJournalismParser.new
     else
       # raise an exception here
     end
