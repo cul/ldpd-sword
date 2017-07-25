@@ -12,22 +12,34 @@ module SwordHelper
   
       service.tag!("sword:version", content[:sword_version]) 
       service.tag!("sword:verbose", content["sword_verbose"])
-      service.tag!("sword:noOp", content["sword_noOp"])
+      service.tag!("sword:noOp", SWORD_CONFIG[:service_document][:sword_no_op])
   
       service.workspace do |workspace|
-        workspace.tag!("atom:title", "Academic Commons - SWORD Service")
+        workspace.tag!("atom:title", SWORD_CONFIG[:service_document][:workspace_atom_title])
         content[:collections].each do |collection_info|
           workspace.tag!("collection", {"href"=> "http://" + content[:http_host] + "/sword/deposit/" + collection_info[:slug]}) do |collection|
             collection.tag!("atom:title", collection_info[:atom_title])
             collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].nil?
           
-            collection_info[:mime_types].each do |content_type|
-              collection.accept content_type 
+            unless collection_info[:mime_types].nil?
+              collection_info[:mime_types].each do |content_type|
+                collection.accept content_type 
+              end
+            else
+              SWORD_CONFIG[:service_document][:default_accept_mime_types].each do |content_type|
+                collection.accept content_type
+              end
             end
-            
-            collection_info[:sword_package_types].each do |packaging_accepted|
-              collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
-            end 
+
+            unless collection_info[:sword_package_types].nil?
+              collection_info[:sword_package_types].each do |packaging_accepted|
+                collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
+              end
+            else
+              SWORD_CONFIG[:service_document][:default_accept_packaging].each do |packaging_accepted|
+                collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
+              end
+            end
           
             collection.tag!("sword:mediation", collection_info[:mediation_enabled])
           end 
