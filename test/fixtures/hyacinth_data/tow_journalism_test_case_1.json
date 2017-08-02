@@ -7,19 +7,57 @@
 	}
     ]
     ,
-    "name" : 
+    "name" :
     [
 	{
-	    "name_term" : 
+	    "name_term" :
+	    {
+		"value" : "Columbia University. Tow Center for Digital Journalism",
+		"name_type" : "corporate"
+	    }
+	    ,
+	    "name_role" :
+	    [
+		{
+		    "name_role_term" :
+		    {
+			"uri" : "http://id.loc.gov/vocabulary/relators/org",
+			"value" : "Originator"
+		    }
+		}
+	    ]
+	}
+	,
+	{
+	    "name_term" :
+	    {
+		"value" : "Columbia University. Journalism",
+		"name_type" : "corporate"
+	    }
+	    ,
+	    "name_role" :
+	    [
+		{
+		    "name_role_term" :
+		    {
+			"uri" : "http://id.loc.gov/vocabulary/relators/org",
+			"value" : "Originator"
+		    }
+		}
+	    ]
+	}
+	,
+	{
+	    "name_term" :
 	    {
 		"value" : "Granger, Hermione Jean",
 		"name_type" : "personal"
 	    }
 	    ,
-	    "name_role" : 
+	    "name_role" :
 	    [
 		{
-		    "name_role_term" : 
+		    "name_role_term" :
 		    {
 			"uri" : "http://id.loc.gov/vocabulary/relators/aut",
 			"value" : "Author"

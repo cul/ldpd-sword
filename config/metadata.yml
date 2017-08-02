@@ -12,3 +12,6 @@ name_role_author_uri: 'http://id.loc.gov/vocabulary/relators/aut'
 name_role_originator_value: 'Originator'
 name_role_thesis_advisor_value: 'Thesis advisor'
 name_role_author_value: 'Author'
+corporate_name_tow_journalism:
+ - 'Columbia University. Tow Center for Digital Journalism'
+ - 'Columbia University. Journalism'

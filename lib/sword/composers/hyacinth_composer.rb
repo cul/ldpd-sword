@@ -51,7 +51,7 @@ class HyacinthComposer
     set_note unless @deposit_content.note.nil?
     set_deposited_by
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
-    set_degree_info unless @deposit_content.corporate_name.nil?
+    set_degree_info if (@deposit_content.include_degree_info == true)
     set_date_issued unless @deposit_content.dateIssued.nil?
   end
 
@@ -66,8 +66,10 @@ class HyacinthComposer
   def set_names
     @dynamic_field_data[:name] = []
 
-    # only one corporate name
-    set_corporate_name_and_originator_role if @deposit_content.corporate_name
+    # multiple corporate names allowed, deposit_content.corporate_names is an array
+    @deposit_content.corporate_names.each do |corporate_name|
+      set_corporate_name_and_originator_role corporate_name
+    end if @deposit_content.corporate_names
 
     # multiple authors allowed, deposit_content.authors is an array of
     # Deposit::Person
@@ -82,8 +84,8 @@ class HyacinthComposer
     end if @deposit_content.advisors
   end
 
-  def set_corporate_name_and_originator_role
-    corporate_name_data = { value: @deposit_content.corporate_name,
+  def set_corporate_name_and_originator_role corporate_name
+    corporate_name_data = { value: "#{corporate_name}",
                             name_type: 'corporate' }
     name_role_data = []
     name_role_data << set_name_role(METADATA_VALUES[:name_role_originator_value],
@@ -206,7 +208,7 @@ class HyacinthComposer
     @dynamic_field_data[:degree] = []
     @dynamic_field_data[:degree] << { degree_name: 'Ph.D.',
                                       degree_level: 2,
-                                      degree_discipline: @deposit_content.corporate_name.partition('.').last,
+                                      degree_discipline: @deposit_content.corporate_names.first.partition('.').last,
                                       degree_grantor: 'Columbia University' }
   end
 

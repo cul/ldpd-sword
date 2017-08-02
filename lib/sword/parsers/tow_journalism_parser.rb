@@ -20,28 +20,28 @@ class TowJournalismParser
   LANGUAGE_URI = METADATA_VALUES[:language_uri]
   PHYSICAL_LOCATION = 'NNC'
   RECORD_CONTENT_SOURCE = 'NNC'
-  
+
   @deposit_content = nil
-  
-  attr_accessor :deposit_content 
-                
+
+  attr_accessor :deposit_content
+
   def parse(temp_dir, zip_file)
 
     @deposit_content = DepositContent.new
-    
+
     parse_content(@deposit_content, temp_dir)
-    
+
     return @deposit_content
-  end  
+  end
 
   def findDataFile(directory)
       Dir.glob(directory + "/mets.xml") { | file |
         return file
       }
   end
-  
+
   def parse_content(deposit_content, content_dir)
-    
+
     dataFile = findDataFile(content_dir)
     contentXml = nil
     open(dataFile) do |b|
@@ -54,7 +54,7 @@ class TowJournalismParser
       contentXml.gsub!(/[\x0B-\x1F]/,'')
       contentXml = Nokogiri::XML(contentXml)
     end
-    
+
     deposit_content.type_of_content = TYPE_OF_CONTENT
     # deposit_content.genre = GENRE
     deposit_content.genre_value = GENRE_VALUE
@@ -66,28 +66,26 @@ class TowJournalismParser
     deposit_content.title = (contentXml.css("title").first || DEFAULT_NODE).text
     deposit_content.abstract = (contentXml.css("content>abstract").first || DEFAULT_NODE).text
     deposit_content.dateIssued = (contentXml.css("description>dates>date").first || DEFAULT_NODE).text
-    # fcd1, 07/07/17: No equivalent field in sample Tow mets file, so will not set it
-    # deposit_content.corporate_name = getAffiliation(contentXml)
-    
+    deposit_content.corporate_names = getCorporateNames()
     deposit_content.authors = getAuthors(contentXml)
-    
+
   end
-  
+
   def getAttachments(content_dir)
-    
+
       file_list = FileList.new(content_dir + "/*").exclude('**/mets.xml', '**/*DATA.xml')
 
       attachments = []
-      
+
       file_list.each  do | file |
         attachments.push(file)
       end
-      
+
       return attachments
   end
-  
+
   def getAffiliation(contentXml)
-    
+
     affiliation = (contentXml.css("DISS_description>DISS_institution>DISS_inst_name").first || DEFAULT_NODE).text
     institutional_contact = (contentXml.css("DISS_description>DISS_institution>DISS_inst_contact").first || DEFAULT_NODE).text
 
@@ -97,26 +95,30 @@ class TowJournalismParser
     else
       affiliation = affiliation + ". " + institutional_contact
     end
-  end  
-  
+  end
+
   def getAuthors(contentXml)
-    
+
     authors = []
-    
+
     contentXml.css("authorship>author").each do |author|
       person = Person.new
-      
+
       person.last_name = author.css("surname").text
       person.first_name = author.css("fname").text
       person.middle_name = author.css("middle").text
       person.affiliation = getAffiliation(contentXml)
-      
+
       authors.push(person)
-    end     
-    
+    end
+
     return authors
-  end   
- 
+  end
+
+  def getCorporateNames()
+    METADATA_VALUES[:corporate_name_tow_journalism]
+  end
+
 end
 end
 end

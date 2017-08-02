@@ -25,13 +25,14 @@ module Sword
                   :type_of_content,
                   :authors,
                   :advisors,
-                  :corporate_name,
+                  :corporate_names,
                   :corporate_role,
                   :attachments,
                   :embargo_start_date,
                   :embargo_code,
                   :sales_restriction_date,
-                  :note
+                  :note,
+                  :include_degree_info
     def embargo_release_date
       DepositContent.getEmbargoDate(self)
     end

@@ -31,6 +31,6 @@ class ProquestParserTest < ActiveSupport::TestCase
     parser = Sword::Parsers::ProquestParser.new
     deposit = parser.parse(content_dir, nil)
     assert deposit.is_a? Sword::DepositContent
-    assert_equal 'Teachers College. Science Education', deposit.corporate_name
+    assert_equal 'Teachers College. Science Education', deposit.corporate_names.first
   end
 end
