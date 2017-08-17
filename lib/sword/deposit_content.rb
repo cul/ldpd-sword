@@ -15,6 +15,7 @@ module Sword
                   :issn,
                   :pubdate,
                   :dateIssued,
+                  :parent_publication_title,
                   :volume,
                   :issue,
                   :fpage,

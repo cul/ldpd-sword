@@ -95,7 +95,11 @@ class HyacinthComposer
   end
   
   def set_personal_name_and_author_role author
-    value_data = "#{author.last_name}, #{author.first_name} #{author.middle_name}"
+    if author.full_name_naf_format.nil?
+      value_data = "#{author.last_name}, #{author.first_name} #{author.middle_name}"
+    else
+      value_data = "#{author.full_name_naf_format}"
+    end
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
