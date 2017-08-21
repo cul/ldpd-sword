@@ -93,6 +93,7 @@ class SwordController < ApplicationController
     @deposit.item_in_hyacinth = @hyacinth_pid
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
+    head :created
   end
 
   def service_document
