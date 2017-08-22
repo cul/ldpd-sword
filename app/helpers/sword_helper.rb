@@ -17,7 +17,7 @@ module SwordHelper
       service.workspace do |workspace|
         workspace.tag!("atom:title", SWORD_CONFIG[:service_document][:workspace_atom_title])
         content[:collections].each do |collection_info|
-          workspace.tag!("collection", {"href"=> "http://" + content[:http_host] + "/sword/deposit/" + collection_info[:slug]}) do |collection|
+          workspace.tag!("collection", {"href"=> "https://" + content[:http_host] + "/sword/deposit/" + collection_info[:slug]}) do |collection|
             collection.tag!("atom:title", collection_info[:atom_title])
             collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].nil?
           
