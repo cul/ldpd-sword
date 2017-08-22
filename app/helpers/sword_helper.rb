@@ -21,7 +21,7 @@ module SwordHelper
             collection.tag!("atom:title", collection_info[:atom_title])
             collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].nil?
           
-            unless collection_info[:mime_types].nil?
+            unless collection_info[:mime_types].empty?
               collection_info[:mime_types].each do |content_type|
                 collection.accept content_type 
               end
@@ -31,7 +31,7 @@ module SwordHelper
               end
             end
 
-            unless collection_info[:sword_package_types].nil?
+            unless collection_info[:sword_package_types].empty?
               collection_info[:sword_package_types].each do |packaging_accepted|
                 collection.tag!("sword:acceptPackaging", {"q"=>"1.0"}, packaging_accepted)
               end

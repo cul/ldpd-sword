@@ -9,7 +9,6 @@ class SwordHelperTest < ActionView::TestCase
     content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
     content[:http_host] = 'example.com'
     content[:collections] = []
-    sample_info = Hash.new
     sample_info = HashWithIndifferentAccess.new
     sample_info[:atom_title] = 'Atom Title of First Test Collection'
     sample_info[:slug] = 'first-test-collection'
@@ -29,8 +28,9 @@ class SwordHelperTest < ActionView::TestCase
     content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
     content[:http_host] = 'example.com'
     content[:collections] = []
-    sample_info = Hash.new
     sample_info = HashWithIndifferentAccess.new
+    sample_info[:mime_types] = []
+    sample_info[:sword_package_types] = []
     sample_info[:atom_title] = 'Atom Title of First Test Collection'
     sample_info[:slug] = 'first-test-collection'
     sample_info[:abstract] = 'Collection Abstract'

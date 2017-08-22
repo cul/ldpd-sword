@@ -5,7 +5,7 @@
   <sword:noOp>false</sword:noOp>
   <workspace>
     <atom:title>Academic Commons - SWORD Service</atom:title>
-    <collection href="http://example.com/sword/deposit/first-test-collection">
+    <collection href="https://example.com/sword/deposit/first-test-collection">
       <atom:title>Atom Title of First Test Collection</atom:title>
       <dcterms:abstract>Collection Abstract</dcterms:abstract>
       <accept>application/zip</accept>
