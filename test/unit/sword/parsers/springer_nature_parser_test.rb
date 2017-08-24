@@ -13,7 +13,7 @@ class SpringerNatureParserTest < ActiveSupport::TestCase
     assert deposit.is_a? Sword::DepositContent
     assert_equal 'This is the title of the fake Springer Nature Article', deposit.title
     assert_equal 'Abstract: This is a really short abstract.', deposit.abstract
-    assert_equal 'http://dx.doi.org/10.1186/s13033-015-0032-8', deposit.pub_doi
+    assert_equal '10.1186/s13033-015-0032-8', deposit.pub_doi
     assert_equal '2016-01-04', deposit.dateIssued
     assert_equal 'Mental health systems, Mozambique, Psychiatric technician, Scaling-up services', deposit.note
     assert_equal 'International Journal of Stuff', deposit.parent_publication_title

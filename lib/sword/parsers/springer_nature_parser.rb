@@ -60,7 +60,10 @@ class SpringerNatureParser
     @deposit_content.title = (@contentXml.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}").first).text
     @deposit_content.abstract = (@contentXml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}").first).text
     @deposit_content.authors = getAuthors
-    @deposit_content.pub_doi = (@contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first).text
+    pub_doi_url = (@contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first).text
+    # remove url prefix, ugly
+    pub_doi_url.slice!(0,18)
+    @deposit_content.pub_doi = pub_doi_url
     @deposit_content.dateIssued = (@contentXml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}").first).text
     @deposit_content.note = getSubjects
     parse_bibliographic_citation

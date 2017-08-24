@@ -233,6 +233,7 @@ class HyacinthComposer
     parent_publication_data[:parent_publication_volume] = @deposit_content.volume unless @deposit_content.volume.nil?
     parent_publication_data[:parent_publication_issue] = @deposit_content.issue unless @deposit_content.issue.nil?
     parent_publication_data[:parent_publication_page_start] = @deposit_content.fpage unless @deposit_content.fpage.nil?
+    parent_publication_data[:parent_publication_doi] = @deposit_content.pub_doi unless @deposit_content.pub_doi.nil?
     @dynamic_field_data[:parent_publication] << parent_publication_data
   end
 end

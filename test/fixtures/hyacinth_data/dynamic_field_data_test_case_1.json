@@ -208,7 +208,8 @@
 	    "parent_publication_date_created_textual" : "2016",
 	    "parent_publication_volume" : "10",
 	    "parent_publication_issue" : "11",
-	    "parent_publication_page_start" : "78"
+	    "parent_publication_page_start" : "78",
+	    "parent_publication_doi" : "10.1186/s13033-015-0032-8"
 	}
     ]
 }
