@@ -44,12 +44,21 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     first_advisor.affiliation = 'should not see this'
     second_advisor = Sword::Person.new
     second_advisor.last_name = 'Doey'
-    second_advisor.first_name = 'Janey'
-    second_advisor.middle_name = 'Harriety'
+    second_advisor.first_name = 'J'
+    second_advisor.middle_name = 'H'
     second_advisor.role = 'should not see this'
     second_advisor.affiliation = 'should not see this'
+    third_advisor = Sword::Person.new
+    third_advisor.full_name_naf_format = 'Kennedy, J F'
+    third_advisor.role = 'should not see this'
+    third_advisor.affiliation = 'should not see this'
+    fourth_advisor = Sword::Person.new
+    fourth_advisor.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
+    fourth_advisor.role = 'should not see this'
+    fourth_advisor.affiliation = 'should not see this'
     @deposit_content.advisors = []
-    @deposit_content.advisors << first_advisor << second_advisor
+    @deposit_content.advisors << first_advisor << second_advisor << third_advisor <<
+      fourth_advisor
 
     @deposit_content.abstract = 'Abstract for Testing the Hyacinth Composer'
     @deposit_content.genre_value = 'articles'
@@ -80,8 +89,12 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:title], @expected_result[:title]
   end
 
-  test "#compose_dynamic_field_data via #set_names encodes names correctly, contains single letter strings" do
+  test "#compose_dynamic_field_data via #set_names encodes names correctly (authors), contains single letter strings" do
     assert_equal @actual_result[:name][4], @expected_result[:name][4]
+  end
+
+  test "#compose_dynamic_field_data via #set_names encodes names correctly (advisors), contains single letter strings" do
+    assert_equal @actual_result[:name][8], @expected_result[:name][8]
   end
 
   test "#compose_dynamic_field_data via #set_names encodes names correctly" do

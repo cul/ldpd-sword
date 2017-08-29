@@ -96,22 +96,7 @@ class HyacinthComposer
   end
   
   def set_personal_name_and_author_role author
-    if author.full_name_naf_format.nil?
-      # Add period to first_name and/or middle_name if name contains only one letter
-      prepped_first_name = author.first_name.length == 1 ? author.first_name.slice(0,1) + "." :
-        author.first_name unless author.first_name.nil?
-      prepped_middle_name = author.middle_name.length == 1 ? author.middle_name.slice(0,1) + "." :
-        author.middle_name unless author.middle_name.nil?
-      value_data = "#{author.last_name}, #{prepped_first_name} #{prepped_middle_name}"
-    else
-      value_data = "#{author.full_name_naf_format}"
-      # using lookahead, following catches all single letter names and puts
-      # a period after them, except for the last one, which does not have
-      # a trailing space
-      value_data.gsub!( / (\w)(?= )/, ' \1.')
-      # Following puts period on last initial, if needed
-      value_data.gsub!( /( \w$)/, '\1.')
-    end
+    value_data = prep_name author
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
@@ -121,8 +106,8 @@ class HyacinthComposer
                                     name_role: name_role_data }
   end
   
-  def set_personal_name_and_advisor_role advisor
-    value_data = "#{advisor.last_name}, #{advisor.first_name} #{advisor.middle_name}"
+   def set_personal_name_and_advisor_role advisor
+    value_data = prep_name advisor
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
     name_role_data = []
@@ -246,6 +231,26 @@ class HyacinthComposer
     parent_publication_data[:parent_publication_page_start] = @deposit_content.fpage unless @deposit_content.fpage.nil?
     parent_publication_data[:parent_publication_doi] = @deposit_content.pub_doi unless @deposit_content.pub_doi.nil?
     @dynamic_field_data[:parent_publication] << parent_publication_data
+  end
+
+  def prep_name person
+    if person.full_name_naf_format.nil?
+      # Add period to first_name and/or middle_name if name contains only one letter
+      prepped_first_name = person.first_name.length == 1 ? person.first_name.slice(0,1) + "." :
+        person.first_name unless person.first_name.nil?
+      prepped_middle_name = person.middle_name.length == 1 ? person.middle_name.slice(0,1) + "." :
+        person.middle_name unless person.middle_name.nil?
+      value_data = "#{person.last_name}, #{prepped_first_name} #{prepped_middle_name}"
+    else
+      value_data = "#{person.full_name_naf_format}"
+      # using lookahead, following catches all single letter names and puts
+      # a period after them, except for the last one, which does not have
+      # a trailing space
+      value_data.gsub!( / (\w)(?= )/, ' \1.')
+      # Following puts period on last initial, if needed
+      value_data.gsub!( /( \w$)/, '\1.')
+    end
+    value_data
   end
 end
 end
