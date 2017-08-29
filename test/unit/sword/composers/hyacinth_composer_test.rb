@@ -20,12 +20,21 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     first_author.affiliation = 'should not see this'
     second_author = Sword::Person.new
     second_author.last_name = 'Doe'
-    second_author.first_name = 'Jane'
-    second_author.middle_name = 'Harriet'
+    second_author.first_name = 'J'
+    second_author.middle_name = 'H'
     second_author.role = 'should not see this'
     second_author.affiliation = 'should not see this'
+    third_author = Sword::Person.new
+    third_author.full_name_naf_format = 'Kennedy, J F'
+    third_author.role = 'should not see this'
+    third_author.affiliation = 'should not see this'
+    fourth_author = Sword::Person.new
+    fourth_author.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
+    fourth_author.role = 'should not see this'
+    fourth_author.affiliation = 'should not see this'
     @deposit_content.authors = []
-    @deposit_content.authors << first_author << second_author
+    @deposit_content.authors << first_author << second_author << third_author <<
+      fourth_author
 
     first_advisor = Sword::Person.new
     first_advisor.last_name = 'Smithy'
@@ -71,6 +80,10 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:title], @expected_result[:title]
   end
 
+  test "#compose_dynamic_field_data via #set_names encodes names correctly, contains single letter strings" do
+    assert_equal @actual_result[:name][4], @expected_result[:name][4]
+  end
+
   test "#compose_dynamic_field_data via #set_names encodes names correctly" do
     assert_equal @actual_result[:name], @expected_result[:name]
   end
@@ -99,11 +112,11 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     assert_equal @actual_result[:deposited_by], @expected_result[:deposited_by]
   end
 
-  test "should #compose_dynamic_field_data encodes correctly" do
-    assert_equal @actual_result, @expected_result
-  end
-
   test "#compose_dynamic_field_data via #set_parent_publication encodes parent publication correctly" do
     assert_equal @actual_result[:parent_publication], @expected_result[:parent_publication]
+  end
+
+  test "should #compose_dynamic_field_data encodes correctly" do
+    assert_equal @actual_result, @expected_result
   end
 end

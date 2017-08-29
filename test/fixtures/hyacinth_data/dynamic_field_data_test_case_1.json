@@ -50,7 +50,45 @@
 	{
             "name_term":
             {
-                "value": "Doe, Jane Harriet",
+                "value": "Doe, J. H.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, J. F.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, A. Bee C. Dee F. Jay K.",
                 "name_type": "personal"
             }
             ,

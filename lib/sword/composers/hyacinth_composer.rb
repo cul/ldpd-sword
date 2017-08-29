@@ -97,9 +97,20 @@ class HyacinthComposer
   
   def set_personal_name_and_author_role author
     if author.full_name_naf_format.nil?
-      value_data = "#{author.last_name}, #{author.first_name} #{author.middle_name}"
+      # Add period to first_name and/or middle_name if name contains only one letter
+      prepped_first_name = author.first_name.length == 1 ? author.first_name.slice(0,1) + "." :
+        author.first_name unless author.first_name.nil?
+      prepped_middle_name = author.middle_name.length == 1 ? author.middle_name.slice(0,1) + "." :
+        author.middle_name unless author.middle_name.nil?
+      value_data = "#{author.last_name}, #{prepped_first_name} #{prepped_middle_name}"
     else
       value_data = "#{author.full_name_naf_format}"
+      # using lookahead, following catches all single letter names and puts
+      # a period after them, except for the last one, which does not have
+      # a trailing space
+      value_data.gsub!( / (\w)(?= )/, ' \1.')
+      # Following puts period on last initial, if needed
+      value_data.gsub!( /( \w$)/, '\1.')
     end
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
