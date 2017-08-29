@@ -14,7 +14,7 @@ class SpringerNatureParserTest < ActiveSupport::TestCase
     assert_equal 'This is the title of the fake Springer Nature Article', deposit.title
     assert_equal 'Abstract: This is a really short abstract.', deposit.abstract
     assert_equal '10.1186/s13033-015-0032-8', deposit.pub_doi
-    assert_equal '2016-01-04', deposit.dateIssued
+    assert_equal '2016', deposit.dateIssued
     assert_equal 'Mental health systems, Mozambique, Psychiatric technician, Scaling-up services', deposit.note
     assert_equal 'International Journal of Stuff', deposit.parent_publication_title
     assert_equal '2016', deposit.pubdate

@@ -64,7 +64,8 @@ class SpringerNatureParser
     # remove url prefix, ugly
     pub_doi_url.slice!(0,18)
     @deposit_content.pub_doi = pub_doi_url
-    @deposit_content.dateIssued = (@contentXml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}").first).text
+    # only want the year
+    @deposit_content.dateIssued = (@contentXml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}").first).text.slice(0,4)
     @deposit_content.note = getSubjects
     parse_bibliographic_citation
   end
