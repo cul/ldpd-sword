@@ -53,6 +53,7 @@ class HyacinthComposer
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
     set_degree_info if (@deposit_content.include_degree_info == true)
     set_date_issued unless @deposit_content.dateIssued.nil?
+    set_parent_publication unless @deposit_content.parent_publication_title.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -219,6 +220,21 @@ class HyacinthComposer
   def set_date_issued
     @dynamic_field_data[:date_issued] = []
     @dynamic_field_data[:date_issued] << { date_issued_start_value: @deposit_content.dateIssued }
+  end
+
+  def set_parent_publication
+    @dynamic_field_data[:parent_publication] = []
+    # if this method is being called, there must be an entry in @deposit_content.parent_publication_title
+    title_data = []
+    title_data << { parent_publication_title_non_sort_portion: nil,
+      parent_publication_title_sort_portion:  @deposit_content.parent_publication_title }
+    parent_publication_data = { parent_publication_title: title_data }
+    parent_publication_data[:parent_publication_date_created_textual] = @deposit_content.pubdate unless @deposit_content.pubdate.nil?
+    parent_publication_data[:parent_publication_volume] = @deposit_content.volume unless @deposit_content.volume.nil?
+    parent_publication_data[:parent_publication_issue] = @deposit_content.issue unless @deposit_content.issue.nil?
+    parent_publication_data[:parent_publication_page_start] = @deposit_content.fpage unless @deposit_content.fpage.nil?
+    parent_publication_data[:parent_publication_doi] = @deposit_content.pub_doi unless @deposit_content.pub_doi.nil?
+    @dynamic_field_data[:parent_publication] << parent_publication_data
   end
 end
 end

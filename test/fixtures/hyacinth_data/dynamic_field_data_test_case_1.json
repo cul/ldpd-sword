@@ -193,5 +193,24 @@
 	    "deposited_by_value": "First Test Depositor"
 	}
     ]
+    ,
+    "parent_publication" :
+    [
+	{
+	    "parent_publication_title" : 
+	    [
+		{
+		    "parent_publication_title_non_sort_portion":null,
+		    "parent_publication_title_sort_portion" : "International Journal of Stuff"
+		}
+	    ]
+	    ,
+	    "parent_publication_date_created_textual" : "2016",
+	    "parent_publication_volume" : "10",
+	    "parent_publication_issue" : "11",
+	    "parent_publication_page_start" : "78",
+	    "parent_publication_doi" : "10.1186/s13033-015-0032-8"
+	}
+    ]
 }
 

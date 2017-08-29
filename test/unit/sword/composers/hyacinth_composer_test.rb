@@ -50,6 +50,12 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.subjects = []
     @deposit_content.subjects << 'Subject one' << 'Subject two' << 'Canadian Studies'
     @deposit_content.note = 'Copyright: 2016 Hyacinth Composer'
+    @deposit_content.parent_publication_title = 'International Journal of Stuff'
+    @deposit_content.pubdate = '2016'
+    @deposit_content.volume = '10'
+    @deposit_content.issue = '11'
+    @deposit_content.fpage = '78'
+    @deposit_content.pub_doi = '10.1186/s13033-015-0032-8'
   
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project',
@@ -95,5 +101,9 @@ class HyacinthComposerTest < ActiveSupport::TestCase
 
   test "should #compose_dynamic_field_data encodes correctly" do
     assert_equal @actual_result, @expected_result
+  end
+
+  test "#compose_dynamic_field_data via #set_parent_publication encodes parent publication correctly" do
+    assert_equal @actual_result[:parent_publication], @expected_result[:parent_publication]
   end
 end
