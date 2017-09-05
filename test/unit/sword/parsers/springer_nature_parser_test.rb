@@ -12,7 +12,8 @@ class SpringerNatureParserTest < ActiveSupport::TestCase
     deposit = parser.parse(content_dir, nil)
     assert deposit.is_a? Sword::DepositContent
     assert_equal 'This is the title of the fake Springer Nature Article', deposit.title
-    assert_equal 'Abstract: This is a really short abstract.', deposit.abstract
+    expected_abstract_value = fixture_file 'springer_nature/expected_abstract_value.txt'
+    assert_equal expected_abstract_value, deposit.abstract
     assert_equal '10.1186/s13033-015-0032-8', deposit.pub_doi
     assert_equal '2016', deposit.dateIssued
     assert_equal 'Mental health systems, Mozambique, Psychiatric technician, Scaling-up services', deposit.note

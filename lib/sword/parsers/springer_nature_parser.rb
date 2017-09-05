@@ -58,7 +58,7 @@ class SpringerNatureParser
     @deposit_content.language_value = LANGUAGE_VALUE
     @deposit_content.language_uri = LANGUAGE_URI
     @deposit_content.title = (@contentXml.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}").first).text
-    @deposit_content.abstract = (@contentXml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}").first).text
+    @deposit_content.abstract = getAbstract
     @deposit_content.authors = getAuthors
     pub_doi_url = (@contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first).text
     # remove url prefix, ugly
@@ -106,6 +106,14 @@ class SpringerNatureParser
     end
 
     return subjects_string.chomp ', '
+  end
+
+  # Abstract value from Springer Nature starts with the word "Abstract", which is
+  # redundant. Therefore, it will be removed -- along with preceding white space
+  # and following '\n'
+  def getAbstract
+    abstract_value = (@contentXml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}").first).text
+    abstract_value.gsub(/^\s*Abstract\n/,'')
   end
 
   def parse_bibliographic_citation

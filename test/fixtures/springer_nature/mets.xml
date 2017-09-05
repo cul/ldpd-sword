@@ -26,7 +26,28 @@
 <epdcx:valueString>Scaling-up services</epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
-<epdcx:valueString>Abstract: This is a really short abstract.</epdcx:valueString>
+<epdcx:valueString>
+              Abstract
+              
+                Background
+                Light blue.
+              
+              
+                Objective
+                It's a subjective objective.
+              
+              
+                Method
+                It's a private method.
+              
+              
+                Results
+                I'm still waiting on the results.
+              
+              
+                Conclusion
+                Should've gone fishing.
+</epdcx:valueString>
 </epdcx:statement>
 <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
 <epdcx:valueString>Par, John</epdcx:valueString>
