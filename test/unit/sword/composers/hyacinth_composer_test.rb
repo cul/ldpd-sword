@@ -74,6 +74,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.issue = '11'
     @deposit_content.fpage = '78'
     @deposit_content.pub_doi = '10.1186/s13033-015-0032-8'
+    @deposit_content.type_of_resource = 'text'
   
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project',
@@ -127,6 +128,10 @@ class HyacinthComposerTest < ActiveSupport::TestCase
 
   test "#compose_dynamic_field_data via #set_parent_publication encodes parent publication correctly" do
     assert_equal @actual_result[:parent_publication], @expected_result[:parent_publication]
+  end
+
+  test "#compose_dynamic_field_data via #set_type_of_resource encodes type_of_resource correctly" do
+    assert_equal @actual_result[:type_of_resource], @expected_result[:type_of_resource]
   end
 
   test "should #compose_dynamic_field_data encodes correctly" do

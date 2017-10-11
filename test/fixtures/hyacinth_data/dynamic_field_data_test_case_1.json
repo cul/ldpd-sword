@@ -270,6 +270,13 @@
 	}
     ]
     ,
+    "type_of_resource":
+    [
+	{
+	    "type_of_resource_value": "text"
+	}
+    ]
+    ,
     "parent_publication" :
     [
 	{

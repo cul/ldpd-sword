@@ -6,7 +6,7 @@ require 'sword/person'
 module Sword
 module Parsers
 class SpringerNatureParser
-  TYPE_OF_CONTENT = 'text'
+  TYPE_OF_RESOURCE = 'text'
   GENRE_VALUE = METADATA_VALUES[:genre_value_springer_nature]
   GENRE_URI = METADATA_VALUES[:genre_uri_springer_nature]
   LANGUAGE_VALUE = METADATA_VALUES[:language_value]
@@ -52,7 +52,7 @@ class SpringerNatureParser
       @contentXml = Nokogiri::XML @contentXml
     end
 
-    @deposit_content.type_of_content = TYPE_OF_CONTENT
+    @deposit_content.type_of_resource = TYPE_OF_RESOURCE
     @deposit_content.genre_value = GENRE_VALUE
     @deposit_content.genre_uri = GENRE_URI
     @deposit_content.language_value = LANGUAGE_VALUE

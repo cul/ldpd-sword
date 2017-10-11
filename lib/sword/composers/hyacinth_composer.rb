@@ -46,6 +46,7 @@ class HyacinthComposer
     set_names
     set_abstract
     set_genre
+    set_type_of_resource unless @deposit_content.type_of_resource.nil?
     set_language
     set_subjects unless @deposit_content.subjects.nil?
     set_note unless @deposit_content.note.nil?
@@ -251,6 +252,11 @@ class HyacinthComposer
       value_data.gsub!( /( \w$)/, '\1.')
     end
     value_data
+  end
+
+  def set_type_of_resource
+    @dynamic_field_data[:type_of_resource] = []
+    @dynamic_field_data[:type_of_resource] << { type_of_resource_value: @deposit_content.type_of_resource }
   end
 end
 end
