@@ -57,16 +57,13 @@ class SpringerNatureParser
     @deposit_content.genre_uri = GENRE_URI
     @deposit_content.language_value = LANGUAGE_VALUE
     @deposit_content.language_uri = LANGUAGE_URI
-    @deposit_content.title = (@contentXml.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}").first).text
+    @deposit_content.title = getTitle
     @deposit_content.abstract = getAbstract
     @deposit_content.authors = getAuthors
-    pub_doi_url = (@contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first).text
-    # remove url prefix, ugly
-    pub_doi_url.slice!(0,18)
-    @deposit_content.pub_doi = pub_doi_url
-    # only want the year
-    @deposit_content.dateIssued = (@contentXml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}").first).text.slice(0,4)
+    @deposit_content.pub_doi = getPubDoi
+    @deposit_content.dateIssued = getDateIssued
     @deposit_content.note = getSubjects
+
     parse_bibliographic_citation
   end
 
@@ -112,13 +109,17 @@ class SpringerNatureParser
   # redundant. Therefore, it will be removed -- along with preceding white space
   # and following '\n'
   def getAbstract
-    abstract_value = (@contentXml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}").first).text
+    abstract_value_first = @contentXml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}").first
+    return nil if abstract_value_first.nil?
+    abstract_value = abstract_value_first.text
     abstract_value.gsub(/^\s*Abstract\n/,'')
   end
 
   def parse_bibliographic_citation
 
-    bibliographic_citation = (@contentXml.css("#{PREFIX_EPRINT_TERMS}bibliographicCitation#{POSTFIX}").first).text
+    bibliographic_citation_first = @contentXml.css("#{PREFIX_EPRINT_TERMS}bibliographicCitation#{POSTFIX}").first
+    return nil if bibliographic_citation_first.nil?
+    bibliographic_citation = bibliographic_citation_first.text
     # Here is an example of an entry from an actual mets.xml
     # International Journal of Mental Health Systems. 2016 Jan 04;10(1):1
     match = /^([ \w]+)\. (\d\d\d\d) \w\w\w \d\d;(\d+)\((\d+)\):(\d*)/.match bibliographic_citation
@@ -129,6 +130,28 @@ class SpringerNatureParser
       @deposit_content.issue = match[4]
       @deposit_content.fpage = match[5]
     end
+  end
+
+  def getTitle
+    title_first = @contentXml.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}").first
+    return nil if title_first.nil?
+    title_first.text
+  end
+
+  def getPubDoi
+    pub_doi_url_first = @contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first
+    return nil if pub_doi_url_first.nil?
+    pub_doi_url = pub_doi_url_first.text
+    # remove url prefix, ugly way to do it
+    pub_doi_url.slice!(0,18)
+    pub_doi_url
+  end
+
+  def getDateIssued
+    date_issued_first = @contentXml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}").first
+    return nil if date_issued_first.nil?
+    # only want the year
+    date_issued = date_issued_first.text.slice(0,4)
   end
 
 end

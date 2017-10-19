@@ -44,4 +44,10 @@ class SpringerNatureParserTest < ActiveSupport::TestCase
     end
     assert result, 'Author "Albatross, Benedetto" not found'
   end
+
+  test "handle missing info" do
+    content_dir = File.dirname(fixture_path_for('springer_nature_missing_info/mets.xml'))
+    parser = Sword::Parsers::SpringerNatureParser.new
+    deposit = parser.parse(content_dir, nil)
+  end
 end
