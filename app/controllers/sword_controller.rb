@@ -27,7 +27,7 @@ class SwordController < ApplicationController
 
     # fcd1, 12/14/16: check the http status code. Log and raise if it is not in the 200 range
     if not @hyacinth_response.http_code_success_2xx?
-      Rails.logger.info("Hyacinth did not return a 2XX HTTP status code -- " \
+      Rails.logger.error("Hyacinth did not return a 2XX HTTP status code -- " \
                         "Status Code: #{@hyacinth_response.code}, " \
                         "Status Message: #{@hyacinth_response.message}, " \
                         "#{@hyacinth_response.hint}")
@@ -43,11 +43,12 @@ class SwordController < ApplicationController
     # later, when prod has been up for a while, maybe can get stop logging
     # success, and instead just log the failures
     if @hyacinth_response.success?
-      Rails.logger.info("Hyacinth request successful: " \
+      # fcd1, 01/11/18: This debug statement can be removed, and if changed to unless
+      Rails.logger.debug("Hyacinth request successful: " \
                         "hyacinth_response: #{@hyacinth_response.inspect}, " \
                         "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
     else
-      Rails.logger.info("Hyacinth request unsuccessful: " \
+      Rails.logger.error("Hyacinth request unsuccessful: " \
                         "hyacinth_response: #{@hyacinth_response.inspect}, " \
                         "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
       raise "Hyacinth request was not successful, please see log"
@@ -61,9 +62,9 @@ class SwordController < ApplicationController
     # fcd1, 12/09/16: Let's simplify this, just use Time.now. Can revert later to also using Process.pid
     # @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
     @temp_subdir_in_hyacinth_upload_dir = "swordtmp_#{Time.now.to_i}"
-    Rails.logger.info("#{__FILE__},#{__LINE__}:")
-    Rails.logger.info "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
-    Rails.logger.info "Inspect @zip_file_path: #{@zip_file_path}"
+    Rails.logger.debug("#{__FILE__},#{__LINE__}:")
+    Rails.logger.debug "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
+    Rails.logger.debug "Inspect @zip_file_path: #{@zip_file_path}"
     Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
                                                         @temp_subdir_in_hyacinth_upload_dir,
                                                         files)
@@ -110,20 +111,34 @@ class SwordController < ApplicationController
   private
     def check_for_valid_collection_slug
       @collection = Collection.find_by slug: params[:collection_slug]
-      # may want to do redirect_to or render something instead. For now, do this
-      head :bad_request if (@collection.nil?)
+      if @collection.nil?
+        Rails.logger.warn "Invalid collection slug (#{params[:collection_slug]})! Supplied URL: #{request.url}"
+        head :bad_request 
+      end
     end
 
     def check_basic_http_authentication
       result = false
       @user_id, @password = Sword::DepositRequest.pullCredentials(request)
       @depositor = Depositor.find_by(basic_authentication_user_id: @user_id)
-      result = @depositor.authenticate(@password) unless @depositor.nil?
-      head 511 unless result
+      if @depositor.nil?
+        warn_msg_reason = "Unknown user/depositor: #{@user_id}"
+        # Rails.logger.warn "Unknown user/depositor: #{@user_id}"
+      else 
+        warn_msg_reason = "Bad password for following user/depositor: #{@user_id}"
+        result = @depositor.authenticate(@password)
+      end
+      unless result
+        Rails.logger.warn "Authentication failure -- #{warn_msg_reason}"
+        head 511
+      end
     end
     
     def check_depositor_collection_permission
       # fcd1, 08/09/16: Change behavior if needed. Check standard/existing code
-      head :bad_request unless @depositor.collections.include? @collection
+      unless @depositor.collections.include? @collection
+        Rails.logger.warn "user/depositor #{@user_id} does not have access to collection #{@collection}"
+        head :bad_request
+      end
     end
 end
