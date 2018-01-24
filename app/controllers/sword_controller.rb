@@ -22,6 +22,8 @@ class SwordController < ApplicationController
                                                                 @collection.hyacinth_project_string_key,
                                                                 @depositor.name)
     @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
+    Rails.logger.debug("Here is the JSON about to be sent to Hyacinth: " \
+                       "#{@json_for_hyacinth_item}")
     @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
     @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
 

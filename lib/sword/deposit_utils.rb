@@ -3,6 +3,7 @@ require "sword/parsers/proquest_parser"
 require "sword/parsers/bmc_parser"
 require "sword/parsers/tow_journalism_parser"
 require "sword/parsers/springer_nature_parser"
+require "sword/parsers/mdpi_parser"
 require 'zip'
 module Sword
 module DepositUtils
@@ -156,6 +157,8 @@ module DepositUtils
       Sword::Parsers::TowJournalismParser.new
     when "springer-nature"
       Sword::Parsers::SpringerNatureParser.new
+    when "mdpi"
+      Sword::Parsers::MdpiParser.new
     else
       # raise an exception here
     end
