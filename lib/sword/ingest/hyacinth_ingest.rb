@@ -1,3 +1,4 @@
+require 'net/http'
 module Sword
 module Ingest
 class HyacinthIngest
