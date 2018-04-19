@@ -5,7 +5,6 @@ one:
   collection_id: 
   title: MyString
   item_in_hyacinth: MyString
-  embargo_release_date: 2016-07-25 15:12:10
   status: 1
   deposit_errors: MyText
 
@@ -14,6 +13,5 @@ two:
   collection_id: 
   title: MyString
   item_in_hyacinth: MyString
-  embargo_release_date: 2016-07-25 15:12:10
   status: 1
   deposit_errors: MyText

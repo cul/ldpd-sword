@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011172922) do
+ActiveRecord::Schema.define(version: 20180413212313) do
 
   create_table "collections", force: :cascade do |t|
     t.string   "name",                        limit: 255,                   null: false
@@ -52,17 +52,15 @@ ActiveRecord::Schema.define(version: 20161011172922) do
   add_index "depositors", ["name"], name: "index_depositors_on_name", unique: true, using: :btree
 
   create_table "deposits", force: :cascade do |t|
-    t.integer  "depositor_id",         limit: 4
-    t.integer  "collection_id",        limit: 4
-    t.string   "title",                limit: 255
-    t.text     "abstract",             limit: 65535
-    t.string   "item_in_hyacinth",     limit: 255
-    t.datetime "embargo_release_date"
-    t.integer  "status",               limit: 4,     default: 0, null: false
-    t.text     "deposit_files",        limit: 65535
-    t.text     "deposit_errors",       limit: 65535
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.integer  "depositor_id",     limit: 4
+    t.integer  "collection_id",    limit: 4
+    t.string   "title",            limit: 255
+    t.string   "item_in_hyacinth", limit: 255
+    t.integer  "status",           limit: 4,     default: 0, null: false
+    t.text     "deposit_files",    limit: 65535
+    t.text     "deposit_errors",   limit: 65535
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
   add_index "deposits", ["collection_id"], name: "index_deposits_on_collection_id", using: :btree
