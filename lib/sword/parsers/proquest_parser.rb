@@ -77,6 +77,7 @@ class ProquestParser
     deposit_content.corporate_names = []
     deposit_content.corporate_names << getAffiliation(contentXml)
     deposit_content.corporate_role = CORPORATE_ROLE
+    deposit_content.degree_name = (contentXml.css("DISS_description>DISS_degree").first || DEFAULT_NODE).text
     deposit_content.include_degree_info = true unless deposit_content.corporate_names.first.nil?
     
     deposit_content.authors = getAuthors(contentXml)
@@ -109,10 +110,23 @@ class ProquestParser
     
     affiliation = (contentXml.css("DISS_description>DISS_institution>DISS_inst_name").first || DEFAULT_NODE).text
     institutional_contact = (contentXml.css("DISS_description>DISS_institution>DISS_inst_contact").first || DEFAULT_NODE).text
+    institutional_code = (contentXml.css("DISS_description>DISS_institution>DISS_inst_code").first || DEFAULT_NODE).text
 
-    # fcd1, 04Jan17: Need to handle Teachers College a bit differently
-    if institutional_contact.partition(':').first == 'TC'
-      affiliation = 'Teachers College' + "." + institutional_contact.partition(':').third
+    # fcd1, 15Mar18: ProQuest mets is slighly different for TC docs
+    # sent via the GSAS endpoint and TC docs sent via the TC endpoint.
+    # See SWORD-22 ticket for more details.
+    # Will use the DISS_inst_code to differentiate between the endpoints
+    # DISS_inst_code set to 0054 for docs sent to GSAS endpoint
+    if institutional_code == '0054'
+      # fcd1, 04Jan17: Need to handle Teachers College a bit differently
+      if institutional_contact.partition(':').first == 'TC'
+        affiliation = 'Teachers College' + "." + institutional_contact.partition(':').third
+      else
+        affiliation = affiliation + ". " + institutional_contact
+      end
+    # DISS_inst_code set to 0055 for docs sent to TC endpoint
+    elsif institutional_code == '0055'
+      affiliation = affiliation.partition(',').first + ". " + institutional_contact
     else
       affiliation = affiliation + ". " + institutional_contact
     end

@@ -75,6 +75,7 @@ class HyacinthComposerTest < ActiveSupport::TestCase
     @deposit_content.fpage = '78'
     @deposit_content.pub_doi = '10.1186/s13033-015-0032-8'
     @deposit_content.type_of_resource = 'text'
+    @deposit_content.degree_name = 'Ph.D.'
   
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project',

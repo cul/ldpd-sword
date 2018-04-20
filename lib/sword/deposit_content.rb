@@ -33,6 +33,7 @@ module Sword
                   :embargo_code,
                   :sales_restriction_date,
                   :note,
+                  :degree_name,
                   :include_degree_info
     def embargo_release_date
       DepositContent.getEmbargoDate(self)
