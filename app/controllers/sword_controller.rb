@@ -1,8 +1,3 @@
-require "sword/deposit_request"
-require 'sword/deposit_utils'
-require 'sword/composers/hyacinth_composer'
-require 'sword/ingest/hyacinth_ingest'
-
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
   before_action :check_basic_http_authentication, only: [:deposit, :service_document]
