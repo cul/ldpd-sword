@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to deposit.title, deposit %></td>
         <td><%= deposit.depositor.name if deposit.depositor %></td>
-        <td><%= deposit.created_at %></td>
+        <td><%= deposit.created_at.localtime.strftime("%c") %></td>
         <td><%= deposit.collection.name if deposit.collection %></td>
       </tr>
     <% end %>
