@@ -60,11 +60,7 @@ class HyacinthComposerAcTest < ActiveSupport::TestCase
   end
 
   test "#compose_dynamic_field_data via #set_names encodes names correctly (authors), contains single letter strings" do
-    assert_equal @actual_result[:name][4], @expected_result[:name][4]
-  end
-
-  test "#compose_dynamic_field_data via #set_names encodes names correctly (advisors), contains single letter strings" do
-    assert_equal @actual_result[:name][8], @expected_result[:name][8]
+    assert_equal @actual_result[:name][0], @expected_result[:name][0]
   end
 
   test "#compose_dynamic_field_data via #set_names encodes names correctly" do
@@ -73,18 +69,6 @@ class HyacinthComposerAcTest < ActiveSupport::TestCase
 
   test "#compose_dynamic_field_data via #set_abstract encodes abstract correctly" do
     assert_equal @actual_result[:abstract], @expected_result[:abstract]
-  end
-
-  test "#compose_dynamic_field_data via #set_genre encodes genre correctly" do
-    assert_equal @actual_result[:genre], @expected_result[:genre]
-  end
-
-  test "#compose_dynamic_field_data via #set_language encodes language correctly" do
-    assert_equal @actual_result[:language], @expected_result[:language]
-  end
-
-  test "#compose_dynamic_field_data via #set_subjects encodes subject topics correctly" do
-    assert_equal @actual_result[:subject_topic], @expected_result[:subject_topic]
   end
 
   test "#compose_dynamic_field_data via #set_note encodes abstract correctly" do

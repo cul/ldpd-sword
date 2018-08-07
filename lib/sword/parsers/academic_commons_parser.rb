@@ -76,7 +76,7 @@ class AcademicCommonsParser
     authors = []
     @contentXml.xpath('//mods:name').each do |author|
       # @contentXml.xpath('//mods:namePart').each do |author|
-      puts author.inspect
+      # puts author.inspect
       person = Person.new
       person.full_name_naf_format = author.xpath('./mods:namePart').map{|e| e.text}.join(' ')
       person.uni = author['ID']
