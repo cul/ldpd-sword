@@ -19,24 +19,9 @@
           <mods:relatedItem type="host">
             <mods:identifier type="uri">10.blahc/columbiatest</mods:identifier>
           </mods:relatedItem>
-          <mods:name type="personal">
-            <mods:namePart>Smith, John</mods:namePart>
-            <mods:role>
-              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
-            </mods:role>
-          </mods:name>
-          <mods:name type="personal" ID="tu123">
-            <mods:namePart>User, Test</mods:namePart>
-            <mods:role>
-              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
-            </mods:role>
-          </mods:name>
-          <mods:name type="personal">
-            <mods:namePart>Galarza, Carla</mods:namePart>
-            <mods:role>
-              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
-            </mods:role>
-          </mods:name>
+          <mods:name type="personal"><mods:namePart>Smith, John</mods:namePart><mods:role><mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm></mods:role></mods:name>
+          <mods:name type="personal" ID="tu123"><mods:namePart>User, Test</mods:namePart><mods:role><mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm></mods:role></mods:name>
+          <mods:name type="personal"><mods:namePart>Galarza, Carla</mods:namePart><mods:role><mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm></mods:role></mods:name>
           <mods:note type="internal">This is the best deposit ever, just FYI</mods:note>
           <mods:recordInfo>
             <mods:recordInfoNote>AC SWORD MODS v1.0</mods:recordInfoNote>

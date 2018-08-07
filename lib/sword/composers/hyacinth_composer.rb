@@ -45,11 +45,12 @@ class HyacinthComposer
     set_title 
     set_names
     set_abstract
-    set_genre
+    set_genre unless @deposit_content.genre_uri.nil?
     set_type_of_resource unless @deposit_content.type_of_resource.nil?
-    set_language
+    set_language unless @deposit_content.language_uri.nil?
     set_subjects unless @deposit_content.subjects.nil?
     set_note unless @deposit_content.note.nil?
+    set_note_internal unless @deposit_content.note_internal.nil?
     set_deposited_by
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
     set_degree_info if (@deposit_content.include_degree_info == true)
@@ -100,6 +101,7 @@ class HyacinthComposer
     value_data = prep_name author
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
+    personal_name_data[:uni] = author.uni unless author.uni.nil?
     name_role_data = []
     name_role_data << set_name_role(METADATA_VALUES[:name_role_author_value],
                                     METADATA_VALUES[:name_role_author_uri])
@@ -146,6 +148,12 @@ class HyacinthComposer
   def set_note
     @dynamic_field_data[:note] = []
     @dynamic_field_data[:note] << { note_value: @deposit_content.note }
+  end
+
+  def set_note_internal
+    @dynamic_field_data[:note] = []
+    @dynamic_field_data[:note] << { note_value: @deposit_content.note_internal,
+                                    note_type: 'internal' }
   end
 
   def set_subject_topic(topic_value, topic_uri = nil)

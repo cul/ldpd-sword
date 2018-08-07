@@ -52,11 +52,12 @@ class AcademicCommonsParser
       @contentXml = Nokogiri::XML @contentXml
     end
 
-    @deposit_content.type_of_resource = TYPE_OF_RESOURCE
-    @deposit_content.genre_value = GENRE_VALUE
-    @deposit_content.genre_uri = GENRE_URI
-    @deposit_content.language_value = LANGUAGE_VALUE
-    @deposit_content.language_uri = LANGUAGE_URI
+    @deposit_content.include_degree_info = false
+    # @deposit_content.type_of_resource = TYPE_OF_RESOURCE
+    # @deposit_content.genre_value = GENRE_VALUE
+    # @deposit_content.genre_uri = GENRE_URI
+    # @deposit_content.language_value = LANGUAGE_VALUE
+    # @deposit_content.language_uri = LANGUAGE_URI
     # @deposit_content.title = getTitle
     @deposit_content.title = @contentXml.xpath('//mods:title').text
     # @deposit_content.abstract = getAbstract
@@ -73,12 +74,12 @@ class AcademicCommonsParser
 
   def getAuthors
     authors = []
-    # @contentXml.xpath('//mods:name').each do |author|
-    @contentXml.xpath('//mods:namePart').each do |author|
-      person = Person.new
+    @contentXml.xpath('//mods:name').each do |author|
+      # @contentXml.xpath('//mods:namePart').each do |author|
       puts author.inspect
-      # person.full_name_naf_format = @contentXml.xpath('./mods:namePart').map{|e| e.text}.join(' ')
-      person.full_name_naf_format = author.text
+      person = Person.new
+      person.full_name_naf_format = author.xpath('./mods:namePart').map{|e| e.text}.join(' ')
+      person.uni = author['ID']
       authors.push(person)
     end
     return authors
