@@ -34,7 +34,10 @@ module Sword
                   :sales_restriction_date,
                   :note,
                   :degree_name,
-                  :include_degree_info
+                  :include_degree_info,
+                  :note_internal,
+                  :identifier_doi,
+                  :identifier_uri
     def embargo_release_date
       DepositContent.getEmbargoDate(self)
     end

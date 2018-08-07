@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<mets xmlns="http://www.loc.gov/METS/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd">
+  <metsHdr CREATEDATE="2018-07-10T20:08:14Z">
+    <agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+      <name>Academic Commons, Columbia University</name>
+    </agent>
+  </metsHdr>
+  <dmdSec ID="sword-mets-dmd-1">
+    <mdwrap MDTYPE="MODS">
+      <xmlData>
+        <mods:mods>
+          <mods:titleInfo>
+            <mods:title>Test Deposit</mods:title>
+          </mods:titleInfo>
+          <mods:abstract>Abstract blah blah blah</mods:abstract>
+          <mods:originInfo>
+            <mods:dateIssued encoding="w3cdtf">2018</mods:dateIssued>
+          </mods:originInfo>
+          <mods:relatedItem type="host">
+            <mods:identifier type="uri">10.blahc/columbiatest</mods:identifier>
+          </mods:relatedItem>
+          <mods:name type="personal">
+            <mods:namePart>Smith, John</mods:namePart>
+            <mods:role>
+              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+            </mods:role>
+          </mods:name>
+          <mods:name type="personal" ID="tu123">
+            <mods:namePart>User, Test</mods:namePart>
+            <mods:role>
+              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+            </mods:role>
+          </mods:name>
+          <mods:name type="personal">
+            <mods:namePart>Galarza, Carla</mods:namePart>
+            <mods:role>
+              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+            </mods:role>
+          </mods:name>
+          <mods:note type="internal">This is the best deposit ever, just FYI</mods:note>
+          <mods:recordInfo>
+            <mods:recordInfoNote>AC SWORD MODS v1.0</mods:recordInfoNote>
+          </mods:recordInfo>
+        </mods:mods>
+      </xmlData>
+    </mdwrap>
+  </dmdSec>
+  <fileSec>
+    <fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="image/png">
+        <fLocat LOCTYPE="URL" xlink:href="ScreenShot.png"/>
+      </file>
+    </fileGrp>
+  </fileSec>
+  <structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+    <div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1" TYPE="SWORD Object">
+      <div ID="sword-mets-div-2" TYPE="File"/>
+      <fptr FILEID="sword-mets-file-1"/>
+    </div>
+  </structMap>
+</mets>
