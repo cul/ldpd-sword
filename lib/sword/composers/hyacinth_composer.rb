@@ -56,6 +56,7 @@ class HyacinthComposer
     set_degree_info if (@deposit_content.include_degree_info == true)
     set_date_issued unless @deposit_content.dateIssued.nil?
     set_parent_publication unless @deposit_content.parent_publication_title.nil?
+    set_parent_publication_only_doi_uri unless @deposit_content.parent_publication_doi.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -239,6 +240,14 @@ class HyacinthComposer
     parent_publication_data[:parent_publication_issue] = @deposit_content.issue unless @deposit_content.issue.nil?
     parent_publication_data[:parent_publication_page_start] = @deposit_content.fpage unless @deposit_content.fpage.nil?
     parent_publication_data[:parent_publication_doi] = @deposit_content.pub_doi unless @deposit_content.pub_doi.nil?
+    @dynamic_field_data[:parent_publication] << parent_publication_data
+  end
+
+  def set_parent_publication_only_doi_uri
+    @dynamic_field_data[:parent_publication] = []
+    parent_publication_data = { parent_publication_doi: @deposit_content.parent_publication_doi }
+    parent_publication_data[:parent_publication_uri] =
+      @deposit_content.parent_publication_uri unless @deposit_content.parent_publication_uri.nil?
     @dynamic_field_data[:parent_publication] << parent_publication_data
   end
 

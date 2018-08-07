@@ -16,6 +16,8 @@ module Sword
                   :pubdate,
                   :dateIssued,
                   :parent_publication_title,
+                  :parent_publication_doi,
+                  :parent_publication_uri,
                   :volume,
                   :issue,
                   :fpage,

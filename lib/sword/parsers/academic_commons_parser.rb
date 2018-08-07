@@ -68,8 +68,10 @@ class AcademicCommonsParser
     # @deposit_content.dateIssued = getDateIssued
     @deposit_content.dateIssued = @contentXml.xpath("//mods:originInfo/mods:dateIssued").text
     @deposit_content.note_internal = @contentXml.xpath("//mods:note[@type='internal']").text
-    @deposit_content.identifier_doi = @contentXml.xpath("//mods:identifier[@type='doi']").text
-    @deposit_content.identifier_uri = @contentXml.xpath("//mods:identifier[@type='uri']").text
+    # @deposit_content.identifier_doi = @contentXml.xpath("//mods:identifier[@type='doi']").text
+    # @deposit_content.identifier_uri = @contentXml.xpath("//mods:identifier[@type='uri']").text
+    @deposit_content.parent_publication_doi = @contentXml.xpath("//mods:identifier[@type='doi']").text
+    @deposit_content.parent_publication_uri = @contentXml.xpath("//mods:identifier[@type='uri']").text
   end
 
   def getAuthors
