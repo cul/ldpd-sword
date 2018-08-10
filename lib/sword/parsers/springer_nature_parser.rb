@@ -142,9 +142,8 @@ class SpringerNatureParser
     pub_doi_url_first = @contentXml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}").first
     return nil if pub_doi_url_first.nil?
     pub_doi_url = pub_doi_url_first.text
-    # remove url prefix, ugly way to do it
-    pub_doi_url.slice!(0,18)
-    pub_doi_url
+    pub_doi = pub_doi_url.gsub(/^\S*\/10.1/,'10.1')
+    pub_doi
   end
 
   def getDateIssued

@@ -50,4 +50,25 @@ class SpringerNatureParserTest < ActiveSupport::TestCase
     parser = Sword::Parsers::SpringerNatureParser.new
     deposit = parser.parse(content_dir, nil)
   end
+
+  test "handle doi in the format 'https://doi.org/10.1186/s40248-018-0136-5'" do
+    content_dir = File.dirname(fixture_path_for('springer_nature_doi_url_1/mets.xml'))
+    parser = Sword::Parsers::SpringerNatureParser.new
+    deposit = parser.parse(content_dir, nil)
+    assert_equal '10.1186/s40248-018-0136-5', deposit.pub_doi
+  end
+
+  test "handle doi in the format 'http://dx.doi.org/10.1186/s12909-018-1155-9'" do
+    content_dir = File.dirname(fixture_path_for('springer_nature_doi_url_2/mets.xml'))
+    parser = Sword::Parsers::SpringerNatureParser.new
+    deposit = parser.parse(content_dir, nil)
+    assert_equal '10.1186/s12909-018-1155-9', deposit.pub_doi
+  end
+
+  test "handle doi in the format '10.1186/s40248-018-0136-5'" do
+    content_dir = File.dirname(fixture_path_for('springer_nature_doi_url_1/mets.xml'))
+    parser = Sword::Parsers::SpringerNatureParser.new
+    deposit = parser.parse(content_dir, nil)
+    assert_equal '10.1186/s40248-018-0136-5', deposit.pub_doi
+  end
 end

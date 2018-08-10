@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item" PROFILE="DSpace METS SIP Profile 1.0" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/METS/">
+<metsHdr CREATEDATE="2018-04-01T14:59:08">
+<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+<name>BioMed Central</name>
+</agent>
+</metsHdr>
+<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX" MIMETYPE="text/xml">
+<xmlData>
+<epdcx:descriptionSet xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+<epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/ScholarlyWork"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+<epdcx:valueString>Personality traits and career choices among physicians in Finland: employment sector, clinical patient contact, specialty and change of specialty</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Medical career</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Medical specialty</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Personality traits</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Person-job fit</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Career counseling</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Medical education</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+<epdcx:valueString>
+              Abstract
+              
+                Background
+                Personality influences an individual’s adaptation to a specific job or organization. Little is known about personality trait differences between medical career and specialty choices after graduating from medical school when actually practicing different medical specialties. Moreover, whether personality traits contribute to important career choices such as choosing to work in the private or public sector or with clinical patient contact, as well as change of specialty, have remained largely unexplored. In a nationally representative sample of Finnish physicians (N = 2837) we examined how personality traits are associated with medical career choices after graduating from medical school, in terms of employment sector, patient contact, medical specialty and change of specialty.
+              
+              
+                Methods
+                Personality was assessed using the shortened version of the Big Five Inventory (S-BFI). An analysis of covariance with posthoc tests for pairwise comparisons was conducted, adjusted for gender and age with confounders (employment sector, clinical patient contact and medical specialty).
+              
+              
+                Results
+                Higher openness was associated with working in the private sector, specializing in psychiatry, changing specialty and not practicing with patients. Lower openness was associated with a high amount of patient contact and specializing in general practice as well as ophthalmology and otorhinolaryngology. Higher conscientiousness was associated with a high amount of patient contact and specializing in surgery and other internal medicine specialties. Lower conscientiousness was associated with specializing in psychiatry and hospital service specialties. Higher agreeableness was associated with working in the private sector and specializing in general practice and occupational health. Lower agreeableness and neuroticism were associated with specializing in surgery. Higher extraversion was associated with specializing in pediatrics and change of specialty. Lower extraversion was associated with not practicing with patients.
+              
+              
+                Conclusions
+                The results showed distinctive personality traits to be associated with physicians’ career and specialty choices after medical school independent of known confounding factors. Openness was the most consistent personality trait associated with physicians’ career choices in terms of employment sector, amount of clinical patient contact, specialty choice and change of specialty. Personality-conscious medical career counseling and career guidance during and after medical education might enhance the person-job fit among physicians.
+              
+            </epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Mullola, Sari</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Hakulinen, Christian</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Presseau, Justin</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Gimeno Ruiz de Porras, David</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Jokela, Markus</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Hintsa, Taina</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Elovainio, Marko</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1"/>
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+<epdcx:valueString>en</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/type/JournalArticle"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/available">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/W3CDTF">2018-03-27</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/copyrightHolder">
+<epdcx:valueString>The Author(s).</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/publisher">
+<epdcx:valueString>BioMed Central</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/accessRights" epdcx:vesURI="http://purl.org/eprint/terms/AccessRights" epdcx:valueURI="http://purl.org/eprint/accessRights/OpenAccess"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/bibliographicCitation">
+<epdcx:valueString>BMC Medical Education. 2018 Mar 27;18(1):52</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/identifier">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/URI">http://dx.doi.org/10.1186/s12909-018-1155-9</epdcx:valueString>
+</epdcx:statement>
+</epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+<fileSec>
+<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+<FLocat LOCTYPE="URL" xlink:href="12909_2018_Article_1155.pdf"/>
+</file>
+</fileGrp>
+</fileSec>
+<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1" TYPE="SWORD Object">
+<div ID="sword-mets-div-2" TYPE="File">
+<fptr FILEID="sword-mets-file-1"/>
+</div>
+</div>
+</structMap>
+</mets>
