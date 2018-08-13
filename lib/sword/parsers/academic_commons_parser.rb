@@ -72,6 +72,10 @@ class AcademicCommonsParser
     # @deposit_content.identifier_uri = @contentXml.xpath("//mods:identifier[@type='uri']").text
     @deposit_content.parent_publication_doi = @contentXml.xpath("//mods:identifier[@type='doi']").text
     @deposit_content.parent_publication_uri = @contentXml.xpath("//mods:identifier[@type='uri']").text
+    access_condition_right_status = @contentXml.xpath("//mods:accessCondition[@displayLabel='Rights Status']").first
+    @deposit_content.use_and_reproduction_uri = access_condition_right_status['xlink:href'] unless access_condition_right_status.nil?
+    access_condition_license = @contentXml.xpath("//mods:accessCondition[@displayLabel='License']").first
+    @deposit_content.license_uri = access_condition_license['xlink:href'] unless access_condition_license.nil?
   end
 
   def getAuthors

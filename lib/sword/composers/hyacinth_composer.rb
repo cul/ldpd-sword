@@ -57,6 +57,8 @@ class HyacinthComposer
     set_date_issued unless @deposit_content.dateIssued.nil?
     set_parent_publication unless @deposit_content.parent_publication_title.nil?
     set_parent_publication_only_doi_uri unless @deposit_content.parent_publication_doi.nil?
+    set_use_and_reproduction unless @deposit_content.use_and_reproduction_uri.nil?
+    set_license unless @deposit_content.license_uri.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -65,6 +67,20 @@ class HyacinthComposer
     @dynamic_field_data[:title] = []
     @dynamic_field_data[:title] << { title_non_sort_portion: nil,
                                      title_sort_portion:  @deposit_content.title }
+  end
+
+  # use_and_reproduction-1:use_and_reproduction_term.uri.
+  def set_use_and_reproduction
+    use_and_reproduction_data = { uri: @deposit_content.use_and_reproduction_uri }
+    @dynamic_field_data[:use_and_reproduction] = []
+    @dynamic_field_data[:use_and_reproduction] << { use_and_reproduction_term: use_and_reproduction_data }
+  end
+
+  # license-1:license_term.uri
+  def set_license
+    license_data = { uri: @deposit_content.license_uri }
+    @dynamic_field_data[:license] = []
+    @dynamic_field_data[:license] << { license_term: license_data }
   end
 
   def set_names

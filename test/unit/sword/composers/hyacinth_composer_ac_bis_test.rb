@@ -3,7 +3,7 @@ require 'sword/composers/hyacinth_composer'
 require 'sword/deposit_content'
 require 'sword/person'
 
-class HyacinthComposerAcTest < ActiveSupport::TestCase
+class HyacinthComposerAcBisTest < ActiveSupport::TestCase
   setup do
     @deposit_content = Sword::DepositContent.new
     @deposit_content.title = 'Test Deposit'
@@ -45,8 +45,8 @@ class HyacinthComposerAcTest < ActiveSupport::TestCase
     # @deposit_content.type_of_resource = 'text'
     # @deposit_content.degree_name = 'Ph.D.'
 
-    @deposit_content.use_and_reproduction_uri = 'http://rightsstatements.org/vocab/InC/1.0/'
-    @deposit_content.license_uri = 'https://creativecommons.org/licenses/by/4.0/'
+    # @deposit_content.use_and_reproduction_uri = 'http://rightsstatements.org/vocab/InC/1.0/'
+    # @deposit_content.license_uri = 'https://creativecommons.org/licenses/by/4.0/'
 
     @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
                                                                 'test-project',
@@ -55,7 +55,8 @@ class HyacinthComposerAcTest < ActiveSupport::TestCase
     Sword::Composers::HyacinthComposer.send(:public, :compose_dynamic_field_data)
     @hyacinth_composer.compose_dynamic_field_data  
     @actual_result = @hyacinth_composer.dynamic_field_data
-    @expected_result = JSON.parse(fixture_file('hyacinth_data/dynamic_field_data_test_ac.json'), symbolize_names: true)
+    @expected_result = JSON.parse(fixture_file('hyacinth_data/dynamic_field_data_test_ac_no_rights_or_license.json'),
+                                  symbolize_names: true)
   end
 
   test "#compose_dynamic_field_data via #set_title encodes title correctly" do

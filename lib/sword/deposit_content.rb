@@ -39,7 +39,9 @@ module Sword
                   :include_degree_info,
                   :note_internal,
                   :identifier_doi,
-                  :identifier_uri
+                  :identifier_uri,
+                  :use_and_reproduction_uri,
+                  :license_uri
     def embargo_release_date
       DepositContent.getEmbargoDate(self)
     end

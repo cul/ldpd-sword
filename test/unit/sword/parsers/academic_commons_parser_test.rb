@@ -15,12 +15,13 @@ class AcademicCommmonsParserTest < ActiveSupport::TestCase
     assert_equal 'Abstract blah blah blah', deposit.abstract
     assert_equal '2018', deposit.dateIssued
     assert_equal 'This is the best deposit ever, just FYI', deposit.note_internal
+    assert_equal 'http://rightsstatements.org/vocab/InC/1.0/', deposit.use_and_reproduction_uri
+    assert_equal 'https://creativecommons.org/licenses/by/4.0/', deposit.license_uri
     # assert_equal 'International Journal of Stuff', deposit.parent_publication_title
     # assert_equal '2016', deposit.pubdate
     # assert_equal '10', deposit.volume
     # assert_equal '11', deposit.issue
     # assert_equal '78', deposit.fpage
-    puts deposit.authors.inspect
 
     result =  deposit.authors.any? do |person|
       person.full_name_naf_format == 'User, Test'

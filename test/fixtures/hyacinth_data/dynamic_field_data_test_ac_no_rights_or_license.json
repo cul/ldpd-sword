@@ -83,26 +83,6 @@
 	}
     ]
     ,
-    "use_and_reproduction" :
-    [
-        {
-            "use_and_reproduction_term":
-            {
-                "uri": "http://rightsstatements.org/vocab/InC/1.0/"
-            }
-        }
-    ]
-    ,
-    "license" :
-    [
-        {
-            "license_term":
-            {
-                "uri": "https://creativecommons.org/licenses/by/4.0/"
-            }
-        }
-    ]
-    ,
     "deposited_by" : 
     [
 	{
