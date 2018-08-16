@@ -159,6 +159,8 @@ module DepositUtils
       Sword::Parsers::SpringerNatureParser.new
     when "mdpi"
       Sword::Parsers::MdpiParser.new
+    when "academic-commons"
+      Sword::Parsers::AcademicCommonsParser.new
     else
       # raise an exception here
     end

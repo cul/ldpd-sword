@@ -1,0 +1,112 @@
+{
+    "title":
+    [
+	{
+	    "title_non_sort_portion" : null,
+	    "title_sort_portion" : "Test Deposit"
+	}
+    ]
+    ,
+    "name": 
+    [
+	{
+            "name_term":
+            {
+                "value": "Smith, John",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "User, Test",
+                "name_type": "personal",
+                "uni": "tu123"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Za, Carla",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+    ]
+    ,
+    "abstract":
+    [
+	{
+	    "abstract_value":"Abstract blah blah bla"
+	}
+    ]
+    ,
+    "note": 
+    [
+	{
+	    "note_value": "This is the best deposit ever, just FYI",
+	    "note_type": "internal"
+	}
+    ]
+    ,
+    "use_and_reproduction" :
+    [
+        {
+            "use_and_reproduction_term":
+            {
+                "uri": "http://rightsstatements.org/vocab/InC/1.0/"
+            }
+        }
+    ]
+    ,
+    "license" :
+    [
+        {
+            "license_term":
+            {
+                "uri": "https://creativecommons.org/licenses/by/4.0/"
+            }
+        }
+    ]
+    ,
+    "deposited_by" : 
+    [
+	{
+	    "deposited_by_value" : "Academic Commons"
+	}
+    ]
+}

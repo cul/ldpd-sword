@@ -45,16 +45,20 @@ class HyacinthComposer
     set_title 
     set_names
     set_abstract
-    set_genre
+    set_genre unless @deposit_content.genre_uri.nil?
     set_type_of_resource unless @deposit_content.type_of_resource.nil?
-    set_language
+    set_language unless @deposit_content.language_uri.nil?
     set_subjects unless @deposit_content.subjects.nil?
     set_note unless @deposit_content.note.nil?
+    set_note_internal unless @deposit_content.note_internal.nil?
     set_deposited_by
     set_embargo_release_date unless @deposit_content.embargo_start_date.nil?
     set_degree_info if (@deposit_content.include_degree_info == true)
     set_date_issued unless @deposit_content.dateIssued.nil?
     set_parent_publication unless @deposit_content.parent_publication_title.nil?
+    set_parent_publication_only_doi_uri unless @deposit_content.parent_publication_doi.nil?
+    set_use_and_reproduction unless @deposit_content.use_and_reproduction_uri.nil?
+    set_license unless @deposit_content.license_uri.nil?
   end
 
   # For now, don't parse out non-sort portion. Can always add functionality later, though
@@ -63,6 +67,20 @@ class HyacinthComposer
     @dynamic_field_data[:title] = []
     @dynamic_field_data[:title] << { title_non_sort_portion: nil,
                                      title_sort_portion:  @deposit_content.title }
+  end
+
+  # use_and_reproduction-1:use_and_reproduction_term.uri.
+  def set_use_and_reproduction
+    use_and_reproduction_data = { uri: @deposit_content.use_and_reproduction_uri }
+    @dynamic_field_data[:use_and_reproduction] = []
+    @dynamic_field_data[:use_and_reproduction] << { use_and_reproduction_term: use_and_reproduction_data }
+  end
+
+  # license-1:license_term.uri
+  def set_license
+    license_data = { uri: @deposit_content.license_uri }
+    @dynamic_field_data[:license] = []
+    @dynamic_field_data[:license] << { license_term: license_data }
   end
 
   def set_names
@@ -100,6 +118,7 @@ class HyacinthComposer
     value_data = prep_name author
     personal_name_data = { value: value_data,
                            name_type: 'personal' }
+    personal_name_data[:uni] = author.uni unless author.uni.nil?
     name_role_data = []
     name_role_data << set_name_role(METADATA_VALUES[:name_role_author_value],
                                     METADATA_VALUES[:name_role_author_uri])
@@ -146,6 +165,12 @@ class HyacinthComposer
   def set_note
     @dynamic_field_data[:note] = []
     @dynamic_field_data[:note] << { note_value: @deposit_content.note }
+  end
+
+  def set_note_internal
+    @dynamic_field_data[:note] = []
+    @dynamic_field_data[:note] << { note_value: @deposit_content.note_internal,
+                                    note_type: 'internal' }
   end
 
   def set_subject_topic(topic_value, topic_uri = nil)
@@ -231,6 +256,14 @@ class HyacinthComposer
     parent_publication_data[:parent_publication_issue] = @deposit_content.issue unless @deposit_content.issue.nil?
     parent_publication_data[:parent_publication_page_start] = @deposit_content.fpage unless @deposit_content.fpage.nil?
     parent_publication_data[:parent_publication_doi] = @deposit_content.pub_doi unless @deposit_content.pub_doi.nil?
+    @dynamic_field_data[:parent_publication] << parent_publication_data
+  end
+
+  def set_parent_publication_only_doi_uri
+    @dynamic_field_data[:parent_publication] = []
+    parent_publication_data = { parent_publication_doi: @deposit_content.parent_publication_doi }
+    parent_publication_data[:parent_publication_uri] =
+      @deposit_content.parent_publication_uri unless @deposit_content.parent_publication_uri.nil?
     @dynamic_field_data[:parent_publication] << parent_publication_data
   end
 

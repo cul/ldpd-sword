@@ -90,7 +90,9 @@ class SwordController < ApplicationController
     @deposit.item_in_hyacinth = @hyacinth_pid
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
-    head :created
+    # head :created
+    response.status = 201
+    render json: { item_pid: @hyacinth_pid }
   end
 
   def service_document
