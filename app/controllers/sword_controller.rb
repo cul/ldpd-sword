@@ -16,13 +16,15 @@ class SwordController < ApplicationController
     @path_to_deposit_contents = Sword::Util::unzip_deposit_file request
     @endpoint.handle_deposit(@path_to_deposit_contents)
 
+    # create Deposit instance to store deposit info in database
     @deposit = Deposit.new
     @deposit.deposit_files = @endpoint.documents_to_deposit
     @deposit.title = @endpoint.deposit_title
     @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
-    head :created
+    response.status = 201
+    render json: { item_pid: @endpoint.adapter_item_identifier }
   end
 
   def service_document
