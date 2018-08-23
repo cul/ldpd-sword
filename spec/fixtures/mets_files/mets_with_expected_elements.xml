@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mets ID="sort-mets_mets"
+      OBJID="sword-mets"
+      LABEL="DSpace SWORD Item"
+      PROFILE="DSpace METS SIP Profile 1.0"
+      xmlns="http://www.loc.gov/METS/"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+  <metsHdr CREATEDATE="2018-05-27T05:30:07">
+    <agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+      <name>Academic Commons, Columbia University</name>
+    </agent>
+  </metsHdr>
+  <dmdSec ID="DM1">
+    <mdWrap MDTYPE="MODS">
+      <xmlData>
+	<culfoobar>Metadata using the bogus culfoobar schema</culfoobar>
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+  <fileSec>
+    <fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+	<FLocat LOCTYPE="URL" xlink:href="Zarathustra_columbia_0054D_14724.pdf" />
+      </file>
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+	<FLocat LOCTYPE="URL" xlink:href="research_data/Zoroaster_columbia_0054D_14600.dat" />
+      </file>
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+	<FLocat LOCTYPE="URL" xlink:href="Zoroaster_columbia_0054D_14600.pdf" />
+      </file>
+    </fileGrp>
+  </fileSec>
+</mets>
+

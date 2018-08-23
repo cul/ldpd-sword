@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item"
+	PROFILE="DSpace METS SIP Profile 1.0" xmlns="http://www.loc.gov/METS/"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+
+	<metsHdr CREATEDATE="2007-09-01T00:00:00">
+		<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+			<name>ETDAdmin, ProQuest</name>
+		</agent>
+	</metsHdr>
+
+	<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+		<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX"
+			MIMETYPE="text/xml">
+			<xmlData>
+				<epdcx:descriptionSet
+					xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+					<epdcx:description
+						epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+	<epdcx:valueString><![CDATA[Spatially restricted regulation of cell competition by the cytokine Spaetzle]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+	<epdcx:valueString><![CDATA[Growing tissues are communities of cells that cooperate to form a robust, functional organ. Cooperative behavior is enforced by cell competition, wherein comparisons of fitness lead to selective elimination of cells sensed as relatively less healthy. Elimination of these ‘loser’ cells from Drosophila wing imaginal discs results in cell death induced by deployment of a genetic module consisting of the secreted Toll ligand Spätzle (Spz), several Toll related receptors, and NFkB factors. How signaling by this module is activated and restricted only to competing cells is unknown. Here, we investigate the signaling role of Spz in Myc-induced cell competition. We demonstrate that elimination of wild-type loser cells requires local synthesis and activation of Spz in the wing disc. We identify Spätzle Processing Enzyme (SPE) and Modular Serine Protease (modSP) as upstream mediators of Spz-mediated loser cell elimination, and show that an increase in SPE in ‘winner’ cells is required for Spz to kill loser cells. Finally, we show that Spz requires both Toll and Toll-8 to induce apoptosis of wing disc cells. Our results indicate that during cell competition, Spz-mediated signaling is strictly confined to the imaginal disc, allowing errors in tissue fitness to be corrected without compromising organismal physiology.]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+	<epdcx:valueString><![CDATA[Alpar, Elif Lale]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Biology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Developmental biology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Genetics]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+	<epdcx:valueString><![CDATA[Laura A Johnston]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1"><epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+	<epdcx:valueString><![CDATA[en]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" /></epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="ProQuest Metadata" MDTYPE="OTHER" OTHERMDTYPE="PROQUEST" MIMETYPE="text/xml">
+      <xmlData>
+<DISS_submission publishing_option="0" embargo_code="4" third_party_search="Y" xmlns="http://www.etdadmin.com/ns/etdsword">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Alpar</DISS_surname>
+        <DISS_fname>Elif Lale</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+      <DISS_contact type="current">
+        <DISS_contact_effdt>07/27/2018</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>347</DISS_area_code>
+          <DISS_phone_num>9092743</DISS_phone_num>
+          <DISS_phone_ext/>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>5628 Hempstead Rd Apt 301</DISS_addrline>
+          <DISS_city>Pittsburgh</DISS_city>
+          <DISS_st>PA</DISS_st>
+          <DISS_pcode>15217</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>e.lalealpar@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>12/01/2018</DISS_contact_effdt>
+        <DISS_phone_fax type="P">
+          <DISS_cntry_cd>1</DISS_cntry_cd>
+          <DISS_area_code>347</DISS_area_code>
+          <DISS_phone_num>9092743</DISS_phone_num>
+          <DISS_phone_ext/>
+        </DISS_phone_fax>
+        <DISS_address>
+          <DISS_addrline>Noter Sk. Deniz Apt. 36/6</DISS_addrline>
+          <DISS_addrline>Saskinbakkal, Kadikoy</DISS_addrline>
+          <DISS_city>Istanbul</DISS_city>
+          <DISS_st/>
+          <DISS_pcode>34740</DISS_pcode>
+          <DISS_country>TZ</DISS_country>
+        </DISS_address>
+        <DISS_email>e.lalealpar@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship/>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="166" type="doctoral" external_id="http://dissertations.umi.com/columbia:14854" apply_for_copyright="no">
+    <DISS_title>Spatially restricted regulation of cell competition by the cytokine Spaetzle</DISS_title>
+    <DISS_dates>
+      <DISS_comp_date>2018</DISS_comp_date>
+      <DISS_accept_date>01/01/2018</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>Ph.D.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0054</DISS_inst_code>
+      <DISS_inst_name>Columbia University</DISS_inst_name>
+      <DISS_inst_contact>Biological Sciences</DISS_inst_contact>
+      <DISS_processing_code>D</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Johnston</DISS_surname>
+        <DISS_fname>Laura</DISS_fname>
+        <DISS_middle>A</DISS_middle>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0306</DISS_cat_code>
+        <DISS_cat_desc>Biology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0758</DISS_cat_code>
+        <DISS_cat_desc>Developmental biology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0369</DISS_cat_code>
+        <DISS_cat_desc>Genetics</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>cell competition, Drosophila, Myc, Spaetzle, Toll</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>Growing tissues are communities of cells that cooperate to form a robust, functional organ. Cooperative behavior is enforced by cell competition, wherein comparisons of fitness lead to selective elimination of cells sensed as relatively less healthy. Elimination of these ‘loser’ cells from Drosophila wing imaginal discs results in cell death induced by deployment of a genetic module consisting of the secreted Toll ligand Spätzle (Spz), several Toll related receptors, and NFkB factors. How signaling by this module is activated and restricted only to competing cells is unknown. Here, we investigate the signaling role of Spz in Myc-induced cell competition. We demonstrate that elimination of wild-type loser cells requires local synthesis and activation of Spz in the wing disc. We identify Spätzle Processing Enzyme (SPE) and Modular Serine Protease (modSP) as upstream mediators of Spz-mediated loser cell elimination, and show that an increase in SPE in ‘winner’ cells is required for Spz to kill loser cells. Finally, we show that Spz requires both Toll and Toll-8 to induce apoptosis of wing disc cells. Our results indicate that during cell competition, Spz-mediated signaling is strictly confined to the imaginal disc, allowing errors in tissue fitness to be corrected without compromising organismal physiology.</DISS_para>
+    </DISS_abstract>
+    <DISS_supp_abstract/>
+    <DISS_binary type="PDF">Alpar_columbia_0054D_14854.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction>
+    <DISS_sales_restriction code="1" remove="08/02/2019"/>
+  </DISS_restriction>
+  <DISS_repository>
+    <DISS_version/>
+    <DISS_agreement_decision_date/>
+    <DISS_acceptance>0</DISS_acceptance>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+</DISS_submission>
+
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+	<fileSec>
+		<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+			<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+				<FLocat LOCTYPE="URL" xlink:href="Alpar_columbia_0054D_14854.pdf" />
+			</file>
+		</fileGrp>
+	</fileSec>
+	<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+		<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1 sword-mets-dmd-2" TYPE="SWORD Object">
+			<div ID="sword-mets-div-2" TYPE="File">
+				<fptr FILEID="sword-mets-file-1" />
+			</div>
+		</div>
+	</structMap>
+</mets>
