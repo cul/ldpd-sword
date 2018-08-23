@@ -4,95 +4,25 @@ class SwordController < ApplicationController
   before_action :check_depositor_collection_permission, only: [:deposit]
 
   def deposit
-    # at this, with all the before_action filters, the following instance variables are set:
-    # @collection, @depositor
-
-    @deposit_request = Sword::DepositRequest.new(request, @collection.slug)
-    @zip_file_path = Sword::DepositUtils.process_package_file(@deposit_request.content, @deposit_request.file_name)
-    @parser = Sword::DepositUtils.getParser @collection.parser
-    @deposit_content = @parser.parse(File.join(@zip_file_path, SWORD_CONFIG[:contents_zipfile_subdir]),
-                                     File.join(@zip_file_path, @deposit_request.file_name))
-    # compose hyacinth data
-    @hyacinth_composer = Sword::Composers::HyacinthComposer.new(@deposit_content,
-                                                                @collection.hyacinth_project_string_key,
-                                                                @depositor.name)
-    @json_for_hyacinth_item = @hyacinth_composer.compose_json_item
-    Rails.logger.debug("Here is the JSON about to be sent to Hyacinth: " \
-                       "#{@json_for_hyacinth_item}")
-    @hyacinth_ingest = Sword::Ingest::HyacinthIngest.new
-    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_item
-
-    # fcd1, 12/14/16: check the http status code. Log and raise if it is not in the 200 range
-    if not @hyacinth_response.http_code_success_2xx?
-      Rails.logger.error("Hyacinth did not return a 2XX HTTP status code -- " \
-                        "Status Code: #{@hyacinth_response.code}, " \
-                        "Status Message: #{@hyacinth_response.message}, " \
-                        "#{@hyacinth_response.hint}")
-      raise "Hyacinth returned a non 2XX HTTP status code, please see log"
-    end
-    
-    
-    # fcd1, 12/14/16: hyacinth will return a 200 if it accepted the request,
-    # but there still may have been problems when processing the request
-    # so need to check the body of the response to see result of request
-    # If request failed, body will also contain the error message(s)
-    # fcd1, 12/09/16: Initially, log both success and failure.
-    # later, when prod has been up for a while, maybe can get stop logging
-    # success, and instead just log the failures
-    if @hyacinth_response.success?
-      # fcd1, 01/11/18: This debug statement can be removed, and if changed to unless
-      Rails.logger.debug("Hyacinth request successful: " \
-                        "hyacinth_response: #{@hyacinth_response.inspect}, " \
-                        "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
-    else
-      Rails.logger.error("Hyacinth request unsuccessful: " \
-                        "hyacinth_response: #{@hyacinth_response.inspect}, " \
-                        "hyacinth_response.body: #{@hyacinth_response.body.inspect}")
-      raise "Hyacinth request was not successful, please see log"
-    end
-
-    @hyacinth_pid = @hyacinth_response.pid if @hyacinth_response.success?
-
-    files = Sword::DepositUtils.getAllFilesList(File.join(@zip_file_path,SWORD_CONFIG[:contents_zipfile_subdir]))
-    # fcd1, 12/13/16: Add the mets.xml file to the list of files to ingest into Hyacinth
-    files.push 'mets.xml'
-    # fcd1, 12/09/16: Let's simplify this, just use Time.now. Can revert later to also using Process.pid
-    # @temp_subdir_in_hyacinth_upload_dir = File.join('SWORD',"tmp_#{Process.pid}#{Time.now.to_i}")
-    @temp_subdir_in_hyacinth_upload_dir = "swordtmp_#{Time.now.to_i}"
-    Rails.logger.debug("#{__FILE__},#{__LINE__}:")
-    Rails.logger.debug "Inspect @temp_subdir_in_hyacinth_upload_dir: #{@temp_subdir_in_hyacinth_upload_dir}"
-    Rails.logger.debug "Inspect @zip_file_path: #{@zip_file_path}"
-    Sword::DepositUtils.cp_files_to_hyacinth_upload_dir(@zip_file_path,
-                                                        @temp_subdir_in_hyacinth_upload_dir,
-                                                        files)
-
-    files.each do |file|
-      filepath = File.join(@temp_subdir_in_hyacinth_upload_dir, file)
-      @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(filepath, @hyacinth_pid)
-      @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
-    end
-    
-    # copy zip file to hyacinth upload dir
-    FileUtils.cp(File.join(@zip_file_path, @deposit_request.file_name),
-                 File.join(HYACINTH_CONFIG[:upload_directory],
-                           @temp_subdir_in_hyacinth_upload_dir,
-                           @deposit_request.file_name) )
-    filepath = File.join(@temp_subdir_in_hyacinth_upload_dir, @deposit_request.file_name)
-    @json_for_hyacinth_asset = @hyacinth_composer.compose_json_asset(filepath, @hyacinth_pid)
-    @hyacinth_response = @hyacinth_ingest.ingest_json @json_for_hyacinth_asset
-
-    # fcd1, 12/07/16: Remove files and tmp dir from hyacinth upload directory.
-    # Sword::DepositUtils.removeHyacinthFilesAndSubir(@temp_subdir_in_hyacinth_upload_dir, files)
+    # here, take a look at the slug and decide which Endpoint instance to call
+    # a few ways to do it: have an entry for each collection active record
+    # stating which endpoint instance to create
+    # another way to store the info is in the config file instead of the database
+    # use @collection.parser, which will need to be changed to
+    # @collection.endpoint, i.e. will need to change attribute in
+    # collection model from parser to endpoint
+    @endpoint = Sword::Endpoints::Endpoint::get_endpoint(@collection,
+                                                         @depositor)
+    @path_to_deposit_contents = Sword::Util::unzip_deposit_file request
+    @endpoint.handle_deposit(@path_to_deposit_contents)
 
     @deposit = Deposit.new
-    @deposit.deposit_files = files
-    @deposit.title = @deposit_content.title
-    @deposit.item_in_hyacinth = @hyacinth_pid
+    @deposit.deposit_files = @endpoint.documents_to_deposit
+    @deposit.title = @endpoint.deposit_title
+    @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
-    # head :created
-    response.status = 201
-    render json: { item_pid: @hyacinth_pid }
+    head :created
   end
 
   def service_document
@@ -117,7 +47,8 @@ class SwordController < ApplicationController
 
     def check_basic_http_authentication
       result = false
-      @user_id, @password = Sword::DepositRequest.pullCredentials(request)
+      # @user_id, @password = Sword::DepositRequest.pullCredentials(request)
+      @user_id, @password = pull_credentials
       @depositor = Depositor.find_by(basic_authentication_user_id: @user_id)
       if @depositor.nil?
         warn_msg_reason = "Unknown user/depositor: #{@user_id}"
@@ -129,6 +60,18 @@ class SwordController < ApplicationController
       unless result
         Rails.logger.warn "Authentication failure -- #{warn_msg_reason}"
         head 511
+      end
+    end
+
+    # following is cut-and-paste of all the code in
+    # DepositRequest::pullCredentials
+    def pull_credentials
+      authorization = String.new(request.headers["Authorization"].to_s)
+      if(authorization.include? 'Basic ')
+        authorization['Basic '] = ''
+        authorization = Base64.decode64(authorization)
+        credentials = authorization.split(":")
+        [credentials[0] , credentials[1]]
       end
     end
     
