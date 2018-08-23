@@ -22,7 +22,7 @@ RSpec.describe Sword::Endpoints::Endpoint do
                    parser: "springer-nature")
   }
 
-  xdescribe '::get_endpoint' do
+  describe '::get_endpoint' do
     context "if argument is 'academic-commons'" do
       it 'returns a Sword::Endpoints::AcademicCommonsEndpoint instance' do
         expect(Sword::Endpoints::Endpoint.get_endpoint(ac_collection,
@@ -41,12 +41,6 @@ RSpec.describe Sword::Endpoints::Endpoint do
       it 'returns a Sword::Endpoints::SpringerNatureEndpoint instance' do
         expect(Sword::Endpoints::Endpoint.get_endpoint(springer_nature_collection,
                                                        Depositor.new)).to be_instance_of(Sword::Endpoints::SpringerNatureEndpoint)
-      end
-    end
-
-    xcontext "if argument is 'tow-journalism'" do
-      it 'returns a Sword::Parsers::TowJournalismParser instance' do
-        expect(subject.class.get_parser 'tow-journalism').to be_instance_of(Sword::Parsers::TowJournalismParser)
       end
     end
   end
