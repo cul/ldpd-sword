@@ -21,18 +21,11 @@ module Sword
       end
 
       def ingest_item_into_hyacinth
-        # following code could be move into a MetsEndpoint method called something like
-        # ingest_item_into_hyacinth
-        # BEGIN>>>>>>
-        # populated metadata for hyacinth item object and ingest it into hyacinth
+        # populate metadata for hyacinth item object and ingest it into hyacinth
         @hyacinth_adapter.hyacinth_project = @collection.hyacinth_project_string_key
         @hyacinth_adapter.deposited_by = @depositor.name
         @hyacinth_adapter.compose_internal_format_item
-        # NOTE: ingest_item returns the response from the server, which can be useful
-        # for debugging.
-        # @ingest_item_response = @hyacinth_adapter.ingest_item
         @hyacinth_adapter.ingest_item
-        # puts @ingest_item_response.inspect
         if @hyacinth_adapter.last_ingest_successful?
           @pid_hyacinth_item_object = @hyacinth_adapter.pid_last_ingest
         else
@@ -43,21 +36,14 @@ module Sword
             raise "Hyacinth request was not successful, please see log"
           end
         end
-        # puts "Last ingest successful? #{@hyacinth_adapter.last_ingest_successful?}"
-        # puts "Pid of ingested item object is #{@pid_hyacinth_item_object}"
-
-        # <<<<<<END
       end
 
       # for each deposited document, ingest into hyacinth as child asset of above item
       def ingest_documents_into_hyacinth
         @documents_to_deposit.each do |document_filename|
-          # puts '*******************Document************************'
-          # puts document_filename
           document_filepath = File.join(@content_dir,document_filename)
           @hyacinth_adapter.ingest_asset(@pid_hyacinth_item_object,
                                          document_filepath)
-          # puts @hyacinth_adapter.digital_object_data
         end
       end
 
