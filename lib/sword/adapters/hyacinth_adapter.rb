@@ -3,6 +3,24 @@ module Sword
   module Adapters
     class HyacinthAdapter
 
+      # BEGIN>>>>>> Exception classes
+      # fcd1, 08/24/18: May want to combine all the non-2XX related response exceptions
+      class IngestError < RuntimeError
+        attr_reader :response_code,
+                    :response_message,
+                    :hint
+
+        def initialize(response_code,
+                       response_message,
+                       hint)
+          @response_code = response_code
+          @response_message = response_message
+          @hint = hint
+          super("Hyacinth Ingest Error")
+        end
+      end
+      # END <<<<<< Exception classes
+
       attr_reader :digital_object_data,
                   :dynamic_field_data,
                   :hyacinth_server_response,
@@ -59,22 +77,53 @@ module Sword
         @hyacinth_server_response = nil
         payload = {}
         payload[:digital_object_data_json] = JSON.generate @digital_object_data
-        # puts payload_json.inspect
         uri = URI(HYACINTH_CONFIG[:url])
         post_req = Net::HTTP::Post.new(uri)
-        # post_req.set_form_data("digital_object_data_json" => data_json)
         post_req.set_form_data(payload)
-        # puts post_req.body.inspect
         post_req.basic_auth(HYACINTH_CONFIG[:username],
                             HYACINTH_CONFIG[:password])
         unless @no_op_post
-          @hyacinth_server_response = Net::HTTP.start(uri.hostname,
-                                               uri.port,
-                                               use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
+          begin
+            @hyacinth_server_response = Net::HTTP.start(uri.hostname,
+                                                        uri.port,
+                                                        use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
+          rescue Errno::ECONNREFUSED => err
+            Rails.logger.error("Caught a Errno::ECONNREFUSED error" \
+                             "message: #{err}" \
+                             "HINT: problem connecting to hyacinth server -- network issues, or server not running")
+          end
         end
-        # puts @hyacinth_response.inspect
+        handle_unsuccessful_ingest unless ingest_successful?
         @item_pid = pid_last_ingest
-        # @hyacinth_server_response
+      end
+
+      # This is a hyacinth-specific "quirk": a 200 will be returned, even in certain cases where the ingest
+      # was not successful -- the status of the ingest is stored in body
+      def ingest_successful?
+        return false if @hyacinth_server_response.nil? or @hyacinth_server_response.code != '200'
+        @hyacinth_server_response.body['success']
+      end
+
+      def handle_unsuccessful_ingest
+        # puts @hyacinth_server_response.inspect
+        server_code = @hyacinth_server_response.nil? ?
+                        '000' : @hyacinth_server_response.code
+        server_message = @hyacinth_server_response.nil? ?
+                        'No valid HTTP response from hyacinth' : @hyacinth_server_response.message
+        case @hyacinth_server_response
+        when nil
+          Rails.logger.error 'No response, better be testing'
+        when Net::HTTPUnauthorized
+          hint = 'Check hyacinth credentials (hyacinth.yml)-- credentials correct and user exists in hyacinth'
+        when Net::HTTPForbidden
+          hint = 'Check hyacinth user has create privs in the hyacinth project'
+        else
+          hint = 'Sorry, no hint is available'
+        end
+        # Remove the unless if can monkey patch / stub / mock the response
+        raise IngestError.new(server_code,
+                              server_message,
+                              hint) unless @no_op_post
       end
 
       def compose_internal_format_asset(parent_pid,
@@ -84,37 +133,27 @@ module Sword
         @digital_object_data[:project] = {string_key: @hyacinth_project}
         @digital_object_data[:parent_digital_objects] = [{identifier: parent_pid}]
         @digital_object_data[:import_file] = compose_import_file_data asset_import_filepath
-        # Rails.logger.info "!!!!!!!!!!!!!!!!!! import_file!!!!!!!!"
-        # Rails.logger.info "#{digital_object_data[:import_file]}"
       end
 
       def ingest_asset(parent_pid,
                        document_filepath)
         asset_import_subdir = "swordtmp_#{parent_pid}"
         asset_import_subdir.gsub!(':','')
-        # puts'*************************asset import dir***********************'
-        # puts asset_import_subdir
         fullpath_asset_import_dir = File.join(HYACINTH_CONFIG[:upload_directory], asset_import_subdir)
-        # puts fullpath_asset_import_dir
         FileUtils.mkdir_p(fullpath_asset_import_dir)
         FileUtils.cp(document_filepath,fullpath_asset_import_dir)
         asset_filename = File.basename(document_filepath)
         asset_import_filepath = File.join(asset_import_subdir,asset_filename)
-        # puts asset_import_filepath
         # create the hyacinth internal format data
         compose_internal_format_asset(parent_pid,
                                       asset_import_filepath)
-        # puts @digital_object_data
         # just to be safe, reset response instance
         @hyacinth_server_response = nil
         payload = {}
         payload[:digital_object_data_json] = JSON.generate @digital_object_data
-        # puts payload_json.inspect
         uri = URI(HYACINTH_CONFIG[:url])
         post_req = Net::HTTP::Post.new(uri)
-        # post_req.set_form_data("digital_object_data_json" => data_json)
         post_req.set_form_data(payload)
-        # puts post_req.body.inspect
         post_req.basic_auth(HYACINTH_CONFIG[:username],
                             HYACINTH_CONFIG[:password])
         unless @no_op_post

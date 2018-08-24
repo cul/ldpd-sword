@@ -25,7 +25,16 @@ module Sword
         @hyacinth_adapter.hyacinth_project = @collection.hyacinth_project_string_key
         @hyacinth_adapter.deposited_by = @depositor.name
         @hyacinth_adapter.compose_internal_format_item
-        @hyacinth_adapter.ingest_item
+        begin
+          @hyacinth_adapter.ingest_item
+        rescue Sword::Adapters::HyacinthAdapter::IngestError => err
+          Rails.logger.error("HyacinthAdapter::IngestError => " \
+                             "Status Code: #{err.response_code}, " \
+                             "Status Message: #{err.response_message}, " \
+                             "HINT: #{err.hint}")
+          # may want to move this somewhere else
+          raise err
+        end
         if @hyacinth_adapter.last_ingest_successful?
           @pid_hyacinth_item_object = @hyacinth_adapter.pid_last_ingest
         else
