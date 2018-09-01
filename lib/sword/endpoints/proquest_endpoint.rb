@@ -57,34 +57,33 @@ module Sword
       end
 
       def process_institution_info_into_corporate_name
-        named_entity = Sword::Metadata::NamedEntity.new
-        named_entity.type = 'corporate'
+        corporate_name = Sword::Metadata::CorporateName.new
         # code 0054 is used for GSAS deposits
         if @proquest_etd_parser.institution_school_code == '0054'
           if @proquest_etd_parser.institution_department_name.start_with? 'TC:'
-            named_entity.corporate_name =
+            corporate_name.name =
               'Teachers College.' + @proquest_etd_parser.institution_department_name.sub('TC:','')
           else
-            named_entity.corporate_name =
+            corporate_name.name =
               @proquest_etd_parser.institution_name + '. ' +
               @proquest_etd_parser.institution_department_name
           end
         # Code 0055 is used for Teachers College deposits
         elsif @proquest_etd_parser.institution_school_code == '0055'
-          named_entity.corporate_name =
+          corporate_name.name =
             'Teachers College. ' + @proquest_etd_parser.institution_department_name
         else
-            named_entity.corporate_name =
+            corporate_name.name =
               @proquest_etd_parser.institution_name + '. ' +
               @proquest_etd_parser.institution_department_name
         end
-        @hyacinth_adapter.names << named_entity
+        @hyacinth_adapter.corporate_names << corporate_name
       end
 
       # rename this to process_names_metadata (plural: names)?
       def process_name_metadata
-        @proquest_etd_parser.names.each do |named_entity|
-            @hyacinth_adapter.names << named_entity
+        @proquest_etd_parser.names.each do |personal_name|
+            @hyacinth_adapter.personal_names << personal_name
         end
       end
     end

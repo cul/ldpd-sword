@@ -1,13 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Sword::Metadata::NamedEntity do
+RSpec.describe Sword::Metadata::PersonalName do
   describe 'API/Interface' do
     context 'has attr_accessor for' do
-      it 'corporate_name' do
-        expect(subject).to respond_to(:first_name)
-        expect(subject).to respond_to(:first_name=)
-      end
-
       it 'first_name' do
         expect(subject).to respond_to(:first_name)
         expect(subject).to respond_to(:first_name=)
@@ -31,6 +26,11 @@ RSpec.describe Sword::Metadata::NamedEntity do
       it 'role' do
         expect(subject).to respond_to(:role)
         expect(subject).to respond_to(:role=)
+      end
+
+      it 'type' do
+        expect(subject).to respond_to(:type)
+        expect(subject).to respond_to(:type=)
       end
 
       it 'uni' do

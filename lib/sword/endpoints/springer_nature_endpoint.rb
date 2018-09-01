@@ -80,11 +80,10 @@ module Sword
 
       def process_name_metadata
         @epdcx_parser.creators.each do |creator|
-          individual = Sword::Metadata::NamedEntity.new
-          individual.type = 'personal'
+          individual = Sword::Metadata::PersonalName.new
           individual.role = 'author'
           individual.full_name_naf_format = creator
-          @hyacinth_adapter.names << individual
+          @hyacinth_adapter.personal_names << individual
         end
       end
     end

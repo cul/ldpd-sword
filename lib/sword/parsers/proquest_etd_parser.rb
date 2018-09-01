@@ -60,8 +60,7 @@ module Sword
 
       def parse_authors(nokogiri_xml)
         nokogiri_xml.css("DISS_authorship>DISS_author").each do |author|
-          person = Sword::Metadata::NamedEntity.new
-          person.type = 'personal'
+          person = Sword::Metadata::PersonalName.new
           person.last_name = author.css("DISS_surname").text
           person.first_name = author.css("DISS_fname").text
           person.middle_name = author.css("DISS_middle").text
@@ -75,8 +74,7 @@ module Sword
 
       def parse_advisors(nokogiri_xml)
         nokogiri_xml.css("DISS_description>DISS_advisor").each do |advisor|
-          person = Sword::Metadata::NamedEntity.new
-          person.type = 'personal'
+          person = Sword::Metadata::PersonalName.new
           person.last_name = advisor.css("DISS_surname").text
           person.first_name = advisor.css("DISS_fname").text
           person.middle_name = advisor.css("DISS_middle").text

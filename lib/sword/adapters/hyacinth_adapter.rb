@@ -11,6 +11,7 @@ module Sword
       attr_accessor :abstract,
                     :asset_import_filepath,
                     :asset_parent_pid,
+                    :corporate_names,
                     :doi,
                     :date_issued_start,
                     :degree,
@@ -25,7 +26,6 @@ module Sword
                     :language_uri,
                     :language_value,
                     :license_uri,
-                    :names,
                     :no_op_post,
                     :note_type,
                     :note_value,
@@ -38,8 +38,9 @@ module Sword
                     :use_and_reproduction_uri
 
       def initialize
+        @corporate_names = []
         @dynamic_field_data = {}
-        @names = []
+        @personal_names = []
         @subjects = []
         # following is usefule for testing. If set to true, Post
         # request won't be sent to server
@@ -156,7 +157,7 @@ module Sword
         encode_genre unless @genre_uri.nil? and @genre_value.nil?
         encode_language unless @language_uri.nil? and @language_value.nil?
         encode_license unless @license_uri.nil?
-        encode_names unless @names.empty?
+        encode_names unless (@corporate_names.empty? and @personal_names.empty?)
         encode_note unless @note_value.nil?
         encode_parent_publication unless @parent_publication.nil?
         encode_subjects unless @subjects.empty?
@@ -215,20 +216,26 @@ module Sword
 
       def encode_names
         @dynamic_field_data[:name] = []
-        @names.each do |named_entity|
-          case named_entity.type
-          when 'corporate'
-            set_corporate_name_and_originator_role named_entity
-          when 'personal'
-            case named_entity.role
-            when 'author'
-              set_personal_name_and_author_role named_entity
-            when 'thesis_advisor'
-              set_personal_name_and_advisor_role named_entity
-            else
-              # default to author? (check this)
-              set_personal_name_and_advisor_role named_entity
-            end
+        encode_corporate_names
+        encode_personal_names
+      end
+
+      def encode_corporate_names
+        @corporate_names.each do |corporate_name|
+          set_corporate_name_and_originator_role corporate_name
+        end
+      end
+
+      def encode_personal_names
+        @personal_names.each do |personal_name|
+          case personal_name.role
+          when 'author'
+            set_personal_name_and_author_role personal_name
+          when 'thesis_advisor'
+            set_personal_name_and_advisor_role personal_name
+          else
+            # default to author? (check this)
+            set_personal_name_and_advisor_role personal_name
           end
         end
       end
@@ -290,7 +297,7 @@ module Sword
       end
 
       def set_corporate_name_and_originator_role corporate_entity
-        corporate_name_data = { value: "#{corporate_entity.corporate_name}",
+        corporate_name_data = { value: "#{corporate_entity.name}",
                                 name_type: 'corporate' }
         name_role_data = []
         name_role_data << set_name_role(METADATA_VALUES[:name_role_originator_value],

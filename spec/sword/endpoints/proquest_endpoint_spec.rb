@@ -67,17 +67,15 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     before (:context) do
       @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
                                                                   Depositor.new)
-      first_name_personal = Sword::Metadata::NamedEntity.new
+      first_name_personal = Sword::Metadata::PersonalName.new
       first_name_personal.last_name = 'Smith'
       first_name_personal.first_name = 'John'
       first_name_personal.middle_name = 'C'
-      first_name_personal.type = 'personal'
       first_name_personal.role = 'author'
-      second_name_personal = Sword::Metadata::NamedEntity.new
+      second_name_personal = Sword::Metadata::PersonalName.new
       second_name_personal.last_name = 'Doe'
       second_name_personal.first_name = 'Jane'
       second_name_personal.middle_name = 'A'
-      second_name_personal.type = 'personal'
       second_name_personal.role = 'author'
       @proquest_endpoint.proquest_etd_parser.names << first_name_personal
       @proquest_endpoint.proquest_etd_parser.names << second_name_personal
@@ -86,25 +84,23 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
 
     context 'given @proquest_etd_parser populated with 2 test individuals' do
       it 'info stored in @hyacinth_adapter is correct for first individual' do
-        expect(@proquest_endpoint.hyacinth_adapter.names.first.type).to eq('personal')
-        expect(@proquest_endpoint.hyacinth_adapter.names.first.last_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.last_name
               ).to eq('Smith')
-        expect(@proquest_endpoint.hyacinth_adapter.names.first.first_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.first_name
               ).to eq('John')
-        expect(@proquest_endpoint.hyacinth_adapter.names.first.middle_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.middle_name
               ).to eq('C')
-        expect(@proquest_endpoint.hyacinth_adapter.names.first.role).to eq('author')
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
       end
 
       it 'info stored in @hyacinth_adapter is correct for second individual' do
-        expect(@proquest_endpoint.hyacinth_adapter.names.second.type).to eq('personal')
-        expect(@proquest_endpoint.hyacinth_adapter.names.second.last_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.last_name
               ).to eq('Doe')
-        expect(@proquest_endpoint.hyacinth_adapter.names.second.first_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.first_name
               ).to eq('Jane')
-        expect(@proquest_endpoint.hyacinth_adapter.names.second.middle_name
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.middle_name
               ).to eq('A')
-        expect(@proquest_endpoint.hyacinth_adapter.names.second.role).to eq('author')
+        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
       end
     end
   end
@@ -123,10 +119,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0054'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.corporate_name
+          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
                 ).to eq('Teachers College. Science Education')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.type
-                ).to eq('corporate')
         end
       end
 
@@ -136,10 +130,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0054'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.corporate_name
+          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
                 ).to eq('Columbia University. History')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.type
-                ).to eq('corporate')
         end
       end
 
@@ -149,10 +141,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Teachers College, Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0055'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.corporate_name
+          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
                 ).to eq('Teachers College. Health and Behavior Studies')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.type
-                ).to eq('corporate')
         end
       end
     end
@@ -172,17 +162,15 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
       @proquest_endpoint.proquest_etd_parser.institution_school_code = '0054'
       @proquest_endpoint.proquest_etd_parser.title = 'This is a Sample Title'
 
-      first_name_personal = Sword::Metadata::NamedEntity.new
+      first_name_personal = Sword::Metadata::PersonalName.new
       first_name_personal.last_name = 'Smith'
       first_name_personal.first_name = 'John'
       first_name_personal.middle_name = 'C'
-      first_name_personal.type = 'personal'
       first_name_personal.role = 'author'
-      second_name_personal = Sword::Metadata::NamedEntity.new
+      second_name_personal = Sword::Metadata::PersonalName.new
       second_name_personal.last_name = 'Doe'
       second_name_personal.first_name = 'Jane'
       second_name_personal.middle_name = 'A'
-      second_name_personal.type = 'personal'
       second_name_personal.role = 'author'
       @proquest_endpoint.proquest_etd_parser.names << first_name_personal
       @proquest_endpoint.proquest_etd_parser.names << second_name_personal
@@ -193,25 +181,23 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     context 'given a populated ProquestEtdParser instance in @proquest_etd_parser' do
       context 'populated with 2 test individuals' do
         it 'info stored in @hyacinth_adapter is correct for first individual' do
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.type).to eq('personal')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.last_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.last_name
                 ).to eq('Smith')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.first_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.first_name
                 ).to eq('John')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.middle_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.middle_name
                 ).to eq('C')
-          expect(@proquest_endpoint.hyacinth_adapter.names.first.role).to eq('author')
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
         end
 
         it 'info stored in @hyacinth_adapter is correct for second individual' do
-          expect(@proquest_endpoint.hyacinth_adapter.names.second.type).to eq('personal')
-          expect(@proquest_endpoint.hyacinth_adapter.names.second.last_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.last_name
                 ).to eq('Doe')
-          expect(@proquest_endpoint.hyacinth_adapter.names.second.first_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.first_name
                 ).to eq('Jane')
-          expect(@proquest_endpoint.hyacinth_adapter.names.second.middle_name
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.middle_name
                 ).to eq('A')
-          expect(@proquest_endpoint.hyacinth_adapter.names.second.role).to eq('author')
+          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
         end
       end
 

@@ -53,17 +53,15 @@ RSpec.describe Sword::Endpoints::SpringerNatureEndpoint do
 
     context 'given @epdcx_parser populated with 2 test individuals' do
       it 'info stored in @hyacinth_adapter is correct for first individual' do
-        expect(@springer_endpoint.hyacinth_adapter.names.first.type).to eq('personal')
-        expect(@springer_endpoint.hyacinth_adapter.names.first.full_name_naf_format
+        expect(@springer_endpoint.hyacinth_adapter.personal_names.first.full_name_naf_format
               ).to eq('Smith, John C')
-        expect(@springer_endpoint.hyacinth_adapter.names.first.role).to eq('author')
+        expect(@springer_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
       end
 
       it 'info stored in @hyacinth_adapter is correct for second individual' do
-        expect(@springer_endpoint.hyacinth_adapter.names.second.type).to eq('personal')
-        expect(@springer_endpoint.hyacinth_adapter.names.second.full_name_naf_format
+        expect(@springer_endpoint.hyacinth_adapter.personal_names.second.full_name_naf_format
               ).to eq('Doe, Jane A')
-        expect(@springer_endpoint.hyacinth_adapter.names.second.role).to eq('author')
+        expect(@springer_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
       end
     end
   end

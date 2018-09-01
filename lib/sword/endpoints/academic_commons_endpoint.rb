@@ -48,14 +48,13 @@ module Sword
         @mods_parser.names.each do |mods_name|
           case mods_name.type
           when 'personal'
-            individual = Sword::Metadata::NamedEntity.new
-            individual.type = 'personal'
+            individual = Sword::Metadata::PersonalName.new
             individual.role = 'author'
             # The <namePart> content from AC will always be in the
             # following format: 'Last, First M.'
             individual.full_name_naf_format = mods_name.name_part
             individual.uni = mods_name.id
-            @hyacinth_adapter.names << individual
+            @hyacinth_adapter.personal_names << individual
           else
             raise 'AC should only be sending personal names'
           end

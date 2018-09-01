@@ -9,9 +9,14 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         expect(described_class.new.dynamic_field_data).to be_empty
       end
 
-      it 'sets @names to a new empty Array' do
-        expect(described_class.new.names).to be_an_instance_of(Array)
-        expect(described_class.new.names).to be_empty
+      it 'sets @corporate_names to a new empty Array' do
+        expect(described_class.new.corporate_names).to be_an_instance_of(Array)
+        expect(described_class.new.corporate_names).to be_empty
+      end
+
+      it 'sets @personal_names to a new empty Array' do
+        expect(described_class.new.personal_names).to be_an_instance_of(Array)
+        expect(described_class.new.personal_names).to be_empty
       end
 
       it 'sets @subject to a new empty Array' do
@@ -53,6 +58,11 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       it 'asset_parent_pid' do
         expect(subject).to respond_to(:asset_parent_pid)
         expect(subject).to respond_to(:asset_parent_pid=)
+      end
+
+      it 'corporate_names' do
+        expect(subject).to respond_to(:corporate_names)
+        expect(subject).to respond_to(:corporate_names=)
       end
 
       it 'date_issued_start' do
@@ -130,14 +140,14 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         expect(subject).to respond_to(:note_type=)
       end
 
-      it 'names' do
-        expect(subject).to respond_to(:names)
-        expect(subject).to respond_to(:names=)
-      end
-
       it 'parent_publication' do
         expect(subject).to respond_to(:parent_publication)
         expect(subject).to respond_to(:parent_publication=)
+      end
+
+      it 'personal_names' do
+        expect(subject).to respond_to(:personal_names)
+        expect(subject).to respond_to(:personal_names=)
       end
 
       it 'title' do
@@ -384,7 +394,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
 
     ########################################## #encode_names
     describe '#encode_names' do
-      context 'given @names set to a given value (in this case an array of NamedEntity instances' do
+      context 'given @personalnames and @corporate_names set to a given values' do
         expected_value =
           [
 	    {
@@ -440,23 +450,20 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
             }
           ]
         it 'constructs correct encoded format' do
-          first_named_entity = Sword::Metadata::NamedEntity.new
-          first_named_entity.type = 'corporate'
-          first_named_entity.corporate_name = 'Columbia University. Microbiology, Immunology and Infection'
-          first_named_entity.role = 'originator'
-          hyacinth_adapter.names << first_named_entity
+          corporate_name = Sword::Metadata::CorporateName.new
+          corporate_name.name = 'Columbia University. Microbiology, Immunology and Infection'
+          corporate_name.role = 'originator'
+          hyacinth_adapter.corporate_names << corporate_name
 
-          second_named_entity = Sword::Metadata::NamedEntity.new
-          second_named_entity.type = 'personal'
-          second_named_entity.full_name_naf_format = 'Smith, John Howard'
-          second_named_entity.role = 'author'
-          hyacinth_adapter.names << second_named_entity
+          first_personal_name = Sword::Metadata::PersonalName.new
+          first_personal_name.full_name_naf_format = 'Smith, John Howard'
+          first_personal_name.role = 'author'
+          hyacinth_adapter.personal_names << first_personal_name
 
-          third_named_entity = Sword::Metadata::NamedEntity.new
-          third_named_entity.type = 'personal'
-          third_named_entity.full_name_naf_format = 'Smithy, Johny Howardy'
-          third_named_entity.role = 'thesis_advisor'
-          hyacinth_adapter.names << third_named_entity
+          second_personal_name = Sword::Metadata::PersonalName.new
+          second_personal_name.full_name_naf_format = 'Smithy, Johny Howardy'
+          second_personal_name.role = 'thesis_advisor'
+          hyacinth_adapter.personal_names << second_personal_name
 
           hyacinth_adapter.encode_names
           expect(hyacinth_adapter.dynamic_field_data[:name]).to eq(expected_value)
@@ -639,54 +646,45 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       degree.discipline = ' Microbiology, Immunology and Infection'
       degree.level = 2
       @hyacinth_adapter.degree = degree
-      corporate = Sword::Metadata::NamedEntity.new
-      corporate.type = 'corporate'
+      corporate = Sword::Metadata::CorporateName.new
       corporate.role = 'originator'
-      corporate.corporate_name = 'Columbia University. Microbiology, Immunology and Infection'
-      @hyacinth_adapter.names << corporate
-      first_author = Sword::Metadata::NamedEntity.new
-      first_author.type = 'personal'
+      corporate.name = 'Columbia University. Microbiology, Immunology and Infection'
+      @hyacinth_adapter.corporate_names << corporate
+      first_author = Sword::Metadata::PersonalName.new
       first_author.last_name = 'Smith'
       first_author.first_name = 'John'
       first_author.middle_name = 'Howard'
       first_author.role = 'author'
-      second_author = Sword::Metadata::NamedEntity.new
-      second_author.type = 'personal'
+      second_author = Sword::Metadata::PersonalName.new
       second_author.last_name = 'Doe'
       second_author.first_name = 'J'
       second_author.middle_name = 'H'
       second_author.role = 'author'
-      third_author = Sword::Metadata::NamedEntity.new
-      third_author.type = 'personal'
+      third_author = Sword::Metadata::PersonalName.new
       third_author.full_name_naf_format = 'Kennedy, J F'
       third_author.role = 'author'
-      fourth_author = Sword::Metadata::NamedEntity.new
-      fourth_author.type = 'personal'
+      fourth_author = Sword::Metadata::PersonalName.new
       fourth_author.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
       fourth_author.role = 'author'
-      @hyacinth_adapter.names << first_author << second_author << third_author <<
+      @hyacinth_adapter.personal_names << first_author << second_author << third_author <<
         fourth_author
-      first_advisor = Sword::Metadata::NamedEntity.new
-      first_advisor.type = 'personal'
+      first_advisor = Sword::Metadata::PersonalName.new
       first_advisor.last_name = 'Smithy'
       first_advisor.first_name = 'Johny'
       first_advisor.middle_name = 'Howardy'
       first_advisor.role = 'thesis_advisor'
-      second_advisor = Sword::Metadata::NamedEntity.new
-      second_advisor.type = 'personal'
+      second_advisor = Sword::Metadata::PersonalName.new
       second_advisor.last_name = 'Doey'
       second_advisor.first_name = 'J'
       second_advisor.middle_name = 'H'
       second_advisor.role = 'thesis_advisor'
-      third_advisor = Sword::Metadata::NamedEntity.new
-      third_advisor.type = 'personal'
+      third_advisor = Sword::Metadata::PersonalName.new
       third_advisor.full_name_naf_format = 'Kennedy, J F'
       third_advisor.role = 'thesis_advisor'
-      fourth_advisor = Sword::Metadata::NamedEntity.new
-      fourth_advisor.type = 'personal'
+      fourth_advisor = Sword::Metadata::PersonalName.new
       fourth_advisor.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
       fourth_advisor.role = 'thesis_advisor'
-      @hyacinth_adapter.names << first_advisor << second_advisor << third_advisor <<
+      @hyacinth_adapter.personal_names << first_advisor << second_advisor << third_advisor <<
         fourth_advisor
       @expected_dynamic_field_data =
         JSON.parse(fixture_file_upload('hyacinth_internal_format/dynamic_field_data.json').read, symbolize_names: true)
@@ -787,54 +785,45 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       degree.discipline = ' Microbiology, Immunology and Infection'
       degree.level = 2
       @hyacinth_adapter.degree = degree
-      corporate = Sword::Metadata::NamedEntity.new
-      corporate.type = 'corporate'
+      corporate = Sword::Metadata::CorporateName.new
       corporate.role = 'originator'
-      corporate.corporate_name = 'Columbia University. Microbiology, Immunology and Infection'
-      @hyacinth_adapter.names << corporate
-      first_author = Sword::Metadata::NamedEntity.new
-      first_author.type = 'personal'
+      corporate.name = 'Columbia University. Microbiology, Immunology and Infection'
+      @hyacinth_adapter.corporate_names << corporate
+      first_author = Sword::Metadata::PersonalName.new
       first_author.last_name = 'Smith'
       first_author.first_name = 'John'
       first_author.middle_name = 'Howard'
       first_author.role = 'author'
-      second_author = Sword::Metadata::NamedEntity.new
-      second_author.type = 'personal'
+      second_author = Sword::Metadata::PersonalName.new
       second_author.last_name = 'Doe'
       second_author.first_name = 'J'
       second_author.middle_name = 'H'
       second_author.role = 'author'
-      third_author = Sword::Metadata::NamedEntity.new
-      third_author.type = 'personal'
+      third_author = Sword::Metadata::PersonalName.new
       third_author.full_name_naf_format = 'Kennedy, J F'
       third_author.role = 'author'
-      fourth_author = Sword::Metadata::NamedEntity.new
-      fourth_author.type = 'personal'
+      fourth_author = Sword::Metadata::PersonalName.new
       fourth_author.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
       fourth_author.role = 'author'
-      @hyacinth_adapter.names << first_author << second_author << third_author <<
+      @hyacinth_adapter.personal_names << first_author << second_author << third_author <<
         fourth_author
-      first_advisor = Sword::Metadata::NamedEntity.new
-      first_advisor.type = 'personal'
+      first_advisor = Sword::Metadata::PersonalName.new
       first_advisor.last_name = 'Smithy'
       first_advisor.first_name = 'Johny'
       first_advisor.middle_name = 'Howardy'
       first_advisor.role = 'thesis_advisor'
-      second_advisor = Sword::Metadata::NamedEntity.new
-      second_advisor.type = 'personal'
+      second_advisor = Sword::Metadata::PersonalName.new
       second_advisor.last_name = 'Doey'
       second_advisor.first_name = 'J'
       second_advisor.middle_name = 'H'
       second_advisor.role = 'thesis_advisor'
-      third_advisor = Sword::Metadata::NamedEntity.new
-      third_advisor.type = 'personal'
+      third_advisor = Sword::Metadata::PersonalName.new
       third_advisor.full_name_naf_format = 'Kennedy, J F'
       third_advisor.role = 'thesis_advisor'
-      fourth_advisor = Sword::Metadata::NamedEntity.new
-      fourth_advisor.type = 'personal'
+      fourth_advisor = Sword::Metadata::PersonalName.new
       fourth_advisor.full_name_naf_format = 'Kennedy, A Bee C Dee F Jay K'
       fourth_advisor.role = 'thesis_advisor'
-      @hyacinth_adapter.names << first_advisor << second_advisor << third_advisor <<
+      @hyacinth_adapter.personal_names << first_advisor << second_advisor << third_advisor <<
         fourth_advisor
       @expected_dynamic_field_data =
         JSON.parse(fixture_file_upload('hyacinth_internal_format/dynamic_field_data.json').read, symbolize_names: true)
