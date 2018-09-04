@@ -31,7 +31,10 @@ module Sword
       def process_metadata
         @hyacinth_adapter.abstract = @mods_parser.abstract
         @hyacinth_adapter.date_issued_start = @mods_parser.date_issued_start
-        @hyacinth_adapter.doi = @mods_parser.identifier_doi
+        unless @mods_parser.identifier_doi.nil?
+          @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
+          @hyacinth_adapter.parent_publication.doi = @mods_parser.identifier_doi
+        end
         @hyacinth_adapter.license_uri =
           @mods_parser.access_condition_use_and_reproduction_license_uri
         @hyacinth_adapter.note_type = 'internal'

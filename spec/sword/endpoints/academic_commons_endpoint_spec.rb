@@ -116,8 +116,8 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         expect(@ac_endpoint.hyacinth_adapter.date_issued_start).to eq('2015')
       end
 
-      it 'sets @hyacinth_adapter.doi correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.doi).to eq('doi:1234234')
+      it 'sets @hyacinth_adapter.parent_publication.doi correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
       end
 
       it 'sets @hyacinth_adapter.note_type correctly' do
