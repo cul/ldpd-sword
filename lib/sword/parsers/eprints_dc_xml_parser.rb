@@ -78,7 +78,7 @@ module Sword
         bibliographic_citation_text = bibliographic_citation_first.text
         # Here is an example of an entry from an actual mets.xml
         # International Journal of Mental Health Systems. 2016 Jan 04;10(1):1
-        match = /^([ \w]+)\. (\d\d\d\d) \w\w\w \d\d;(\d+)\((\d+)\):(\d*)/.match bibliographic_citation_text
+        match = /^(.+)\. (\d\d\d\d) \w\w\w \d\d;(\d+)\((\d+)\):(\d*)/.match bibliographic_citation_text
         unless match.nil?
           biblio_citation = Sword::Metadata::EpdcxBibliographicCitation.new
           biblio_citation.title = match[1]
