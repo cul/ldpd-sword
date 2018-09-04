@@ -518,6 +518,44 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
           expect(hyacinth_adapter.dynamic_field_data[:parent_publication]).to eq(expected_value)
         end
       end
+
+      context 'given @parent_publication with just the title set' do
+        expected_value =
+          [
+            {
+              parent_publication_title:
+                [
+                  {
+                    parent_publication_title_non_sort_portion: nil,
+		    parent_publication_title_sort_portion: 'International Journal of Stuff'
+                  }
+	        ]
+            }
+          ]
+        it 'constructs correct encoded format' do
+          hyacinth_adapter.parent_publication =
+            Sword::Metadata::ParentPublication.new
+          hyacinth_adapter.parent_publication.title = 'International Journal of Stuff'
+          hyacinth_adapter.encode_parent_publication
+          expect(hyacinth_adapter.dynamic_field_data[:parent_publication]).to eq(expected_value)
+        end
+      end
+
+      context 'given @parent_publication with just the DOI set' do
+        expected_value =
+          [
+            {
+              parent_publication_doi: "10.1186/s13033-015-0032-8"
+            }
+          ]
+        it 'constructs correct encoded format' do
+          hyacinth_adapter.parent_publication =
+            Sword::Metadata::ParentPublication.new
+          hyacinth_adapter.parent_publication.doi = "10.1186/s13033-015-0032-8"
+          hyacinth_adapter.encode_parent_publication
+          expect(hyacinth_adapter.dynamic_field_data[:parent_publication]).to eq(expected_value)
+        end
+      end
     end
 
     ########################################## #encode_subjects

@@ -89,6 +89,73 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
     end
   end
 
+  ########################################## #parse_bibliographic_citation
+  describe '#parse_bibliographic_citation' do
+    context "with bibliographic citation title set to 'Conflict and Health'" do
+      epdcx_parser = Sword::Parsers::EprintsDcXmlParser.new
+      xml_file = Rails.root.join "spec/fixtures/mets_files/springer-nature-bibcitation-1-xmlData.xml"
+      nokogiri_xml = Nokogiri::XML(xml_file)
+      epdcx_parser.parse_bibliographic_citation nokogiri_xml
+      bib_citation = Sword::Metadata::EpdcxBibliographicCitation.new
+      bib_citation.issue = '1'
+      bib_citation.publish_year = '2018'
+      bib_citation.start_page = '37'
+      bib_citation.title = 'Conflict and Health'
+      bib_citation.volume = '12'
+      it "parses the bibligraphic citation issue correctly" do
+        expect(epdcx_parser.bibliographic_citation.issue).to eq bib_citation.issue
+      end
+
+      it "parses the bibligraphic citation publish_year correctly" do
+        expect(epdcx_parser.bibliographic_citation.publish_year).to eq bib_citation.publish_year
+      end
+
+      it "parses the bibligraphic citation start_page correctly" do
+        expect(epdcx_parser.bibliographic_citation.start_page).to eq bib_citation.start_page
+      end
+
+      it "parses the bibligraphic citation title correctly" do
+        expect(epdcx_parser.bibliographic_citation.title).to eq bib_citation.title
+      end
+
+      it "parses the bibligraphic citation volume correctly" do
+        expect(epdcx_parser.bibliographic_citation.volume).to eq bib_citation.volume
+      end
+    end
+
+    context "with bibliographic citation title set to 'Stem Cell Research & Therapy' (note the '&', coded as '&amp;' in the incoming xml" do
+      epdcx_parser = Sword::Parsers::EprintsDcXmlParser.new
+      xml_file = Rails.root.join "spec/fixtures/mets_files/springer-nature-bibcitation-2-xmlData.xml"
+      nokogiri_xml = Nokogiri::XML(xml_file)
+      epdcx_parser.parse_bibliographic_citation nokogiri_xml
+      bib_citation = Sword::Metadata::EpdcxBibliographicCitation.new
+      bib_citation.issue = '1'
+      bib_citation.publish_year = '2018'
+      bib_citation.start_page = '229'
+      bib_citation.title = 'Stem Cell Research & Therapy'
+      bib_citation.volume = '9'
+      it "parses the bibligraphic citation issue correctly" do
+        expect(epdcx_parser.bibliographic_citation.issue).to eq bib_citation.issue
+      end
+
+      it "parses the bibligraphic citation publish_year correctly" do
+        expect(epdcx_parser.bibliographic_citation.publish_year).to eq bib_citation.publish_year
+      end
+
+      it "parses the bibligraphic citation start_page correctly" do
+        expect(epdcx_parser.bibliographic_citation.start_page).to eq bib_citation.start_page
+      end
+
+      it "parses the bibligraphic citation title correctly" do
+        expect(epdcx_parser.bibliographic_citation.title).to eq bib_citation.title
+      end
+
+      it "parses the bibligraphic citation volume correctly" do
+        expect(epdcx_parser.bibliographic_citation.volume).to eq bib_citation.volume
+      end
+    end
+  end
+
   ########################################## #parse
   describe '#parse' do
     context "In mets file containing expected elements" do

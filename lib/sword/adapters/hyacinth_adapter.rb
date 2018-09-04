@@ -248,11 +248,13 @@ module Sword
 
       def encode_parent_publication
         @dynamic_field_data[:parent_publication] = []
+        parent_publication_data = {}
+
         unless @parent_publication.title.nil?
           title_data = []
           title_data << { parent_publication_title_non_sort_portion: nil,
                           parent_publication_title_sort_portion:  @parent_publication.title }
-          parent_publication_data = { parent_publication_title: title_data }
+          parent_publication_data[:parent_publication_title] = title_data
         end
         parent_publication_data[:parent_publication_date_created_textual] =
           @parent_publication.publish_date unless @parent_publication.publish_date.nil?

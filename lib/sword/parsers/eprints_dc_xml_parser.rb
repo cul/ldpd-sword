@@ -75,19 +75,19 @@ module Sword
       def parse_bibliographic_citation nokogiri_xml
         bibliographic_citation_first = nokogiri_xml.css("#{PREFIX_EPRINT_TERMS}bibliographicCitation#{POSTFIX}").first
         return nil if bibliographic_citation_first.nil?
-        biblio_citation = Sword::Metadata::EpdcxBibliographicCitation.new
-        bibliographic_citation = bibliographic_citation_first.text
+        bibliographic_citation_text = bibliographic_citation_first.text
         # Here is an example of an entry from an actual mets.xml
         # International Journal of Mental Health Systems. 2016 Jan 04;10(1):1
-        match = /^([ \w]+)\. (\d\d\d\d) \w\w\w \d\d;(\d+)\((\d+)\):(\d*)/.match bibliographic_citation
+        match = /^(.+)\. (\d\d\d\d) \w\w\w \d\d;(\d+)\((\d+)\):(\d*)/.match bibliographic_citation_text
         unless match.nil?
+          biblio_citation = Sword::Metadata::EpdcxBibliographicCitation.new
           biblio_citation.title = match[1]
           biblio_citation.publish_year = match[2]
           biblio_citation.volume = match[3]
           biblio_citation.issue = match[4]
           biblio_citation.start_page = match[5]
+          @bibliographic_citation = biblio_citation
         end
-        @bibliographic_citation = biblio_citation
       end
 
       # http://purl.org/dc/elements/1.1/creator

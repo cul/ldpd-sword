@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xmlData xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/">
+<epdcx:descriptionSet xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+<epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/ScholarlyWork"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/bibliographicCitation">
+<epdcx:valueString>Stem Cell Research &amp; Therapy. 2018 Aug 28;9(1):229</epdcx:valueString>
+</epdcx:statement>
+</epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
