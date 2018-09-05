@@ -474,11 +474,20 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
     ########################################## #encode_note
     describe '#encode_note' do
       context 'given @note_type and @note_value set to given test values' do
-        expected_value = [ { note_value: 'Copyright: 2016 Hyacinth Composer' },
-                           { note_type: 'internal' } ]
+        expected_value = [ { note_value: 'Copyright: 2016 Hyacinth Composer',
+                             note_type: 'internal' } ]
         it 'constructs correct encoded format' do
           hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
           hyacinth_adapter.note_type = 'internal'
+          hyacinth_adapter.encode_note
+          expect(hyacinth_adapter.dynamic_field_data[:note]).to eq(expected_value)
+        end
+      end
+
+      context 'given @note_value set to given test value, but no @note_type' do
+        expected_value = [ { note_value: 'Copyright: 2016 Hyacinth Composer' } ]
+        it 'constructs correct encoded format' do
+          hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
           hyacinth_adapter.encode_note
           expect(hyacinth_adapter.dynamic_field_data[:note]).to eq(expected_value)
         end

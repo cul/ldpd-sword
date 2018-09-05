@@ -241,9 +241,10 @@ module Sword
       end
 
       def encode_note
+        note_data = { note_value: @note_value }
+        note_data[:note_type] = @note_type unless @note_type.nil?
         @dynamic_field_data[:note] = []
-        @dynamic_field_data[:note] << { note_value: @note_value }
-        @dynamic_field_data[:note] << { note_type: @note_type } unless @note_type.nil?
+        @dynamic_field_data[:note] << note_data
       end
 
       def encode_parent_publication
