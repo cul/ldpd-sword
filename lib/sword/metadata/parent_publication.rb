@@ -6,6 +6,7 @@ module Sword
                     :publish_date,
                     :start_page,
                     :title,
+                    :uri,
                     :volume
     end
   end

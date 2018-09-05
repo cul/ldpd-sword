@@ -31,9 +31,8 @@ module Sword
       def process_metadata
         @hyacinth_adapter.abstract = @mods_parser.abstract
         @hyacinth_adapter.date_issued_start = @mods_parser.date_issued_start
-        unless @mods_parser.identifier_doi.nil?
-          @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
-          @hyacinth_adapter.parent_publication.doi = @mods_parser.identifier_doi
+        unless (@mods_parser.identifier_doi.nil? and @mods_parser.identifier_uri.nil?)
+          process_doi_uri
         end
         @hyacinth_adapter.license_uri =
           @mods_parser.access_condition_use_and_reproduction_license_uri
@@ -41,10 +40,15 @@ module Sword
         @hyacinth_adapter.note_value = @mods_parser.note_internal
         process_name_metadata
         @hyacinth_adapter.title = @mods_parser.title
-        @hyacinth_adapter.uri = @mods_parser.identifier_uri
         @hyacinth_adapter.use_and_reproduction_uri =
           @mods_parser.access_condition_use_and_reproduction_rights_status_uri
         @deposit_title = @mods_parser.title
+      end
+
+      def process_doi_uri
+        @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
+        @hyacinth_adapter.parent_publication.doi = @mods_parser.identifier_doi unless @mods_parser.identifier_doi.nil?
+        @hyacinth_adapter.parent_publication.uri = @mods_parser.identifier_uri unless @mods_parser.identifier_uri.nil?
       end
 
       def process_name_metadata

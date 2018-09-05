@@ -42,6 +42,40 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
     end
   end
 
+  ########################################## #process_doi_uri
+  describe '#process_doi_uri' do
+    before (:context) do
+      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new(Collection.new,
+                                                                   Depositor.new)
+    end
+
+    context 'given @mods_parser populated with just doi' do
+      it 'info stored in @hyacinth_adapter is correct for doi' do
+        @ac_endpoint.mods_parser.identifier_doi = 'doi:1234234'
+        @ac_endpoint.process_doi_uri
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
+      end
+    end
+
+    context 'given @mods_parser populated with just uri' do
+      it 'info stored in @hyacinth_adapter is correct for doi' do
+        @ac_endpoint.mods_parser.identifier_uri = 'http://sampleuri'
+        @ac_endpoint.process_doi_uri
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+      end
+    end
+
+    context 'given @mods_parser populated with doi and uri' do
+      it 'info stored in @hyacinth_adapter is correct for doi' do
+        @ac_endpoint.mods_parser.identifier_doi = 'doi:1234234'
+        @ac_endpoint.mods_parser.identifier_uri = 'http://sampleuri'
+        @ac_endpoint.process_doi_uri
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+      end
+    end
+  end
+
   ########################################## #process_name_metadata
   describe '#process_name_metadata' do
     before (:context) do
@@ -120,6 +154,10 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
       end
 
+      it 'sets @hyacinth_adapter.parent_publication.uri correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+      end
+
       it 'sets @hyacinth_adapter.note_type correctly' do
         expect(@ac_endpoint.hyacinth_adapter.note_type).to eq('internal')
       end
@@ -130,10 +168,6 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
 
       it 'sets @hyacinth_adapter.title correctly' do
         expect(@ac_endpoint.hyacinth_adapter.title).to eq('This is a Sample Title')
-      end
-
-      it 'sets @hyacinth_adapter.uri correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.uri).to eq('http://sampleuri')
       end
 
       it 'sets @hyacinth_adapter.license_uri correctly' do

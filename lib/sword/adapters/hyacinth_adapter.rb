@@ -267,6 +267,8 @@ module Sword
           @parent_publication.start_page unless @parent_publication.start_page.nil?
         parent_publication_data[:parent_publication_doi] =
           @parent_publication.doi unless @parent_publication.doi.nil?
+        parent_publication_data[:parent_publication_uri] =
+          @parent_publication.uri unless @parent_publication.uri.nil?
         @dynamic_field_data[:parent_publication] << parent_publication_data
       end
 

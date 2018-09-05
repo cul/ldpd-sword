@@ -511,7 +511,8 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
               parent_publication_volume: 10,
               parent_publication_issue: 11,
               parent_publication_page_start: 78,
-              parent_publication_doi: "10.1186/s13033-015-0032-8"
+              parent_publication_doi: "10.1186/s13033-015-0032-8",
+              parent_publication_uri: "https://doi.org"
             }
           ]
         it 'constructs correct encoded format' do
@@ -523,6 +524,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
           hyacinth_adapter.parent_publication.issue = 11
           hyacinth_adapter.parent_publication.start_page = 78
           hyacinth_adapter.parent_publication.doi = "10.1186/s13033-015-0032-8"
+          hyacinth_adapter.parent_publication.uri = "https://doi.org"
           hyacinth_adapter.encode_parent_publication
           expect(hyacinth_adapter.dynamic_field_data[:parent_publication]).to eq(expected_value)
         end

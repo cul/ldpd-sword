@@ -28,6 +28,11 @@ RSpec.describe Sword::Metadata::ParentPublication do
         expect(subject).to respond_to(:title=)
       end
 
+      it 'uri' do
+        expect(subject).to respond_to(:uri)
+        expect(subject).to respond_to(:uri=)
+      end
+
       it 'volume' do
         expect(subject).to respond_to(:volume)
         expect(subject).to respond_to(:volume=)
