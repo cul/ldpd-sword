@@ -669,6 +669,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       @hyacinth_adapter.subjects << 'Subject one' << 'Subject two' << 'Canadian Studies'
       @hyacinth_adapter.use_and_reproduction_uri = 'http://rightsstatements.org/vocab/InC/1.0/'
       @hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
+      @hyacinth_adapter.date_issued_start = '2018'
       parent_pub = Sword::Metadata::ParentPublication.new
       parent_pub.title = 'International Journal of Stuff'
       parent_pub.publish_date = '2016'

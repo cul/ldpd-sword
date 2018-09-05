@@ -297,6 +297,13 @@
 	}
     ]
     ,
+    "date_issued" :
+    [
+	{
+	    "date_issued_start_value" : "2018"
+	}
+    ]
+    ,
     "parent_publication" :
     [
 	{

@@ -150,7 +150,7 @@ module Sword
       def compose_dynamic_field_data
         # fcd1, 27Jul18: uncomment following calls as methods are updated for new scheme
         encode_abstract unless @abstract.nil?
-        encode_date_issued unless @date_issued.nil?
+        encode_date_issued unless @date_issued_start.nil?
         encode_degree unless @degree.nil?
         encode_deposited_by # this should always be set
         encode_embargo_release_date unless @embargo_release_date.nil?
