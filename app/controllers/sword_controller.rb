@@ -32,7 +32,12 @@ class SwordController < ApplicationController
     # create Deposit instance to store deposit info in database
     @deposit = Deposit.new
     @deposit.deposit_files = @endpoint.documents_to_deposit
-    @deposit.title = @endpoint.deposit_title
+    # fcd1, 9/6/18: use truncate_words here, but should also add a
+    # truncate(200, omission: '') at the model level to make sure we
+    # don't go beyond the 255 char limit for a string in MySql
+    # For now, just tack it on here.
+    @deposit.title =
+      @endpoint.deposit_title.truncate_words(20).truncate(200, omission: '')
     @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
     @depositor.deposits << @deposit
     @collection.deposits << @deposit
