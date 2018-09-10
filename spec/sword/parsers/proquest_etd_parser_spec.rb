@@ -34,6 +34,20 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
         expect(subject).to respond_to(:degree=)
       end
 
+      # Code to figure out the embargo date
+      it 'embargo_code' do
+        expect(subject).to respond_to(:embargo_code)
+        expect(subject).to respond_to(:embargo_code=)
+      end
+
+      # Embargo release date, which is when the dissertation can be released. This date is derived,
+      # depending on the embargo code, on various other dates in the ProQuest metadata. See the
+      # definition of the calculate_embargo_release_date instance method for details
+      it 'embargo_release_date' do
+        expect(subject).to respond_to(:embargo_release_date)
+        expect(subject).to respond_to(:embargo_release_date=)
+      end
+
       # Department name within the institution
       it 'institution_department_name' do
         expect(subject).to respond_to(:institution_department_name)
@@ -57,6 +71,11 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
         expect(subject).to respond_to(:names=)
       end
 
+      it 'subjects' do
+        expect(subject).to respond_to(:subjects)
+        expect(subject).to respond_to(:subjects=)
+      end
+
       it 'title' do
         expect(subject).to respond_to(:title)
         expect(subject).to respond_to(:title=)
@@ -66,6 +85,17 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
     context ' has the following instance method:' do
       it '#parse method that takes file to parse' do
         expect(subject).to respond_to(:parse).with(1).arguments
+      end
+
+      it '#parse_subjects ' do
+        expect(subject).to respond_to(:parse_subjects).with(1).arguments
+      end
+
+      # Following has info on calculating the embargo release date:
+      # https://support.proquest.com/#articledetail?id=kA0400000004JJCCA2&key=embargo&pcat=All__c&icat=
+      # The ETD mentioned at the top of this file also has info on the embargo date
+      it '#calculate_embargo_release_date ' do
+        expect(subject).to respond_to(:calculate_embargo_release_date).with(1).arguments
       end
     end
   end
@@ -100,6 +130,18 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
       expect(proquest_etd_parser.institution_school_code).to eq "0054"
     end
 
+    it "parses the subjects correctly" do
+      expect(proquest_etd_parser.subjects).to include *['Biology','Developmental biology','Genetics']
+    end
+
+    it "parses the embargo code correctly" do
+      expect(proquest_etd_parser.embargo_code).to eq '4'
+    end
+
+    it "parses the embargo release date correctly (embargo code set to 4)" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2019-08-02'
+    end
+
     context 'name elements' do
       it "parses the author content" do
         actual_authors = proquest_etd_parser.names.each.select { |name| name.role == 'author' }
@@ -120,6 +162,61 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
 
     it "parses the title correctly" do
       expect(proquest_etd_parser.title).to eq "Spatially restricted regulation of cell competition by the cytokine Spaetzle"
+    end
+  end
+
+  context "In mets file with embargo code set to 0" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_0_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2018-07-27'
+    end
+  end
+
+  context "In mets file with embargo code set to 1" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_1_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2019-01-27'
+    end
+  end
+
+  context "In mets file with embargo code set to 2" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_2_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2019-07-27'
+    end
+  end
+
+  context "In mets file with embargo code set to 3" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_3_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2020-07-27'
+    end
+  end
+
+  context "In mets file with embargo code set to 4" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2019-08-02'
     end
   end
 end

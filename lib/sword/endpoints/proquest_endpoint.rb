@@ -42,7 +42,12 @@ module Sword
         @hyacinth_adapter.abstract = @proquest_etd_parser.abstract
         @hyacinth_adapter.date_issued_start = @proquest_etd_parser.date_conferred
         @hyacinth_adapter.title = @proquest_etd_parser.title
+        @hyacinth_adapter.embargo_release_date = @proquest_etd_parser.embargo_release_date
+
         process_name_metadata
+        process_degree_metadata
+        process_institution_info_into_corporate_name
+        process_subject_metadata
 
         @deposit_title = @proquest_etd_parser.title
       end
@@ -54,6 +59,10 @@ module Sword
         degree.level = '2'
         degree.grantor = 'Columbia University'
         @hyacinth_adapter.degree = degree
+      end
+
+      def process_subject_metadata
+        @hyacinth_adapter.subjects = @proquest_etd_parser.subjects
       end
 
       def process_institution_info_into_corporate_name

@@ -62,6 +62,22 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     end
   end
 
+  ########################################## #process_subject_metadata
+  describe '#process_subject_metadata' do
+    before do
+      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
+                                                                  Depositor.new)
+      @proquest_endpoint.proquest_etd_parser.subjects = ['Flux capacitor','Time travel']
+      @proquest_endpoint.process_subject_metadata
+    end
+
+    context 'given test metadata for subject info in @proquest_etd_parser' do
+      it 'sets @hyacinth_adapter.subjects correctly' do
+        expect(@proquest_endpoint.hyacinth_adapter.subjects).to include *['Flux capacitor','Time travel']
+      end
+    end
+  end
+
   ########################################## #process_name_metadata
   describe '#process_name_metadata' do
     before (:context) do
