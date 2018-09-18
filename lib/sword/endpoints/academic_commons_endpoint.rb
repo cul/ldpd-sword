@@ -36,8 +36,10 @@ module Sword
         end
         @hyacinth_adapter.license_uri =
           @mods_parser.access_condition_use_and_reproduction_license_uri
-        @hyacinth_adapter.note_type = 'internal'
-        @hyacinth_adapter.note_value = @mods_parser.note_internal
+        unless @mods_parser.note_internal.blank?
+          @hyacinth_adapter.note_type = 'internal'
+          @hyacinth_adapter.note_value = @mods_parser.note_internal
+        end
         process_name_metadata
         @hyacinth_adapter.title = @mods_parser.title
         @hyacinth_adapter.use_and_reproduction_uri =
