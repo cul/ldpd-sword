@@ -176,6 +176,17 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
     end
   end
 
+  context "In mets file with embargo code set to 0, missing DISS_contact_effdt" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_0_missing_DISS_contact_effdt_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "leaves the embargo date unset (i.e. equal to nil)" do
+      expect(proquest_etd_parser.embargo_release_date).to eq nil
+    end
+  end
+
   context "In mets file with embargo code set to 1" do
     proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
     xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_1_xmlData.xml"
@@ -212,6 +223,17 @@ RSpec.describe Sword::Parsers::ProquestEtdParser do
   context "In mets file with embargo code set to 4" do
     proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
     xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_xmlData.xml"
+    nokogiri_xml = Nokogiri::XML(xml_file)
+    proquest_etd_parser.parse(nokogiri_xml)
+
+    it "parses the embargo release date correctly" do
+      expect(proquest_etd_parser.embargo_release_date).to eq '2019-08-02'
+    end
+  end
+
+  context "In mets file with embargo code set to 4, missing DISS_contact_effdt" do
+    proquest_etd_parser = Sword::Parsers::ProquestEtdParser.new
+    xml_file = Rails.root.join "spec/fixtures/mets_files/proquest_embargo_code_4_missing_DISS_contact_effdt_xmlData.xml"
     nokogiri_xml = Nokogiri::XML(xml_file)
     proquest_etd_parser.parse(nokogiri_xml)
 

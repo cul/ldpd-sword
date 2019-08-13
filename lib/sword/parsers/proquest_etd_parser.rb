@@ -139,14 +139,15 @@ module Sword
       # <<<<<<END_CUT_AND_PASTE_BLURB
       def calculate_embargo_release_date(nokogiri_xml)
         @embargo_release_date
-        diss_contact_effdt = nokogiri_xml.css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt").first.text
+        diss_contact_effdt_nokogiri_node_element = nokogiri_xml.css("DISS_authorship>DISS_author>DISS_contact>DISS_contact_effdt").first
+        diss_contact_effdt = diss_contact_effdt_nokogiri_node_element.text if diss_contact_effdt_nokogiri_node_element
 
         # start_date = Date.parse(deposit_content.embargo_start_date)
-        embargo_start_date_object = Date.strptime(diss_contact_effdt, "%m/%d/%Y")
+        embargo_start_date_object = Date.strptime(diss_contact_effdt, "%m/%d/%Y") if diss_contact_effdt
 
         case @embargo_code
         when '0'
-          @embargo_release_date = embargo_start_date_object.strftime('%Y-%m-%d')
+          @embargo_release_date = embargo_start_date_object.strftime('%Y-%m-%d') if embargo_start_date_object
         when '1'
           @embargo_release_date = (embargo_start_date_object + 6.month).strftime('%Y-%m-%d')
         when '2'
