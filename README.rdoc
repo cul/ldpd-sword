@@ -1,9 +1,1 @@
-== README
-
-PLEASE NOTE: At this early stage, the code in this repo is in flux, and the following may happen:
-
-* Database migration files will be edited
-
-* Commit history will be rewritten
-
-PLEASE DO NOT FORK THIS CODE.
+SWORD
