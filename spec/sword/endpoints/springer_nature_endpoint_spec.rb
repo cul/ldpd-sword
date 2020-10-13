@@ -27,13 +27,11 @@ RSpec.describe Sword::Endpoints::SpringerNatureEndpoint do
   describe '#handle_deposit' do
     context 'given contents directory as its argument' do
       before(:context) do
-        @springer_endpoint = Sword::Endpoints::SpringerNatureEndpoint.new(Collection.new,
-                                                                     Depositor.new)
+        @springer_endpoint = Sword::Endpoints::SpringerNatureEndpoint.new('test-sn',
+                                                                          'firsttestdepositor')
         @content_dir = Rails.root.join 'spec/fixtures/test_dirs/springer_nature_contents'
         # for test purposes, turn off actual sending of POST request
         @springer_endpoint.hyacinth_adapter.no_op_post = true
-        @collection = Collection.new
-        @depositor = Depositor.new
       end
 
       it '#handle_deposit is called successfully (without crashing)' do

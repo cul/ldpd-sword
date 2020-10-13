@@ -14,7 +14,7 @@ module Sword
       # not counting the mets.xml file
       attr_accessor :payload_filenames
 
-      def initialize(collection, depositor)
+      def initialize(collection_slug, depositor_user_id)
         super
         @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
         @mets_parser = Sword::Parsers::MetsParser.new
@@ -22,8 +22,10 @@ module Sword
 
       def ingest_item_into_hyacinth
         # populate metadata for hyacinth item object and ingest it into hyacinth
-        @hyacinth_adapter.hyacinth_project = @collection.hyacinth_project_string_key
-        @hyacinth_adapter.deposited_by = @depositor.name
+        @hyacinth_adapter.hyacinth_project =
+          COLLECTIONS[:slug][@collection_slug][:hyacinth_project_string_key]
+        @hyacinth_adapter.deposited_by =
+          DEPOSITORS[:basic_authentication_user_ids][@depositor_user_id][:name]
         @hyacinth_adapter.compose_internal_format_item
         @hyacinth_adapter.ingest_item
         if @hyacinth_adapter.last_ingest_successful?

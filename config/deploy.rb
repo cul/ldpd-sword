@@ -41,6 +41,8 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/hyacinth.yml',
   'config/secrets.yml',
   'config/sword.yml',
+  'config/collections.yml',
+  'config/depositors.yml',
   'config/seeds.yml'
 )
 

@@ -27,13 +27,11 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   describe '#handle_deposit' do
     context 'given a valid zipped file as its argument' do
       before(:context) do
-        @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                    Depositor.new)
+        @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('test-pq',
+                                                                    'firsttestdepositor')
         @content_dir = Rails.root.join 'spec/fixtures/test_dirs/proquest_contents'
         # for test purposes, turn off actual sending of POST request
         @proquest_endpoint.hyacinth_adapter.no_op_post = true
-        @collection = Collection.new
-        @depositor = Depositor.new
       end
 
       it '#handle_deposit is called successfully (without crashing)' do

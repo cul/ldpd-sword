@@ -1,0 +1,17 @@
+development:
+  basic_authentication_user_ids:
+    firsttestdepositor:
+      name: 'First Test Depositor'
+      basic_authentication_password: 'firstdepositorpasswd'
+    secondtestdepositor:
+      name: 'Second Test Depositor'
+      basic_authentication_password: 'seconddepositorpasswd'
+test:
+  basic_authentication_user_ids:
+    firsttestdepositor:
+      name: 'First Test Depositor'
+      basic_authentication_password: 'firstdepositorpasswd'
+    secondtestdepositor:
+      name: 'Second Test Depositor'
+      basic_authentication_password: 'seconddepositorpasswd'
+production:

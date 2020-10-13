@@ -22,7 +22,8 @@
 /config/sword.yml
 /config/hyacinth.yml
 /config/seeds.yml
-
+/config/collections.yml
+/config/depositors.yml
 
 # Ignore ~ files
 *~

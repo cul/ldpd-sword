@@ -27,13 +27,11 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   describe '#handle_deposit' do
     context 'given contents directory as its argument' do
       before(:context) do
-        @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new(Collection.new,
-                                                                     Depositor.new)
+        @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new('test-ac',
+                                                                     'firsttestdepositor')
         @content_dir = Rails.root.join 'spec/fixtures/test_dirs/ac_contents'
         # for test purposes, turn off actual sending of POST request
         @ac_endpoint.hyacinth_adapter.no_op_post = true
-        @collection = Collection.new
-        @depositor = Depositor.new
       end
 
       it '#handle_deposit is called successfully (without crashing)' do
