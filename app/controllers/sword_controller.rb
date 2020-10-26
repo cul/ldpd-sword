@@ -47,17 +47,36 @@ class SwordController < ApplicationController
   end
 
   def service_document
+    # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
+    Rails.logger.warn("Received Service Document request. Username: #{@depositor_user_id}")
+
     content = HashWithIndifferentAccess.new
     # For site-specific values, read from the config file:
     content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
     content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
     content[:http_host] = request.env["HTTP_HOST"]
     content[:collections] = []
-    @depositor.collections.each { |collection| content[:collections] << collection.info_for_service_document }
+    COLLECTIONS[:slug].keys.each do |collection_slug|
+      if COLLECTIONS[:slug][collection_slug][:depositors].include? @depositor_user_id
+        content[:collections] << collection_info_for_service_document(collection_slug)
+      end
+    end
+    # @depositor.collections.each { |collection| content[:collections] << collection.info_for_service_document }
     render xml: view_context.service_document_xml(content)
   end
 
   private
+
+    def collection_info_for_service_document(collection_slug)
+      info = HashWithIndifferentAccess.new
+      info[:atom_title] = COLLECTIONS[:slug][collection_slug][:atom_title]
+      info[:slug] = collection_slug
+      info[:mime_types] = nil
+      info[:sword_package_types] = nil
+      info[:abstract] = nil
+      info[:mediation_enabled] = false
+      info
+    end
 
     def check_for_valid_collection_slug
       check_for_valid_collection_slug_using_config
