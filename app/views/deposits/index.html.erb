@@ -7,8 +7,10 @@
     <tr>
       <th>Title</th>
       <th>Depositor</th>
+      <th>Depositor ID</th>
       <th>Date Deposited</th>
       <th>Collection</th>
+      <th>Collection Slug</th>
     </tr>
   </thead>
 
@@ -17,8 +19,10 @@
       <tr>
         <td><%= link_to deposit.title, deposit %></td>
         <td><%= deposit.depositor.name if deposit.depositor %></td>
+        <td><%= deposit.depositor_user_id %></td>
         <td><%= deposit.created_at.localtime.strftime("%c") %></td>
         <td><%= deposit.collection.name if deposit.collection %></td>
+        <td><%= deposit.collection_slug %></td>
       </tr>
     <% end %>
   </tbody>

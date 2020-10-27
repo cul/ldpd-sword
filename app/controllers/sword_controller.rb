@@ -31,6 +31,8 @@ class SwordController < ApplicationController
 
     # create Deposit instance to store deposit info in database
     @deposit = Deposit.new
+    @deposit.depositor_user_id = @depositor_user_id
+    @deposit.collection_slug = @collection_slug
     @deposit.deposit_files = @endpoint.documents_to_deposit
     # fcd1, 9/6/18: use truncate_words here, but should also add a
     # truncate(200, omission: '') at the model level to make sure we
