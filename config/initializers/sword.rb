@@ -5,3 +5,4 @@ PROQUEST_FAST_MAP = HashWithIndifferentAccess.new(YAML.load_file("#{Rails.root}/
 DEPOSITORS = HashWithIndifferentAccess.new(YAML.load_file("#{Rails.root}/config/depositors.yml")[Rails.env]).freeze
 COLLECTIONS = HashWithIndifferentAccess.new(YAML.load_file("#{Rails.root}/config/collections.yml")[Rails.env]).freeze
 FileUtils.mkdir_p(SWORD_CONFIG[:unzip_dir]) unless File.directory?(SWORD_CONFIG[:unzip_dir])
+FileUtils.mkdir_p(HYACINTH_CONFIG[:payload_dir]) unless File.directory?(HYACINTH_CONFIG[:payload_dir])

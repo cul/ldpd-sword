@@ -60,6 +60,11 @@ module Sword
         @hyacinth_server_response = nil
         payload = {}
         payload[:digital_object_data_json] = JSON.generate @digital_object_data
+        if HYACINTH_CONFIG[:store_digital_object_data]
+          payload_file = File.join(HYACINTH_CONFIG[:payload_dir],"payload_#{Time.now.to_i}")
+          Rails.logger.warn("Writing hyacinth payload file at #{payload_file}")
+          File.open(payload_file, "w") { |file| file.write(JSON.pretty_generate @digital_object_data) }
+        end
         # puts payload_json.inspect
         uri = URI(HYACINTH_CONFIG[:url])
         post_req = Net::HTTP::Post.new(uri)
