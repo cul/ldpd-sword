@@ -22,8 +22,8 @@ module Sword
           Sword::Endpoints::AcademicCommonsEndpoint.new(collection_slug, depositor_user_id)
         when "proquest"
           Sword::Endpoints::ProquestEndpoint.new(collection_slug, depositor_user_id)
-        when "springer-nature"
-          Sword::Endpoints::SpringerNatureEndpoint.new(collection_slug, depositor_user_id)
+        when "eprints"
+          Sword::Endpoints::EprintsEndpoint.new(collection_slug, depositor_user_id)
         else
           # raise an exception here
         end

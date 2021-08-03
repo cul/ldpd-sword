@@ -59,6 +59,13 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
         expect(subject).to respond_to(:identifier_uri=)
       end
 
+      # http://purl.org/dc/elements/1.1/publisher
+      # https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher
+      it 'publisher' do
+        expect(subject).to respond_to(:publisher)
+        expect(subject).to respond_to(:publisher=)
+      end
+
       # http://purl.org/dc/elements/1.1/subject
       # http://dublincore.org/documents/dcmi-terms/#terms-subject
       it 'subjects' do
@@ -75,6 +82,26 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
     end
 
     context ' has the following instance method:' do
+      it '#get_abstract method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_abstract).with(1).arguments
+      end
+
+      it '#get_date_available method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_date_available).with(1).arguments
+      end
+
+      it '#get_identifier_uri method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_identifier_uri).with(1).arguments
+      end
+
+      it '#get_publisher method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_publisher).with(1).arguments
+      end
+
+      it '#get_title method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_title).with(1).arguments
+      end
+
       it '#parse method that takes file to parse' do
         expect(subject).to respond_to(:parse).with(1).arguments
       end
@@ -160,7 +187,7 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
   describe '#parse' do
     context "In mets file containing expected elements" do
       epdcx_parser = Sword::Parsers::EprintsDcXmlParser.new
-      xml_file = Rails.root.join "spec/fixtures/mets_files/springer-nature-1-xmlData.xml"
+      xml_file = Rails.root.join "spec/fixtures/mets_files/eprint_xmlData.xml"
       nokogiri_xml = Nokogiri::XML(xml_file)
       epdcx_parser.parse(nokogiri_xml)
 
@@ -187,6 +214,62 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
 
       it "parses the identfier URI correctly" do
         expect(epdcx_parser.identifier_uri).to eq "https://doi.org/10.1186/s13031-018-0173-x"
+      end
+
+      it "parses the publisher correctly" do
+        expect(epdcx_parser.publisher).to eq "BioMed Central"
+      end
+
+      context 'in subjects arrays' do
+        it "parses subjects correctly" do
+          subjects = ['Alcohol use','Armed conflict','Uganda']
+          expect(epdcx_parser.subjects.first).to be_in(subjects)
+          expect(epdcx_parser.subjects.second).to be_in(subjects)
+          expect(epdcx_parser.subjects.third).to be_in(subjects)
+        end
+      end
+
+      it "parses the title correctly" do
+        expect(epdcx_parser.title).to eq "Armed conflict in Northeastern Uganda: a population level study"
+      end
+    end
+  end
+
+  ########################################## #parse no bliblio
+  describe '#parse' do
+    context "In mets file containing expected elements but no bibliogtaphic citation" do
+      epdcx_parser = Sword::Parsers::EprintsDcXmlParser.new
+      xml_file = Rails.root.join "spec/fixtures/mets_files/eprint_xmlData_no_biblio_citation.xml"
+      nokogiri_xml = Nokogiri::XML(xml_file)
+      epdcx_parser.parse(nokogiri_xml)
+
+      it "parses the abstract correctly" do
+        expect(epdcx_parser.abstract).to eq "This is the abstract"
+      end
+
+      it "parses the date available correctly" do
+        expect(epdcx_parser.date_available).to eq "2018-08-06"
+      end
+
+      it "parses the date available (year) correctly" do
+        expect(epdcx_parser.date_available_year).to eq "2018"
+      end
+
+      context 'in creators arrays' do
+        it "parses names correctly" do
+          names = ['Muhanguzi, Florence K','Mootz, Jennifer J','Panko, Pavel']
+          expect(epdcx_parser.creators.first).to be_in(names)
+          expect(epdcx_parser.creators.second).to be_in(names)
+          expect(epdcx_parser.creators.third).to be_in(names)
+        end
+      end
+
+      it "parses the identfier URI correctly" do
+        expect(epdcx_parser.identifier_uri).to eq "https://doi.org/10.1186/s13031-018-0173-x"
+      end
+
+      it "parses the publisher correctly" do
+        expect(epdcx_parser.publisher).to eq "BioMed Central"
       end
 
       context 'in subjects arrays' do

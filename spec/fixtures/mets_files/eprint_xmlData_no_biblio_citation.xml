@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xmlData xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/">
+<epdcx:descriptionSet xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+<epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/ScholarlyWork"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+<epdcx:valueString>Armed conflict in Northeastern Uganda: a population level study</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Armed conflict</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Uganda</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Alcohol use</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+  <epdcx:valueString>Abstract
+This is the abstract</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Mootz, Jennifer J</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Muhanguzi, Florence K</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Panko, Pavel</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1"/>
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+<epdcx:valueString>en</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/type/JournalArticle"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/available">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/W3CDTF">2018-08-06</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/copyrightHolder">
+<epdcx:valueString>The Author(s).</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/publisher">
+<epdcx:valueString>BioMed Central</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/accessRights" epdcx:vesURI="http://purl.org/eprint/terms/AccessRights" epdcx:valueURI="http://purl.org/eprint/accessRights/OpenAccess"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/identifier">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/URI">https://doi.org/10.1186/s13031-018-0173-x</epdcx:valueString>
+</epdcx:statement>
+</epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>

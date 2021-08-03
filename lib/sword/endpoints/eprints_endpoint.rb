@@ -1,6 +1,6 @@
 module Sword
   module Endpoints
-    class SpringerNatureEndpoint < MetsToHyacinthEndpoint
+    class EprintsEndpoint < MetsToHyacinthEndpoint
 
       attr_reader :epdcx_parser,
                   :hyacinth_adapter
@@ -46,6 +46,35 @@ module Sword
         # @hyacinth_adapter.doi = @epdcx_parser.identifier_doi
 
         @deposit_title = @hyacinth_adapter.title
+
+        # fcd1, 07/29/21: Both OJS and Springer Nature use this endpoint.
+        # For Springer Nature deposits, the parent_publication.publish_date
+        # is set using the bibliographic citation (see process_bibliographic_citation
+        # below). This value is then used to set the parent_publication_date_created_textual
+        # in hyacinth.
+        # In OJS deposits, we want to use @epdcx_parser.date_available_year to set
+        # the parent_publication_date_created_textual field in hyacinth, since OJS deposits do
+        # not include the bibliographic citation. So the logic here to handle both OJS and
+        # Springer Natuer deposits: if @hyacinth_adapter.parent_publication is nil, we
+        # will assume there was no bibliographic citation to process, so we will use the
+        # @epdcx_parser.date_available_year value to set parent_publication.publish_date,
+        # if present
+        # Also: For Springer Nature deposits, the parent_publication.title
+        # is set using the bibliographic citation (see process_bibliographic_citation
+        # below). This value is then used to set parent_publication_title_sort_portion
+        # in hyacinth.
+        # In OJS deposits, we want to use @epdcx_parser.publisher to set
+        # the parent_publication_title_sort_portion field in hyacinth, since OJS deposits do
+        # not include the bibliographic citation. So the logic here to handle both OJS and
+        # Springer Natuer deposits: if @hyacinth_adapter.parent_publication is nil, we
+        # will assume there was no bibliographic citation to process, so we will use the
+        # @epdcx_parser.publisher value to set parent_publication_title_sort_portion,
+        # if present
+        unless @hyacinth_adapter.parent_publication
+          @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
+          @hyacinth_adapter.parent_publication.publish_date = @epdcx_parser.date_available_year
+          @hyacinth_adapter.parent_publication.title = @epdcx_parser.publisher
+        end
       end
 
       def process_identifier_uri

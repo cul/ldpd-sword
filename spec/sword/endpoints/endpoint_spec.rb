@@ -16,10 +16,10 @@ RSpec.describe Sword::Endpoints::Endpoint do
       end
     end
 
-    context "if argument is 'springer-nature'" do
-      it 'returns a Sword::Endpoints::SpringerNatureEndpoint instance' do
+    context "if argument is 'eprints'" do
+      it 'returns a Sword::Endpoints::EprintsEndpoint instance' do
         expect(Sword::Endpoints::Endpoint.get_endpoint('test-sn',
-                                                       'firsttestdepositor')).to be_instance_of(Sword::Endpoints::SpringerNatureEndpoint)
+                                                       'firsttestdepositor')).to be_instance_of(Sword::Endpoints::EprintsEndpoint)
       end
     end
   end

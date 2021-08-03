@@ -19,6 +19,7 @@ module Sword
                     :creators,
                     :date_available,
                     :identifier_uri,
+                    :publisher,
                     :subjects,
                     :title
 
@@ -27,12 +28,63 @@ module Sword
         @subjects = []
       end
 
+      def date_available_year
+        return nil if @date_available.nil?
+        # only want the year
+        date_available.slice(0,4)
+      end
+
+      # The abstract field in deposits from Springer Nature start with the word "Abstract",
+      # which is redundant (since this is the field label) and therefore we get rid of it.
+      def get_abstract(nokogiri_xml_doc)
+        abstract_value_first = nokogiri_xml_doc.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}",
+                                                         EPDCX_NAMESPACE_BINDING).first
+        return nil if abstract_value_first.nil?
+        abstract_value = abstract_value_first.text
+        abstract_value.gsub(/^\s*Abstract\n/,'')
+      end
+
+      # http://purl.org/dc/terms/available
+      # http://dublincore.org/documents/dcmi-terms/#terms-available
+      def get_date_available(nokogiri_xml_doc)
+        date_available_nokogiri_node = nokogiri_xml_doc.css("#{PREFIX_DC_TERMS}available#{POSTFIX}",
+                                                            EPDCX_NAMESPACE_BINDING).first
+        date_available_nokogiri_node.text if date_available_nokogiri_node
+      end
+
+      # http://purl.org/dc/elements/1.1/identifier
+      # Idenfifier is a URI: http://purl.org/dc/terms/URI
+      # in this case, uri will be a doi
+      # http://dublincore.org/documents/dcmi-terms/#terms-identifier
+      def get_identifier_uri(nokogiri_xml_doc)
+        identifier_uri_nokogiri_node = nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX_DOI}",
+                                                            EPDCX_NAMESPACE_BINDING).first
+        identifier_uri_nokogiri_node.text if identifier_uri_nokogiri_node
+      end
+
+      # http://purl.org/dc/elements/1.1/publisher
+      # https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher
+      def get_publisher(nokogiri_xml_doc)
+        publisher_nokogiri_node = nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}publisher#{POSTFIX}",
+                                                   EPDCX_NAMESPACE_BINDING).first
+        publisher_nokogiri_node.text if publisher_nokogiri_node
+      end
+
+      # http://purl.org/dc/elements/1.1/title
+      # http://dublincore.org/documents/dcmi-terms/#terms-title
+      def get_title(nokogiri_xml_doc)
+        title_nokogiri_node = nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}",
+                                                   EPDCX_NAMESPACE_BINDING).first
+        title_nokogiri_node.text if title_nokogiri_node
+      end
+
       def parse(xmlData_nokogiri_xml)
         # From DTD (see comment at top of file):
         # DISS_abstract contains one or more paragraphs of text abstract from the author
         @abstract = get_abstract xmlData_nokogiri_xml
         @date_available = get_date_available xmlData_nokogiri_xml
         @identifier_uri = get_identifier_uri xmlData_nokogiri_xml
+        @publisher = get_publisher xmlData_nokogiri_xml
         @title = get_title xmlData_nokogiri_xml
 
         parse_creators xmlData_nokogiri_xml
@@ -40,26 +92,11 @@ module Sword
         parse_subjects xmlData_nokogiri_xml
       end
 
-      # The abstract field in deposits from Springer Nature start with the word "Abstract",
-      # which is redundant (since this is the field label) and therefore we get rid of it.
-      def get_abstract(nokogiri_xml)
-        abstract_value_first = nokogiri_xml.css("#{PREFIX_DC_TERMS}abstract#{POSTFIX}",
-                                                EPDCX_NAMESPACE_BINDING).first
-        return nil if abstract_value_first.nil? 
-        abstract_value = abstract_value_first.text
-        abstract_value.gsub(/^\s*Abstract\n/,'')
-      end
-
-      def date_available_year
-        return nil if @date_available.nil?
-        # only want the year
-        date_available.slice(0,4)
-      end
-
       # http://purl.org/eprint/terms/bibliographicCitation
-      def parse_bibliographic_citation nokogiri_xml
-        bibliographic_citation_first = nokogiri_xml.css("#{PREFIX_EPRINT_TERMS}bibliographicCitation#{POSTFIX}",
-                                                       EPDCX_NAMESPACE_BINDING).first
+      def parse_bibliographic_citation nokogiri_xml_doc
+        bibliographic_citation_first = nokogiri_xml_doc.css(
+          "#{PREFIX_EPRINT_TERMS}bibliographicCitation#{POSTFIX}",
+          EPDCX_NAMESPACE_BINDING).first
         return nil if bibliographic_citation_first.nil?
         bibliographic_citation_text = bibliographic_citation_first.text
         # Here is an example of an entry from an actual mets.xml
@@ -78,8 +115,9 @@ module Sword
 
       # http://purl.org/dc/elements/1.1/creator
       # http://dublincore.org/documents/dcmi-terms/#terms-creator
-      def parse_creators(nokogiri_xml)
-        nokogiri_xml.css("#{PREFIX_DC_ELEMENTS}creator#{POSTFIX}",EPDCX_NAMESPACE_BINDING).each do |creator|
+      def parse_creators(nokogiri_xml_doc)
+        nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}creator#{POSTFIX}",
+                             EPDCX_NAMESPACE_BINDING).each do |creator|
           creator_text = creator.text
           unless creator_text.include?(',')
             # standardize name to "Doe, John"
@@ -92,36 +130,11 @@ module Sword
 
       # http://purl.org/dc/elements/1.1/subject
       # http://dublincore.org/documents/dcmi-terms/#terms-subject
-      def parse_subjects(nokogiri_xml)
-        nokogiri_xml.css("#{PREFIX_DC_ELEMENTS}subject#{POSTFIX}",EPDCX_NAMESPACE_BINDING).each do |subject|
+      def parse_subjects(nokogiri_xml_doc)
+        nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}subject#{POSTFIX}",
+                             EPDCX_NAMESPACE_BINDING).each do |subject|
           @subjects << subject.text
         end
-      end
-
-      # http://purl.org/dc/elements/1.1/title
-      # http://dublincore.org/documents/dcmi-terms/#terms-title
-      def get_title(nokogiri_xml)
-        title_nokogiri_node = nokogiri_xml.css("#{PREFIX_DC_ELEMENTS}title#{POSTFIX}",
-                                              EPDCX_NAMESPACE_BINDING).first
-        title_nokogiri_node.text if title_nokogiri_node
-      end
-
-      # http://purl.org/dc/elements/1.1/identifier
-      # Idenfifier is a URI: http://purl.org/dc/terms/URI
-      # in this case, uri will be a doi
-      # http://dublincore.org/documents/dcmi-terms/#terms-identifier
-      def get_identifier_uri(nokogiri_xml)
-        identifier_uri_nokogiri_node = nokogiri_xml.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX_DOI}",
-                                                        EPDCX_NAMESPACE_BINDING).first
-        identifier_uri_nokogiri_node.text if identifier_uri_nokogiri_node
-      end
-
-      # http://purl.org/dc/terms/available
-      # http://dublincore.org/documents/dcmi-terms/#terms-available
-      def get_date_available(nokogiri_xml)
-        date_available_nokogiri_node = nokogiri_xml.css("#{PREFIX_DC_TERMS}available#{POSTFIX}",
-                                                       EPDCX_NAMESPACE_BINDING).first
-        date_available_nokogiri_node.text if date_available_nokogiri_node
       end
     end
   end
