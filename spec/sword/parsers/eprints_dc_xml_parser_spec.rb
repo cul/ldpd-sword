@@ -51,6 +51,14 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
       end
 
       # http://purl.org/dc/elements/1.1/identifier
+      # in this case, uri will be a doi
+      # http://dublincore.org/documents/dcmi-terms/#terms-identifier
+      it 'identifier' do
+        expect(subject).to respond_to(:identifier)
+        expect(subject).to respond_to(:identifier=)
+      end
+
+      # http://purl.org/dc/elements/1.1/identifier
       # Idenfifier is a URI: http://purl.org/dc/terms/URI
       # in this case, uri will be a doi
       # http://dublincore.org/documents/dcmi-terms/#terms-identifier
@@ -88,6 +96,10 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
 
       it '#get_date_available method that takes a Nokogiri::XML::Document to parse' do
         expect(subject).to respond_to(:get_date_available).with(1).arguments
+      end
+
+      it '#get_identifier method that takes a Nokogiri::XML::Document to parse' do
+        expect(subject).to respond_to(:get_identifier).with(1).arguments
       end
 
       it '#get_identifier_uri method that takes a Nokogiri::XML::Document to parse' do
@@ -212,6 +224,10 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
         end
       end
 
+      it "parses the identfier correctly" do
+        expect(epdcx_parser.identifier).to eq "https://doi.org/10.1186/s13031-018-0173-x"
+      end
+
       it "parses the identfier URI correctly" do
         expect(epdcx_parser.identifier_uri).to eq "https://doi.org/10.1186/s13031-018-0173-x"
       end
@@ -264,7 +280,11 @@ RSpec.describe Sword::Parsers::EprintsDcXmlParser do
         end
       end
 
-      it "parses the identfier URI correctly" do
+      it "parses the identfier correctly" do
+        expect(epdcx_parser.identifier).to eq "https://doi.org/10.1186/s13031-018-0173-x"
+      end
+
+      it "parses the identfier URI correctply" do
         expect(epdcx_parser.identifier_uri).to eq "https://doi.org/10.1186/s13031-018-0173-x"
       end
 

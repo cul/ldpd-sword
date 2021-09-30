@@ -18,6 +18,7 @@ module Sword
                     :bibliographic_citation,
                     :creators,
                     :date_available,
+                    :identifier,
                     :identifier_uri,
                     :publisher,
                     :subjects,
@@ -62,6 +63,14 @@ module Sword
         identifier_uri_nokogiri_node.text if identifier_uri_nokogiri_node
       end
 
+      # http://purl.org/dc/elements/1.1/identifier
+      # http://dublincore.org/documents/dcmi-terms/#terms-identifier
+      def get_identifier(nokogiri_xml_doc)
+        identifier_nokogiri_node = nokogiri_xml_doc.css("#{PREFIX_DC_ELEMENTS}identifier#{POSTFIX}",
+                                                            EPDCX_NAMESPACE_BINDING).first
+        identifier_nokogiri_node.text if identifier_nokogiri_node
+      end
+
       # http://purl.org/dc/elements/1.1/publisher
       # https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher
       def get_publisher(nokogiri_xml_doc)
@@ -84,6 +93,7 @@ module Sword
         @abstract = get_abstract xmlData_nokogiri_xml
         @date_available = get_date_available xmlData_nokogiri_xml
         @identifier_uri = get_identifier_uri xmlData_nokogiri_xml
+        @identifier = get_identifier xmlData_nokogiri_xml
         @publisher = get_publisher xmlData_nokogiri_xml
         @title = get_title xmlData_nokogiri_xml
 

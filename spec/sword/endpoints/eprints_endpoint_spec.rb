@@ -71,7 +71,7 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
                                                                    Depositor.new)
       @eprints_endpoint.epdcx_parser.abstract = 'This is a sample terse abstract'
       @eprints_endpoint.epdcx_parser.date_available = '2018-08-06'
-      @eprints_endpoint.epdcx_parser.identifier_uri = 'https://doi.org/10.1186/s13031-018-0173-x'
+      @eprints_endpoint.epdcx_parser.identifier = 'https://doi.org/10.1186/s13031-018-0173-x'
       @eprints_endpoint.epdcx_parser.title = 'This is a Sample Title'
       @eprints_endpoint.epdcx_parser.creators << 'Smith, John C' << 'Doe, Jane A'
       @eprints_endpoint.epdcx_parser.subjects << 'Subject_one' << 'Subject_two'

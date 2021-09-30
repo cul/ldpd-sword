@@ -36,7 +36,7 @@ module Sword
         @hyacinth_adapter.abstract = @epdcx_parser.abstract
         @hyacinth_adapter.date_issued_start = @epdcx_parser.date_available_year
 
-        process_identifier_uri unless @epdcx_parser.identifier_uri.nil?
+        process_identifier unless @epdcx_parser.identifier.nil?
         process_name_metadata
         process_bibliographic_citation unless @epdcx_parser.bibliographic_citation.nil?
         process_subject_metadata unless @epdcx_parser.subjects.empty?
@@ -47,33 +47,18 @@ module Sword
 
         @deposit_title = @hyacinth_adapter.title
 
-        # fcd1, 07/29/21: Both OJS and Springer Nature use this endpoint.
-        # For Springer Nature deposits, the parent_publication.publish_date
-        # is set using the bibliographic citation (see process_bibliographic_citation
-        # below). This value is then used to set the parent_publication_date_created_textual
-        # in hyacinth.
-        # In OJS deposits, we want to use @epdcx_parser.date_available_year to set
-        # the parent_publication_date_created_textual field in hyacinth, since OJS deposits do
-        # not include the bibliographic citation. So the logic here to handle both OJS and
-        # Springer Natuer deposits: if @hyacinth_adapter.parent_publication is nil, we
-        # will assume there was no bibliographic citation to process, so we will use the
-        # @epdcx_parser.date_available_year value to set parent_publication.publish_date,
-        # if present
-        # Also: For Springer Nature deposits, the parent_publication.title
-        # is set using the bibliographic citation (see process_bibliographic_citation
-        # below). This value is then used to set parent_publication_title_sort_portion
-        # in hyacinth.
-        # In OJS deposits, we want to use @epdcx_parser.publisher to set
-        # the parent_publication_title_sort_portion field in hyacinth, since OJS deposits do
-        # not include the bibliographic citation. So the logic here to handle both OJS and
-        # Springer Natuer deposits: if @hyacinth_adapter.parent_publication is nil, we
-        # will assume there was no bibliographic citation to process, so we will use the
-        # @epdcx_parser.publisher value to set parent_publication_title_sort_portion,
-        # if present
-        unless @hyacinth_adapter.parent_publication
-          @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
-          @hyacinth_adapter.parent_publication.publish_date = @epdcx_parser.date_available_year
-          @hyacinth_adapter.parent_publication.title = @epdcx_parser.publisher
+        # fcd1, 09/30/21: Both OJS and Springer Nature use this endpoint.
+        # Springer Nature deposits include a bibliographic citation, which
+        # is used to set parent publication fields, including publisher
+        # and date available. However, OJS deposits do not include a
+        # bibliographic citation, so other info in the mets.xml file
+        # is used to set these two fields
+        if @epdcx_parser.bibliographic_citation.nil?
+          parent_publication = @hyacinth_adapter.parent_publication ||
+                               Sword::Metadata::ParentPublication.new
+          parent_publication.publish_date = @epdcx_parser.date_available_year
+          parent_publication.title = @epdcx_parser.publisher
+          @hyacinth_adapter.parent_publication = parent_publication
         end
       end
 
@@ -83,6 +68,15 @@ module Sword
         parent_publication.doi =
           # remove url prefix, just want the DOI
           @epdcx_parser.identifier_uri.gsub(/^\S*\/10.1/,'10.1')
+        @hyacinth_adapter.parent_publication = parent_publication
+      end
+
+      def process_identifier
+        parent_publication = @hyacinth_adapter.parent_publication ||
+                             Sword::Metadata::ParentPublication.new
+        parent_publication.doi =
+          # remove url prefix, just want the DOI
+          @epdcx_parser.identifier.gsub(/^\S*\/10.1/,'10.1')
         @hyacinth_adapter.parent_publication = parent_publication
       end
 
