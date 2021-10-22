@@ -130,14 +130,9 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         expect(subject).to respond_to(:no_op_post=)
       end
 
-      it 'note_value' do
-        expect(subject).to respond_to(:note_value)
-        expect(subject).to respond_to(:note_value=)
-      end
-
-      it 'note_type' do
-        expect(subject).to respond_to(:note_type)
-        expect(subject).to respond_to(:note_type=)
+      it 'notes' do
+        expect(subject).to respond_to(:notes)
+        expect(subject).to respond_to(:notes=)
       end
 
       it 'parent_publication' do
@@ -214,8 +209,8 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         expect(subject).to respond_to(:encode_names)
       end
 
-      it '#encode_note' do
-        expect(subject).to respond_to(:encode_note)
+      it '#encode_notes' do
+        expect(subject).to respond_to(:encode_notes)
       end
 
       it '#encode_parent_publication' do
@@ -471,24 +466,18 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       end
     end
 
-    ########################################## #encode_note
-    describe '#encode_note' do
-      context 'given @note_type and @note_value set to given test values' do
+    ########################################## #encode_notes
+    describe '#encode_notes' do
+      context 'given @notes set to given test values' do
         expected_value = [ { note_value: 'Copyright: 2016 Hyacinth Composer',
-                             note_type: 'internal' } ]
+                             note_type: 'internal' },
+                           { note_value: 'Another note without a type' }
+                         ]
         it 'constructs correct encoded format' do
-          hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
-          hyacinth_adapter.note_type = 'internal'
-          hyacinth_adapter.encode_note
-          expect(hyacinth_adapter.dynamic_field_data[:note]).to eq(expected_value)
-        end
-      end
-
-      context 'given @note_value set to given test value, but no @note_type' do
-        expected_value = [ { note_value: 'Copyright: 2016 Hyacinth Composer' } ]
-        it 'constructs correct encoded format' do
-          hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
-          hyacinth_adapter.encode_note
+          hyacinth_adapter.notes = []
+          hyacinth_adapter.notes << Sword::Metadata::Note.new('Copyright: 2016 Hyacinth Composer', 'internal')
+          hyacinth_adapter.notes << Sword::Metadata::Note.new('Another note without a type')
+          hyacinth_adapter.encode_notes
           expect(hyacinth_adapter.dynamic_field_data[:note]).to eq(expected_value)
         end
       end
@@ -679,7 +668,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       @hyacinth_adapter.license_uri = 'https://creativecommons.org/licenses/by/4.0/'
       @hyacinth_adapter.subjects << 'Subject one' << 'Subject two' << 'Canadian Studies'
       @hyacinth_adapter.use_and_reproduction_uri = 'http://rightsstatements.org/vocab/InC/1.0/'
-      @hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
+      @hyacinth_adapter.notes << Sword::Metadata::Note.new('Copyright: 2016 Hyacinth Composer')
       @hyacinth_adapter.date_issued_start = '2018'
       parent_pub = Sword::Metadata::ParentPublication.new
       parent_pub.title = 'International Journal of Stuff'
@@ -819,7 +808,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       @hyacinth_adapter.language_value = 'English'
       @hyacinth_adapter.language_uri = 'http://id.loc.gov/vocabulary/iso639-2/eng'
       @hyacinth_adapter.subjects << 'Subject one' << 'Subject two' << 'Canadian Studies'
-      @hyacinth_adapter.note_value = 'Copyright: 2016 Hyacinth Composer'
+      @hyacinth_adapter.notes << Sword::Metadata::Note.new('Copyright: 2016 Hyacinth Composer')
       parent_pub = Sword::Metadata::ParentPublication.new
       parent_pub.title = 'International Journal of Stuff'
       parent_pub.publish_date = '2016'

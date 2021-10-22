@@ -27,8 +27,7 @@ module Sword
                     :language_value,
                     :license_uri,
                     :no_op_post,
-                    :note_type,
-                    :note_value,
+                    :notes,
                     :parent_publication,
                     :personal_names,
                     :subjects,
@@ -40,6 +39,7 @@ module Sword
       def initialize
         @corporate_names = []
         @dynamic_field_data = {}
+        @notes = []
         @personal_names = []
         @subjects = []
         # following is usefule for testing. If set to true, Post
@@ -163,7 +163,7 @@ module Sword
         encode_language unless @language_uri.nil? and @language_value.nil?
         encode_license unless @license_uri.nil?
         encode_names unless (@corporate_names.empty? and @personal_names.empty?)
-        encode_note unless @note_value.nil?
+        encode_notes unless @notes.empty?
         encode_parent_publication unless @parent_publication.nil?
         encode_subjects unless @subjects.empty?
         encode_title # should always be a title, can raise error if so
@@ -245,11 +245,12 @@ module Sword
         end
       end
 
-      def encode_note
-        note_data = { note_value: @note_value }
-        note_data[:note_type] = @note_type unless @note_type.nil?
+      def encode_notes
         @dynamic_field_data[:note] = []
-        @dynamic_field_data[:note] << note_data
+        # @notes contains Sword::Metadata::Note instances
+        @notes.each do |note|
+          @dynamic_field_data[:note] << { note_value: note.content, note_type: note.type }.compact
+        end
       end
 
       def encode_parent_publication

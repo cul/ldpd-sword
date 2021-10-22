@@ -98,7 +98,7 @@ module Sword
         @epdcx_parser.subjects.each do |subject|
           subjects_string << subject << ', '
         end
-        @hyacinth_adapter.note_value = subjects_string.chomp ', '
+        @hyacinth_adapter.notes << Sword::Metadata::Note.new(subjects_string.chomp(', '))
       end
 
       def process_name_metadata

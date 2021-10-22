@@ -36,10 +36,7 @@ module Sword
         end
         @hyacinth_adapter.license_uri =
           @mods_parser.access_condition_use_and_reproduction_license_uri
-        unless @mods_parser.note_internal.blank?
-          @hyacinth_adapter.note_type = 'internal'
-          @hyacinth_adapter.note_value = @mods_parser.note_internal
-        end
+        @hyacinth_adapter.notes << Sword::Metadata::Note.new(@mods_parser.note_internal,'internal') unless @mods_parser.note_internal.blank?
         process_name_metadata
         @hyacinth_adapter.title = @mods_parser.title
         @hyacinth_adapter.use_and_reproduction_uri =

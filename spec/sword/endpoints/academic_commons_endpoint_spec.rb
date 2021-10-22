@@ -156,12 +156,9 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
       end
 
-      it 'sets @hyacinth_adapter.note_type correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.note_type).to eq('internal')
-      end
-
-      it 'sets @hyacinth_adapter.note_value correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.note_value).to eq('Sample note to catalogers.')
+      it 'sets @hyacinth_adapter.notes correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.notes.first.content).to eq('Sample note to catalogers.')
+        expect(@ac_endpoint.hyacinth_adapter.notes.first.type).to eq('internal')
       end
 
       it 'sets @hyacinth_adapter.title correctly' do
