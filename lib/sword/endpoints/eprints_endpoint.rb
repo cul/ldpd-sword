@@ -2,20 +2,32 @@ module Sword
   module Endpoints
     class EprintsEndpoint < MetsToHyacinthEndpoint
 
+      attr_accessor :emails
       attr_reader :epdcx_parser,
                   :hyacinth_adapter
 
       def initialize(collection, depositor)
         super
         @epdcx_parser = Sword::Parsers::EprintsDcXmlParser.new
+        @emails = []
       end
 
       def handle_deposit(path_to_contents)
         # handle_deposit from parent class will process the mets portion of the mets.xml file
         super
 
-        # read mods from mets.xml file and process metadata
+        # read eprints from mets.xml file and process metadata
         @epdcx_parser.parse @mets_parser.xmlData_as_nokogiri_xml_element.first
+
+        # in an OJS mets.xml file, the email information is in a second xmlData element
+        # which itself contains mods, with the email information within the mods
+        if @mets_parser.xmlData_as_nokogiri_xml_element.length > 1
+          name_identifiers_with_email = @mets_parser.xmlData_as_nokogiri_xml_element[1].css('mods|nameIdentifier[type="email"]', 'mods' => 'http://www.loc.gov/mods/v3')
+          name_identifiers_with_email.each do |name_identifier_with_email|
+            @emails << name_identifier_with_email.content
+          end
+        end
+
         process_metadata
 
         # @adapter_item_identifier stores the parent pid returned
@@ -40,6 +52,7 @@ module Sword
         process_name_metadata
         process_bibliographic_citation unless @epdcx_parser.bibliographic_citation.nil?
         process_subject_metadata unless @epdcx_parser.subjects.empty?
+        process_name_identifier_email_metadata
 
         # fcd1, 08/20/18: Currently, this is mapped into the parent publication
         # doi, but it's the article doi. Can follow what is currently done for now.
@@ -99,6 +112,17 @@ module Sword
           subjects_string << subject << ', '
         end
         @hyacinth_adapter.notes << Sword::Metadata::Note.new(subjects_string.chomp(', '))
+      end
+
+      def process_name_identifier_email_metadata
+        return if @emails.empty?
+        # Currently, emails listed in the incoming metadata are inserted into
+        # a notes field in hyacinth, as per the requirements for OJS journals
+        email_string = ''
+        @emails.each do |email|
+          email_string << email << ', '
+        end
+        @hyacinth_adapter.notes << Sword::Metadata::Note.new(email_string.chomp(', '))
       end
 
       def process_name_metadata

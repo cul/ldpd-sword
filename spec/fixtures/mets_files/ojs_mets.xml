@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<mets ID="sort-mets_mets" OBJID="sword-mets"
+      LABEL="DSpace SWORD Item"
+      PROFILE="DSpace METS SIP Profile 1.0"
+      xmlns="http://www.loc.gov/METS/"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+  <metsHdr CREATEDATE="2008-09-04T00:00:00">
+    <agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+      <name>Agent A</name>
+    </agent>
+  </metsHdr>
+  <dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX" MIMETYPE="text/xml">
+      <xmlData>
+	<epdcx:descriptionSet xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+			      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			      xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+	  <epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="" />
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+	      <epdcx:valueString>Prefix Provoking Discomfort</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+	      <epdcx:valueString>Triggered by differing responses of Columbia University School of Social Work students to a recent hate crime at neighboring Teachers College, this paper explores evidence that parts of the student body may, through lacking awareness of its own prejudiced tendencies, be acting out subtle racism and perpetuating the very ethnic divides that fuel racist aggression. The paper argues that fear and an underrepresentation of minority students impede the real dialogue necessary to overcome such aversive racism – but contends that the introspective and emotionally honest debate which has followed in the wake of the hate crime offers a window of opportunity for change. Steps need to be taken to build the self-reflection witnessed in ensuing forums into the school curriculum and ensure that all graduating students are similarly provoked to the necessary understanding of our individual role in sustaining or combating prejudice and segregation. Only in this manner can we hope to overcome racism as a whole and become the social work practitioners we aspire to be – capable of resolving the conflicts and tensions within us, as well as around us.</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+	      <epdcx:valueString>John Smith</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	      <epdcx:valueString>keyword1</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	      <epdcx:valueString>keyword2</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	      <epdcx:valueString>keyword3</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	      <epdcx:valueString>key word4</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/identifier">
+	      <epdcx:valueString>10.52214/cswr.v6i1.1975</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/publisher">
+	      <epdcx:valueString>Columbia Social Work Review</epdcx:valueString>
+	    </epdcx:statement>
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+	  </epdcx:description>
+	  <epdcx:description epdcx:resourceId="sword-mets-expr-1">
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" />
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" />
+	    <epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/available">
+	      <epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/W3CDTF">2019-07-22</epdcx:valueString>
+	    </epdcx:statement>
+	  </epdcx:description>
+	</epdcx:descriptionSet>
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-2_group-2">
+    <mdWrap LABEL="MODS Metadata" MDTYPE="MODS" MIMETYPE="text/xml">
+      <xmlData>
+	<mods version="3.7"
+	      xmlns="http://www.loc.gov/mods/v3"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="https://www.loc.gov/standards/mods/xml.xsd">
+	  <name type="personal">
+	    <namePart type="given">John</namePart>
+	    <namePart type="family">Smith</namePart>
+	    <nameIdentifier type="email">bogusemail@example.com</nameIdentifier>
+	    <role>
+	      <roleTerm>author</roleTerm>
+	    </role>
+	  </name>
+	</mods>
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+  <fileSec>
+    <fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-0" MIMETYPE="application/pdf">
+	<FLocat LOCTYPE="URL" xlink:href="2008_vol6_pg5_ring.pdf" />
+      </file>
+    </fileGrp>
+  </fileSec>
+  <structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+    <div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1" TYPE="SWORD Object">
+      <div ID="sword-mets-div-2" TYPE="File">
+	<fptr FILEID="sword-mets-file-0" />
+      </div>
+    </div>
+  </structMap>
+</mets>
+      

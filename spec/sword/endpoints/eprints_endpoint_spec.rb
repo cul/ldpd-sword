@@ -83,7 +83,7 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
       biblio_citation.title = 'International Journal of Stuff'
       biblio_citation.volume = '10'
       @eprints_endpoint.epdcx_parser.bibliographic_citation = biblio_citation
-      # @eprints_endpoint.email = "theuser@example.com"
+      @eprints_endpoint.emails = ["theuser@example.com", "theotheruser@example.com"]
       @eprints_endpoint.process_metadata
     end
 
@@ -100,9 +100,9 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
         expect(@eprints_endpoint.hyacinth_adapter.notes.first).to be_a Sword::Metadata::Note
         expect(@eprints_endpoint.hyacinth_adapter.notes.first.content).to eq('Subject_one, Subject_two')
         expect(@eprints_endpoint.hyacinth_adapter.notes.first.type).to be nil
-        # expect(@eprints_endpoint.hyacinth_adapter.notes[1]).to be_a Sword::Metadata::Note
-        # expect(@eprints_endpoint.hyacinth_adapter.notes[1].content).to eq('theuser@example.com')
-        # expect(@eprints_endpoint.hyacinth_adapter.notes[1].type).to be nil
+        expect(@eprints_endpoint.hyacinth_adapter.notes[1]).to be_a Sword::Metadata::Note
+        expect(@eprints_endpoint.hyacinth_adapter.notes[1].content).to eq('theuser@example.com, theotheruser@example.com')
+        expect(@eprints_endpoint.hyacinth_adapter.notes[1].type).to be nil
       end
 
       it 'sets @hyacinth_adapter.title correctly' do
