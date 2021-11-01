@@ -1,6 +1,8 @@
 require 'net/http'
 module Sword
   module Adapters
+  module Hyacinth
+  module V2
     class HyacinthAdapter
 
       attr_reader :digital_object_data,
@@ -404,5 +406,7 @@ module Sword
       end
 
     end
+  end
+  end
   end
 end

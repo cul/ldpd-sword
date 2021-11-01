@@ -18,7 +18,7 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
 
       it 'sets @hyacinth_adapter to a new instance of HyacinthAdapter' do
         expect(described_class.new(Collection.new,
-                                   Depositor.new).hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
+                                   Depositor.new).hyacinth_adapter).to be_an_instance_of(Sword::Adapters::Hyacinth::V2::HyacinthAdapter)
       end
     end
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Sword::Adapters::HyacinthAdapter do
+RSpec.describe Sword::Adapters::Hyacinth::V2::HyacinthAdapter do
   ########################################## Initial state
   describe 'Initial state' do
     context '#initialize' do
@@ -264,7 +264,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
 
   ########################################## encoding methods functionality specs
   describe 'encode methods' do
-    let :hyacinth_adapter { Sword::Adapters::HyacinthAdapter.new }
+    let :hyacinth_adapter { Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new }
 
     ########################################## #encode_abstract
     describe '#encode_abstract' do
@@ -638,7 +638,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
   describe '#compose_dynamic_field_data' do
     context 'with only mandatory title and deposited_by metadata given' do
       it 'does snot list any other field, including listing field labels with empty data' do
-        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+        @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
         @hyacinth_adapter.deposited_by = 'First Test Depositor'
         @hyacinth_adapter.title = 'Sample Title of Hyacinth Item'
         @hyacinth_adapter.compose_dynamic_field_data
@@ -656,7 +656,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
     end
 
     before (:context) do
-      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+      @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
       @hyacinth_adapter.hyacinth_project = 'test_project'
       @hyacinth_adapter.deposited_by = 'First Test Depositor'
       @hyacinth_adapter.title = 'Sample Title of Hyacinth Item'
@@ -744,7 +744,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
   ########################################## #compose_internal_format_item
   describe '#compose_internal_format_item' do
     before (:context) do
-      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+      @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
       @hyacinth_adapter.hyacinth_project = 'test_project'
       @hyacinth_adapter.title = 'Sample Title of Hyacinth Item'
       @hyacinth_adapter.compose_internal_format_item
@@ -764,7 +764,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
   ########################################## #compose_internal_format_asset
   describe '#compose_internal_format_asset' do
     before (:context) do
-      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+      @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
       @hyacinth_adapter.hyacinth_project = 'test_project'
       @hyacinth_adapter.title = 'Sample Title of Hyacinth Item'
       # @hyacinth_adapter.asset_parent_pid = 'test:12345'
@@ -798,7 +798,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
   ########################################## #ingest
   describe '#ingest_item' do
     before (:context) do
-      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+      @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
       @hyacinth_adapter.hyacinth_project = 'test_project'
       @hyacinth_adapter.deposited_by = 'First Test Depositor'
       @hyacinth_adapter.title = 'Sample Title of Hyacinth Item'
