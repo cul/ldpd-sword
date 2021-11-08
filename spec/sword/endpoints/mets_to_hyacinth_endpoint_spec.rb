@@ -5,8 +5,8 @@ RSpec.describe Sword::Endpoints::MetsToHyacinthEndpoint do
   describe 'Initial state' do
     context '#initialize' do
       it 'sets @mets_parser to a new instance of MetsParser' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).mets_parser).to be_an_instance_of(Sword::Parsers::MetsParser)
+        expect(described_class.new('test-pq',
+                                   'firsttestdepositor').mets_parser).to be_an_instance_of(Sword::Parsers::MetsParser)
       end
     end
   end
@@ -14,8 +14,8 @@ RSpec.describe Sword::Endpoints::MetsToHyacinthEndpoint do
   describe '#handle_deposit' do
     context 'given a contents directory without a mets.xml file' do
       before(:context) do
-        @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new(Collection.new,
-                                                                      Depositor.new)
+        @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new('test-pq',
+                                                                      'firsttestdepositor')
         @collection = Collection.new
         @depositor = Depositor.new
       end
