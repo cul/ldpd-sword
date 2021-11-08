@@ -3,6 +3,7 @@ development:
     first-test:
       name: 'First Test Collection'
       atom_title: 'Atom Title of First Test Collection'
+      hyacinth_version: 2
       hyacinth_project_string_key: sword_dev
       parser: 'proquest'
       depositors:
@@ -10,6 +11,7 @@ development:
     second-test:
       name: 'Second Test Collection'
       atom_title: 'Atom Title of Second Test Collection'
+      hyacinth_version: 2
       hyacinth_project_string_key: sword_dev
       parser: 'bmc'
       depositors:
@@ -19,6 +21,7 @@ test:
     test-ac:
       name: 'Academic Commons Test Collection'
       atom_title: 'Atom Title of Academic Test Collection'
+      hyacinth_version: 2
       hyacinth_project_string_key: sword_test
       parser: 'academic-commons'
       depositors:
@@ -26,6 +29,7 @@ test:
     test-pq:
       name: 'ProQuest Test Collection'
       atom_title: 'Atom Title of Proquest Test Collection'
+      hyacinth_version: 2
       hyacinth_project_string_key: sword_test
       parser: 'proquest'
       depositors:
@@ -33,6 +37,7 @@ test:
     test-sn:
       name: 'Springer Nature Test Collection'
       atom_title: 'Atom Title of Springer Nature Test Collection'
+      hyacinth_version: 2
       hyacinth_project_string_key: sword_test
       parser: 'springer-nature'
       depositors:

@@ -16,7 +16,9 @@ module Sword
 
       def initialize(collection_slug, depositor_user_id)
         super
-        @hyacinth_adapter = Sword::Adapters::Hyacinth::V2::HyacinthAdapter.new
+        hyacinth_version = COLLECTIONS[:slug][collection_slug][:hyacinth_version]
+        hyacinth_adapter_class = "Sword::Adapters::Hyacinth::V#{hyacinth_version}::HyacinthAdapter".constantize
+        @hyacinth_adapter = hyacinth_adapter_class.new
         @mets_parser = Sword::Parsers::MetsParser.new
       end
 
