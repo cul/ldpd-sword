@@ -49,12 +49,121 @@ module Sword
         @no_op_post = false
       end
 
+      # Following is the v3 version of the v2 method compose_internal_format_item
+      def compose_item_variables
+        @item_variables = {}
+        input = {}
+
+        # digitalObjectType
+        input[:digitalObjectType] = 'ITEM'
+
+        # title
+        title = {}
+        title[:value] = { nonSortPortion: nil, sortPortion: @title }
+        # title[:value] = { nonSortPortion: 'The', sortPortion: @title }
+        input[:title] = title
+
+        # project
+        input[:project] = { stringKey: @hyacinth_project }
+
+        compose_dynamic_field_data_v3
+
+        # descriptiveMetadata
+        input[:descriptiveMetadata] = @dynamic_field_data
+
+        # identifiers
+        # fcd1, 11/16/21: Current v2 code does not populate this.
+        # Should it be set to nil? Should it just not be sent?
+        # input[:identifiers] = 'foo-bar'
+        
+        @item_variables[:input] = input
+      end
+
+      # Just for testing against my local HYacinth instance with not all the dynamic fields
+      # created/available
+      def compose_dynamic_field_data_v3
+        # fcd1, 27Jul18: uncomment following calls as methods are updated for new scheme
+        # #encode_abstract unless @abstract.nil?
+        # #encode_date_issued unless @date_issued_start.nil?
+        # #encode_degree unless @degree.nil?
+        # #encode_deposited_by # this should always be set
+        # #encode_embargo_release_date unless @embargo_release_date.nil?
+        # #encode_genre unless @genre_uri.nil? and @genre_value.nil?
+        encode_language unless @language_uri.nil? and @language_value.nil?
+        # encode_license unless @license_uri.nil?
+        # #encode_names unless (@corporate_names.empty? and @personal_names.empty?)
+        # encode_notes unless @notes.empty?
+        # encode_parent_publication unless @parent_publication.nil?
+        # encode_subjects unless @subjects.empty?
+        # encode_title # should always be a title, can raise error if so
+        # encode_type_of_resource unless @type_of_resource.nil?
+        # encode_use_and_reproduction unless @use_and_reproduction_uri.nil?
+      end
+
       def compose_internal_format_item
         @digital_object_data = {}
         @digital_object_data[:digital_object_type] = {string_key: 'item'}
         @digital_object_data[:project] = {string_key: @hyacinth_project}
         compose_dynamic_field_data
         @digital_object_data[:dynamic_field_data] = @dynamic_field_data
+      end
+
+      def ingest_item_v3
+        # just to be safe, reset response instance
+        @hyacinth_server_response = nil
+        payload = {}
+
+        create_item_mutation = <<~GQL
+          mutation ($input: CreateDigitalObjectInput!) {
+            createDigitalObject(input: $input) {
+              digitalObject {
+                id
+                title {
+                  value {
+                    sortPortion
+                  }
+                }
+                descriptiveMetadata
+              }
+              userErrors {
+                message
+                path
+              }
+            }
+          }
+        GQL
+
+        # fcd1, 11/16/21: need to JSONify the following?
+        payload[:query] = create_item_mutation
+        payload[:variables] = @item_variables
+        payload_in_json = JSON.generate payload
+        if HYACINTH_CONFIG[:store_digital_object_data]
+          payload_file = File.join(HYACINTH_CONFIG[:payload_dir],"payload_#{Time.now.to_i}")
+          Rails.logger.warn("Writing hyacinth payload file at #{payload_file}")
+          # File.open(payload_file, "w") { |file| file.write(JSON.pretty_generate @digital_object_data) }
+          File.open(payload_file, "w") { |file| file.write(payload_in_json) }
+        end
+        # puts payload_json.inspect
+        uri = URI(HYACINTH_CONFIG[:url])
+        header = {'Content-Type': 'application/json'}
+        post_req = Net::HTTP::Post.new(uri, header)
+        # post_req.set_form_data("digital_object_data_json" => data_json)
+        # post_req.set_form_data(payload_in_json)
+        post_req.body = payload_in_json
+        # puts post_req.body.inspect
+        post_req.basic_auth(HYACINTH_CONFIG[:username],
+                            HYACINTH_CONFIG[:password])
+        unless @no_op_post
+          @hyacinth_server_response = Net::HTTP.start(uri.hostname,
+                                               uri.port,
+                                               use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
+        end
+        Rails.logger.warn("RESPONSE BELOW")
+        Rails.logger.warn(@hyacinth_server_response.inspect)
+        Rails.logger.warn(@hyacinth_server_response.body)
+        Rails.logger.warn("RESPONSE ABOVE")
+        @item_pid = pid_last_item_ingest_v3
+        # @hyacinth_server_response
       end
 
       def ingest_item
@@ -85,6 +194,23 @@ module Sword
         # @hyacinth_server_response
       end
 
+      # Following is the v3 version of the v2 method compose_internal_format_asset
+      def compose_asset_variables(parent_pid,
+                                  asset_import_filepath)
+        @asset_variables = {}
+        input = {}
+
+        # parentId
+        input[:parentId] = parent_pid
+
+        # fileLocation
+        # fcd1, 11/16/21: In v2, there was import_path and import_type. No equivalent to
+        # import_type in v3?
+        input[:fileLocation] = asset_import_filepath
+
+        @asset_variables[:input] = input
+      end
+
       def compose_internal_format_asset(parent_pid,
                                         asset_import_filepath)
         @digital_object_data = {}
@@ -94,6 +220,59 @@ module Sword
         @digital_object_data[:import_file] = compose_import_file_data asset_import_filepath
         # Rails.logger.info "!!!!!!!!!!!!!!!!!! import_file!!!!!!!!"
         # Rails.logger.info "#{digital_object_data[:import_file]}"
+      end
+
+      def ingest_asset_v3(parent_pid,
+                          document_filepath)
+        asset_import_subdir = "swordtmp_#{parent_pid}"
+        asset_import_subdir.gsub!(':','')
+        # puts'*************************asset import dir***********************'
+        # puts asset_import_subdir
+        fullpath_asset_import_dir = File.join(HYACINTH_CONFIG[:upload_directory], asset_import_subdir)
+        # puts fullpath_asset_import_dir
+        FileUtils.mkdir_p(fullpath_asset_import_dir)
+        FileUtils.cp(document_filepath,fullpath_asset_import_dir)
+        asset_filename = File.basename(document_filepath)
+        asset_import_filepath = File.join(asset_import_subdir,asset_filename)
+        # puts asset_import_filepath
+        # create the hyacinth internal format data
+        compose_asset_variables(parent_pid,
+                                asset_import_filepath)
+        # puts @digital_object_data
+        # just to be safe, reset response instance
+        @hyacinth_server_response = nil
+        payload = {}
+
+        create_asset_mutation = <<~GQL
+          mutation ($input: CreateAssetInput!) {
+            createAsset(input: $input) {
+              asset {
+                id
+                assetType
+                displayLabel
+              }
+            }
+          }
+        GQL
+
+        # fcd1, 11/16/21: need to JSONify the following?
+        payload[:query] = create_item_mutation
+        payload[:variables] = @asset_variables
+        # puts payload_json.inspect
+        uri = URI(HYACINTH_CONFIG[:url])
+        post_req = Net::HTTP::Post.new(uri)
+        # post_req.set_form_data("digital_object_data_json" => data_json)
+        post_req.set_form_data(payload)
+        # puts post_req.body.inspect
+        post_req.basic_auth(HYACINTH_CONFIG[:username],
+                            HYACINTH_CONFIG[:password])
+        unless @no_op_post
+          @hyacinth_server_response = Net::HTTP.start(uri.hostname,
+                                               uri.port,
+                                               use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
+        end
+        # puts @hyacinth_response.inspect
+        @hyacinth_server_response
       end
 
       def ingest_asset(parent_pid,
@@ -142,6 +321,12 @@ module Sword
         end
       end
 
+      def pid_last_item_ingest_v3
+        unless @hyacinth_server_response.nil?
+          JSON.parse(@hyacinth_server_response.body).dig('data', 'createDigitalObject', 'digitalObject', 'id')
+        end
+      end
+
       def pid_last_ingest
         unless @hyacinth_server_response.nil?
           JSON.parse(@hyacinth_server_response.body)['pid']
@@ -186,7 +371,7 @@ module Sword
       def encode_degree
         @dynamic_field_data[:degree] = []
         @dynamic_field_data[:degree] << { degree_name: @degree.name,
-                                          degree_level: @degree.level,
+                                          degree_level: @degree.level.to_i,
                                           degree_discipline: @degree.discipline,
                                           degree_grantor: 'Columbia University' }
       end
@@ -202,14 +387,23 @@ module Sword
       end
 
       def encode_genre
-        genre_data = { value: @genre_value,
+        genre_data = { pref_label: @genre_value,
                        uri: @genre_uri }
+        # genre_data = { uri: @genre_uri }
         @dynamic_field_data[:genre] = []
         @dynamic_field_data[:genre] << { genre_term: genre_data }
       end
 
       def encode_language
-        language_data = { value: @language_value,
+        # language_data = { pref_label: 'Foobarbar',
+        # uri: 'http://example.com/vocabulary/iso639-2/eng' }
+        # language_data = { value: @language_value,
+        # uri: @language_uri }
+        # language_data = { value: @language_value }
+        # language_data = { pref_label: @language_value }
+        # language_data = { uri: @language_uri }
+        # language_data = { pref_label: 'Foobar' }
+        language_data = { pref_label: @language_value,
                           uri: @language_uri }
         @dynamic_field_data[:language] = []
         @dynamic_field_data[:language] << { language_term: language_data }
@@ -284,7 +478,7 @@ module Sword
       # need to come up with non-sort terms
       def encode_title
         @dynamic_field_data[:title] = []
-        @dynamic_field_data[:title] << { title_non_sort_portion: nil,
+        @dynamic_field_data[:title] << { title_non_sort_portion: 'The',
                                          title_sort_portion:  @title }
       end
 
@@ -310,8 +504,8 @@ module Sword
       end
 
       def set_corporate_name_and_originator_role corporate_entity
-        corporate_name_data = { value: "#{corporate_entity.name}",
-                                name_type: 'corporate' }
+        corporate_name_data = { pref_label: "#{corporate_entity.name}" }
+#                                name_type: 'corporate' }
         name_role_data = []
         name_role_data << set_name_role(METADATA_VALUES[:name_role_originator_value],
                                         METADATA_VALUES[:name_role_originator_uri])
@@ -327,8 +521,8 @@ module Sword
 
       def set_personal_name_and_author_role author
         value_data = prep_name author
-        personal_name_data = { value: value_data,
-                               name_type: 'personal' }
+        personal_name_data = { pref_label: value_data }
+#                               name_type: 'personal' }
         name_role_data = []
         name_role_data << set_name_role(METADATA_VALUES[:name_role_author_value],
                                         METADATA_VALUES[:name_role_author_uri])
@@ -338,8 +532,8 @@ module Sword
   
       def set_personal_name_and_advisor_role advisor
         value_data = prep_name advisor
-        personal_name_data = { value: value_data,
-                               name_type: 'personal' }
+        personal_name_data = { pref_label: value_data }
+#                               name_type: 'personal' }
         name_role_data = []
         name_role_data << set_name_role(METADATA_VALUES[:name_role_thesis_advisor_value],
                                         METADATA_VALUES[:name_role_thesis_advisor_uri])
@@ -348,7 +542,7 @@ module Sword
       end
 
       def set_name_role(name_role_value, name_role_uri = nil)
-        name_role_term_data = { value:  name_role_value }
+        name_role_term_data = { pref_label:  name_role_value }
         name_role_term_data[:uri] = name_role_uri if name_role_uri
         { name_role_term: name_role_term_data }
       end

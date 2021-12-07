@@ -28,8 +28,10 @@ module Sword
           COLLECTIONS[:slug][@collection_slug][:hyacinth_project_string_key]
         @hyacinth_adapter.deposited_by =
           DEPOSITORS[:basic_authentication_user_ids][@depositor_user_id][:name]
-        @hyacinth_adapter.compose_internal_format_item
-        @hyacinth_adapter.ingest_item
+        # @hyacinth_adapter.compose_internal_format_item
+        # @hyacinth_adapter.ingest_item
+        @hyacinth_adapter.compose_item_variables
+        @hyacinth_adapter.ingest_item_v3
         if @hyacinth_adapter.last_ingest_successful?
           @pid_hyacinth_item_object = @hyacinth_adapter.pid_last_ingest
         else
