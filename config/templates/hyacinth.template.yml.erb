@@ -1,0 +1,15 @@
+base: &BASE
+  upload_directory: "tmp/uploads"
+  use_ssl: true
+  store_digital_object_data: false
+  payload_dir: 'tmp/sword'
+development:
+  <<: *BASE
+  username: "sword-dev-user@library.columbia.edu"
+  password: <%= SecureRandom.hex(16) %>
+  url: 'https://dev.library.columbia.edu/endpoint'
+test:
+  <<: *BASE
+  username: "sword-test-user@library.columbia.edu"
+  password: <%= SecureRandom.hex(16) %>
+  url: 'https://test.library.columbia.edu/endpoint'

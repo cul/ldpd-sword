@@ -34,7 +34,7 @@ test:
       name: 'Springer Nature Test Collection'
       atom_title: 'Atom Title of Springer Nature Test Collection'
       hyacinth_project_string_key: sword_test
-      parser: 'springer-nature'
+      parser: 'eprints'
       depositors:
         - firsttestdepositor
 production:

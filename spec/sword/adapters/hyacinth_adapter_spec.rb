@@ -264,7 +264,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
 
   ########################################## encoding methods functionality specs
   describe 'encode methods' do
-    let :hyacinth_adapter { Sword::Adapters::HyacinthAdapter.new }
+    let(:hyacinth_adapter) { Sword::Adapters::HyacinthAdapter.new }
 
     ########################################## #encode_abstract
     describe '#encode_abstract' do
@@ -619,11 +619,13 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
     ########################################## #encode_use_and_reproduction
     describe '#encode_use_and_reproduction' do
       context 'given @use_and_reproduction_uri sset to a given value' do
-        expected_value = [ { use_and_reproduction_term:
-                               { uri: "http://rightsstatements.org/vocab/InC/1.0/"
-                               }
-                           }
-                         ]
+        let(:expected_value) do
+          [
+            {
+              use_and_reproduction_term: { uri: "http://rightsstatements.org/vocab/InC/1.0/" }
+            }
+          ]
+        end
         it 'constructs correct encoded format' do
           hyacinth_adapter.use_and_reproduction_uri = 'http://rightsstatements.org/vocab/InC/1.0/'
           hyacinth_adapter.encode_use_and_reproduction
