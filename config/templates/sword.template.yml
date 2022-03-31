@@ -1,0 +1,19 @@
+base: &BASE
+  unzip_dir: 'tmp/sword'
+  contents_zipfile_subdir: 'contents'
+  parsers:
+    - academic-commons
+    - proquest
+    - springer-nature
+  service_document:
+    sword_version: 1.3
+    sword_verbose: false
+    sword_no_op: false
+    workspace_atom_title: 'Academic Commons - SWORD Service'
+    default_accept_mime_types:
+      -  'application/zip'
+    default_accept_packaging:
+      - 'http://purl.org/net/sword-types/METSDSpaceSIP'
+      - 'http://purl.org/net/sword-types/mets/dspace'
+development: *BASE
+test: *BASE

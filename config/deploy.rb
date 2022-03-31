@@ -37,13 +37,13 @@ set :keep_releases, 3
 set :passenger_restart_with_touch, true
 
 set :linked_files, fetch(:linked_files, []).push(
+  'config/collections.yml',
   'config/database.yml',
+  'config/depositors.yml',
   'config/hyacinth.yml',
   'config/secrets.yml',
-  'config/sword.yml',
-  'config/collections.yml',
-  'config/depositors.yml',
-  'config/seeds.yml'
+  'config/seeds.yml',
+  'config/sword.yml'
 )
 
 namespace :deploy do

@@ -25,3 +25,9 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Set up test config files
+        run: bundle exec rake sword:ci:config_files
+      - name: Set up test db
+        run: bundle exec rake db:migrate db:seed
+      - name: Run CI task
+        run: bundle exec rspec

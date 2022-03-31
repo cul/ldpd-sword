@@ -1,0 +1,85 @@
+base: &BASE
+  collections:
+    proquest_collection:
+      name: 'ProQuest'
+      slug: proquest-collection
+      atom_title: 'ProQuest Collection'
+      hyacinth_project_string_key: academic_commons
+      parser: 'proquest'
+    springer_nature_collection:
+      name: 'Springer Nature'
+      slug: springer-nature-collection
+      atom_title: 'Springer Nature Collection'
+      hyacinth_project_string_key: academic_commons
+      parser: 'springer-nature'
+    academic_commons_collection:
+      name: 'Academic Commons'
+      slug: academic-commons-collection
+      atom_title: 'Academic Commons Collection'
+      hyacinth_project_string_key: academic_commons
+      parser: 'academic-collections'
+  # following pairs up depositors and collections
+  depositor_collection_pairings:
+    first_pairing:
+      depositor: proquest_depositor
+      collection: proquest_collection
+development:
+  <<: *BASE
+  admin_users:
+    admin_user:
+      name: 'Fake Admin'
+      email: fake-dev-admin@library.columbia.edu
+      password: <%= SecureRandom.hex(16) %>
+  non_admin_users:
+    test_user:
+      name: 'Fake User'
+      email: fake-dev-user@library.columbia.edu
+      password: <%= SecureRandom.hex(16) %>
+  # Following contains the info for the Depositors instances created 
+  # via rake db:seed
+  depositors:
+    proquest_depositor:
+      name: 'ProQuest'
+      basic_authentication_user_id: proquest-dev
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
+    springer_nature_depositor:
+      name: 'Springer Nature'
+      basic_authentication_user_id: springernature-dev
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
+    academic_commons_depositor:
+      name: 'Academic Commons'
+      basic_authentication_user_id: academiccommons-dev
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
+test:
+  <<: *BASE
+  admin_users:
+    admin_user:
+      name: 'Fake Admin'
+      email: fake-test-admin@library.columbia.edu
+      password: <%= SecureRandom.hex(16) %>
+  non_admin_users:
+    test_user:
+      name: 'Fake User'
+      email: fake-test-user@library.columbia.edu
+      password: <%= SecureRandom.hex(16) %>
+  # Following contains the info for the Depositors instances created 
+  # via rake db:seed
+  depositors:
+    proquest_depositor:
+      name: 'ProQuest'
+      basic_authentication_user_id: proquest-test
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
+    springer_nature_depositor:
+      name: 'Springer Nature'
+      basic_authentication_user_id: springernature-test
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
+    academic_commons_depositor:
+      name: 'Academic Commons'
+      basic_authentication_user_id: academiccommons-test
+      password: <%= SecureRandom.hex(16) %>
+      password_confirmation: <%= SecureRandom.hex(16) %>
