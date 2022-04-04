@@ -12,13 +12,13 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
   describe 'Initial state' do
     context '#initialize' do
       it 'sets @epdcx_parser to a new instance of EprintsDcXmlParser' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).epdcx_parser).to be_an_instance_of(Sword::Parsers::EprintsDcXmlParser)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').epdcx_parser).to be_an_instance_of(Sword::Parsers::EprintsDcXmlParser)
       end
 
       it 'sets @hyacinth_adapter to a new instance of HyacinthAdapter' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
       end
     end
   end
@@ -43,8 +43,8 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
   ########################################## #process_name_metadata
   describe '#process_name_metadata' do
     before (:context) do
-      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new(Collection.new,
-                                                                Depositor.new)
+      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new('sample_collection_slug',
+                                                                'sample_depositor_user_id')
       @eprints_endpoint.epdcx_parser.creators << 'Smith, John C' << 'Doe, Jane A'
       @eprints_endpoint.process_name_metadata
     end
@@ -67,8 +67,8 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
   ########################################## #process_metadata
   describe '#process_metadata' do
     before (:context) do
-      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new(Collection.new,
-                                                                   Depositor.new)
+      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new('sample_collection_slug',
+                                                                'sample_depositor_user_id')
       @eprints_endpoint.epdcx_parser.abstract = 'This is a sample terse abstract'
       @eprints_endpoint.epdcx_parser.date_available = '2018-08-06'
       @eprints_endpoint.epdcx_parser.identifier = 'https://doi.org/10.1186/s13031-018-0173-x'
@@ -140,8 +140,8 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
   ########################################## #process_metadata, no bibliographic citation
   describe '#process_metadata still set parent publication date and title' do
     before (:context) do
-      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new(Collection.new,
-                                                                   Depositor.new)
+      @eprints_endpoint = Sword::Endpoints::EprintsEndpoint.new('sample_collection_slug',
+                                                                'sample_depositor_user_id')
       @eprints_endpoint.epdcx_parser.date_available = '2018-08-06'
       @eprints_endpoint.epdcx_parser.publisher = 'The Good Journal'
 

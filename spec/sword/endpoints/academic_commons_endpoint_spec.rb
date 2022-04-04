@@ -12,13 +12,13 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   describe 'Initial state' do
     context '#initialize' do
       it 'sets @mods_parser to a new instance of ModsParser' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).mods_parser).to be_an_instance_of(Sword::Parsers::ModsParser)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').mods_parser).to be_an_instance_of(Sword::Parsers::ModsParser)
       end
 
       it 'sets @hyacinth_adapter to a new instance of HyacinthAdapter' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
       end
     end
   end
@@ -43,8 +43,8 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   ########################################## #process_doi_uri
   describe '#process_doi_uri' do
     before (:context) do
-      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new(Collection.new,
-                                                                   Depositor.new)
+      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new('sample_collection_slug',
+                                                                   'sample_depositor_user_id')
     end
 
     context 'given @mods_parser populated with just doi' do
@@ -77,8 +77,8 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   ########################################## #process_name_metadata
   describe '#process_name_metadata' do
     before (:context) do
-      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new(Collection.new,
-                                                                   Depositor.new)
+      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new('sample_collection_slug',
+                                                                   'sample_depositor_user_id')
       first_mods_name_personal = Sword::Metadata::ModsName.new
       first_mods_name_personal.name_part = 'Smith, John C.'
       first_mods_name_personal.type = 'personal'
@@ -112,8 +112,8 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   ########################################## #process_metadata
   describe '#process_metadata' do
     before (:context) do
-      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new(Collection.new,
-                                                                   Depositor.new)
+      @ac_endpoint = Sword::Endpoints::AcademicCommonsEndpoint.new('sample_collection_slug',
+                                                                   'sample_depositor_user_id')
       @ac_endpoint.mods_parser.abstract = 'This is a sample terse abstract'
       @ac_endpoint.mods_parser.date_issued_start = '2015'
       @ac_endpoint.mods_parser.identifier_doi = 'doi:1234234'

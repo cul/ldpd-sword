@@ -12,13 +12,13 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   describe 'Initial state' do
     context '#initialize' do
       it 'sets @mods_parser to a new instance of ModsParser' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).proquest_etd_parser).to be_an_instance_of(Sword::Parsers::ProquestEtdParser)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').proquest_etd_parser).to be_an_instance_of(Sword::Parsers::ProquestEtdParser)
       end
 
       it 'sets @hyacinth_adapter to a new instance of HyacinthAdapter' do
-        expect(described_class.new(Collection.new,
-                                   Depositor.new).hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
+        expect(described_class.new('sample_collection_slug',
+                                   'sample_depositor_user_id').hyacinth_adapter).to be_an_instance_of(Sword::Adapters::HyacinthAdapter)
       end
     end
   end
@@ -43,8 +43,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   ########################################## #process_degree_metadata
   describe '#process_degree_metadata' do
     before do
-      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                  Depositor.new)
+      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('sample_collection_slug',
+                                                                  'sample_depositor_user_id')
       @proquest_endpoint.proquest_etd_parser.degree = 'Ph.D.'
       @proquest_endpoint.proquest_etd_parser.institution_department_name = 'History'
       @proquest_endpoint.process_degree_metadata
@@ -63,8 +63,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   ########################################## #process_subject_metadata
   describe '#process_subject_metadata' do
     before do
-      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                  Depositor.new)
+      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('sample_collection_slug',
+                                                                  'sample_depositor_user_id')
       @proquest_endpoint.proquest_etd_parser.subjects = ['Flux capacitor','Time travel']
       @proquest_endpoint.process_subject_metadata
     end
@@ -79,8 +79,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   ########################################## #process_name_metadata
   describe '#process_name_metadata' do
     before (:context) do
-      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                  Depositor.new)
+      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('sample_collection_slug',
+                                                                  'sample_depositor_user_id')
       first_name_personal = Sword::Metadata::PersonalName.new
       first_name_personal.last_name = 'Smith'
       first_name_personal.first_name = 'John'
@@ -123,8 +123,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   describe '#process_institution_info_into_corporate_name' do
     context 'given a skeletal ProquestEtdParser instance with just institution info in @proquest_etd_parser' do
       before (:example) do
-        @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                    Depositor.new)
+        @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('sample_collection_slug',
+                                                                    'sample_depositor_user_id')
       end
 
       context "0054 and department name start with 'TC:'" do
@@ -166,8 +166,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
   describe '#process_metadata' do
     before (:context) do
       # TODO: corporate name, degree, etc.
-      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new(Collection.new,
-                                                                  Depositor.new)
+      @proquest_endpoint = Sword::Endpoints::ProquestEndpoint.new('sample_collection_slug',
+                                                                  'sample_depositor_user_id')
       @proquest_endpoint.proquest_etd_parser.abstract = 'This is a sample terse abstract'
       @proquest_endpoint.proquest_etd_parser.date_conferred = '2015'
       @proquest_endpoint.proquest_etd_parser.degree = 'Ph.D.'
