@@ -1,6 +1,4 @@
-base: &BASE
 development:
-  <<: *BASE
   admin_users:
     admin_user:
       name: 'Fake Admin'
@@ -12,7 +10,6 @@ development:
       email: fake-dev-user@library.columbia.edu
       password: <%= SecureRandom.hex(16) %>
 test:
-  <<: *BASE
   admin_users:
     admin_user:
       name: 'Fake Admin'
