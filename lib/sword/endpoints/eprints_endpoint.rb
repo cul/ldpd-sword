@@ -1,3 +1,9 @@
+require 'sword/endpoints/mets_to_hyacinth_endpoint.rb'
+require 'sword/parsers/eprints_dc_xml_parser.rb'
+require 'sword/metadata/note.rb'
+require 'sword/metadata/parent_publication.rb'
+require 'sword/metadata/personal_name.rb'
+
 module Sword
   module Endpoints
     class EprintsEndpoint < MetsToHyacinthEndpoint

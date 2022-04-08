@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/adapters/hyacinth_adapter.rb'
+
 RSpec.describe Sword::Adapters::HyacinthAdapter do
   ########################################## Initial state
   describe 'Initial state' do

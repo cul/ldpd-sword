@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/parsers/eprints_dc_xml_parser.rb'
+
 RSpec.describe Sword::Parsers::EprintsDcXmlParser do
   subject(:epdcx_parser) { Sword::Parsers::EprintsDcXmlParser.new }
   let(:nokogiri_xml) { Nokogiri::XML(xml_file) }

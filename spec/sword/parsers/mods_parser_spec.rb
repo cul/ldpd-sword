@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/parsers/mods_parser.rb'
+
 RSpec.describe Sword::Parsers::ModsParser do
   ########################################## Initial state
   describe 'Initial state' do

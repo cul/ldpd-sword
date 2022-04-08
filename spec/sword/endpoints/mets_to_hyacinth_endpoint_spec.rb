@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/endpoints/mets_to_hyacinth_endpoint.rb'
+
 RSpec.describe Sword::Endpoints::MetsToHyacinthEndpoint do
   ########################################## Initial state
   describe 'Initial state' do

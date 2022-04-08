@@ -1,3 +1,9 @@
+require 'sword/endpoints/mets_to_hyacinth_endpoint.rb'
+require 'sword/metadata/note.rb'
+require 'sword/metadata/parent_publication.rb'
+require 'sword/metadata/personal_name.rb'
+require 'sword/parsers/mods_parser.rb'
+
 module Sword
   module Endpoints
     class AcademicCommonsEndpoint < MetsToHyacinthEndpoint

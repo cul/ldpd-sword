@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/parsers/mets_parser.rb'
+
 RSpec.describe Sword::Parsers::MetsParser do
   context "API/interface" do
     it 'has #parse method that takes file to parse' do

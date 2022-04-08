@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/metadata/degree.rb'
+
 RSpec.describe Sword::Metadata::Degree do
   describe 'API/Interface' do
     context 'has the following attr_accessor:' do

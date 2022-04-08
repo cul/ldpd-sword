@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/metadata/corporate_name.rb'
+
 RSpec.describe Sword::Metadata::CorporateName do
   describe 'API/Interface' do
     context 'has attr_accessor for' do
