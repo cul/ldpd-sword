@@ -1,4 +1,4 @@
-class CreateDeposits < ActiveRecord::Migration
+class CreateDeposits < ActiveRecord::Migration[4.2]
   def change
     create_table :deposits do |t|
       t.belongs_to :depositor, index: true, foreign_key: true

@@ -1,4 +1,4 @@
-class CreateDepositors < ActiveRecord::Migration
+class CreateDepositors < ActiveRecord::Migration[4.2]
   def change
     create_table :depositors do |t|
       t.string :name, null: false
