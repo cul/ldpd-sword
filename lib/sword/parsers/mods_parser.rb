@@ -1,3 +1,5 @@
+require 'sword/metadata/mods_name.rb'
+
 module Sword
   module Parsers
     class ModsParser

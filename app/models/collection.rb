@@ -1,4 +1,4 @@
-class Collection < ActiveRecord::Base
+class Collection < ApplicationRecord
   validates :name, presence: true
   validates :atom_title, presence: true
   validates :slug, presence: true

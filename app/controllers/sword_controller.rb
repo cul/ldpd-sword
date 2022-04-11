@@ -1,3 +1,8 @@
+require 'sword/util.rb'
+require 'sword/endpoints/academic_commons_endpoint.rb'
+require 'sword/endpoints/eprints_endpoint.rb'
+require 'sword/endpoints/proquest_endpoint.rb'
+
 class SwordController < ApplicationController
   before_action :check_for_valid_collection_slug, only: [:deposit]
   before_action :check_basic_http_authentication, only: [:deposit, :service_document]
@@ -11,8 +16,8 @@ class SwordController < ApplicationController
     # use @collection.parser, which will need to be changed to
     # @collection.endpoint, i.e. will need to change attribute in
     # collection model from parser to endpoint
-    @endpoint = Sword::Endpoints::Endpoint::get_endpoint(@collection_slug,
-                                                         @depositor_user_id)
+    @endpoint = get_endpoint(@collection_slug,
+                             @depositor_user_id)
     @path_to_deposit_contents = Sword::Util::unzip_deposit_file request
 
     # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
@@ -78,6 +83,20 @@ class SwordController < ApplicationController
       info[:abstract] = nil
       info[:mediation_enabled] = false
       info
+    end
+
+    def get_endpoint(collection_slug,
+                     depositor_user_id)
+      case COLLECTIONS[:slug][collection_slug][:parser]
+      when "academic-commons"
+        Sword::Endpoints::AcademicCommonsEndpoint.new(collection_slug, depositor_user_id)
+      when "proquest"
+        Sword::Endpoints::ProquestEndpoint.new(collection_slug, depositor_user_id)
+      when "eprints"
+        Sword::Endpoints::EprintsEndpoint.new(collection_slug, depositor_user_id)
+      else
+        # raise an exception here
+      end
     end
 
     def check_for_valid_collection_slug

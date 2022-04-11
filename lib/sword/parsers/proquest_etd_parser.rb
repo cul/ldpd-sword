@@ -1,3 +1,6 @@
+require 'sword/metadata/mods_name.rb'
+require 'sword/metadata/personal_name.rb'
+
 # Parser based on mets.xml files received from ProQuest, and the DTD found at
 # http://www.etdadmin.com/dtds/etd.dtd
 module Sword

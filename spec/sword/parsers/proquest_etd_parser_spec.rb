@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/parsers/proquest_etd_parser.rb'
+
 # Parser based on mets.xml files received from ProQuest, and the DTD found at
 # http://www.etdadmin.com/dtds/etd.dtd
 RSpec.describe Sword::Parsers::ProquestEtdParser do

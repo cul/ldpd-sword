@@ -1,4 +1,4 @@
-class Depositor < ActiveRecord::Base
+class Depositor < ApplicationRecord
   has_secure_password
   has_many :deposits
   has_many :depositor_collection_pairings, dependent: :destroy

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/metadata/personal_name.rb'
+
 RSpec.describe Sword::Metadata::PersonalName do
   describe 'API/Interface' do
     context 'has attr_accessor for' do

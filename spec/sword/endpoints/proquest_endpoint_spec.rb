@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/endpoints/proquest_endpoint.rb'
+
 RSpec.describe Sword::Endpoints::ProquestEndpoint do
   ########################################## hierarchy
   describe 'hierarchy' do

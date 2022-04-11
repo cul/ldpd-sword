@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/util.rb'
+
 RSpec.describe Sword::Util do
   context "API/interface" do
     it 'has ::unzip class method that takes filename to unzip and location to store contents' do

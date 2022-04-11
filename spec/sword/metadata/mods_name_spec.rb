@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/metadata/mods_name.rb'
+
 RSpec.describe Sword::Metadata::ModsName do
   context "API/interface" do
     it 'has #name_part attr_accessor' do

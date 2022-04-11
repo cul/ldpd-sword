@@ -1,3 +1,5 @@
+require 'sword/metadata/epdcx_bibliographic_citation.rb'
+
 # Parser based on EPDCX (EPrints DC XML) metadata format, which is the default metadata
 # format used in SWORD deposits
 module Sword

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/metadata/epdcx_bibliographic_citation.rb'
+
 RSpec.describe Sword::Metadata::EpdcxBibliographicCitation do
   describe 'API/Interface' do
     context 'has attr_accessor for the following instance var:' do

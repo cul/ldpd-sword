@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/endpoints/eprints_endpoint.rb'
+
 RSpec.describe Sword::Endpoints::EprintsEndpoint do
   ########################################## hierarchy
   describe 'hierarchy' do

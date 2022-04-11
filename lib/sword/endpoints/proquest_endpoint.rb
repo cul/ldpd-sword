@@ -1,3 +1,9 @@
+require 'sword/constants.rb'
+require 'sword/endpoints/mets_to_hyacinth_endpoint.rb'
+require 'sword/metadata/corporate_name.rb'
+require 'sword/metadata/degree.rb'
+require 'sword/parsers/proquest_etd_parser.rb'
+
 module Sword
   module Endpoints
     class ProquestEndpoint < MetsToHyacinthEndpoint

@@ -1,3 +1,7 @@
+require 'sword/endpoints/endpoint.rb'
+require 'sword/adapters/hyacinth_adapter.rb'
+require 'sword/parsers/mets_parser.rb'
+
 module Sword
   module Endpoints
     class MetsToHyacinthEndpoint < Endpoint

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+require 'sword/endpoints/academic_commons_endpoint.rb'
+
 RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
   ########################################## hierarchy
   describe 'hierarchy' do

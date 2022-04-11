@@ -3,14 +3,14 @@ source 'https://rubygems.org'
 ruby "2.6.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.10'
+gem 'rails', '5.2.7'
 gem 'mysql2', '~> 0.4.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -34,7 +34,12 @@ gem 'devise'
 
 gem 'rubyzip'
 
+# fcd1, 05/09/22: Added bootsnap when upgrading from rails 4.2.10 to 5.2.7
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.4.2', require: false
+
 group :development, :test do
+  gem 'listen'
   gem 'sqlite3'
   gem 'rspec-rails'
 end
