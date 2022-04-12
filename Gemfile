@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 ruby "2.6.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.7'
-gem 'mysql2', '~> 0.4.0'
+gem 'rails', '6.0.4'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,7 +40,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'listen'
-  gem 'sqlite3'
+  # fcd1, 04/11/22: Rails 6 doesn't like '~> 1.3.13'. As ldpd-amesa does, spec to ~> 1.4
+  gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails'
 end
 
