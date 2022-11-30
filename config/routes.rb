@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # get 'sword/deposit'
   # get 'sword/deposit/:collection_slug' => 'sword#deposit'
   post 'sword/deposit/:collection_slug' => 'sword#deposit'
+  get 'sword/deposit/:collection_slug' => 'sword#service_document'
   get 'sword/service_document' => 'sword#service_document'
   get 'sword/service-document' => 'sword#service_document'
   get 'sword/servicedocument' => 'sword#service_document'
