@@ -36,12 +36,7 @@ module Sword
 
         process_metadata
 
-        # @adapter_item_identifier stores the parent pid returned
-        # from Hyacinth
-        @adapter_item_identifier = ingest_item_into_hyacinth
-
-        ingest_documents_into_hyacinth
-        ingest_mets_xml_file_into_hyacinth
+        ingest_into_hyacinth
       end
 
       # This method takes the parsed metadata and maps it to the associated

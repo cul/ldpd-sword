@@ -50,7 +50,8 @@ class SwordController < ApplicationController
     # @depositor.deposits << @deposit
     # @collection.deposits << @deposit
     response.status = 201
-    render json: { item_pid: @endpoint.adapter_item_identifier }
+    render json: { item_pid: @endpoint.adapter_item_identifier,
+                   ingest_into_hyacinth: !(HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@endpoint.collection_slug][:bypass_hyacinth_ingest])}
   end
 
   def service_document

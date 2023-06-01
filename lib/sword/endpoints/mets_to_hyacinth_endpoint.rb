@@ -59,6 +59,20 @@ module Sword
                                        mets_xml_filepath)
       end
 
+      def ingest_into_hyacinth
+        unless (HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@collection_slug][:bypass_hyacinth_ingest])
+          # @adapter_item_identifier stores the parent pid returned
+          # from Hyacinth
+          @adapter_item_identifier = ingest_item_into_hyacinth
+          ingest_documents_into_hyacinth
+          ingest_mets_xml_file_into_hyacinth
+        else
+          Rails.logger.warn "Bypassing ingest into Hyacinth, set bogus PID"
+          # bogus item identifier. Instead, could use string 'NotApplicable'
+          @adapter_item_identifier = 'na:xxxxxxxxxxx'
+        end
+      end
+
       def handle_deposit(path_to_contents)
         @content_dir = path_to_contents
         #check existence of mets.xml file

@@ -7,6 +7,7 @@ module Sword
       attr_reader :documents_to_deposit
       attr_reader :deposit_title
       attr_reader :adapter_item_identifier
+      attr_reader :collection_slug
 
       # depositor_user_id represents the user part of the basic authentication
       # in the HTTP POST request
