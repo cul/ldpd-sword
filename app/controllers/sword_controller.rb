@@ -31,7 +31,8 @@ class SwordController < ApplicationController
     # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
     Rails.logger.warn("Title: #{@endpoint.deposit_title.truncate_words(10)}, " \
                       "Files: #{@endpoint.documents_to_deposit}, " \
-                      "Hyacinth item pid: #{@endpoint.adapter_item_identifier}"
+                      "Hyacinth item pid: #{@endpoint.adapter_item_identifier}, " \
+                      "Path to SWORD contents: #{@path_to_deposit_contents}"
                      )
 
     # create Deposit instance to store deposit info in database
