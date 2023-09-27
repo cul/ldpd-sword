@@ -236,6 +236,13 @@ module Sword
       end
 
       def encode_personal_names
+        # SWORD-86: here, if upper bound is set on the number of names allowed in Hyacinth ingest, truncate @personal_names
+        if HYACINTH_CONFIG.has_key? :max_number_names and @personal_names.length > HYACINTH_CONFIG[:max_number_names]
+          @notes << Sword::Metadata::Note.new('SWORD deposit contains more than ' + HYACINTH_CONFIG[:max_number_names].to_s + ' names, only first ' +
+                                              HYACINTH_CONFIG[:max_number_names].to_s + ' processed. See mets.xml for full list.' +
+                                              ' Large number of Name fields will generate error in Hyacinth. See JIRA ticket SWORD-86.','internal')
+          @personal_names = @personal_names[0..HYACINTH_CONFIG[:max_number_names] - 1]
+        end
         @personal_names.each do |personal_name|
           case personal_name.role
           when 'author'
