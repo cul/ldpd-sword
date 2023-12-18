@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.7.5"
+ruby "3.2.2"
 
 gem 'rails', '~> 6.0.4'
 gem 'mysql2'
@@ -15,7 +15,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
-gem 'nokogiri', '~> 1.10.10'
+gem 'nokogiri'
 
 gem 'rainbow', '~> 3.0'
 
