@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "3.2.2"
 
-gem 'rails', '~> 6.0.4'
+gem 'rails', '~> 6.1.7'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -45,6 +45,8 @@ group :development, :test do
 end
 
 group :development do
+  # Use Puma as the app server
+  gem 'puma'
   # Use Capistrano for deployment
   gem 'capistrano', '~> 3.5.0', require: false
   # Rails and Bundler integrations were moved out from Capistrano 3
