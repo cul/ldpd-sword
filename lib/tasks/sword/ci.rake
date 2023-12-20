@@ -9,7 +9,7 @@ namespace :sword do
           puts Rainbow("File already exists (skipping): #{target_yml_path}").blue.bright + "\n"
           next
         end
-        target_yml = YAML.load_file(template_yml_path)
+        target_yml = YAML.load_file(template_yml_path, aliases: true)
         File.open(target_yml_path, 'w') {|f| f.write target_yml.to_yaml }
         puts Rainbow("Created file at: #{target_yml_path}").green
       end
@@ -19,7 +19,7 @@ namespace :sword do
           puts Rainbow("File already exists (skipping): #{target_yml_path}").blue.bright + "\n"
           next
         end
-        target_yml = YAML.load(ERB.new(File.read(template_yml_path)).result(binding))
+        target_yml = YAML.load(ERB.new(File.read(template_yml_path)).result(binding), aliases: true)
         File.open(target_yml_path, 'w') {|f| f.write target_yml.to_yaml }
         puts Rainbow("Created file at: #{target_yml_path}").green
       end
