@@ -1,4 +1,4 @@
-SEEDS_CONFIG = HashWithIndifferentAccess.new(YAML.load_file("#{Rails.root}/config/seeds.yml")[Rails.env])
+SEEDS_CONFIG = HashWithIndifferentAccess.new(YAML.load_file("#{Rails.root}/config/seeds.yml", aliases: true)[Rails.env])
 
 admins = {}
 # Since the creation of seeded user accounts (admin and non-admin)
