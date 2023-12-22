@@ -77,7 +77,7 @@ GEM
       tzinfo (~> 2.0)
     airbrussh (1.5.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    base64 (0.2.0)
+    base64 (0.1.1)
     bcrypt (3.1.20)
     bigdecimal (3.1.5)
     bootsnap (1.17.0)
@@ -285,6 +285,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  base64 (= 0.1.1)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   capistrano (~> 3.17.3)

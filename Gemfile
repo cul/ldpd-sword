@@ -19,6 +19,11 @@ gem 'nokogiri'
 
 gem 'rainbow', '~> 3.0'
 
+# fcd1, 12/22/23: Passenger on diglib-rails-dev1 complaining:
+# You have already activated base64 0.1.1, but your Gemfile requires base64 0.2.0
+# so gonna lock version to 0.1.1
+gem 'base64', '0.1.1'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
