@@ -43,6 +43,12 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Rubocul for linting
+  gem 'rubocul', '~> 4.0'
+
+  # RSpec
+  gem 'rspec-rails', '~> 7.0.0'
 end
 
 group :development do
