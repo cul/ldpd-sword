@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item"
+	PROFILE="DSpace METS SIP Profile 1.0" xmlns="http://www.loc.gov/METS/"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+
+	<metsHdr CREATEDATE="2007-09-01T00:00:00">
+		<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+			<name>ETDAdmin, ProQuest</name>
+		</agent>
+	</metsHdr>
+
+	<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+		<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX"
+			MIMETYPE="text/xml">
+			<xmlData>
+				<epdcx:descriptionSet
+					xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+					<epdcx:description
+						epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+	<epdcx:valueString><![CDATA[Advanced data visualization and accuracy measurements of COVID-19 projections in  US Counties for Informed Public Health Decision-Making.]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+	<epdcx:valueString><![CDATA[Background: 
+The COVID-19 pandemic posed an unparalleled challenge to worldwide public health systems, characterized by its high transmissibility and the initial absence of accessible testing, treatments, and vaccines. The deficiency in public awareness and the scarcity of readily available public health information regarding this century's disaster further intensified the critical need for innovative solutions to bridge these gaps.
+In response, Shaman Labs1,2, leveraging its deep expertise in forecasting for influenza3, Ebola, and various SARS viruses, initiated the development of country-wide COVID-19 projections within weeks following the WHO's declaration of the pandemic4–6. Almost immediately thereafter, it became necessary to create a sophisticated online platform—a system capable of displaying county-specific COVID-19 forecasts, including daily estimated infections, cases, and deaths. This platform was designed to allow users to select any county, state, or national geography and compare it with another, under various scenarios of social distancing measures. Additionally, the architecture of this system was required to facilitate the regular integration of updated data, ensuring the tool's ongoing relevance and utility.
+Columbia University's data visualization system aimed to communicate epidemiological forecasts to various stakeholders. At the onset of the COVID-19 pandemic, amid escalating uncertainty and the pressing need for reliable data, Dr. Rundle played a pivotal role in briefing key stakeholders on the unfolding crisis. His efforts were directed towards providing Congressman Ron Johnson, Chairman of the U.S. Senate Committee on Homeland Security & Governmental Affairs, and Congresswoman Anna Eshoo, as well as their staff, with up-to-date projections and analyses derived from the Classic Data Visualization tools. Dr. Rundle’s consultative role extended to a diverse array of institutions including the U.S. Army Corps of Engineers, the U.S. Air Force, and the Federal Reserve Board, as well as advising private entities such as Pfizer, MetLife, and Unilever. His expertise facilitated informed planning and response efforts across various levels of government and sectors, underscoring the critical role of sophisticated data visualization from the earliest stages of the pandemic.
+This Integrated Learning Experience (ILE) examines the development and implementation of the Time Machine platform, focusing on its application in visualizing and analyzing COVID-19 epidemiological forecasts. The study explores methods for improving forecast data presentation, analysis, and accuracy assessment. 
+Methods:
+The body of this work unfolds through a series of critical chapters that collectively address the multifaceted functionality and impact of the Time Machine platform. Initially, the work focuses on the construction of the Time Machine platform, a web-based R interactive user interface coupled with cloud-based database system, specifically tailored for the intuitive visualization of epidemiological forecasts, detailing the technical and design considerations essential for enabling users to interpret complex data more effectively. Following this, the implementation of a rigorous data-discovery framework is presented, examining case reporting inconsistencies across different regions, using low-level GitHub and Windows scripting technologies, thereby highlighting the significance of accurate data collection and the impact of discrepancies on public health decisions. The narrative then transitions to the implementation of advanced statistical models, such as strictly proper scoring and weighted interval scoring, to assess the accuracy of the forecasts provided by the Time Machine platform, using a dedicated R library and testing with the help of MS Excel sandbox, underscoring the importance of reliable predictions in the management of public health crises. Lastly, a detailed analysis is conducted, encompassing countrywide data (3142 counties) over an extended period (147 weeks), utilizing Generalized Estimating Equations (GEE) to identify key predictors that influence forecast accuracy, offering valuable insights into the factors that either enhance or detract from the reliability of epidemiological predictions.
+Results:
+The deployment of the Classic Data Visualization and the subsequent evolution of the Time Machine platform have significantly advanced epidemiological forecast visualization capabilities. The Time Machine platform was designed with an automated data refresh system, allowing for regular updates of epidemiological forecast data and reported actuals.
+The project developed tools for monitoring and evaluating the quality of public health reporting, aiming to improve the accuracy and timeliness of data used in public health decisions. Additionally, the research implemented methods for standardizing forecast accuracy assessments, including the normalization of scores to enable comparisons across different geographical scales. These approaches were designed to support both local and national-level pandemic response efforts.
+The accuracy analyses throughout different phases of the pandemic revealed a 42% improvement in forecast accuracy from Phase 1 to Phase 7. Larger populations (27% increase per unit increase on a base-10 logarithmic scale) and higher county-level activity (45% increase from the lowest to the highest quartile) resulted in better estimations. Additionally, the analysis highlighted the significant impact of reporting quality on forecast accuracy. On the other hand, the study identified the challenges in predicting case surges, showing a 27% decline in accuracy during periods of rising infections compared to declining periods. The regression results highlight the potential benefits of improving data collection and providing timely feedback to forecasting teams.
+Conclusion:
+This study demonstrates the potential of advanced data visualization and accuracy measurement techniques in improving epidemiological forecasting. The findings suggest that factors such as urbanicity, case reporting quality, and pandemic phase significantly influence forecast accuracy. Further research is needed to refine these models and enhance their applicability across various public health scenarios.
+]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+	<epdcx:valueString><![CDATA[Yaman, Tonguc ]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Public health]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Epidemiology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+	<epdcx:valueString><![CDATA[Charles Branas]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+	<epdcx:valueString><![CDATA[Andrew Rundle]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1"><epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+	<epdcx:valueString><![CDATA[en]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" /></epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="ProQuest Metadata" MDTYPE="OTHER" OTHERMDTYPE="PROQUEST" MIMETYPE="text/xml">
+      <xmlData>
+<DISS_submission publishing_option="0" embargo_code="4" third_party_search="Y" xmlns="http://www.etdadmin.com/ns/etdsword">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Yaman</DISS_surname>
+        <DISS_fname>Tonguc</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>09/16/2024</DISS_contact_effdt>
+        <DISS_address>
+          <DISS_addrline>500 E 63rd St. Apt 16F</DISS_addrline>
+          <DISS_city>New York</DISS_city>
+          <DISS_st>NY</DISS_st>
+          <DISS_pcode>10065</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>tonguc.yaman@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship/>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="129" type="doctoral" external_id="http://dissertations.umi.com/cumc.columbia:10104" apply_for_copyright="no">
+    <DISS_title>Advanced data visualization and accuracy measurements of COVID-19 projections in  US Counties for Informed Public Health Decision-Making.</DISS_title>
+    <DISS_identifiers>
+      <pubNumber>31562445</pubNumber>
+      <docId/>
+    </DISS_identifiers>
+    <DISS_dates>
+      <DISS_comp_date>2024</DISS_comp_date>
+      <DISS_accept_date>01/01/2024</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>Dr.P.H.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0054</DISS_inst_code>
+      <DISS_inst_name>Columbia University, Mailman School of Public Health</DISS_inst_name>
+      <DISS_inst_contact>Epidemiology</DISS_inst_contact>
+      <DISS_processing_code>E</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Branas</DISS_surname>
+        <DISS_fname>Charles</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Rundle</DISS_surname>
+        <DISS_fname>Andrew</DISS_fname>
+        <DISS_middle/>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Branas</DISS_surname>
+        <DISS_fname>Charles</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Rundle</DISS_surname>
+        <DISS_fname>Andrew</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Bates</DISS_surname>
+        <DISS_fname>Lisa</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Shaman</DISS_surname>
+        <DISS_fname>Jeffrey</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Zebrowski</DISS_surname>
+        <DISS_fname>Alexis</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0573</DISS_cat_code>
+        <DISS_cat_desc>Public health</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0766</DISS_cat_code>
+        <DISS_cat_desc>Epidemiology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>Accuracy Assessments, Forecasting, Infectious Disease</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>Background: The COVID-19 pandemic posed an unparalleled challenge to worldwide public health systems, characterized by its high transmissibility and the initial absence of accessible testing, treatments, and vaccines. The deficiency in public awareness and the scarcity of readily available public health information regarding this century's disaster further intensified the critical need for innovative solutions to bridge these gaps.
+In response, Shaman Labs1,2, leveraging its deep expertise in forecasting for influenza3, Ebola, and various SARS viruses, initiated the development of country-wide COVID-19 projections within weeks following the WHO's declaration of the pandemic4–6. Almost immediately thereafter, it became necessary to create a sophisticated online platform—a system capable of displaying county-specific COVID-19 forecasts, including daily estimated infections, cases, and deaths. This platform was designed to allow users to select any county, state, or national geography and compare it with another, under various scenarios of social distancing measures. Additionally, the architecture of this system was required to facilitate the regular integration of updated data, ensuring the tool's ongoing relevance and utility.
+Columbia University's data visualization system aimed to communicate epidemiological forecasts to various stakeholders. At the onset of the COVID-19 pandemic, amid escalating uncertainty and the pressing need for reliable data, Dr. Rundle played a pivotal role in briefing key stakeholders on the unfolding crisis. His efforts were directed towards providing Congressman Ron Johnson, Chairman of the U.S. Senate Committee on Homeland Security &amp; Governmental Affairs, and Congresswoman Anna Eshoo, as well as their staff, with up-to-date projections and analyses derived from the Classic Data Visualization tools. Dr. Rundle’s consultative role extended to a diverse array of institutions including the U.S. Army Corps of Engineers, the U.S. Air Force, and the Federal Reserve Board, as well as advising private entities such as Pfizer, MetLife, and Unilever. His expertise facilitated informed planning and response efforts across various levels of government and sectors, underscoring the critical role of sophisticated data visualization from the earliest stages of the pandemic.
+This Integrated Learning Experience (ILE) examines the development and implementation of the Time Machine platform, focusing on its application in visualizing and analyzing COVID-19 epidemiological forecasts. The study explores methods for improving forecast data presentation, analysis, and accuracy assessment. 
+Methods:
+The body of this work unfolds through a series of critical chapters that collectively address the multifaceted functionality and impact of the Time Machine platform. Initially, the work focuses on the construction of the Time Machine platform, a web-based R interactive user interface coupled with cloud-based database system, specifically tailored for the intuitive visualization of epidemiological forecasts, detailing the technical and design considerations essential for enabling users to interpret complex data more effectively. Following this, the implementation of a rigorous data-discovery framework is presented, examining case reporting inconsistencies across different regions, using low-level GitHub and Windows scripting technologies, thereby highlighting the significance of accurate data collection and the impact of discrepancies on public health decisions. The narrative then transitions to the implementation of advanced statistical models, such as strictly proper scoring and weighted interval scoring, to assess the accuracy of the forecasts provided by the Time Machine platform, using a dedicated R library and testing with the help of MS Excel sandbox, underscoring the importance of reliable predictions in the management of public health crises. Lastly, a detailed analysis is conducted, encompassing countrywide data (3142 counties) over an extended period (147 weeks), utilizing Generalized Estimating Equations (GEE) to identify key predictors that influence forecast accuracy, offering valuable insights into the factors that either enhance or detract from the reliability of epidemiological predictions.
+Results:
+The deployment of the Classic Data Visualization and the subsequent evolution of the Time Machine platform have significantly advanced epidemiological forecast visualization capabilities. The Time Machine platform was designed with an automated data refresh system, allowing for regular updates of epidemiological forecast data and reported actuals.
+The project developed tools for monitoring and evaluating the quality of public health reporting, aiming to improve the accuracy and timeliness of data used in public health decisions. Additionally, the research implemented methods for standardizing forecast accuracy assessments, including the normalization of scores to enable comparisons across different geographical scales. These approaches were designed to support both local and national-level pandemic response efforts.
+The accuracy analyses throughout different phases of the pandemic revealed a 42% improvement in forecast accuracy from Phase 1 to Phase 7. Larger populations (27% increase per unit increase on a base-10 logarithmic scale) and higher county-level activity (45% increase from the lowest to the highest quartile) resulted in better estimations. Additionally, the analysis highlighted the significant impact of reporting quality on forecast accuracy. On the other hand, the study identified the challenges in predicting case surges, showing a 27% decline in accuracy during periods of rising infections compared to declining periods. The regression results highlight the potential benefits of improving data collection and providing timely feedback to forecasting teams.
+Conclusion:
+This study demonstrates the potential of advanced data visualization and accuracy measurement techniques in improving epidemiological forecasting. The findings suggest that factors such as urbanicity, case reporting quality, and pandemic phase significantly influence forecast accuracy. Further research is needed to refine these models and enhance their applicability across various public health scenarios.
+</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Yaman_cumc.columbia_0054E_10104.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction>
+    <DISS_sales_restriction code="1" remove="10/04/2026"/>
+  </DISS_restriction>
+  <DISS_repository>
+    <DISS_version>2021-05-21 14:16:39</DISS_version>
+    <DISS_agreement_decision_date>2024-09-16 04:06:52</DISS_agreement_decision_date>
+    <DISS_acceptance>1</DISS_acceptance>
+    <DISS_delayed_release/>
+    <DISS_access_option/>
+  </DISS_repository>
+  <DISS_creative_commons_license>
+    <DISS_abbreviation/>
+  </DISS_creative_commons_license>
+</DISS_submission>
+
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+	<fileSec>
+		<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+			<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+				<FLocat LOCTYPE="URL" xlink:href="Yaman_cumc.columbia_0054E_10104.pdf" />
+			</file>
+		</fileGrp>
+	</fileSec>
+	<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+		<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1 sword-mets-dmd-2" TYPE="SWORD Object">
+			<div ID="sword-mets-div-2" TYPE="File">
+				<fptr FILEID="sword-mets-file-1" />
+			</div>
+		</div>
+	</structMap>
+</mets>

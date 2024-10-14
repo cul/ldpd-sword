@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item"
+	PROFILE="DSpace METS SIP Profile 1.0" xmlns="http://www.loc.gov/METS/"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd">
+
+	<metsHdr CREATEDATE="2007-09-01T00:00:00">
+		<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+			<name>ETDAdmin, ProQuest</name>
+		</agent>
+	</metsHdr>
+
+	<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+		<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX"
+			MIMETYPE="text/xml">
+			<xmlData>
+				<epdcx:descriptionSet
+					xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+					xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+					<epdcx:description
+						epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+	<epdcx:valueString><![CDATA[Unraveling the logic of the Rad 4-step mechanism underlying protein kinase A modulation of voltage-gated calcium channels]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+	<epdcx:valueString><![CDATA[Phosphorylation-dependent relief of Rad inhibition of cardiac CaV1.2 channels underlies β-adrenergic increase in heart contraction essential for the fight-or-flight response. Prevailing evidence outline 4 steps involved in PKA-dependent relief of CaV1.2 inhibition by Rad: basally, Rad inhibits CaV1.2 by binding CaVβ and the plasma membrane using the G-domain and C-terminus, respectively (step 0), PKA-dependent phosphorylation of Ser residues in Rad C-terminus disengages Rad from the plasma membrane (step 1) and decreases affinity for CaVβ (step 2), potentially leading to Rad loss from CaV1.2 nanodomain (step 3). It is unclear which steps and Rad structural determinants are necessary and sufficient for PKA regulation of CaV channels and the mechanism linking steps 1 and 2 is not entirely understood. Moreover, there is an apparent Rad-concentration-dependence to CaV1.2 regulation wherein PKA activation is unable to overcome over-expressed Rad inhibition of the channel. The basis of this effect is unknown and constitutes a significant gap in our complete understanding of convergent regulation of CaV channels, by Rad and PKA. We developed a systematic protein engineering-based approach to dissect the distinct steps and determinants involved in PKA modulation of Rad-inhibited CaV channels.  Fusing Rad C-terminus to CaVβ3 generated β3-CT which was tethered to the plasma membrane when expressed alone in HEK293 cells and yielded constitutively inhibited channels when co-expressed with CaV2.2. Unexpectedly, PKA activation with forskolin further deepened inhibition of CaV2.2 currents despite being sufficient to release β3-CT from the plasma membrane. Phosphomimetic mutations in β3-CT 6SD yielded deeply inhibited CaV2.2 currents that were not further affected by forskolin. Two CaVβ-binding nanobodies fused to Rad C-terminus, F3-CT and B11-CT, were membrane-targeted yet yielded CaV2.2 currents that were not basally inhibited and decreased by forskolin. Over-expressing wildtype Rad C-terminus (WTCT) by itself with CaV1.2 produced basally inhibited channels that were further reduced by forskolin and co-expression of CaV1.2 with a phosphomimetic Rad C-terminus (CTD) also produced constitutively inhibited channels. Truncated Rad lacking the C-terminus (Rad[1-276]) displayed low affinity to CaVβ, discounting a direct role for phosphorylated Rad C-terminus in linking steps 1 and 2. Fusing the protein kinase C C1 domain to Rad[1-276] yielded Rad276-C1 which was cytosolic and displayed low affinity to CaVβ. Exposure to PdBu recruited Rad276-C1 to the plasma membrane, increased affinity for CaVβ, and concomitantly inhibited CaV1.2 currents. These results reveal that all 4 steps are necessary for PKA regulation of CaV channels, membrane association regulates Rad affinity for CaVβ, and the Rad G-domain and C-terminus are replaceable with modular units that mimic their function. Our findings deepen understanding of PKA modulation of CaV channels and provide new insights for developing chemo-genetic CaV channel regulators.]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+	<epdcx:valueString><![CDATA[Gavin, Ariana Cecilia]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Physiology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Molecular biology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+	<epdcx:valueString><![CDATA[Pharmacology]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/advisor">
+	<epdcx:valueString><![CDATA[Henry M Colecraft]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1" />
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1"><epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+	<epdcx:valueString><![CDATA[en]]></epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression" /></epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+  <dmdSec ID="sword-mets-dmd-2" GROUPID="sword-mets-dmd-1_group-1">
+    <mdWrap LABEL="ProQuest Metadata" MDTYPE="OTHER" OTHERMDTYPE="PROQUEST" MIMETYPE="text/xml">
+      <xmlData>
+<DISS_submission publishing_option="0" embargo_code="0" third_party_search="Y" xmlns="http://www.etdadmin.com/ns/etdsword">
+  <DISS_authorship>
+    <DISS_author type="primary">
+      <DISS_name>
+        <DISS_surname>Gavin</DISS_surname>
+        <DISS_fname>Ariana</DISS_fname>
+        <DISS_middle>Cecilia</DISS_middle>
+        <DISS_suffix/>
+      </DISS_name>
+      <DISS_contact type="future">
+        <DISS_contact_effdt>09/19/2024</DISS_contact_effdt>
+        <DISS_address>
+          <DISS_addrline>412 Deer Brush Ln</DISS_addrline>
+          <DISS_city>Waxhaw</DISS_city>
+          <DISS_st>NC</DISS_st>
+          <DISS_pcode>28173</DISS_pcode>
+          <DISS_country>US</DISS_country>
+        </DISS_address>
+        <DISS_email>arianacgavin@gmail.com</DISS_email>
+      </DISS_contact>
+      <DISS_citizenship/>
+    </DISS_author>
+  </DISS_authorship>
+  <DISS_description page_count="133" type="doctoral" external_id="http://dissertations.umi.com/columbia:18819" apply_for_copyright="no">
+    <DISS_title>Unraveling the logic of the Rad 4-step mechanism underlying protein kinase A modulation of voltage-gated calcium channels</DISS_title>
+    <DISS_identifiers>
+      <pubNumber>31562988</pubNumber>
+      <docId/>
+    </DISS_identifiers>
+    <DISS_dates>
+      <DISS_comp_date>2024</DISS_comp_date>
+      <DISS_accept_date>01/01/2024</DISS_accept_date>
+    </DISS_dates>
+    <DISS_degree>Ph.D.</DISS_degree>
+    <DISS_institution>
+      <DISS_inst_code>0054</DISS_inst_code>
+      <DISS_inst_name>Columbia University</DISS_inst_name>
+      <DISS_inst_contact>Pharmacology and Molecular Signaling</DISS_inst_contact>
+      <DISS_processing_code>D</DISS_processing_code>
+    </DISS_institution>
+    <DISS_advisor>
+      <DISS_name>
+        <DISS_surname>Colecraft</DISS_surname>
+        <DISS_fname>Henry</DISS_fname>
+        <DISS_middle>M</DISS_middle>
+      </DISS_name>
+    </DISS_advisor>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Kass</DISS_surname>
+        <DISS_fname>Robert</DISS_fname>
+        <DISS_middle>S</DISS_middle>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Marx</DISS_surname>
+        <DISS_fname>Steven</DISS_fname>
+        <DISS_middle>O</DISS_middle>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Yang</DISS_surname>
+        <DISS_fname>Tingting</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_cmte_member>
+      <DISS_name>
+        <DISS_surname>Yang</DISS_surname>
+        <DISS_fname>Jian</DISS_fname>
+        <DISS_middle/>
+        <DISS_suffix/>
+      </DISS_name>
+    </DISS_cmte_member>
+    <DISS_categorization>
+      <DISS_category>
+        <DISS_cat_code>0719</DISS_cat_code>
+        <DISS_cat_desc>Physiology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0307</DISS_cat_code>
+        <DISS_cat_desc>Molecular biology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_category>
+        <DISS_cat_code>0419</DISS_cat_code>
+        <DISS_cat_desc>Pharmacology</DISS_cat_desc>
+      </DISS_category>
+      <DISS_keyword>Adrenergic regulation, Calcium channels, Cardiac channels, CaV1.2, Rad, RGK proteins</DISS_keyword>
+      <DISS_language>en</DISS_language>
+    </DISS_categorization>
+  </DISS_description>
+  <DISS_content>
+    <DISS_abstract>
+      <DISS_para>Phosphorylation-dependent relief of Rad inhibition of cardiac CaV1.2 channels underlies β-adrenergic increase in heart contraction essential for the fight-or-flight response. Prevailing evidence outline 4 steps involved in PKA-dependent relief of CaV1.2 inhibition by Rad: basally, Rad inhibits CaV1.2 by binding CaVβ and the plasma membrane using the G-domain and C-terminus, respectively (step 0), PKA-dependent phosphorylation of Ser residues in Rad C-terminus disengages Rad from the plasma membrane (step 1) and decreases affinity for CaVβ (step 2), potentially leading to Rad loss from CaV1.2 nanodomain (step 3). It is unclear which steps and Rad structural determinants are necessary and sufficient for PKA regulation of CaV channels and the mechanism linking steps 1 and 2 is not entirely understood. Moreover, there is an apparent Rad-concentration-dependence to CaV1.2 regulation wherein PKA activation is unable to overcome over-expressed Rad inhibition of the channel. The basis of this effect is unknown and constitutes a significant gap in our complete understanding of convergent regulation of CaV channels, by Rad and PKA. We developed a systematic protein engineering-based approach to dissect the distinct steps and determinants involved in PKA modulation of Rad-inhibited CaV channels.  Fusing Rad C-terminus to CaVβ3 generated β3-CT which was tethered to the plasma membrane when expressed alone in HEK293 cells and yielded constitutively inhibited channels when co-expressed with CaV2.2. Unexpectedly, PKA activation with forskolin further deepened inhibition of CaV2.2 currents despite being sufficient to release β3-CT from the plasma membrane. Phosphomimetic mutations in β3-CT 6SD yielded deeply inhibited CaV2.2 currents that were not further affected by forskolin. Two CaVβ-binding nanobodies fused to Rad C-terminus, F3-CT and B11-CT, were membrane-targeted yet yielded CaV2.2 currents that were not basally inhibited and decreased by forskolin. Over-expressing wildtype Rad C-terminus (WTCT) by itself with CaV1.2 produced basally inhibited channels that were further reduced by forskolin and co-expression of CaV1.2 with a phosphomimetic Rad C-terminus (CTD) also produced constitutively inhibited channels. Truncated Rad lacking the C-terminus (Rad[1-276]) displayed low affinity to CaVβ, discounting a direct role for phosphorylated Rad C-terminus in linking steps 1 and 2. Fusing the protein kinase C C1 domain to Rad[1-276] yielded Rad276-C1 which was cytosolic and displayed low affinity to CaVβ. Exposure to PdBu recruited Rad276-C1 to the plasma membrane, increased affinity for CaVβ, and concomitantly inhibited CaV1.2 currents. These results reveal that all 4 steps are necessary for PKA regulation of CaV channels, membrane association regulates Rad affinity for CaVβ, and the Rad G-domain and C-terminus are replaceable with modular units that mimic their function. Our findings deepen understanding of PKA modulation of CaV channels and provide new insights for developing chemo-genetic CaV channel regulators.</DISS_para>
+    </DISS_abstract>
+    <DISS_binary type="PDF">Gavin_columbia_0054D_18819.pdf</DISS_binary>
+  </DISS_content>
+  <DISS_restriction/>
+  <DISS_repository>
+    <DISS_version>2021-06-14 15:27:01</DISS_version>
+    <DISS_agreement_decision_date>2024-09-19 14:15:26</DISS_agreement_decision_date>
+    <DISS_acceptance>1</DISS_acceptance>
+    <DISS_delayed_release/>
+    <DISS_access_option>Open access</DISS_access_option>
+  </DISS_repository>
+  <DISS_creative_commons_license>
+    <DISS_abbreviation/>
+  </DISS_creative_commons_license>
+</DISS_submission>
+
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+	<fileSec>
+		<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+			<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+				<FLocat LOCTYPE="URL" xlink:href="Gavin_columbia_0054D_18819.pdf" />
+			</file>
+		</fileGrp>
+	</fileSec>
+	<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+		<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1 sword-mets-dmd-2" TYPE="SWORD Object">
+			<div ID="sword-mets-div-2" TYPE="File">
+				<fptr FILEID="sword-mets-file-1" />
+			</div>
+		</div>
+	</structMap>
+</mets>
