@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class Sword::Mets::MetsFile
-  class XmlData
-    def initialize(nokogiri_xml_element, xpath_hash)
-      @xml_data_nokogiri_element = nokogiri_xml_element
-      @xpath_hash = xpath_hash
-    end
-  end
-
   attr_accessor :mets_hdr,
                 :nokogiri_xml_doc,
                 :md_wrap_xml_data_elements
