@@ -19,4 +19,14 @@ class Sword::Mets::MetsFile
       @nokogiri_xml_doc.xpath("//xmlns:mdWrap[@MDTYPE = '#{mdtype}']/xmlns:xmlData")
     end
   end
+
+  def find_md_wrap_xml_data_element(mdtype: 'MODS', other_mdtype: nil)
+    if other_mdtype
+      @nokogiri_xml_doc.xpath(
+        "//xmlns:mdWrap[@MDTYPE = '#{mdtype}'][@OTHERMDTYPE = '#{other_mdtype}']/xmlns:xmlData"
+      ).first
+    else
+      @nokogiri_xml_doc.xpath("//xmlns:mdWrap[@MDTYPE = '#{mdtype}']/xmlns:xmlData").first
+    end
+  end
 end

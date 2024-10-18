@@ -14,9 +14,11 @@ RSpec/BeforeAfterAll:
     - spec/sword/mets/mets_file_spec.rb
     - spec/sword/mets/proquest_mets_file_spec.rb
     - spec/sword/mets/xml_data_element_spec.rb
+    - spec/sword/mets/proquest_etd_xml_data_element_spec.rb
 
 RSpec/InstanceVariable:
   Exclude:
     - spec/sword/mets/mets_file_spec.rb
     - spec/sword/mets/proquest_mets_file_spec.rb
     - spec/sword/mets/xml_data_element_spec.rb
+    - spec/sword/mets/proquest_etd_xml_data_element_spec.rb

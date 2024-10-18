@@ -3,7 +3,8 @@
 module Sword::Mets::ProquestConstants
   OTHER	= 'OTHER'
   OTHER_MDTYPE = 'PROQUEST'
-  XPATH_HASH = { abstract: "'//diss:DISS_abstract', 'diss' => 'http://www.etdadmin.com/ns/etdsword'",
-                 date_conferred: "'//diss:DISS_abstract', 'diss' => 'http://www.etdadmin.com/ns/etdsword'",
-                 title: "'//diss:DISS_title', 'diss' => 'http://www.etdadmin.com/ns/etdsword'" }.freeze
+  XPATH_INFO = { namespace: { 'etdsword' => 'http://www.etdadmin.com/ns/etdsword' },
+                 abstract: '//etdsword:DISS_abstract',
+                 subjects: '//etdsword:DISS_cat_desc',
+                 title: '//etdsword:DISS_title' }.freeze
 end

@@ -24,7 +24,7 @@ RSpec.describe Sword::Mets::MetsFile do
 
     it 'works correctly for MDTYPE => OTHER and OTHERTYPE => PROQUEST' do
       xml_data_proquest = @pq_mets_file.find_md_wrap_xml_data_elements(mdtype: 'OTHER', other_mdtype: 'PROQUEST')
-      # expect(xml_data_proquest.length).to eq(2)
+      expect(xml_data_proquest.length).to eq(1)
       expect(xml_data_proquest.first.name).to eq('xmlData')
     end
   end

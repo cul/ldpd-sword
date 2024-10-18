@@ -14,5 +14,13 @@ RSpec.describe Sword::Mets::ProquestMetsFile do
       expect(md_wrap_xml_data_elements.length).to eq(2)
       expect(md_wrap_xml_data_elements.first.name).to eq('xmlData')
     end
+
+    it 'sets the title correctly' do
+      expect(@pq_mets_file.title).to include('Unraveling the logic')
+    end
+
+    it 'sets the abstract correctly' do
+      expect(@pq_mets_file.abstract).to include('relief of Rad inhibition of cardiac')
+    end
   end
 end
