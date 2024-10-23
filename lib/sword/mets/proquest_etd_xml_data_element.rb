@@ -1,36 +1,45 @@
 # frozen_string_literal: true
 
 class Sword::Mets::ProquestEtdXmlDataElement < Sword::Mets::XmlDataElement
-  attr_accessor :authors,
-                :subjects
+  include Sword::Mets::ProquestConstants
 
-  def initialize(nokogiri_xml_element, xpath_info)
+  def initialize(nokogiri_xml_element, xpath_info = Sword::Mets::ProquestConstants::XPATH_INFO)
     super
-    @authors = []
-    @subjects = []
+    @authors = nil
+    @subjects = nil
   end
 
-  def parse_authors
-    diss_authors = @xml_data.xpath(@xpath_info[:author_name], @xpath_info[:namespace])
-    diss_authors.each do |author|
-      person = create_personal_author(author)
-      person.role = 'author'
-      @authors << person
+  # Override
+  def authors
+    @authors ||= begin
+      diss_authors = @xml_data.xpath(@xpath_info[:author_name], @xpath_info[:namespace])
+      diss_authors.map { |author| create_personal_name(author, role: 'author') }
     end
   end
 
-  def create_personal_author(author)
-    person = Sword::Metadata::PersonalName.new
-    person.first_name = author.xpath(@xpath_info[:first_name], @xpath_info[:namespace]).text
-    person.middle_name = author.xpath(@xpath_info[:middle_name], @xpath_info[:namespace]).text
-    person.last_name = author.xpath(@xpath_info[:surname], @xpath_info[:namespace]).text
-    person
+  def advisors
+    @advisors ||= begin
+      diss_advisors = @xml_data.xpath(@xpath_info[:advisor_name], @xpath_info[:namespace])
+      diss_advisors.map { |author| create_personal_name(author, role: 'advisor') }
+    end
   end
 
-  def parse_subjects
-    @diss_cat_descs = @xml_data.xpath(@xpath_info[:subjects], @xpath_info[:namespace])
-    @diss_cat_descs.each do |diss_cat_desc|
-      @subjects.push diss_cat_desc.text
+  # Override
+  def subjects
+    @subjects ||= begin
+      @diss_cat_descs = @xml_data.xpath(@xpath_info[:subjects], @xpath_info[:namespace])
+      @diss_cat_descs.map(&:text)
     end
+  end
+
+  private
+
+  def create_personal_name(author, **other_attrs)
+    author_attrs = other_attrs.merge({
+      first_name: author.xpath(@xpath_info[:first_name], @xpath_info[:namespace]).text,
+      middle_name: author.xpath(@xpath_info[:middle_name], @xpath_info[:namespace]).text,
+      last_name: author.xpath(@xpath_info[:surname], @xpath_info[:namespace]).text
+    })
+    Sword::Metadata::PersonalName.new(**author_attrs)
   end
 end
