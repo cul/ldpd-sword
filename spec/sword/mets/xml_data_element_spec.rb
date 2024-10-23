@@ -10,20 +10,14 @@ RSpec.describe Sword::Mets::XmlDataElement do
       @xml_data_proquest = @pq_mets_file.find_md_wrap_xml_data_element(mdtype: 'OTHER', other_mdtype: 'PROQUEST')
     end
 
+    let(:pq_xml_data) { described_class.new(@xml_data_proquest, Sword::Mets::ProquestConstants::XPATH_INFO) }
+
     it 'sets the abstract correctly' do
-      xpath_info = { namespace: { 'etdsword' => 'http://www.etdadmin.com/ns/etdsword' },
-                     abstract: '//etdsword:DISS_abstract' }
-      pq_xml_data = described_class.new(@xml_data_proquest, xpath_info)
       expect(pq_xml_data.abstract).to include('relief of Rad inhibition of cardiac')
-      # expect(true).to be true
     end
 
     it 'sets the title correctly' do
-      xpath_info = { namespace: { 'etdsword' => 'http://www.etdadmin.com/ns/etdsword' },
-                     title: '//etdsword:DISS_title' }
-      pq_xml_data = described_class.new(@xml_data_proquest, xpath_info)
       expect(pq_xml_data.title).to include('Unraveling the logic')
-      # expect(true).to be true
     end
   end
 end

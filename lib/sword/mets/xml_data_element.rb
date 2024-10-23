@@ -5,7 +5,14 @@ class Sword::Mets::XmlDataElement
                 :advisors,
                 :authors,
                 :subjects,
-                :title
+                :title,
+                :date_conferred,
+                :degree,
+                :embargo_code,
+                :embargo_release_date,
+                :institution_department_name,
+                :institution_name,
+                :institution_school_code
 
   def initialize(nokogiri_xml_element, xpath_info)
     @xml_data = nokogiri_xml_element

@@ -3,14 +3,16 @@
 module Sword
   module Metadata
     class PersonalName
-      attr_accessor :first_name,
-                    :full_name_naf_format,
-                    :last_name,
-                    :middle_name,
-                    :role,
-                    # type can be primary, alternate, etc. Kinda freeform
-                    :type,
-                    :uni
+      include ActiveModel::Model
+      include ActiveModel::Attributes
+      attribute :first_name, :string
+      attribute :full_name_naf_format, :string
+      attribute :last_name, :string
+      attribute :middle_name, :string
+      attribute :role, :string
+      # type can be primary, alternate, etc. Kinda freeform
+      attribute :type, :string
+      attribute :uni, :string
     end
   end
 end
