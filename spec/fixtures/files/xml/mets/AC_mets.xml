@@ -16,6 +16,12 @@
           <mods:originInfo>
             <mods:dateIssued encoding="w3cdtf">2016</mods:dateIssued>
           </mods:originInfo>
+          <mods:relatedItem type="host">
+            <mods:identifier type="doi">10.1111/cdev.14088</mods:identifier>
+          </mods:relatedItem>
+          <mods:relatedItem type="host">
+            <mods:identifier type="uri">doi.org/10.1021/acsestengg.4c00246</mods:identifier>
+          </mods:relatedItem>
           <mods:name type="personal" ID="pf3">
             <mods:namePart>Force, Pierre</mods:namePart>
             <mods:role>
@@ -23,6 +29,7 @@
             </mods:role>
           </mods:name>
           <mods:accessCondition type="use and reproduction" displayLabel="Rights Status" xlink:href="http://rightsstatements.org/vocab/InC/1.0/"/>
+	  <mods:note type="internal">CC License already added by publisher - article appears in an OA journal.</mods:note>
           <mods:recordInfo>
             <mods:recordInfoNote>AC SWORD MODS v1.0</mods:recordInfoNote>
           </mods:recordInfo>
