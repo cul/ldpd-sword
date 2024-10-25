@@ -28,4 +28,15 @@ RSpec.describe Sword::Mets::MetsFile do
       expect(xml_data_proquest.first.name).to eq('xmlData')
     end
   end
+
+  describe 'parse' do
+    before(:context) do
+      @pq_mets_file = described_class.new(file_fixture('xml/mets/PQ_mets.xml').read)
+      @pq_mets_file.parse
+    end
+
+    it 'sets the file array corrently' do
+      expect(@pq_mets_file.files).to include('Gavin_columbia_0054D_18819.pdf')
+    end
+  end
 end

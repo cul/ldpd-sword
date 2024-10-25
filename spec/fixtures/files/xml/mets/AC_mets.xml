@@ -29,6 +29,7 @@
             </mods:role>
           </mods:name>
           <mods:accessCondition type="use and reproduction" displayLabel="Rights Status" xlink:href="http://rightsstatements.org/vocab/InC/1.0/"/>
+	  <mods:accessCondition type="use and reproduction" displayLabel="License" xlink:href="https://creativecommons.org/licenses/by/4.0/"/>
 	  <mods:note type="internal">CC License already added by publisher - article appears in an OA journal.</mods:note>
           <mods:recordInfo>
             <mods:recordInfoNote>AC SWORD MODS v1.0</mods:recordInfoNote>

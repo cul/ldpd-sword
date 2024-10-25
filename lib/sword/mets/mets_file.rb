@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Sword::Mets::MetsFile
-  attr_accessor :mets_hdr,
+  attr_accessor :files,
+                :mets_hdr,
                 :nokogiri_xml_doc,
                 :md_wrap_xml_data_elements
 
@@ -10,6 +11,7 @@ class Sword::Mets::MetsFile
     # @nokogiri_xml_doc = mets_file
     @mets_hdr = @nokogiri_xml_doc.xpath('//xmlns:metsHdr')
     @md_wrap_xml_data_elements = @nokogiri_xml_doc.xpath('//xmlns:mdWrap/xmlns:xmlData')
+    @files = []
   end
 
   def find_md_wrap_xml_data_elements(mdtype: 'MODS', other_mdtype: nil)
@@ -27,6 +29,16 @@ class Sword::Mets::MetsFile
       ).first
     else
       @nokogiri_xml_doc.xpath("//xmlns:mdWrap[@MDTYPE = '#{mdtype}']/xmlns:xmlData").first
+    end
+  end
+
+  def parse
+    parse_flocat
+  end
+
+  def parse_flocat
+    @nokogiri_xml_doc.xpath('//xmlns:fileSec/xmlns:fileGrp/xmlns:file/xmlns:FLocat').each do |flocat|
+      files << flocat.attr('xlink:href')
     end
   end
 end

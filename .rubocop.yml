@@ -16,6 +16,8 @@ RSpec/BeforeAfterAll:
     - spec/sword/mets/xml_data_element_spec.rb
     - spec/sword/mets/proquest_etd_xml_data_element_spec.rb
     - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_mets_file_spec.rb
+    - spec/sword/mets/mods_mets_file_spec.rb
     - spec/sword/mets/mods_xml_data_element_spec.rb
 
 RSpec/InstanceVariable:
@@ -25,4 +27,11 @@ RSpec/InstanceVariable:
     - spec/sword/mets/xml_data_element_spec.rb
     - spec/sword/mets/proquest_etd_xml_data_element_spec.rb
     - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_mets_file_spec.rb
+    - spec/sword/mets/mods_mets_file_spec.rb
     - spec/sword/mets/mods_xml_data_element_spec.rb
+
+Layout/LineLength:
+  Exclude:
+    - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - lib/sword/mets/eprints_dc_constants.rb
