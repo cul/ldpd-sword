@@ -1,0 +1,1750 @@
+accounting:
+  topic:
+  - label: Accounting
+    uri: http://id.worldcat.org/fast/795379
+acoustics:
+  topic:
+  - label: Sound
+    uri: http://id.worldcat.org/fast/1126935
+adult education:
+  topic:
+  - label: Adult education
+    uri: http://id.worldcat.org/fast/797275
+aeronomy:
+  topic:
+  - label: Atmosphere, Upper
+    uri: http://id.worldcat.org/fast/820350
+aerospace engineering:
+  topic:
+  - label: Aerospace engineering
+    uri: http://id.worldcat.org/fast/798623
+aesthetics:
+  topic:
+  - label: Aesthetics
+    uri: http://id.worldcat.org/fast/798702
+african american studies:
+  topic:
+  - label: African Americans
+    uri: http://id.worldcat.org/fast/799558
+african history:
+  geographic:
+  - label: Africa
+    uri: http://id.worldcat.org/fast/1239509
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+african literature:
+  topic:
+  - label: African literature
+    uri: http://id.worldcat.org/fast/799832
+african studies:
+  geographic:
+  - label: Africa
+    uri: http://id.worldcat.org/fast/1239509
+  topic:
+  - label: Africans
+    uri: http://id.worldcat.org/fast/799938
+aging:
+  topic:
+  - label: Aging
+    uri: http://id.worldcat.org/fast/800293
+agriculture:
+  topic:
+  - label: Agriculture
+    uri: http://id.worldcat.org/fast/801355
+agronomy:
+  topic:
+  - label: Agronomy
+    uri: http://id.worldcat.org/fast/801886
+alternative dispute resolution:
+  topic:
+  - label: Dispute resolution (Law)
+    uri: http://id.worldcat.org/fast/895372
+alternative energy:
+  topic:
+  - label: Renewable energy sources
+    uri: http://id.worldcat.org/fast/1094570
+alternative medicine:
+  topic:
+  - label: Alternative medicine
+    uri: http://id.worldcat.org/fast/806153
+american history:
+  geographic:
+  - label: United States
+    uri: http://id.worldcat.org/fast/1204155
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+american literature:
+  topic:
+  - label: American literature
+    uri: http://id.worldcat.org/fast/807113
+american studies:
+  geographic:
+  - label: United States
+    uri: http://id.worldcat.org/fast/1204155
+  topic:
+  - label: Americans
+    uri: http://id.worldcat.org/fast/807488
+analytical chemistry:
+  topic:
+  - label: Chemistry, Analytic
+    uri: http://id.worldcat.org/fast/853459
+ancient history:
+  topic:
+  - label: History, Ancient
+    uri: http://id.worldcat.org/fast/958352
+ancient languages:
+  topic:
+  - label: Classical languages
+    uri: http://id.worldcat.org/fast/863486
+animal behavior:
+  topic:
+  - label: Animal behavior
+    uri: http://id.worldcat.org/fast/809079
+animal diseases:
+  topic:
+  - label: Animals--Diseases
+    uri: http://id.worldcat.org/fast/809483
+animal sciences:
+  topic:
+  - label: Veterinary medicine
+    uri: http://id.worldcat.org/fast/1165977
+applied mathematics:
+  topic:
+  - label: Mathematics
+    uri: http://id.worldcat.org/fast/1012163
+archaeology:
+  topic:
+  - label: Archaeology
+    uri: http://id.worldcat.org/fast/812938
+architectural engineering:
+  topic:
+  - label: Building
+    uri: http://id.worldcat.org/fast/840551
+architecture:
+  topic:
+  - label: Architecture
+    uri: http://id.worldcat.org/fast/813346
+area planning and development:
+  topic:
+  - label: Regional planning
+    uri: http://id.worldcat.org/fast/1093120
+art criticism:
+  topic:
+  - label: Art criticism
+    uri: http://id.worldcat.org/fast/815492
+art education:
+  topic:
+  - label: Art--Study and teaching
+    uri: http://id.worldcat.org/fast/815338
+art history:
+  topic:
+  - label: Art
+    uri: http://id.worldcat.org/fast/815177
+artificial intelligence:
+  topic:
+  - label: Artificial intelligence
+    uri: http://id.worldcat.org/fast/817247
+arts management:
+  topic:
+  - label: Arts--Management
+    uri: http://id.worldcat.org/fast/817771
+asian american studies:
+  topic:
+  - label: Asian Americans
+    uri: http://id.worldcat.org/fast/818620
+asian history:
+  geographic:
+  - label: Asia
+    uri: http://id.worldcat.org/fast/1240495
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+asian literature:
+  topic:
+  - label: Oriental literature
+    uri: http://id.worldcat.org/fast/1048102
+asian studies:
+  geographic:
+  - label: Asia
+    uri: http://id.worldcat.org/fast/1240495
+  topic:
+  - label: Asians
+    uri: http://id.worldcat.org/fast/818693
+astronomy:
+  topic:
+  - label: Astronomy
+    uri: http://id.worldcat.org/fast/819673
+astrophysics:
+  topic:
+  - label: Astrophysics
+    uri: http://id.worldcat.org/fast/819797
+atmospheric chemistry:
+  topic:
+  - label: Atmospheric chemistry
+    uri: http://id.worldcat.org/fast/820380
+atmospheric sciences:
+  topic:
+  - label: Atmosphere
+    uri: http://id.worldcat.org/fast/820323
+atomic physics:
+  topic:
+  - label: Microphysics
+    uri: http://id.worldcat.org/fast/1019993
+audiology:
+  topic:
+  - label: Audiology
+    uri: http://id.worldcat.org/fast/821108
+automotive engineering:
+  topic:
+  - label: Automobiles--Design and construction
+    uri: http://id.worldcat.org/fast/823374
+baltic studies:
+  geographic:
+  - label: Baltic States
+    uri: http://id.worldcat.org/fast/1241546
+  topic:
+  - label: Balts Indo-European people
+    uri: http://id.worldcat.org/fast/826267
+banking:
+  topic:
+  - label: Banks and banking
+    uri: http://id.worldcat.org/fast/826867
+behavioral sciences:
+  topic:
+  - label: Psychology
+    uri: http://id.worldcat.org/fast/1081447
+biblical studies:
+  topic:
+  - label: Bible
+    uri: http://id.worldcat.org/fast/1356024
+bilingual education:
+  topic:
+  - label: Education, Bilingual
+    uri: http://id.worldcat.org/fast/902886
+biochemistry:
+  topic:
+  - label: Biochemistry
+    uri: http://id.worldcat.org/fast/831961
+biogeochemistry:
+  topic:
+  - label: Biogeochemistry
+    uri: http://id.worldcat.org/fast/832090
+biographies:
+  topic:
+  - label: Biography
+    uri: http://id.worldcat.org/fast/832149
+bioinformatics:
+  topic:
+  - label: Bioinformatics
+    uri: http://id.worldcat.org/fast/832181
+biological oceanography:
+  topic:
+  - label: Marine biology
+    uri: http://id.worldcat.org/fast/1009447
+  - label: Marine ecology
+    uri: http://id.worldcat.org/fast/1009513
+biology:
+  topic:
+  - label: Biology
+    uri: http://id.worldcat.org/fast/832383
+biomechanics:
+  topic:
+  - label: Biomechanics
+    uri: http://id.worldcat.org/fast/832558
+biomedical engineering:
+  topic:
+  - label: Biomedical engineering
+    uri: http://id.worldcat.org/fast/832568
+biophysics:
+  topic:
+  - label: Biophysics
+    uri: http://id.worldcat.org/fast/832656
+biostatistics:
+  topic:
+  - label: Biometry
+    uri: http://id.worldcat.org/fast/832611
+black history:
+  topic:
+  - label: Blacks
+    uri: http://id.worldcat.org/fast/833880
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+black studies:
+  topic:
+  - label: Blacks
+    uri: http://id.worldcat.org/fast/833880
+british and irish literature:
+  topic:
+  - label: British literature
+    uri: http://id.worldcat.org/fast/839082
+  - label: Irish literature
+    uri: http://id.worldcat.org/fast/979030
+business:
+  topic:
+  - label: Business
+    uri: http://id.worldcat.org/fast/842262
+business education:
+  topic:
+  - label: Business education
+    uri: http://id.worldcat.org/fast/842480
+canadian history:
+  geographic:
+  - label: Canada
+    uri: http://id.worldcat.org/fast/1204310
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+canadian literature:
+  topic:
+  - label: Canadian literature
+    uri: http://id.worldcat.org/fast/845111
+canadian studies:
+  geographic:
+  - label: Canada
+    uri: http://id.worldcat.org/fast/1204310
+  topic:
+  - label: Canadians
+    uri: http://id.worldcat.org/fast/845200
+canon law:
+  topic:
+  - label: Canon law
+    uri: http://id.worldcat.org/fast/845910
+caribbean literature:
+  topic:
+  - label: Caribbean literature
+    uri: http://id.worldcat.org/fast/847469
+caribbean studies:
+  geographic:
+  - label: Caribbean Area
+    uri: http://id.worldcat.org/fast/1244080
+cellular biology:
+  topic:
+  - label: Cytology
+    uri: http://id.worldcat.org/fast/886282
+chemical engineering:
+  topic:
+  - label: Chemical engineering
+    uri: http://id.worldcat.org/fast/852893
+chemical oceanography:
+  topic:
+  - label: Chemical oceanography
+    uri: http://id.worldcat.org/fast/853069
+chemistry:
+  topic:
+  - label: Chemistry
+    uri: http://id.worldcat.org/fast/853344
+cinematography:
+  topic:
+  - label: Cinematography
+    uri: http://id.worldcat.org/fast/861484
+civil engineering:
+  topic:
+  - label: Civil engineering
+    uri: http://id.worldcat.org/fast/862488
+classical literature:
+  topic:
+  - label: Classical literature
+    uri: http://id.worldcat.org/fast/863509
+classical studies:
+  topic:
+  - label: Civilization, Classical
+    uri: http://id.worldcat.org/fast/862996
+  - label: Classical antiquities
+    uri: http://id.worldcat.org/fast/863445
+clerical studies:
+  topic:
+  - label: Clergy
+    uri: http://id.worldcat.org/fast/864014
+climate change:
+  topic:
+  - label: Climatic changes
+    uri: http://id.worldcat.org/fast/864229
+clinical psychology:
+  topic:
+  - label: Clinical psychology
+    uri: http://id.worldcat.org/fast/864407
+cognitive psychology:
+  topic:
+  - label: Cognitive psychology
+    uri: http://id.worldcat.org/fast/866541
+communication:
+  topic:
+  - label: Communication
+    uri: http://id.worldcat.org/fast/869952
+community college education:
+  topic:
+  - label: Community college students--Education
+    uri: http://id.worldcat.org/fast/870731
+  - label: Community colleges
+    uri: http://id.worldcat.org/fast/870755
+comparative literature:
+  topic:
+  - label: Comparative literature
+    uri: http://id.worldcat.org/fast/1734553
+comparative religion:
+  topic:
+  - label: Religions
+    uri: http://id.worldcat.org/fast/1093898
+computer engineering:
+  topic:
+  - label: Computer engineering
+    uri: http://id.worldcat.org/fast/872078
+computer science:
+  topic:
+  - label: Computer science
+    uri: http://id.worldcat.org/fast/872451
+condensed matter physics:
+  topic:
+  - label: Condensed matter
+    uri: http://id.worldcat.org/fast/874443
+conservation biology:
+  topic:
+  - label: Conservation biology
+    uri: http://id.worldcat.org/fast/875490
+continental dynamics:
+  topic:
+  - label: Continents
+    uri: http://id.worldcat.org/fast/876686
+  - label: Geodynamics
+    uri: http://id.worldcat.org/fast/940406
+continuing education:
+  topic:
+  - label: Continuing education
+    uri: http://id.worldcat.org/fast/876705
+counseling psychology:
+  topic:
+  - label: Counseling psychology
+    uri: http://id.worldcat.org/fast/1740078
+criminology:
+  topic:
+  - label: Criminology
+    uri: http://id.worldcat.org/fast/883566
+cultural anthropology:
+  topic:
+  - label: Ethnology
+    uri: http://id.worldcat.org/fast/916106
+cultural resources management:
+  topic:
+  - label: Cultural property--Protection
+    uri: http://id.worldcat.org/fast/885019
+curriculum development:
+  topic:
+  - label: Curriculum planning
+    uri: http://id.worldcat.org/fast/885382
+  - label: Curriculum evaluation
+    uri: http://id.worldcat.org/fast/885377
+dance:
+  topic:
+  - label: Dance
+    uri: http://id.worldcat.org/fast/887402
+demography:
+  topic:
+  - label: Demography
+    uri: http://id.worldcat.org/fast/890158
+dentistry:
+  topic:
+  - label: Dentistry
+    uri: http://id.worldcat.org/fast/890633
+design:
+  topic:
+  - label: Design
+    uri: http://id.worldcat.org/fast/891253
+developmental biology:
+  topic:
+  - label: Developmental biology
+    uri: http://id.worldcat.org/fast/891773
+developmental psychology:
+  topic:
+  - label: Developmental psychology
+    uri: http://id.worldcat.org/fast/891816
+divinity:
+  topic:
+  - label: Theology
+    uri: http://id.worldcat.org/fast/1149559
+early childhood education:
+  topic:
+  - label: Early childhood education
+    uri: http://id.worldcat.org/fast/900596
+east european studies:
+  geographic:
+  - label: Europe, Eastern
+    uri: http://id.worldcat.org/fast/1245079
+  topic:
+  - label: East Europeans
+    uri: http://id.worldcat.org/fast/901032
+ecology:
+  topic:
+  - label: Ecology
+    uri: http://id.worldcat.org/fast/901476
+economic history:
+  topic:
+  - label: Economic history
+    uri: http://id.worldcat.org/fast/901974
+economic theory:
+  topic:
+  - label: Economics
+    uri: http://id.worldcat.org/fast/902116
+economics:
+  topic:
+  - label: Economics
+    uri: http://id.worldcat.org/fast/902116
+economics, commerce-business:
+  topic:
+  - label: Commerce
+    uri: http://id.worldcat.org/fast/869279
+economics, labor:
+  topic:
+  - label: Labor economics
+    uri: http://id.worldcat.org/fast/989943
+education:
+  topic:
+  - label: Education
+    uri: http://id.worldcat.org/fast/902499
+education finance:
+  topic:
+  - label: Education--Finance
+    uri: http://id.worldcat.org/fast/902637
+education policy:
+  topic:
+  - label: Education and state
+    uri: http://id.worldcat.org/fast/902835
+  - label: School management and organization
+    uri: http://id.worldcat.org/fast/1107575
+educational administration:
+  topic:
+  - label: Education--Administration
+    uri: http://id.worldcat.org/fast/902506
+  - label: School management and organization
+    uri: http://id.worldcat.org/fast/1107575
+educational evaluation:
+  topic:
+  - label: Educational evaluation
+    uri: http://id.worldcat.org/fast/903437
+educational leadership:
+  topic:
+  - label: Educational leadership
+    uri: http://id.worldcat.org/fast/903527
+educational psychology:
+  topic:
+  - label: Educational psychology
+    uri: http://id.worldcat.org/fast/903571
+educational technology:
+  topic:
+  - label: Educational technology
+    uri: http://id.worldcat.org/fast/903623
+educational tests & measurements:
+  topic:
+  - label: Educational tests and measurements
+    uri: http://id.worldcat.org/fast/903660
+electrical engineering:
+  topic:
+  - label: Electrical engineering
+    uri: http://id.worldcat.org/fast/1728596
+electromagnetics:
+  topic:
+  - label: Electromagnetism
+    uri: http://id.worldcat.org/fast/906590
+elementary education:
+  topic:
+  - label: Education, Elementary
+    uri: http://id.worldcat.org/fast/902945
+endocrinology:
+  topic:
+  - label: Endocrinology
+    uri: http://id.worldcat.org/fast/909749
+energy:
+  topic:
+  - label: Power resources
+    uri: http://id.worldcat.org/fast/1074275
+engineering:
+  topic:
+  - label: Engineering
+    uri: http://id.worldcat.org/fast/910312
+english as a second language:
+  topic:
+  - label: English language--Study and teaching--Foreign speakers
+    uri: http://id.worldcat.org/fast/911692
+english literature:
+  topic:
+  - label: English literature
+    uri: http://id.worldcat.org/fast/911989
+entomology:
+  topic:
+  - label: Entomology
+    uri: http://id.worldcat.org/fast/912735
+entrepreneurship:
+  topic:
+  - label: Entrepreneurship
+    uri: http://id.worldcat.org/fast/912787
+environmental economics:
+  topic:
+  - label: Environmental economics
+    uri: http://id.worldcat.org/fast/912895
+environmental education:
+  topic:
+  - label: Environmental education
+    uri: http://id.worldcat.org/fast/912902
+environmental engineering:
+  topic:
+  - label: Environmental engineering
+    uri: http://id.worldcat.org/fast/912934
+environmental geology:
+  topic:
+  - label: Environmental geology
+    uri: http://id.worldcat.org/fast/912988
+environmental health:
+  topic:
+  - label: Environmental health
+    uri: http://id.worldcat.org/fast/912999
+environmental justice:
+  topic:
+  - label: Environmental justice
+    uri: http://id.worldcat.org/fast/913104
+environmental law:
+  topic:
+  - label: Environmental law
+    uri: http://id.worldcat.org/fast/913122
+environmental management:
+  topic:
+  - label: Environmental management
+    uri: http://id.worldcat.org/fast/913186
+environmental philosophy:
+  topic:
+  - label: Environmental sciences--Philosophy
+    uri: http://id.worldcat.org/fast/913501
+environmental science:
+  topic:
+  - label: Environmental sciences
+    uri: http://id.worldcat.org/fast/913474
+environmental studies:
+  topic:
+  - label: Ecology
+    uri: http://id.worldcat.org/fast/901476
+epidemiology:
+  topic:
+  - label: Epidemiology
+    uri: http://id.worldcat.org/fast/914091
+epistemology:
+  topic:
+  - label: Knowledge, Theory of
+    uri: http://id.worldcat.org/fast/988194
+ethics:
+  topic:
+  - label: Ethics
+    uri: http://id.worldcat.org/fast/915833
+ethnic studies:
+  topic:
+  - label: Ethnicity
+    uri: http://id.worldcat.org/fast/916034
+european history:
+  geographic:
+  - label: Europe
+    uri: http://id.worldcat.org/fast/1245064
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+european studies:
+  geographic:
+  - label: Europe
+    uri: http://id.worldcat.org/fast/1245064
+  topic:
+  - label: Europeans
+    uri: http://id.worldcat.org/fast/916820
+evolution & development:
+  topic:
+  - label: Evolution (Biology)
+    uri: http://id.worldcat.org/fast/917302
+experimental psychology:
+  topic:
+  - label: Psychology, Experimental
+    uri: http://id.worldcat.org/fast/1081581
+film studies:
+  topic:
+  - label: Motion pictures
+    uri: http://id.worldcat.org/fast/1027285
+finance:
+  topic:
+  - label: Finance
+    uri: http://id.worldcat.org/fast/924349
+fine arts:
+  topic:
+  - label: Arts
+    uri: http://id.worldcat.org/fast/817721
+fisheries and aquatic sciences:
+  topic:
+  - label: Aquatic sciences
+    uri: http://id.worldcat.org/fast/812097
+folklore:
+  topic:
+  - label: Folklore
+    uri: http://id.worldcat.org/fast/930306
+food science:
+  topic:
+  - label: Food--Analysis
+    uri: http://id.worldcat.org/fast/930460
+foreign language instruction:
+  topic:
+  - label: Language and languages--Study and teaching
+    uri: http://id.worldcat.org/fast/992220
+forensic anthropology:
+  topic:
+  - label: Forensic anthropology
+    uri: http://id.worldcat.org/fast/931952
+forestry:
+  topic:
+  - label: Forests and forestry
+    uri: http://id.worldcat.org/fast/932632
+french canadian culture:
+  topic:
+  - label: French-Canadians
+    uri: http://id.worldcat.org/fast/934912
+  - label: French-Canadians--Social life and customs
+    uri: http://id.worldcat.org/fast/934943
+french canadian literature:
+  topic:
+  - label: French-Canadian literature
+    uri: http://id.worldcat.org/fast/934875
+gender studies:
+  topic:
+  - label: Gender identity
+    uri: http://id.worldcat.org/fast/939593
+  - label: Sex role
+    uri: http://id.worldcat.org/fast/1114598
+genetics:
+  topic:
+  - label: Genetics
+    uri: http://id.worldcat.org/fast/940117
+geobiology:
+  topic:
+  - label: Geobiology
+    uri: http://id.worldcat.org/fast/940325
+geochemistry:
+  topic:
+  - label: Geochemistry
+    uri: http://id.worldcat.org/fast/940343
+geographic information science and geodesy:
+  topic:
+  - label: Geographic information systems
+    uri: http://id.worldcat.org/fast/940423
+geography:
+  topic:
+  - label: Geography
+    uri: http://id.worldcat.org/fast/940469
+geological engineering:
+  topic:
+  - label: Engineering geology
+    uri: http://id.worldcat.org/fast/910529
+geology:
+  topic:
+  - label: Geology
+    uri: http://id.worldcat.org/fast/940627
+geomorphology:
+  topic:
+  - label: Geomorphology
+    uri: http://id.worldcat.org/fast/940955
+geophysical engineering:
+  topic:
+  - label: Geophysics
+    uri: http://id.worldcat.org/fast/941002
+geophysics:
+  topic:
+  - label: Geophysics
+    uri: http://id.worldcat.org/fast/941002
+geotechnology:
+  topic:
+  - label: Geotechnical engineering
+    uri: http://id.worldcat.org/fast/1893896
+germanic literature:
+  topic:
+  - label: German literature
+    uri: http://id.worldcat.org/fast/941797
+gerontology:
+  topic:
+  - label: Gerontology
+    uri: http://id.worldcat.org/fast/942204
+gifted education:
+  topic:
+  - label: Gifted children--Education
+    uri: http://id.worldcat.org/fast/942566
+glbt studies:
+  topic:
+  - label: Gay and lesbian studies
+    uri: http://id.worldcat.org/fast/939054
+  - label: Sexual minorities
+    uri: http://id.worldcat.org/fast/1202158
+health care management:
+  topic:
+  - label: Health services administration
+    uri: http://id.worldcat.org/fast/953286
+  - label: Medical care
+    uri: http://id.worldcat.org/fast/1013753
+health education:
+  topic:
+  - label: Health education
+    uri: http://id.worldcat.org/fast/952878
+health sciences:
+  topic:
+  - label: Medical sciences
+    uri: http://id.worldcat.org/fast/1014601
+high temperature physics:
+  topic:
+  - label: High temperatures
+    uri: http://id.worldcat.org/fast/956494
+  - label: Physics
+    uri: http://id.worldcat.org/fast/1063025
+higher education:
+  topic:
+  - label: Education, Higher
+    uri: http://id.worldcat.org/fast/903005
+higher education administration:
+  topic:
+  - label: Education, Higher--Administration
+    uri: http://id.worldcat.org/fast/903010
+hispanic american studies:
+  topic:
+  - label: Hispanic Americans
+    uri: http://id.worldcat.org/fast/957523
+histology:
+  topic:
+  - label: Histology
+    uri: http://id.worldcat.org/fast/957668
+history:
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+history of education:
+  topic:
+  - label: Education
+    uri: http://id.worldcat.org/fast/902499
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+history of oceania:
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+  geographic:
+  - label: Oceania
+    uri: http://id.worldcat.org/fast/1242982
+history of science:
+  topic:
+  - label: Science
+    uri: http://id.worldcat.org/fast/1108176
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+holocaust studies:
+  topic:
+  - label: Holocaust, Jewish (1939-1945)
+    uri: http://id.worldcat.org/fast/958866
+home economics:
+  topic:
+  - label: Home economics
+    uri: http://id.worldcat.org/fast/959173
+home economics education:
+  topic:
+  - label: Home economics--Study and teaching
+    uri: http://id.worldcat.org/fast/959223
+  - label: Home economics
+    uri: http://id.worldcat.org/fast/959173
+horticulture:
+  topic:
+  - label: Horticulture
+    uri: http://id.worldcat.org/fast/960791
+hydrologic sciences:
+  topic:
+  - label: Hydrology
+    uri: http://id.worldcat.org/fast/965147
+icelandic & scandinavian literature:
+  topic:
+  - label: Icelandic literature
+    uri: http://id.worldcat.org/fast/966678
+immunology:
+  topic:
+  - label: Immunology
+    uri: http://id.worldcat.org/fast/968006
+individual & family studies:
+  topic:
+  - label: Families
+    uri: http://id.worldcat.org/fast/1728849
+industrial arts education:
+  topic:
+  - label: Industrial arts--Study and teaching
+    uri: http://id.worldcat.org/fast/970826
+  - label: Industrial arts
+    uri: http://id.worldcat.org/fast/970804
+industrial engineering:
+  topic:
+  - label: Industrial engineering
+    uri: http://id.worldcat.org/fast/970992
+information science:
+  topic:
+  - label: Information science
+    uri: http://id.worldcat.org/fast/972640
+information technology:
+  topic:
+  - label: Information technology
+    uri: http://id.worldcat.org/fast/973089
+inorganic chemistry:
+  topic:
+  - label: Chemistry, Inorganic
+    uri: http://id.worldcat.org/fast/853488
+instructional design:
+  topic:
+  - label: Instructional systems--Design
+    uri: http://id.worldcat.org/fast/974357
+intellectual property:
+  topic:
+  - label: Intellectual property
+    uri: http://id.worldcat.org/fast/975774
+international law:
+  topic:
+  - label: International law
+    uri: http://id.worldcat.org/fast/976984
+international relations:
+  topic:
+  - label: International relations
+    uri: http://id.worldcat.org/fast/977053
+islamic culture:
+  topic:
+  - label: Islamic civilization
+    uri: http://id.worldcat.org/fast/1730294
+  - label: Islam--Customs and practices
+    uri: http://id.worldcat.org/fast/979785
+journalism:
+  topic:
+  - label: Journalism
+    uri: http://id.worldcat.org/fast/984032
+judaic studies:
+  topic:
+  - label: Jews
+    uri: http://id.worldcat.org/fast/983135
+kinesiology:
+  topic:
+  - label: Kinesiology
+    uri: http://id.worldcat.org/fast/987619
+labor relations:
+  topic:
+  - label: Industrial relations
+    uri: http://id.worldcat.org/fast/971609
+land use planning:
+  topic:
+  - label: Land use--Planning
+    uri: http://id.worldcat.org/fast/991528
+landscape architecture:
+  topic:
+  - label: Landscape architecture
+    uri: http://id.worldcat.org/fast/991814
+language:
+  topic:
+  - label: Language and languages
+    uri: http://id.worldcat.org/fast/992154
+language arts:
+  topic:
+  - label: Language arts
+    uri: http://id.worldcat.org/fast/992284
+latin american history:
+  geographic:
+  - label: Latin America
+    uri: http://id.worldcat.org/fast/1245945
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+latin american literature:
+  topic:
+  - label: Latin American literature
+    uri: http://id.worldcat.org/fast/993031
+latin american studies:
+  geographic:
+  - label: Latin America
+    uri: http://id.worldcat.org/fast/1245945
+  topic:
+  - label: Latin Americans
+    uri: http://id.worldcat.org/fast/993069
+law:
+  topic:
+  - label: Law
+    uri: http://id.worldcat.org/fast/993678
+library science:
+  topic:
+  - label: Library science
+    uri: http://id.worldcat.org/fast/997916
+limnology:
+  topic:
+  - label: Limnology
+    uri: http://id.worldcat.org/fast/998940
+linguistics:
+  topic:
+  - label: Linguistics
+    uri: http://id.worldcat.org/fast/999202
+literature:
+  topic:
+  - label: Literature
+    uri: http://id.worldcat.org/fast/999953
+literature of oceania:
+  topic:
+  - label: Pacific Island literature
+    uri: http://id.worldcat.org/fast/1049960
+logic:
+  topic:
+  - label: Logic
+    uri: http://id.worldcat.org/fast/1002014
+low temperature physics:
+  topic:
+  - label: Low temperatures
+    uri: http://id.worldcat.org/fast/1003163
+  - label: Physics
+    uri: http://id.worldcat.org/fast/1063025
+macroecology:
+  topic:
+  - label: Macroecology
+    uri: http://id.worldcat.org/fast/1005220
+management:
+  topic:
+  - label: Management
+    uri: http://id.worldcat.org/fast/1007141
+marine geology:
+  topic:
+  - label: Submarine geology
+    uri: http://id.worldcat.org/fast/1136619
+marketing:
+  topic:
+  - label: Marketing
+    uri: http://id.worldcat.org/fast/1010167
+mass communication:
+  topic:
+  - label: Mass media
+    uri: http://id.worldcat.org/fast/1011219
+materials science:
+  topic:
+  - label: Materials science
+    uri: http://id.worldcat.org/fast/1011957
+mathematics:
+  topic:
+  - label: Mathematics
+    uri: http://id.worldcat.org/fast/1012163
+mathematics education:
+  topic:
+  - label: Mathematics--Study and teaching
+    uri: http://id.worldcat.org/fast/1012236
+mechanical engineering:
+  topic:
+  - label: Mechanical engineering
+    uri: http://id.worldcat.org/fast/1013375
+mechanics:
+  topic:
+  - label: Mechanics
+    uri: http://id.worldcat.org/fast/1013446
+medical ethics:
+  topic:
+  - label: Medical ethics
+    uri: http://id.worldcat.org/fast/1014081
+medical imaging and radiology:
+  topic:
+  - label: Diagnostic imaging
+    uri: http://id.worldcat.org/fast/892354
+medicine:
+  topic:
+  - label: Medicine
+    uri: http://id.worldcat.org/fast/1014893
+medieval history:
+  topic:
+  - label: Middle Ages
+    uri: http://id.worldcat.org/fast/1020301
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+medieval literature:
+  topic:
+  - label: Literature, Medieval
+    uri: http://id.worldcat.org/fast/1000151
+mental health:
+  topic:
+  - label: Mental health
+    uri: http://id.worldcat.org/fast/1016339
+metaphysics:
+  topic:
+  - label: Metaphysics
+    uri: http://id.worldcat.org/fast/1018304
+meteorology:
+  topic:
+  - label: Meteorology
+    uri: http://id.worldcat.org/fast/1018441
+microbiology:
+  topic:
+  - label: Microbiology
+    uri: http://id.worldcat.org/fast/1019576
+middle eastern history:
+  geographic:
+  - label: Middle East
+    uri: http://id.worldcat.org/fast/1241586
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+middle eastern literature:
+  topic:
+  - label: Middle Eastern literature
+    uri: http://id.worldcat.org/fast/1020340
+middle eastern studies:
+  geographic:
+  - label: Middle East
+    uri: http://id.worldcat.org/fast/1241586
+middle school education:
+  topic:
+  - label: Middle school education
+    uri: http://id.worldcat.org/fast/1020518
+military history:
+  topic:
+  - label: Military history
+    uri: http://id.worldcat.org/fast/1021222
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+military studies:
+  topic:
+  - label: Armed Forces
+    uri: http://id.worldcat.org/fast/814586
+mineralogy:
+  topic:
+  - label: Mineralogy
+    uri: http://id.worldcat.org/fast/1022406
+mining engineering:
+  topic:
+  - label: Mining engineering
+    uri: http://id.worldcat.org/fast/1022890
+modern history:
+  topic:
+  - label: History, Modern
+    uri: http://id.worldcat.org/fast/958367
+modern language:
+  topic:
+  - label: Languages, Modern
+    uri: http://id.worldcat.org/fast/992443
+modern literature:
+  topic:
+  - label: Literature, Modern
+    uri: http://id.worldcat.org/fast/1000172
+molecular biology:
+  topic:
+  - label: Molecular biology
+    uri: http://id.worldcat.org/fast/1024734
+molecular chemistry:
+  topic:
+  - label: Microchemistry
+    uri: http://id.worldcat.org/fast/1019615
+molecular physics:
+  topic:
+  - label: Microphysics
+    uri: http://id.worldcat.org/fast/1019993
+morphology:
+  topic:
+  - label: Morphology
+    uri: http://id.worldcat.org/fast/1026452
+multicultural education:
+  topic:
+  - label: Multicultural education
+    uri: http://id.worldcat.org/fast/1028816
+multimedia:
+  topic:
+  - label: Multimedia systems
+    uri: http://id.worldcat.org/fast/1028920
+museum studies:
+  topic:
+  - label: Museums
+    uri: http://id.worldcat.org/fast/1030128
+music:
+  topic:
+  - label: Music
+    uri: http://id.worldcat.org/fast/1030269
+music education:
+  topic:
+  - label: Music--Instruction and study
+    uri: http://id.worldcat.org/fast/1030347
+nanoscience:
+  topic:
+  - label: Nanoscience
+    uri: http://id.worldcat.org/fast/1032629
+nanotechnology:
+  topic:
+  - label: Nanotechnology
+    uri: http://id.worldcat.org/fast/1032639
+native american studies:
+  topic:
+  - label: Indians
+    uri: http://id.worldcat.org/fast/969307
+  - label: Indians of North America
+    uri: http://id.worldcat.org/fast/969633
+natural resource management:
+  topic:
+  - label: Natural resources--Management
+    uri: http://id.worldcat.org/fast/1034438
+naval engineering:
+  topic:
+  - label: Marine engineering
+    uri: http://id.worldcat.org/fast/1009532
+near eastern studies:
+  geographic:
+  - label: Middle East
+    uri: http://id.worldcat.org/fast/1241586
+neurosciences:
+  topic:
+  - label: Neurosciences
+    uri: http://id.worldcat.org/fast/1036509
+north african studies:
+  geographic:
+  - label: Africa, North
+    uri: http://id.worldcat.org/fast/1239515
+  topic:
+  - label: North Africans
+    uri: http://id.worldcat.org/fast/1039163
+nuclear chemistry:
+  topic:
+  - label: Nuclear chemistry
+    uri: http://id.worldcat.org/fast/1039908
+nuclear engineering:
+  topic:
+  - label: Nuclear engineering
+    uri: http://id.worldcat.org/fast/1040032
+nuclear physics:
+  topic:
+  - label: Nuclear physics
+    uri: http://id.worldcat.org/fast/1040386
+nursing:
+  topic:
+  - label: Nursing
+    uri: http://id.worldcat.org/fast/1041731
+nutrition:
+  topic:
+  - label: Nutrition
+    uri: http://id.worldcat.org/fast/1042187
+obstetrics and gynecology:
+  topic:
+  - label: Obstetrics
+    uri: http://id.worldcat.org/fast/1042994
+  - label: Gynecology
+    uri: http://id.worldcat.org/fast/949684
+occupational health:
+  topic:
+  - label: Medicine, Industrial
+    uri: http://id.worldcat.org/fast/1015256
+occupational psychology:
+  topic:
+  - label: Psychology, Industrial
+    uri: http://id.worldcat.org/fast/1081592
+occupational therapy:
+  topic:
+  - label: Occupational therapy
+    uri: http://id.worldcat.org/fast/1043273
+ocean engineering:
+  topic:
+  - label: Ocean engineering
+    uri: http://id.worldcat.org/fast/1043504
+oncology:
+  topic:
+  - label: Oncology
+    uri: http://id.worldcat.org/fast/1045739
+operations research:
+  topic:
+  - label: Operations research
+    uri: http://id.worldcat.org/fast/1046387
+ophthalmology:
+  topic:
+  - label: Ophthalmology
+    uri: http://id.worldcat.org/fast/1046503
+optics:
+  topic:
+  - label: Optics
+    uri: http://id.worldcat.org/fast/1046845
+organic chemistry:
+  topic:
+  - label: Chemistry, Organic
+    uri: http://id.worldcat.org/fast/853501
+organization theory:
+  topic:
+  - label: Organizational sociology
+    uri: http://id.worldcat.org/fast/1047878
+organizational behavior:
+  topic:
+  - label: Organizational behavior
+    uri: http://id.worldcat.org/fast/1047801
+osteopathic medicine:
+  topic:
+  - label: Osteopathic medicine
+    uri: http://id.worldcat.org/fast/1048799
+pacific rim studies:
+  geographic:
+  - label: Pacific Area
+    uri: http://id.worldcat.org/fast/1243504
+packaging:
+  topic:
+  - label: Packaging
+    uri: http://id.worldcat.org/fast/1050156
+paleoclimate science:
+  topic:
+  - label: Paleoclimatology
+    uri: http://id.worldcat.org/fast/1051364
+paleoecology:
+  topic:
+  - label: Paleoecology
+    uri: http://id.worldcat.org/fast/1051384
+paleontology:
+  topic:
+  - label: Paleontology
+    uri: http://id.worldcat.org/fast/1051513
+parasitology:
+  topic:
+  - label: Parasitology
+    uri: http://id.worldcat.org/fast/1053186
+particle physics:
+  topic:
+  - label: Particles (Nuclear physics)
+    uri: http://id.worldcat.org/fast/1054130
+pastoral counseling:
+  topic:
+  - label: Pastoral counseling
+    uri: http://id.worldcat.org/fast/1054526
+patent law:
+  topic:
+  - label: Patent laws and legislation
+    uri: http://id.worldcat.org/fast/1054823
+pathology:
+  topic:
+  - label: Pathology
+    uri: http://id.worldcat.org/fast/1054964
+peace studies:
+  topic:
+  - label: Peace
+    uri: http://id.worldcat.org/fast/1055758
+pedagogy:
+  topic:
+  - label: Education--Study and teaching
+    uri: http://id.worldcat.org/fast/902796
+  - label: Teaching
+    uri: http://id.worldcat.org/fast/1144565
+performing arts:
+  topic:
+  - label: Performing arts
+    uri: http://id.worldcat.org/fast/1057887
+performing arts education:
+  topic:
+  - label: Performing arts--Study and teaching
+    uri: http://id.worldcat.org/fast/1057935
+personality psychology:
+  topic:
+  - label: Personality--Psychological aspects
+    uri: http://id.worldcat.org/fast/1058678
+petroleum engineering:
+  topic:
+  - label: Petroleum engineering
+    uri: http://id.worldcat.org/fast/1059492
+petroleum geology:
+  topic:
+  - label: Petroleum--Geology
+    uri: http://id.worldcat.org/fast/1059280
+petrology:
+  topic:
+  - label: Petrology
+    uri: http://id.worldcat.org/fast/1059885
+pharmaceutical sciences:
+  topic:
+  - label: Drugs
+    uri: http://id.worldcat.org/fast/898761
+pharmacology:
+  topic:
+  - label: Pharmacology
+    uri: http://id.worldcat.org/fast/1060259
+philosophy:
+  topic:
+  - label: Philosophy
+    uri: http://id.worldcat.org/fast/1060777
+philosophy of education:
+  topic:
+  - label: Education--Philosophy
+    uri: http://id.worldcat.org/fast/902721
+philosophy of religion:
+  topic:
+  - label: Religion--Philosophy
+    uri: http://id.worldcat.org/fast/1093794
+philosophy of science:
+  topic:
+  - label: Science--Philosophy
+    uri: http://id.worldcat.org/fast/1108336
+physical anthropology:
+  topic:
+  - label: Physical anthropology
+    uri: http://id.worldcat.org/fast/1062357
+physical chemistry:
+  topic:
+  - label: Chemistry, Physical and theoretical
+    uri: http://id.worldcat.org/fast/853521
+physical education:
+  topic:
+  - label: Physical education and training
+    uri: http://id.worldcat.org/fast/1062401
+physical geography:
+  topic:
+  - label: Physical geography
+    uri: http://id.worldcat.org/fast/1062647
+physical oceanography:
+  topic:
+  - label: Oceanography
+    uri: http://id.worldcat.org/fast/1043671
+physical therapy:
+  topic:
+  - label: Physical therapy
+    uri: http://id.worldcat.org/fast/1062771
+physics:
+  topic:
+  - label: Physics
+    uri: http://id.worldcat.org/fast/1063025
+physiological psychology:
+  topic:
+  - label: Psychophysiology
+    uri: http://id.worldcat.org/fast/1081674
+physiology:
+  topic:
+  - label: Physiology
+    uri: http://id.worldcat.org/fast/1063177
+planetology:
+  topic:
+  - label: Planetology
+    uri: http://id.worldcat.org/fast/1065123
+plant biology:
+  topic:
+  - label: Botany
+    uri: http://id.worldcat.org/fast/836869
+plant pathology:
+  topic:
+  - label: Plant diseases
+    uri: http://id.worldcat.org/fast/1065378
+plant sciences:
+  topic:
+  - label: Botany
+    uri: http://id.worldcat.org/fast/836869
+plasma physics:
+  topic:
+  - label: Plasma (Ionized gases)
+    uri: http://id.worldcat.org/fast/1066262
+  - label: Physics
+    uri: http://id.worldcat.org/fast/1063025
+plastics:
+  topic:
+  - label: Plastics
+    uri: http://id.worldcat.org/fast/1066542
+plate tectonics:
+  topic:
+  - label: Plate tectonics
+    uri: http://id.worldcat.org/fast/1066753
+political science:
+  topic:
+  - label: Political science
+    uri: http://id.worldcat.org/fast/1069781
+polymer chemistry:
+  topic:
+  - label: Microchemistry
+    uri: http://id.worldcat.org/fast/1019615
+  - label: Polymers
+    uri: http://id.worldcat.org/fast/1070588
+psychobiology:
+  topic:
+  - label: Psychobiology
+    uri: http://id.worldcat.org/fast/1081300
+psychology:
+  topic:
+  - label: Psychology
+    uri: http://id.worldcat.org/fast/1081447
+public administration:
+  topic:
+  - label: Public administration
+    uri: http://id.worldcat.org/fast/1081976
+public health:
+  topic:
+  - label: Public health
+    uri: http://id.worldcat.org/fast/1082238
+public health occupations education:
+  topic:
+  - label: Public health--Study and teaching
+    uri: http://id.worldcat.org/fast/1082320
+public policy:
+  topic:
+  - label: Public policy (Law)
+    uri: http://id.worldcat.org/fast/1082822
+quantitative psychology and psychometrics:
+  topic:
+  - label: Psychometrics
+    uri: http://id.worldcat.org/fast/1081639
+quantum physics:
+  topic:
+  - label: Quantum theory
+    uri: http://id.worldcat.org/fast/1085128
+range management:
+  topic:
+  - label: Range management
+    uri: http://id.worldcat.org/fast/1089831
+reading instruction:
+  topic:
+  - label: Reading
+    uri: http://id.worldcat.org/fast/1090626
+recreation and tourism:
+  topic:
+  - label: Recreation
+    uri: http://id.worldcat.org/fast/1091713
+regional studies:
+  topic:
+  - label: Area studies
+    uri: http://id.worldcat.org/fast/814190
+religion:
+  topic:
+  - label: Religion
+    uri: http://id.worldcat.org/fast/1093763
+religious education:
+  topic:
+  - label: Religious education
+    uri: http://id.worldcat.org/fast/1093997
+religious history:
+  topic:
+  - label: Religion
+    uri: http://id.worldcat.org/fast/1093763
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+remote sensing:
+  topic:
+  - label: Remote sensing
+    uri: http://id.worldcat.org/fast/1094469
+rhetoric:
+  topic:
+  - label: Rhetoric
+    uri: http://id.worldcat.org/fast/1096948
+robotics:
+  topic:
+  - label: Robotics
+    uri: http://id.worldcat.org/fast/1098997
+romance literature:
+  topic:
+  - label: Romance literature
+    uri: http://id.worldcat.org/fast/1099871
+russian history:
+  geographic:
+  - label: Russia
+    uri: http://id.worldcat.org/fast/1207312
+  topic:
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+scandinavian studies:
+  geographic:
+  - label: Scandinavia
+    uri: http://id.worldcat.org/fast/1242804
+  topic:
+  - label: Scandinavians
+    uri: http://id.worldcat.org/fast/1106459
+school counseling:
+  topic:
+  - label: Educational counseling
+    uri: http://id.worldcat.org/fast/903395
+science education:
+  topic:
+  - label: Science--Study and teaching
+    uri: http://id.worldcat.org/fast/1108387
+secondary education:
+  topic:
+  - label: Education, Secondary
+    uri: http://id.worldcat.org/fast/903252
+sedimentary geology:
+  topic:
+  - label: Geology, Stratigraphic
+    uri: http://id.worldcat.org/fast/940727
+slavic literature:
+  topic:
+  - label: Slavic literature
+    uri: http://id.worldcat.org/fast/1120729
+slavic studies:
+  topic:
+  - label: Slavs
+    uri: http://id.worldcat.org/fast/1120771
+social psychology:
+  topic:
+  - label: Social psychology
+    uri: http://id.worldcat.org/fast/1122816
+social research:
+  topic:
+  - label: Social sciences--Research
+    uri: http://id.worldcat.org/fast/1122944
+social sciences education:
+  topic:
+  - label: Social sciences--Study and teaching
+    uri: http://id.worldcat.org/fast/1123000
+social structure:
+  topic:
+  - label: Social structure
+    uri: http://id.worldcat.org/fast/1123372
+social work:
+  topic:
+  - label: Social service
+    uri: http://id.worldcat.org/fast/1123192
+sociolinguistics:
+  topic:
+  - label: Sociolinguistics
+    uri: http://id.worldcat.org/fast/1123847
+sociology:
+  topic:
+  - label: Sociology
+    uri: http://id.worldcat.org/fast/1123875
+sociology of education:
+  topic:
+  - label: Educational sociology
+    uri: http://id.worldcat.org/fast/903596
+  - label: Education--Sociological aspects
+    uri: http://id.worldcat.org/fast/902783
+soil sciences:
+  topic:
+  - label: Soil science
+    uri: http://id.worldcat.org/fast/1124601
+south african studies:
+  geographic:
+  - label: South Africa
+    uri: http://id.worldcat.org/fast/1204616
+  topic:
+  - label: South Africans
+    uri: http://id.worldcat.org/fast/1127226
+south asian studies:
+  geographic:
+  - label: South Asia
+    uri: http://id.worldcat.org/fast/1244520
+  topic:
+  - label: South Asians
+    uri: http://id.worldcat.org/fast/1127244
+special education:
+  topic:
+  - label: Special education
+    uri: http://id.worldcat.org/fast/1128842
+speech therapy:
+  topic:
+  - label: Speech therapy
+    uri: http://id.worldcat.org/fast/1129277
+spirituality:
+  topic:
+  - label: Spirituality
+    uri: http://id.worldcat.org/fast/1130186
+sports management:
+  topic:
+  - label: Sports administration
+    uri: http://id.worldcat.org/fast/1130552
+statistics:
+  topic:
+  - label: Statistics
+    uri: http://id.worldcat.org/fast/1132103
+sub saharan africa studies:
+  geographic:
+  - label: Africa, Sub-Saharan
+    uri: http://id.worldcat.org/fast/1239520
+  topic:
+  - label: Africans
+    uri: http://id.worldcat.org/fast/799938
+surgery:
+  topic:
+  - label: Surgery
+    uri: http://id.worldcat.org/fast/1139351
+sustainability:
+  topic:
+  - label: Sustainability
+    uri: http://id.worldcat.org/fast/1747391
+system science:
+  topic:
+  - label: System theory
+    uri: http://id.worldcat.org/fast/1141423
+systematic biology:
+  topic:
+  - label: Biology--Classification
+    uri: http://id.worldcat.org/fast/832393
+teacher education:
+  topic:
+  - label: Teachers--Training of
+    uri: http://id.worldcat.org/fast/1144404
+technical communication:
+  topic:
+  - label: Communication of technical information
+    uri: http://id.worldcat.org/fast/870307
+textile research:
+  topic:
+  - label: Textile research
+    uri: http://id.worldcat.org/fast/1148949
+theater:
+  topic:
+  - label: Theater
+    uri: http://id.worldcat.org/fast/1149217
+theater history:
+  topic:
+  - label: Theater
+    uri: http://id.worldcat.org/fast/1149217
+  - label: History
+    uri: http://id.worldcat.org/fast/958235
+theology:
+  topic:
+  - label: Theology
+    uri: http://id.worldcat.org/fast/1149559
+theoretical mathematics:
+  topic:
+  - label: Mathematics
+    uri: http://id.worldcat.org/fast/1012163
+theoretical physics:
+  topic:
+  - label: Physics
+    uri: http://id.worldcat.org/fast/1063025
+toxicology:
+  topic:
+  - label: Toxicology
+    uri: http://id.worldcat.org/fast/1153364
+transportation planning:
+  topic:
+  - label: Transportation--Planning
+    uri: http://id.worldcat.org/fast/1155146
+urban forestry:
+  topic:
+  - label: Urban forestry
+    uri: http://id.worldcat.org/fast/1162426
+urban planning:
+  topic:
+  - label: City planning
+    uri: http://id.worldcat.org/fast/862177
+veterinary medicine:
+  topic:
+  - label: Veterinary medicine
+    uri: http://id.worldcat.org/fast/1165977
+virology:
+  topic:
+  - label: Virology
+    uri: http://id.worldcat.org/fast/1167670
+vocational education:
+  topic:
+  - label: Vocational education
+    uri: http://id.worldcat.org/fast/1168486
+water resources management:
+  topic:
+  - label: Water resources development--Management
+    uri: http://id.worldcat.org/fast/1172006
+web studies:
+  topic:
+  - label: Internet
+    uri: http://id.worldcat.org/fast/977184
+wildlife conservation:
+  topic:
+  - label: Wildlife conservation
+    uri: http://id.worldcat.org/fast/1175253
+wildlife management:
+  topic:
+  - label: Wildlife management
+    uri: http://id.worldcat.org/fast/1175323
+women's studies:
+  topic:
+  - label: Women's studies
+    uri: http://id.worldcat.org/fast/1178850
+wood sciences:
+  topic:
+  - label: Wood
+    uri: http://id.worldcat.org/fast/1179191
+world history:
+  topic:
+  - label: World history
+    uri: http://id.worldcat.org/fast/1181345
+zoology:
+  topic:
+  - label: Zoology
+    uri: http://id.worldcat.org/fast/1184696

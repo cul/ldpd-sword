@@ -1,0 +1,19 @@
+genre_value_springer_nature: articles
+genre_uri_springer_nature: 'http://vocab.getty.edu/aat/300048715'
+genre_value_bmc: articles
+genre_uri_bmc: 'http://vocab.getty.edu/aat/300048715'
+genre_value_proquest: theses
+genre_uri_proquest: 'http://vocab.getty.edu/aat/300028028'
+genre_value_tow_journalism: reports
+genre_uri_tow_journalism: 'http://vocab.getty.edu/aat/300027267'
+language_value: English
+language_uri: 'http://id.loc.gov/vocabulary/iso639-2/eng'
+name_role_originator_uri: 'http://id.loc.gov/vocabulary/relators/org'
+name_role_thesis_advisor_uri: 'http://id.loc.gov/vocabulary/relators/ths'
+name_role_author_uri: 'http://id.loc.gov/vocabulary/relators/aut'
+name_role_originator_value: 'Originator'
+name_role_thesis_advisor_value: 'Thesis advisor'
+name_role_author_value: 'Author'
+corporate_name_tow_journalism:
+ - 'Columbia University. Tow Center for Digital Journalism'
+ - 'Columbia University. Journalism'

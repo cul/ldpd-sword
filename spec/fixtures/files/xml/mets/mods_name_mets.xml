@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mets xmlns="http://www.loc.gov/METS/"
+      xmlns:mods="http://www.loc.gov/mods/v3"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.loc.gov/METS/
+			  http://www.loc.gov/standards/mets/mets.xsd
+			  http://www.loc.gov/mods/v3
+			  http://www.loc.gov/standards/mods/v3/mods-3-2.xsd">
+  <dmdSec ID="DM1">
+    <mdWrap MDTYPE="MODS">
+      <xmlData>
+	<mods:mods>
+	  <mods:name type="personal" ID="min314159265359">
+	    <mods:namePart>Goofy</mods:namePart>
+	    <mods:role>
+	      <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+	    </mods:role>
+	  </mods:name>
+	  <mods:name type="corporate" ID="min314159265359">
+	    <mods:namePart>Minnie</mods:namePart>
+	    <mods:namePart>Mouse</mods:namePart>
+	    <mods:namePart>Inc</mods:namePart>
+	    <mods:role>
+	      <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+	    </mods:role>
+	  </mods:name>
+	  <mods:name type="personal" ID="mic314159265359">
+	    <mods:namePart>Mouse, Mickey M.</mods:namePart>
+	    <mods:role>
+	      <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+	    </mods:role>
+	  </mods:name>
+	</mods:mods>
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+</mets>

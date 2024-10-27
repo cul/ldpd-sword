@@ -1,0 +1,325 @@
+{
+    "title":
+    [
+	{
+	    "title_non_sort_portion" : null,
+	    "title_sort_portion" : "Sample Title of Hyacinth Item"
+	}
+    ]
+    ,
+    "name": 
+    [
+	{
+	    "name_term": 
+	    {
+		"value": "Columbia University. Microbiology, Immunology and Infection",
+		"name_type": "corporate"
+	    }
+	    ,
+	    "name_role": 
+	    [
+		{
+		    "name_role_term": 
+		    {
+			"uri": "http://id.loc.gov/vocabulary/relators/org",
+			"value": "Originator"
+		    }
+		}
+	    ]
+	}
+	,
+	{
+            "name_term":
+            {
+                "value": "Smith, John Howard",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Doe, J. H.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, J. F.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, A. Bee C. Dee F. Jay K.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/aut",
+                        "value": "Author"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Smithy, Johny Howardy",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Doey, J. H.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, J. F.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
+                    }
+                }
+            ]
+        }
+	,
+	{
+            "name_term":
+            {
+                "value": "Kennedy, A. Bee C. Dee F. Jay K.",
+                "name_type": "personal"
+            }
+            ,
+            "name_role":
+            [
+                {
+                    "name_role_term":
+                    {
+                        "uri": "http://id.loc.gov/vocabulary/relators/ths",
+                        "value": "Thesis advisor"
+                    }
+                }
+            ]
+        }
+    ]
+    ,
+    "abstract":
+    [
+	{
+	    "abstract_value":"Abstract for Testing the Hyacinth Composer"
+	}
+    ]
+    ,
+    "genre": 
+    [
+	{
+	    "genre_term": 
+	    {
+		"value": "articles",
+		"uri": "http://vocab.getty.edu/aat/300048715"
+	    }
+	}
+    ]
+    ,
+    "language": 
+    [
+	{
+	    "language_term": 
+	    {
+		"value": "English",
+		"uri": "http://id.loc.gov/vocabulary/iso639-2/eng"
+	    }
+	}
+    ]
+    ,
+    "subject_topic": 
+    [
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Subject one"
+	    }
+	}
+	,
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Subject two"
+	    }
+	}
+	,
+	{
+	    "subject_topic_term": 
+	    {
+		"value": "Canadians",
+		"uri": "http://id.worldcat.org/fast/845200"
+	    }
+	}
+    ]
+    ,
+    "subject_geographic": 
+    [
+	{
+	    "subject_geographic_term": 
+	    {
+		"value": "Canada",
+		"uri": "http://id.worldcat.org/fast/1204310"
+	    }
+	}
+    ]
+    ,
+    "note": 
+    [
+	{
+	    "note_value": "Copyright: 2016 Hyacinth Composer"
+	}
+    ]
+    ,
+    "degree": 
+    [
+	{
+	    "degree_name": "Ph.D.",
+	    "degree_level": 2,
+	    "degree_discipline": " Microbiology, Immunology and Infection",
+	    "degree_grantor": "Columbia University"
+	}
+    ]
+    ,
+    "use_and_reproduction" :
+    [
+        {
+            "use_and_reproduction_term":
+            {
+                "uri": "http://rightsstatements.org/vocab/InC/1.0/"
+            }
+        }
+    ]
+    ,
+    "license" :
+    [
+        {
+            "license_term":
+            {
+                "uri": "https://creativecommons.org/licenses/by/4.0/"
+            }
+        }
+    ]
+    ,
+    "deposited_by": 
+    [
+	{
+	    "deposited_by_value": "First Test Depositor"
+	}
+    ]
+    ,
+    "type_of_resource":
+    [
+	{
+	    "type_of_resource_value": "text"
+	}
+    ]
+    ,
+    "date_issued" :
+    [
+	{
+	    "date_issued_start_value" : "2018"
+	}
+    ]
+    ,
+    "parent_publication" :
+    [
+	{
+	    "parent_publication_title" : 
+	    [
+		{
+		    "parent_publication_title_non_sort_portion":null,
+		    "parent_publication_title_sort_portion" : "International Journal of Stuff"
+		}
+	    ]
+	    ,
+	    "parent_publication_date_created_textual" : "2016",
+	    "parent_publication_volume" : "10",
+	    "parent_publication_issue" : "11",
+	    "parent_publication_page_start" : "78",
+	    "parent_publication_doi" : "10.1186/s13033-015-0032-8"
+	}
+    ]
+}

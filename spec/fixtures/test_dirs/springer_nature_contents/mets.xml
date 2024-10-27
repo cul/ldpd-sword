@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><mets ID="sort-mets_mets" OBJID="sword-mets" LABEL="DSpace SWORD Item" PROFILE="DSpace METS SIP Profile 1.0" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.loc.gov/METS/">
+<metsHdr CREATEDATE="2017-08-09T16:39:23">
+<agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+<name>BioMed Central</name>
+</agent>
+</metsHdr>
+<dmdSec ID="sword-mets-dmd-1" GROUPID="sword-mets-dmd-1_group-1">
+<mdWrap LABEL="SWAP Metadata" MDTYPE="OTHER" OTHERMDTYPE="EPDCX" MIMETYPE="text/xml">
+<xmlData>
+<epdcx:descriptionSet xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+<epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/ScholarlyWork"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+<epdcx:valueString>Overview of the mental health system in Mozambique: addressing the treatment gap with a task-shifting strategy in primary care</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Mental health systems</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Low income countries</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Task-shifting</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Mozambique</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Psychiatric technician</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Primary care</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Scaling-up services</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+<epdcx:valueString>
+              Abstract
+              
+                Background
+                Mozambique has gradually changed its action on mental health (MH) from an asylum-centric care with long-term hospitalization to an innovative approach to community and primary care.
+              
+              
+                Objective
+                To collect essential information on Mozambique’s MH system for decision making, to improve quality of services delivered, update MH Strategy and Action Plan.
+              
+              
+                Method
+                The study used the WHO-AIMS to assess MH systems including policy and legislation, organization of services, MH in primary care, human resources, public education and link with other sectors, monitoring and research. A comparative analysis was conducted to present the evolution of relevant data from 2010 to 2014.
+              
+              
+                Results
+                There are two psychiatric hospitals in the country and beds in general hospitals. In the period, the number of beds in general hospitals remained stable (203), and the beds in psychiatric hospitals increased from 173 to 298. Mental health outpatient facilities have increased from 83 to 152. The number of psychiatrists (9 in 2010, and 10 in 2014) remained very low, with a significant increase in the number of psychologists (56–109) and occupational therapists (2–23). The number of Psychiatric Technicians has increased from 66 in 2010, to 241 in 2014. This increase allowed the mental health network to expand from 60 to 135 Districts, meaning an increase of coverage from 44 to 100 % of the country districts.
+              
+              
+                Conclusion
+                The task-shifting strategy focused on services delivered in primary care by psychiatric technicians, mid-level professionals, allowed the expansion of mental health services for all the country districts and the reduction of treatment gap in Mozambique.
+              
+            </epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>dos Santos, Palmira F</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Wainberg, Milton L</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Caldas-de-Almeida, José M</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Saraceno, Benedetto</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Mari, Jair de Jesus</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs" epdcx:valueRef="sword-mets-expr-1"/>
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1">
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:valueURI="http://purl.org/eprint/entityType/Expression"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/language" epdcx:vesURI="http://purl.org/dc/terms/RFC3066">
+<epdcx:valueString>en</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/type" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:valueURI="http://purl.org/eprint/type/JournalArticle"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/available">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/W3CDTF">2016-01-04</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/copyrightHolder">
+<epdcx:valueString>Santos et al.</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/publisher">
+<epdcx:valueString>BioMed Central</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/accessRights" epdcx:vesURI="http://purl.org/eprint/terms/AccessRights" epdcx:valueURI="http://purl.org/eprint/accessRights/OpenAccess"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/bibliographicCitation">
+<epdcx:valueString>International Journal of Mental Health Systems. 2016 Jan 04;10(1):1</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/identifier">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/URI">http://dx.doi.org/10.1186/s13033-015-0032-8</epdcx:valueString>
+</epdcx:statement>
+</epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+<fileSec>
+<fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+<file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+<FLocat LOCTYPE="URL" xlink:href="13033_2015_Article_32.pdf"/>
+</file>
+</fileGrp>
+</fileSec>
+<structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+<div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1" TYPE="SWORD Object">
+<div ID="sword-mets-div-2" TYPE="File">
+<fptr FILEID="sword-mets-file-1"/>
+</div>
+</div>
+</structMap>
+</mets>
