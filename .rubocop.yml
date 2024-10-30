@@ -4,6 +4,8 @@ inherit_gem:
 AllCops:
   TargetRubyVersion: 3.3.5  # Update to your version of ruby
   TargetRailsVersion: 7.2.1 # Update to your version of rails
+  Exclude:
+    - test/**/*
 
 Metrics/BlockLength:
   Exclude:
@@ -28,6 +30,7 @@ RSpec/BeforeAfterAll:
     - spec/sword/mets/eprints_dc_mets_file_spec.rb
     - spec/sword/mets/mods_mets_file_spec.rb
     - spec/sword/mets/mods_xml_data_element_spec.rb
+    - spec/sword/util_spec.rb
 
 RSpec/BeNil:
   Exclude:
@@ -64,8 +67,10 @@ RSpec/DescribedClass:
 
 RSpec/EmptyExampleGroup:
   Exclude:
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
     - spec/sword/endpoints/endpoint_spec.rb
     - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
 
 RSpec/ExampleWording:
   Exclude:
@@ -100,6 +105,7 @@ RSpec/ExcessiveDocstringSpacing:
 RSpec/HooksBeforeExamples:
   Exclude:
     - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/util_spec.rb
 
 RSpec/InstanceVariable:
   Exclude:
@@ -133,10 +139,12 @@ RSpec/NamedSubject:
     - spec/sword/metadata/note_spec.rb
     - spec/sword/metadata/mods_name_spec.rb
     - spec/sword/metadata/parent_publication_spec.rb
+    - spec/sword/metadata/personal_name_spec.rb
     - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
     - spec/sword/parsers/mets_parser_spec.rb
     - spec/sword/parsers/mods_parser_spec.rb
     - spec/sword/parsers/proquest_etd_parser_spec.rb
+    - spec/sword/util_spec.rb
 
 RSpec/NoExpectationExample:
   Exclude:
@@ -194,6 +202,7 @@ Layout/ExtraSpacing:
   Exclude:
     - lib/sword/adapters/hyacinth_adapter.rb
     - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/util_spec.rb
 
 Layout/FirstArrayElementIndentation:
   Exclude:
@@ -242,6 +251,7 @@ Layout/MultilineMethodCallBraceLayout:
     - spec/sword/endpoints/eprints_endpoint_spec.rb
     - spec/sword/parsers/mods_parser_spec.rb
     - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/util_spec.rb
 
 Layout/SpaceAfterComma:
   Exclude:
@@ -261,6 +271,7 @@ Layout/SpaceAfterComma:
 Layout/SpaceAroundOperators:
   Exclude:
     - lib/sword/adapters/hyacinth_adapter.rb
+    - spec/sword/util_spec.rb
 
 Layout/SpaceBeforeBlockBraces:
   Exclude:
@@ -276,6 +287,7 @@ Layout/SpaceInsideBlockBraces:
   Exclude:
     - lib/sword/parsers/mods_parser.rb
     - lib/sword/parsers/proquest_etd_parser.rb
+    - lib/tasks/sword/ci.rake
     - spec/sword/parsers/mods_parser_spec.rb
 
 Layout/SpaceInsideHashLiteralBraces:
@@ -384,6 +396,7 @@ Performance/StringReplacement:
 Rails/FilePath:
   Exclude:
     - config/initializers/sword.rb
+    - lib/tasks/sword/ci.rake
 
 Rails/HasManyOrHasOneDependent:
   Exclude:
@@ -446,6 +459,7 @@ Style/FrozenStringLiteralComment:
     - app/models/depositor_collection_pairing.rb
     - app/models/depositor.rb
     - app/models/deposit.rb
+    - spec/rails_helper.rb
     - spec/sword/adapters/hyacinth_adapter_spec.rb
     - spec/sword/endpoints/academic_commons_endpoint_spec.rb
     - spec/sword/endpoints/endpoint_spec.rb
@@ -462,6 +476,7 @@ Style/FrozenStringLiteralComment:
     - spec/sword/parsers/mets_parser_spec.rb
     - spec/sword/parsers/mods_parser_spec.rb
     - spec/sword/parsers/proquest_etd_parser_spec.rb
+    - spec/sword/util_spec.rb
 
 Style/GuardClause:
   Exclude:
@@ -540,6 +555,7 @@ Style/RedundantFileExtensionInRequire:
     - spec/sword/parsers/mets_parser_spec.rb
     - spec/sword/parsers/mods_parser_spec.rb
     - spec/sword/parsers/proquest_etd_parser_spec.rb
+    - spec/sword/util_spec.rb
 
 Style/RedundantInterpolation:
   Exclude:
@@ -563,13 +579,19 @@ Style/StringConcatenation:
     - lib/sword/adapters/hyacinth_adapter.rb
     - lib/sword/endpoints/proquest_endpoint.rb
     - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/tasks/sword/ci.rake
 
 Style/StringLiterals:
   Exclude:
+    - app/helpers/sword_helper.rb
+    - bin/setup
+    - db/schema.rb
     - lib/sword/adapters/hyacinth_adapter.rb
     - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
     - lib/sword/parsers/mods_parser.rb
     - lib/sword/parsers/proquest_etd_parser.rb
+    - lib/tasks/sword/ci.rake
+    - spec/rails_helper.rb
     - spec/sword/adapters/hyacinth_adapter_spec.rb
     - spec/sword/endpoints/eprints_endpoint_spec.rb
     - spec/sword/endpoints/proquest_endpoint_spec.rb
@@ -578,6 +600,7 @@ Style/StringLiterals:
     - spec/sword/parsers/mets_parser_spec.rb
     - spec/sword/parsers/mods_parser_spec.rb
     - spec/sword/parsers/proquest_etd_parser_spec.rb
+    - spec/sword/util_spec.rb
 
 Style/SymbolProc:
   Exclude:

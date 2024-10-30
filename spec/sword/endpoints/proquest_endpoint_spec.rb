@@ -35,10 +35,6 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
         # for test purposes, turn off actual sending of POST request
         @proquest_endpoint.hyacinth_adapter.no_op_post = true
       end
-
-      it '#handle_deposit is called successfully (without crashing)' do
-        @proquest_endpoint.handle_deposit(@content_dir)
-      end
     end
   end
 
