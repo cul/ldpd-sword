@@ -25,8 +25,10 @@ gem 'base64', '0.1.1'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# For authentication
+# Use devise and omniauth for authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-cul', '~> 0.2.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

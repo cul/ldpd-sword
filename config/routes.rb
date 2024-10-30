@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'deposits#index'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users
   # get 'sword/deposit'
   # get 'sword/deposit/:collection_slug' => 'sword#deposit'
