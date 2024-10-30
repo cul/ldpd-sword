@@ -1,0 +1,591 @@
+inherit_gem:
+  rubocul: rubocul_default.yml
+
+AllCops:
+  TargetRubyVersion: 3.3.5  # Update to your version of ruby
+  TargetRailsVersion: 7.2.1 # Update to your version of rails
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb' # file generated during 'rails new'
+
+RSpec/BeEq:
+  Exclude:
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/BeforeAfterAll:
+  Exclude:
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/mets/mets_file_spec.rb
+    - spec/sword/mets/proquest_mets_file_spec.rb
+    - spec/sword/mets/xml_data_element_spec.rb
+    - spec/sword/mets/proquest_etd_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_mets_file_spec.rb
+    - spec/sword/mets/mods_mets_file_spec.rb
+    - spec/sword/mets/mods_xml_data_element_spec.rb
+
+RSpec/BeNil:
+  Exclude:
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+
+RSpec/ContainExactly:
+  Exclude:
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+
+RSpec/ContextMethod:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/DescribedClass:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/metadata/note_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - spec/sword/endpoints/endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+
+RSpec/ExampleWording:
+  Exclude:
+    - spec/sword/parsers/mets_parser_spec.rb
+
+RSpec/EmptyLineAfterFinalLet:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+RSpec/EmptyLineAfterSubject:
+  Exclude:
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/metadata/note_spec.rb
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+RSpec/ExcessiveDocstringSpacing:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/HooksBeforeExamples:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+RSpec/InstanceVariable:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/mets/mets_file_spec.rb
+    - spec/sword/mets/proquest_mets_file_spec.rb
+    - spec/sword/mets/xml_data_element_spec.rb
+    - spec/sword/mets/proquest_etd_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - spec/sword/mets/eprints_dc_mets_file_spec.rb
+    - spec/sword/mets/mods_mets_file_spec.rb
+    - spec/sword/mets/mods_xml_data_element_spec.rb
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/NamedSubject:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/metadata/corporate_name_spec.rb
+    - spec/sword/metadata/degree_spec.rb
+    - spec/sword/metadata/epdcx_bibliographic_citation_spec.rb
+    - spec/sword/metadata/note_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/metadata/parent_publication_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+RSpec/NoExpectationExample:
+  Exclude:
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+
+Layout/LineLength:
+  Exclude:
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/mets/eprints_dc_xml_data_element_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+    - lib/sword/mets/eprints_dc_constants.rb
+    - lib/sword/adapters/hyacinth_adapter.rb # TO-DO
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+# TO-DO.
+Layout/ArgumentAlignment:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+Layout/ArrayAlignment:
+  Exclude:
+    - spec/sword/parsers/mods_parser_spec.rb
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Exclude:
+    - lib/sword/metadata/mods_name.rb
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+
+Layout/EmptyLinesAroundClassBody:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Layout/ExtraSpacing:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/FirstArrayElementIndentation:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/FirstHashElementIndentation:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/HashAlignment:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/IndentationConsistency:
+  Exclude:
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Layout/IndentationStyle:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/IndentationWidth:
+  Exclude:
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+
+Layout/LeadingCommentSpace:
+  Exclude:
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+
+Layout/MultilineHashBraceLayout:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/MultilineArrayBraceLayout:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/MultilineMethodCallBraceLayout:
+  Exclude:
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+
+Layout/SpaceAfterComma:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Layout/SpaceAroundOperators:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Layout/SpaceBeforeBlockBraces:
+  Exclude:
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+
+Layout/SpaceInsideBlockBraces:
+  Exclude:
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+
+Layout/SpaceInsideHashLiteralBraces:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+Layout/SpaceInsideParens:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Layout/TrailingWhitespace:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - spec/sword/metadata/mods_name_spec.rb
+
+Lint/AmbiguousOperator:
+  Exclude:
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Lint/ParenthesesAsGroupedExpression:
+  Exclude:
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+
+Lint/RedundantSplatExpansion:
+  Exclude:
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Lint/Void:
+  Exclude:
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Metrics/AbcSize:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Metrics/ClassLength:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Naming/AccessorMethodName:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Naming/MethodName:
+  Exclude:
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Naming/MethodParameterName:
+  Exclude:
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Naming/VariableName:
+  Exclude:
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+
+Performance/StringReplacement:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Rails/FilePath:
+  Exclude:
+    - config/initializers/sword.rb
+
+Rails/HasManyOrHasOneDependent:
+  Exclude:
+    - app/models/collection.rb
+    - app/models/depositor.rb
+
+Rails/PluralizationGrammar:
+  Exclude:
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Rails/Present:
+  Exclude:
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+
+Security/Open:
+  Exclude:
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+
+Style/AccessorGrouping:
+  Exclude:
+    - lib/sword/endpoints/endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+
+Style/AndOr:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+
+Style/ClassMethods:
+  Exclude:
+    - app/models/depositor.rb
+
+Style/ConditionalAssignment:
+  Exclude:
+    - lib/sword/endpoints/proquest_endpoint.rb
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - config/initializers/sword.rb
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/constants.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/metadata/corporate_name.rb
+    - lib/sword/metadata/degree.rb
+    - lib/sword/metadata/epdcx_bibliographic_citation.rb
+    - lib/sword/metadata/mods_name.rb
+    - lib/sword/metadata/note.rb
+    - lib/sword/metadata/parent_publication.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mets_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - app/models/collection.rb
+    - app/models/depositor_collection_pairing.rb
+    - app/models/depositor.rb
+    - app/models/deposit.rb
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/metadata/corporate_name_spec.rb
+    - spec/sword/metadata/degree_spec.rb
+    - spec/sword/metadata/epdcx_bibliographic_citation_spec.rb
+    - spec/sword/metadata/note_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/metadata/parent_publication_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Style/GuardClause:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+Style/IfUnlessModifier:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+
+Style/LineEndConcatenation:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Style/MethodDefParentheses:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - app/models/depositor.rb
+
+Style/MultilineIfModifier:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/mods_parser.rb
+
+Style/MultilineTernaryOperator:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - app/models/depositor.rb
+
+Style/MutableConstant:
+  Exclude:
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/constants.rb
+
+Style/NestedParenthesizedCalls:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Style/ParenthesesAroundCondition:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+
+Style/PreferredHashMethods:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Style/RedundantFileExtensionInRequire:
+  Exclude:
+    - lib/sword/endpoints/academic_commons_endpoint.rb
+    - lib/sword/endpoints/eprints_endpoint.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/academic_commons_endpoint_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/mets_to_hyacinth_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/metadata/corporate_name_spec.rb
+    - spec/sword/metadata/degree_spec.rb
+    - spec/sword/metadata/epdcx_bibliographic_citation_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/metadata/note_spec.rb
+    - spec/sword/metadata/parent_publication_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Style/RedundantInterpolation:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Style/RedundantReturn:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+
+Style/RegexpLiteral:
+  Exclude:
+    - lib/sword/endpoints/eprints_endpoint.rb
+
+Style/SafeNavigation:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+Style/StringConcatenation:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/proquest_endpoint.rb
+    - lib/sword/parsers/eprints_dc_xml_parser.rb
+
+Style/StringLiterals:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/adapters/hyacinth_adapter_spec.rb
+    - spec/sword/endpoints/eprints_endpoint_spec.rb
+    - spec/sword/endpoints/proquest_endpoint_spec.rb
+    - spec/sword/metadata/mods_name_spec.rb
+    - spec/sword/parsers/eprints_dc_xml_parser_spec.rb
+    - spec/sword/parsers/mets_parser_spec.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+    - spec/sword/parsers/proquest_etd_parser_spec.rb
+
+Style/SymbolProc:
+  Exclude:
+    - lib/sword/parsers/mods_parser.rb
+    - lib/sword/parsers/proquest_etd_parser.rb
+    - spec/sword/parsers/mods_parser_spec.rb
+
+Style/UnlessElse:
+  Exclude:
+    - lib/sword/adapters/hyacinth_adapter.rb
+    - lib/sword/endpoints/mets_to_hyacinth_endpoint.rb

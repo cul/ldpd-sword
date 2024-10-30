@@ -45,6 +45,9 @@ group :development, :test do
   # fcd1, 04/11/22: Rails 6 doesn't like '~> 1.3.13'. As ldpd-amesa does, spec to ~> 1.4
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails'
+
+  # Rubocul for linting
+  gem 'rubocul', '~> 4.0'
 end
 
 group :development do
