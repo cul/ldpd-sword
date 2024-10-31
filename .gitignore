@@ -27,3 +27,6 @@
 
 # Ignore ~ files
 *~
+
+# Ignore simplecov coverage report
+/coverage

@@ -50,6 +50,9 @@ group :development, :test do
 
   # Rubocul for linting
   gem 'rubocul', '~> 4.0'
+
+  # simplecov for test coverage
+  gem 'simplecov', '~> 0.22', require: false
 end
 
 group :development do
