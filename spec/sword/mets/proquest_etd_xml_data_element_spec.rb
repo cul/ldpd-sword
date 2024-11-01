@@ -21,7 +21,6 @@ RSpec.describe Sword::Mets::ProquestEtdXmlDataElement do
           surname: 'etdsword:DISS_surname',
           title: '//etdsword:DISS_title' }
       pq_mets_file = Sword::Mets::MetsFile.new(file_fixture('xml/mets/PQ_mets.xml').read)
-      # @xml_data_proquest = @pq_mets_file.find_md_wrap_xml_data_elements(mdtype: 'OTHER', other_mdtype: 'PROQUEST')
       xml_data_proquest = pq_mets_file.find_md_wrap_xml_data_element(mdtype: 'OTHER', other_mdtype: 'PROQUEST')
       @pq_xml_data = described_class.new(xml_data_proquest, xpath_info)
       @pq_xml_data.parse

@@ -6,7 +6,6 @@ RSpec.describe Sword::Mets::MetsFile do
   describe 'at initialization' do
     before(:context) do
       @pq_mets_file = described_class.new(file_fixture('xml/mets/PQ_mets.xml').read)
-      # @pq_mets_file = described_class.new(Nokogiri::XML(file_fixture('xml/mets/PQ_mets.xml').read))
     end
 
     it 'sets md_wrap_xml_data_elements correctly' do
@@ -19,7 +18,6 @@ RSpec.describe Sword::Mets::MetsFile do
   describe 'find_md_wrap_xml_data_elements' do
     before(:context) do
       @pq_mets_file = described_class.new(file_fixture('xml/mets/PQ_mets.xml').read)
-      # @pq_mets_file = described_class.new(Nokogiri::XML(file_fixture('xml/mets/PQ_mets.xml').read))
     end
 
     it 'works correctly for MDTYPE => OTHER and OTHERTYPE => PROQUEST' do

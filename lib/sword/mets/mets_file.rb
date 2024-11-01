@@ -8,7 +8,6 @@ class Sword::Mets::MetsFile
 
   def initialize(mets_file)
     @nokogiri_xml_doc = Nokogiri::XML(mets_file)
-    # @nokogiri_xml_doc = mets_file
     @mets_hdr = @nokogiri_xml_doc.xpath('//xmlns:metsHdr')
     @md_wrap_xml_data_elements = @nokogiri_xml_doc.xpath('//xmlns:mdWrap/xmlns:xmlData')
     @files = []

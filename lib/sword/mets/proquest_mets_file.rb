@@ -19,9 +19,7 @@ class Sword::Mets::ProquestMetsFile < Sword::Mets::MetsFile
   def initialize(nokogiri_xml_doc)
     super
     @xpath_info = XPATH_INFO
-    # @xml_data = Sword::Mets::XmlDataElement.new(nokogiri_xml_doc, XPATH_HASH)
     @xml_data = find_md_wrap_xml_data_elements(mdtype: 'OTHER', other_mdtype: 'PROQUEST')
-    # md_wrap_proquest_xml_data_element = find_md_wrap_xml_data_elements(mdtype: OTHER, other_mdtype: OTHER_MDTYPE)
     md_wrap_proquest_xml_data_element = find_md_wrap_xml_data_element(mdtype: OTHER, other_mdtype: OTHER_MDTYPE)
     @xml_data_element = Sword::Mets::ProquestEtdXmlDataElement.new(md_wrap_proquest_xml_data_element, XPATH_INFO)
   end
