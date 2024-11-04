@@ -44,7 +44,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'listen'
-  # fcd1, 04/11/22: Rails 6 doesn't like '~> 1.3.13'. As ldpd-amesa does, spec to ~> 1.4
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails'
 
