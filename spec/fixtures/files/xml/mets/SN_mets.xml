@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><mets xmlns="http://www.loc.gov/METS/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:epdcx="http://purl.org/eprint/epdcx/2006-11-16/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd" PROFILE="DSpace METS SIP Profile 1.0" LABEL="DSpace SWORD Item" OBJID="sword-mets" ID="sort-mets_mets">
+<metsHdr CREATEDATE="2024-10-06T05:09:46">
+<agent TYPE="ORGANIZATION" ROLE="CUSTODIAN">
+<name>BioMed Central</name>
+</agent>
+</metsHdr>
+<dmdSec GROUPID="sword-mets-dmd-1_group-1" ID="sword-mets-dmd-1">
+<mdWrap MIMETYPE="text/xml" OTHERMDTYPE="EPDCX" MDTYPE="OTHER" LABEL="SWAP Metadata">
+<xmlData>
+<epdcx:descriptionSet xsi:schemaLocation="http://purl.org/eprint/epdcx/2006-11-16/ http://purl.org/eprint/epdcx/xsd/2006-11-16/epdcx.xsd">
+<epdcx:description epdcx:resourceId="sword-mets-epdcx-1">
+<epdcx:statement epdcx:valueURI="http://purl.org/eprint/entityType/ScholarlyWork" epdcx:propertyURI="http://purl.org/dc/elements/1.1/type"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/title">
+<epdcx:valueString>Suicidal behaviors among refugee women in Jordan: post-traumatic stress disorder, social support and post-displacement stressors</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Refugee</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Suicidal behaviors</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>PTSD</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Social support</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Post-displacement stressors</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Jordan</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/subject">
+<epdcx:valueString>Women</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/abstract">
+<epdcx:valueString>Abstract Background This paper examines the frequency of suicidal behaviors (suicidal ideation or attempt) among a sample of Syrian refugee women living in non-camp settings in Jordan. We asked several questions surrounding suicide and examined the associations between post-traumatic stress disorder (PTSD), social connectedness, post-displacement stressors and suicidal behaviors. Methods Participants (n = 507) were recruited using a clinic-based systematic sampling from four health clinics throughout Jordan in 2018. We used a multivariable logistic regression to examine the hypothesis of whether positive screening for PTSD (PCL-5), social isolation (have no friends or family members available to help), and greater number of post-displacement stressors (PMLD Checklist) is associated with suicidal behaviors. Results Approximately one-tenth (9.86%) of participants surveyed reported suicidal behaviors (suicidal ideation or attempt) in the past six months. Our hypothesis was partially supported. In the adjusted multivariable analyses, screening positive for PTSD [OR:4.02 (95% CI:1.33, 12.15)] increased odds of suicidal behaviors, while having one friend or family member available to help when in need [OR:0.31 (95% CI:0.13, 0.78)] decreased odds of suicidal behaviors. We did not find any associations between the number of post-displacement stressors and suicidal behaviors in the multivariable model. Conclusion Agencies and practitioners addressing suicidal behaviors among Syrian refugee women should provide interventions that aim to reduce PTSD symptoms and social isolation. Potential intervention includes screening for mental health symptoms and suicidal behaviors during routine visits with service providers, as well as providing proper mental health and psychosocial support services according to the mapping of available services.</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Brooks, Mohamad A.</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Dasgupta, Anindita</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Khadra, Maysa’</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Bawaneh, Ahmad</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>Kaushal, Neeraj</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/creator">
+<epdcx:valueString>El-Bassel, Nabila</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:valueRef="sword-mets-expr-1" epdcx:propertyURI="http://purl.org/eprint/terms/isExpressedAs"/>
+</epdcx:description>
+<epdcx:description epdcx:resourceId="sword-mets-expr-1">
+<epdcx:statement epdcx:valueURI="http://purl.org/eprint/entityType/Expression" epdcx:propertyURI="http://purl.org/dc/elements/1.1/type"/>
+<epdcx:statement epdcx:vesURI="http://purl.org/dc/terms/RFC3066" epdcx:propertyURI="http://purl.org/dc/elements/1.1/language">
+<epdcx:valueString>en</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:valueURI="http://purl.org/eprint/type/JournalArticle" epdcx:vesURI="http://purl.org/eprint/terms/Type" epdcx:propertyURI="http://purl.org/dc/elements/1.1/type"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/terms/available">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/W3CDTF">2024-09-30</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/copyrightHolder">
+<epdcx:valueString>The Author(s)</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/publisher">
+<epdcx:valueString>BioMed Central</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:valueURI="http://purl.org/eprint/accessRights/OpenAccess" epdcx:vesURI="http://purl.org/eprint/terms/AccessRights" epdcx:propertyURI="http://purl.org/dc/terms/accessRights"/>
+<epdcx:statement epdcx:propertyURI="http://purl.org/eprint/terms/bibliographicCitation">
+<epdcx:valueString>BMC Public Health. 2024 Sep 30;24(1):2677</epdcx:valueString>
+</epdcx:statement>
+<epdcx:statement epdcx:propertyURI="http://purl.org/dc/elements/1.1/identifier">
+<epdcx:valueString epdcx:sesURI="http://purl.org/dc/terms/URI">https://doi.org/10.1186/s12889-024-20128-1</epdcx:valueString>
+</epdcx:statement>
+</epdcx:description>
+</epdcx:descriptionSet>
+</xmlData>
+</mdWrap>
+</dmdSec>
+<fileSec>
+<fileGrp USE="CONTENT" ID="sword-mets-fgrp-1">
+<file MIMETYPE="application/pdf" ID="sword-mets-file-1" GROUPID="sword-mets-fgid-0">
+<FLocat xlink:href="12889_2024_Article_20128.pdf" LOCTYPE="URL"/>
+</file>
+</fileGrp>
+</fileSec>
+<structMap TYPE="LOGICAL" LABEL="structure" ID="sword-mets-struct-1">
+<div TYPE="SWORD Object" DMDID="sword-mets-dmd-1" ID="sword-mets-div-1">
+<div TYPE="File" ID="sword-mets-div-2">
+<fptr FILEID="sword-mets-file-1"/>
+</div>
+</div>
+</structMap>
+</mets>

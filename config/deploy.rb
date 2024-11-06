@@ -1,4 +1,4 @@
-lock '3.5.0'
+lock '3.17.3'
 
 set :department, 'ldpd'
 set :instance, fetch(:department)
@@ -9,14 +9,15 @@ set :deploy_name, "#{fetch(:application)}_#{fetch(:stage)}"
 # Default value for :rails_env is fetch(:stage)
 set :rails_env, fetch(:deploy_name)
 # use the rvm wrapper
+set :rvm_custom_path, '~/.rvm-alma8'
 set :rvm_ruby_version, fetch(:deploy_name)
 
 set :repo_url, "git@github.com:cul/#{fetch(:repo_name)}.git"
 
-set :remote_user, "#{fetch(:instance)}serv"
+set :remote_user, "renserv"
 # Default deploy_to directory is /var/www/:application
 # set :deploy_to, '/var/www/my_app_name'
-set :deploy_to, "/opt/passenger/#{fetch(:instance)}/#{fetch(:deploy_name)}"
+set :deploy_to, "/opt/passenger/#{fetch(:deploy_name)}"
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -41,6 +42,7 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
   'config/depositors.yml',
   'config/hyacinth.yml',
+  'config/permissions.yml',
   'config/secrets.yml',
   'config/seeds.yml',
   'config/sword.yml'

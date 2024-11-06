@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<mets xmlns="http://www.loc.gov/METS/" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-2.xsd">
+  <metsHdr CREATEDATE="2024-10-07T20:31:06Z">
+    <agent ROLE="CUSTODIAN" TYPE="ORGANIZATION">
+      <name>Academic Commons, Columbia University</name>
+    </agent>
+  </metsHdr>
+  <dmdSec ID="sword-mets-dmd-1">
+    <mdWrap MDTYPE="MODS">
+      <xmlData>
+        <mods:mods>
+          <mods:titleInfo>
+            <mods:title>Gita May: A Life</mods:title>
+          </mods:titleInfo>
+          <mods:abstract>Biographical note on Gita May (1929-2016), Professor Emerita of French at Columbia. Includes an essay by Abram Jochimek, Gita May&#x2019;s father, originally published in The Book of Zloczew &#x5D6;&#x5DC;&#x5D5;&#x5E6;&#x5F3;&#x5D1; &#x5E1;&#x5E4;&#x5E8; (Sefer Zlots&#x2019;ev, Tel Aviv, 1971, 334&#x2013;35), a Yiddish-language collection of testimonies of Holocaust survivors from the town of Zloczew, Poland, and an essay in the same volume by Gita May herself (Book of Zloczew, 399&#x2013;400). Translations from Yiddish by Josh Price.</mods:abstract>
+          <mods:originInfo>
+            <mods:dateIssued encoding="w3cdtf">2016</mods:dateIssued>
+          </mods:originInfo>
+          <mods:relatedItem type="host">
+            <mods:identifier type="doi">10.1111/cdev.14088</mods:identifier>
+          </mods:relatedItem>
+          <mods:relatedItem type="host">
+            <mods:identifier type="uri">doi.org/10.1021/acsestengg.4c00246</mods:identifier>
+          </mods:relatedItem>
+          <mods:name type="personal" ID="pf3">
+            <mods:namePart>Force, Pierre</mods:namePart>
+            <mods:role>
+              <mods:roleTerm type="text" valueURI="http://id.loc.gov/vocabulary/relators/aut" authority="marcrelator">Author</mods:roleTerm>
+            </mods:role>
+          </mods:name>
+          <mods:accessCondition type="use and reproduction" displayLabel="Rights Status" xlink:href="http://rightsstatements.org/vocab/InC/1.0/"/>
+	  <mods:accessCondition type="use and reproduction" displayLabel="License" xlink:href="https://creativecommons.org/licenses/by/4.0/"/>
+	  <mods:note type="internal">CC License already added by publisher - article appears in an OA journal.</mods:note>
+          <mods:recordInfo>
+            <mods:recordInfoNote>AC SWORD MODS v1.0</mods:recordInfoNote>
+          </mods:recordInfo>
+        </mods:mods>
+      </xmlData>
+    </mdWrap>
+  </dmdSec>
+  <fileSec>
+    <fileGrp ID="sword-mets-fgrp-1" USE="CONTENT">
+      <file GROUPID="sword-mets-fgid-0" ID="sword-mets-file-1" MIMETYPE="application/pdf">
+        <FLocat LOCTYPE="URL" xlink:href="Gita May bio.pdf"/>
+      </file>
+    </fileGrp>
+  </fileSec>
+  <structMap ID="sword-mets-struct-1" LABEL="structure" TYPE="LOGICAL">
+    <div ID="sword-mets-div-1" DMDID="sword-mets-dmd-1" TYPE="SWORD Object">
+      <div ID="sword-mets-div-2" TYPE="File"/>
+      <fptr FILEID="sword-mets-file-1"/>
+    </div>
+  </structMap>
+</mets>
