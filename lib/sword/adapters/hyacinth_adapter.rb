@@ -98,7 +98,7 @@ module Sword
 
       def ingest_asset(parent_pid,
                        document_filepath)
-        asset_import_subdir = "swordtmp_#{parent_pid}"
+        asset_import_subdir = File.join(HYACINTH_CONFIG[:upload_subdir_prefix],"swordtmp_#{parent_pid}")
         asset_import_subdir.gsub!(':','')
         # puts'*************************asset import dir***********************'
         # puts asset_import_subdir
