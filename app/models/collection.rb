@@ -2,8 +2,8 @@ class Collection < ApplicationRecord
   validates :name, presence: true
   validates :atom_title, presence: true
   validates :slug, presence: true
-  serialize :mime_types, Array
-  serialize :sword_package_types, Array
+  serialize :mime_types, type: Array
+  serialize :sword_package_types, type: Array
   has_many :deposits
   has_many :depositor_collection_pairings, dependent: :destroy
   has_many :depositors, through: :depositor_collection_pairings
