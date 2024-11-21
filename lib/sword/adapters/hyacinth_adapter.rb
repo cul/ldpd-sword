@@ -3,7 +3,8 @@ module Sword
   module Adapters
     class HyacinthAdapter
 
-      attr_reader :digital_object_data,
+      attr_reader :asset_pids,
+                  :digital_object_data,
                   :dynamic_field_data,
                   :hyacinth_server_response,
                   :item_pid
@@ -37,6 +38,7 @@ module Sword
                     :use_and_reproduction_uri
 
       def initialize
+        @asset_pids = []
         @corporate_names = []
         @dynamic_field_data = {}
         @notes = []
@@ -133,6 +135,7 @@ module Sword
           Rails.logger.warn("ingest_asset: Completed ingest request to Hyacinth") if HYACINTH_CONFIG[:log_ingest]
         end
         # puts @hyacinth_response.inspect
+        @asset_pids << pid_last_ingest
         @hyacinth_server_response
       end
 
