@@ -52,6 +52,8 @@ group :development, :test do
 
   # simplecov for test coverage
   gem 'simplecov', '~> 0.22', require: false
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
