@@ -32,6 +32,7 @@ class SwordController < ApplicationController
     Rails.logger.warn("Title: #{@endpoint.deposit_title.truncate_words(10)}, " \
                       "Files: #{@endpoint.documents_to_deposit}, " \
                       "Hyacinth item pid: #{@endpoint.adapter_item_identifier}, " \
+                      "Hyacinth asset pids: #{@endpoint.asset_pids}, " \
                       "Path to SWORD contents: #{@path_to_deposit_contents}"
                      )
 
