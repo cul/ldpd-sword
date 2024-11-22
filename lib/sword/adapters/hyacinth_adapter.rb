@@ -139,6 +139,27 @@ module Sword
         @hyacinth_server_response
       end
 
+      def expected_and_retrieved_asset_pids_match?
+        # retrieve item info from Hyacinth
+        uri = URI("#{HYACINTH_CONFIG[:url]}/#{@item_pid}.json")
+        get_req = Net::HTTP::Get.new(uri)
+        get_req.basic_auth(HYACINTH_CONFIG[:username],
+                            HYACINTH_CONFIG[:password])
+        server_response =
+          Net::HTTP.start(uri.hostname,
+                          uri.port,
+                          use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(get_req) }
+        unless server_response.nil?
+          retrieved_pids =
+            JSON.parse(server_response.body)['ordered_child_digital_objects'].each.map { |pid_hash| pid_hash['pid'] }
+        end
+        pids_match = Set.new(@asset_pids) == Set.new(retrieved_pids)
+        unless pids_match
+          Rails.logger.warn("Asset pids mismatch (expected: #{@asset_pids}, retrieved from Hyacinth Item: #{retrieved_pids}")
+        end
+        pids_match
+      end
+
       def last_ingest_successful?
         unless @hyacinth_server_response.nil?
           @hyacinth_server_response.body['success']
