@@ -68,7 +68,6 @@ module Sword
           ingest_documents_into_hyacinth
           ingest_mets_xml_file_into_hyacinth
           @asset_pids = @hyacinth_adapter.asset_pids
-          confirm_ingest
         else
           Rails.logger.warn "Bypassing ingest into Hyacinth, set bogus PID"
           # bogus item identifier. Instead, could use string 'NotApplicable'
