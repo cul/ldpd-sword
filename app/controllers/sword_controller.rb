@@ -48,6 +48,7 @@ class SwordController < ApplicationController
       @endpoint.deposit_title.truncate_words(20).truncate(200, omission: '')
     @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
     @deposit.asset_pids = @endpoint.asset_pids
+    @deposit.ingest_confirmed = @endpoint.ingest_confirmed
     @deposit.save
     # @depositor.deposits << @deposit
     # @collection.deposits << @deposit

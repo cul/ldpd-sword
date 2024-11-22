@@ -149,10 +149,12 @@ module Sword
           Net::HTTP.start(uri.hostname,
                           uri.port,
                           use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(get_req) }
-        unless server_response.nil?
-          retrieved_pids =
-            JSON.parse(server_response.body)['ordered_child_digital_objects'].each.map { |pid_hash| pid_hash['pid'] }
+        unless server_response.is_a?  Net::HTTPSuccess
+          Rails.logger.warn("Item GET failure (Item PID: #{@item_pid}, HTTP code: #{server_response.code})")
+          return false
         end
+        retrieved_pids =
+          JSON.parse(server_response.body)['ordered_child_digital_objects'].each.map { |pid_hash| pid_hash['pid'] }
         pids_match = Set.new(@asset_pids) == Set.new(retrieved_pids)
         unless pids_match
           Rails.logger.warn("Asset pids mismatch (expected: #{@asset_pids}, retrieved from Hyacinth Item: #{retrieved_pids}")
