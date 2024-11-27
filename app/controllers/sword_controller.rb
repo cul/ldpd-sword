@@ -59,6 +59,47 @@ class SwordController < ApplicationController
                    ingest_into_hyacinth: !(HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@endpoint.collection_slug][:bypass_hyacinth_ingest])}
   end
 
+  def resubmit_deposit(deposit)
+
+    @endpoint = get_endpoint(deposit.collection_slug,
+                             deposit.depositor_user_id)
+
+    @path_to_deposit_contents = deposit.content_path
+
+    # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
+    Rails.logger.warn("About to resubmit deposit for deposit id: #{deposit.id}:" \
+                      "Collection slug: #{deposit.collection_slug}, " \
+                      "Username: #{deposit.depositor_user_id}, " \
+                      "Path to contents: #{@path_to_deposit_contents}"
+                     )
+
+    @endpoint.handle_deposit(@path_to_deposit_contents)
+
+    # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
+    Rails.logger.warn("Following is a re-deposit:" \
+                      "Title: #{@endpoint.deposit_title.truncate_words(10)}, " \
+                      "Files: #{@endpoint.documents_to_deposit}, " \
+                      "Hyacinth item pid: #{@endpoint.adapter_item_identifier}, " \
+                      "Hyacinth asset pids: #{@endpoint.asset_pids}, " \
+                      "Path to SWORD contents: #{@path_to_deposit_contents}"
+                     )
+
+    # create Deposit instance to store deposit info in database
+    @deposit = Deposit.new
+    @deposit.depositor_user_id = @depositor_user_id
+    @deposit.collection_slug = @collection_slug
+    @deposit.deposit_files = @endpoint.documents_to_deposit
+    @deposit.title = "(RE-DEPOSIT) " + deposit.title
+    @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
+    @deposit.asset_pids = @endpoint.asset_pids
+    @deposit.ingest_confirmed = @endpoint.confirm_ingest
+    @deposit.content_path = @path_to_deposit_contents
+    @deposit.save
+    response.status = 201
+    render json: { item_pid: @endpoint.adapter_item_identifier,
+                   ingest_into_hyacinth: !(HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@endpoint.collection_slug][:bypass_hyacinth_ingest])}
+  end
+
   def service_document
     # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
     Rails.logger.warn("Received Service Document request. Username: #{@depositor_user_id}")
