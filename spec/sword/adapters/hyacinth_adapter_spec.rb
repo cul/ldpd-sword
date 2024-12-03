@@ -882,4 +882,24 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       end
     end
   end
+
+  describe 'expected_and_retrieved_asset_pids_match?' do
+    before(:example) do
+      http_success = double("http_success")
+      allow(http_success).to receive(:is_a?) { true }
+      allow(http_success).to receive(:body) { JSON.generate({'ordered_child_digital_objects' => [ { 'pid' => 'ac:12344321'} ] } ) }
+      allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
+    end
+    it "returns true if pids match" do
+      subject.instance_variable_set(:@asset_pids, ['ac:12344321'])
+      res = subject.expected_and_retrieved_asset_pids_match?
+      expect(res).to be(true)
+    end
+
+    it "returns false if pids don't match" do
+      subject.instance_variable_set(:@asset_pids, ['ac:123456789'])
+      res = subject.expected_and_retrieved_asset_pids_match?
+      expect(res).to be(false)
+    end
+  end
 end

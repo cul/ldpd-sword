@@ -33,7 +33,10 @@ Rails.application.routes.draw do
       post 'add_permission', action: 'add_permission', as: 'add_permission'
     end
   end
-  resources :deposits
+  resources :deposits do
+    get 'resubmit', on: :member
+  end
+
   resources :packages
 
   # Example resource route with options:

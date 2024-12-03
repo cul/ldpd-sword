@@ -30,3 +30,5 @@
 
 # Ignore simplecov coverage report
 /coverage
+
+/config/master.key

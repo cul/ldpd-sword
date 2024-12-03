@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Path to deposit contents:</strong>
+  <%= @deposit.content_path %>
+</p>
+
+<p>
   <strong>Files in deposit:</strong>
   <%= @deposit.deposit_files %>
 </p>
@@ -16,6 +21,16 @@
       HYACINTH_CONFIG[:url] + '#' +
       Rack::Utils.escape('{"controller":"digital_objects","action":"show","pid":"'+ "#{@deposit.item_in_hyacinth}"+'"}'),
       target: '_blank') %>
+</p>
+
+<p>
+  <strong>Asset PIDs:</strong>
+  <%= @deposit.asset_pids %>
+</p>
+
+<p>
+  <strong>Ingest Confirmed?</strong>
+  <%= @deposit.ingest_confirmed %>
 </p>
 
 <p>
@@ -34,3 +49,4 @@
 </p>
 
 <%= link_to 'Delete', @deposit, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Resubmit', resubmit_deposit_path %>

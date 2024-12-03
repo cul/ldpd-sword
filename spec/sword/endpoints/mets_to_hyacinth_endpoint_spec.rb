@@ -30,4 +30,23 @@ RSpec.describe Sword::Endpoints::MetsToHyacinthEndpoint do
       # add check here about calling @mets_parser.parse
     end
   end
+
+  describe 'confirm_ingest' do
+    before(:example) do
+      @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new('sample_collection_slug',
+                                                                    'sample_depositor_user_id')
+      @hyacinth_adapter = double("hyacinth_adapter")
+      @mets_endpoint.instance_variable_set(:@hyacinth_adapter, @hyacinth_adapter)
+    end
+
+    it 'returns false if expected_and_retrieved_asset_pids_match? returns false' do
+      allow(@hyacinth_adapter).to receive(:expected_and_retrieved_asset_pids_match?) { false }
+      expect(@mets_endpoint.confirm_ingest).to be(false)
+    end
+
+    it 'returns true if expected_and_retrieved_asset_pids_match? return true' do
+      allow(@hyacinth_adapter).to receive(:expected_and_retrieved_asset_pids_match?) { true }
+      expect(@mets_endpoint.confirm_ingest).to be(true)
+    end
+  end
 end

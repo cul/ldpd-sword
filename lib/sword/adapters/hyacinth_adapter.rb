@@ -3,7 +3,8 @@ module Sword
   module Adapters
     class HyacinthAdapter
 
-      attr_reader :digital_object_data,
+      attr_reader :asset_pids,
+                  :digital_object_data,
                   :dynamic_field_data,
                   :hyacinth_server_response,
                   :item_pid
@@ -37,6 +38,7 @@ module Sword
                     :use_and_reproduction_uri
 
       def initialize
+        @asset_pids = []
         @corporate_names = []
         @dynamic_field_data = {}
         @notes = []
@@ -133,7 +135,31 @@ module Sword
           Rails.logger.warn("ingest_asset: Completed ingest request to Hyacinth") if HYACINTH_CONFIG[:log_ingest]
         end
         # puts @hyacinth_response.inspect
+        @asset_pids << pid_last_ingest
         @hyacinth_server_response
+      end
+
+      def expected_and_retrieved_asset_pids_match?
+        # retrieve item info from Hyacinth
+        uri = URI("#{HYACINTH_CONFIG[:url]}/#{@item_pid}.json")
+        get_req = Net::HTTP::Get.new(uri)
+        get_req.basic_auth(HYACINTH_CONFIG[:username],
+                            HYACINTH_CONFIG[:password])
+        server_response =
+          Net::HTTP.start(uri.hostname,
+                          uri.port,
+                          use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(get_req) }
+        unless server_response.is_a?  Net::HTTPSuccess
+          Rails.logger.warn("Item GET failure (Item PID: #{@item_pid}, HTTP code: #{server_response.code})")
+          return false
+        end
+        retrieved_pids =
+          JSON.parse(server_response.body)['ordered_child_digital_objects'].each.map { |pid_hash| pid_hash['pid'] }
+        pids_match = Set.new(@asset_pids) == Set.new(retrieved_pids)
+        unless pids_match
+          Rails.logger.warn("Asset pids mismatch (expected: #{@asset_pids}, retrieved from Hyacinth Item: #{retrieved_pids}")
+        end
+        pids_match
       end
 
       def last_ingest_successful?

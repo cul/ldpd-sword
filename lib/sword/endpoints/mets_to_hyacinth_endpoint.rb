@@ -9,6 +9,7 @@ module Sword
       # Some of these can be removed if no need for external access,
       # though in that case specs may need to be updated to access
       # instance var directly instead of through attr_reader
+      attr_reader :asset_pids
       attr_reader :content_dir
       attr_reader :mets_xml_file
       attr_reader :mets_parser
@@ -66,10 +67,21 @@ module Sword
           @adapter_item_identifier = ingest_item_into_hyacinth
           ingest_documents_into_hyacinth
           ingest_mets_xml_file_into_hyacinth
+          @asset_pids = @hyacinth_adapter.asset_pids
         else
           Rails.logger.warn "Bypassing ingest into Hyacinth, set bogus PID"
           # bogus item identifier. Instead, could use string 'NotApplicable'
           @adapter_item_identifier = 'na:xxxxxxxxxxx'
+        end
+      end
+
+      def confirm_ingest
+        if @hyacinth_adapter.expected_and_retrieved_asset_pids_match?
+          Rails.logger.warn("MetsToHyacinthEndpoint: Ingest confirmed")
+          true
+        else
+          Rails.logger.warn("MetsToHyacinthEndpoint: INGEST NOT CONFIRMED!!!")
+          false
         end
       end
 

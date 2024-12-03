@@ -32,6 +32,7 @@ class SwordController < ApplicationController
     Rails.logger.warn("Title: #{@endpoint.deposit_title.truncate_words(10)}, " \
                       "Files: #{@endpoint.documents_to_deposit}, " \
                       "Hyacinth item pid: #{@endpoint.adapter_item_identifier}, " \
+                      "Hyacinth asset pids: #{@endpoint.asset_pids}, " \
                       "Path to SWORD contents: #{@path_to_deposit_contents}"
                      )
 
@@ -47,6 +48,9 @@ class SwordController < ApplicationController
     @deposit.title =
       @endpoint.deposit_title.truncate_words(20).truncate(200, omission: '')
     @deposit.item_in_hyacinth = @endpoint.adapter_item_identifier
+    @deposit.asset_pids = @endpoint.asset_pids
+    @deposit.ingest_confirmed = @endpoint.confirm_ingest
+    @deposit.content_path = @path_to_deposit_contents
     @deposit.save
     # @depositor.deposits << @deposit
     # @collection.deposits << @deposit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_30_175752) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_22_185253) do
   create_table "collections", force: :cascade do |t|
     t.string "name", null: false
     t.string "atom_title", null: false
@@ -58,6 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_30_175752) do
     t.datetime "updated_at", precision: nil, null: false
     t.string "depositor_user_id"
     t.string "collection_slug"
+    t.text "asset_pids"
+    t.boolean "ingest_confirmed"
+    t.string "content_path"
     t.index ["collection_id"], name: "index_deposits_on_collection_id"
     t.index ["collection_slug"], name: "index_deposits_on_collection_slug"
     t.index ["depositor_id"], name: "index_deposits_on_depositor_id"
