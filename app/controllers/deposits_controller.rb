@@ -113,9 +113,6 @@ class DepositsController < ApplicationController
     resubmit_deposit.ingest_confirmed = endpoint.confirm_ingest
     resubmit_deposit.content_path = path_to_deposit_contents
     resubmit_deposit.save
-    response.status = 201
-    render json: { item_pid: endpoint.adapter_item_identifier,
-                   ingest_into_hyacinth: !(HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][endpoint.collection_slug][:bypass_hyacinth_ingest])}
   end
 
   private
