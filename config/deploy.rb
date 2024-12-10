@@ -1,4 +1,4 @@
-lock '3.17.3'
+lock '3.19.2'
 
 set :department, 'ldpd'
 set :instance, fetch(:department)
@@ -38,6 +38,7 @@ set :keep_releases, 3
 set :passenger_restart_with_touch, true
 
 set :linked_files, fetch(:linked_files, []).push(
+  'config/master.key',
   'config/collections.yml',
   'config/database.yml',
   'config/depositors.yml',
