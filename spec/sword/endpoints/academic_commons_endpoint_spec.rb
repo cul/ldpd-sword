@@ -35,6 +35,12 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         # for test purposes, turn off actual sending of POST request
         @ac_endpoint.hyacinth_adapter.no_op_post = true
       end
+
+      it 'calls the helper methods' do
+        expect(@ac_endpoint).to receive(:process_metadata)
+        expect(@ac_endpoint).to receive(:ingest_into_hyacinth)
+        @ac_endpoint.handle_deposit @content_dir
+      end
     end
   end
 

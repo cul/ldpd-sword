@@ -31,6 +31,37 @@ RSpec.describe Sword::Endpoints::MetsToHyacinthEndpoint do
     end
   end
 
+  describe '#ingest_item_into_hyacinth' do
+    context 'if ingest into Hyacinth is ' do
+      before(:example) do
+        @hyacinth_adapter_double = instance_double(Sword::Adapters::HyacinthAdapter)
+        allow(Sword::Adapters::HyacinthAdapter).to receive(:new).and_return(@hyacinth_adapter_double)
+        allow(@hyacinth_adapter_double).to receive(:hyacinth_project=)
+        allow(@hyacinth_adapter_double).to receive(:deposited_by=)
+        allow(@hyacinth_adapter_double).to receive(:compose_internal_format_item)
+        allow(@hyacinth_adapter_double).to receive(:ingest_item)
+        allow(@hyacinth_adapter_double).to receive(:pid_last_ingest).and_return('cul:123456')
+        allow(@hyacinth_adapter_double).to receive(:no_op_post).and_return(true)
+      end
+
+      it 'successful, will get the pid from the Hyacinth adapter' do
+        allow(@hyacinth_adapter_double).to receive(:last_ingest_successful?).and_return(true)
+        @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new('test-pq',
+                                                                      'firsttestdepositor')
+        expect(@hyacinth_adapter_double).to receive(:pid_last_ingest)
+        @mets_endpoint.ingest_item_into_hyacinth
+      end
+
+      it 'unsuccessful, will not get the pid from the Hyacinth adapter' do
+        allow(@hyacinth_adapter_double).to receive(:last_ingest_successful?).and_return(false)
+        @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new('test-pq',
+                                                                      'firsttestdepositor')
+        expect(@hyacinth_adapter_double).not_to receive(:pid_last_ingest)
+        @mets_endpoint.ingest_item_into_hyacinth
+      end
+    end
+  end
+
   describe 'confirm_ingest' do
     before(:example) do
       @mets_endpoint = Sword::Endpoints::MetsToHyacinthEndpoint.new('sample_collection_slug',

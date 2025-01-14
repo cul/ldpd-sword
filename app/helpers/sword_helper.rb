@@ -1,7 +1,63 @@
 require 'builder'
 module SwordHelper
-  def service_document_xml(content)
+  def collection_info_for_service_document(collection_slug)
+    info = HashWithIndifferentAccess.new
+    info[:atom_title] = COLLECTIONS[:slug][collection_slug][:atom_title]
+    info[:slug] = collection_slug
+    info[:mime_types] = nil
+    info[:sword_package_types] = nil
+    info[:abstract] = nil
+    info[:mediation_enabled] = false
+    info
+  end
 
+  def pull_credentials(request)
+    authorization = String.new(request.headers["Authorization"].to_s)
+    if(authorization.include? 'Basic ')
+      authorization['Basic '] = ''
+      authorization = Base64.decode64(authorization)
+      credentials = authorization.split(":")
+      [credentials[0] , credentials[1]]
+    end
+  end
+
+  def create_deposit(depositor_user_id,
+                     collection_slug,
+                     documents_to_deposit,
+                     title,
+                     item_pid,
+                     asset_pids,
+                     ingest_confirmed,
+                     content_path)
+    deposit = Deposit.new
+    deposit.depositor_user_id = depositor_user_id
+    deposit.collection_slug = collection_slug
+    deposit.deposit_files = documents_to_deposit
+    deposit.title = title
+    deposit.item_in_hyacinth = item_pid
+    deposit.asset_pids = asset_pids
+    deposit.ingest_confirmed = ingest_confirmed
+    deposit.content_path = content_path
+    deposit.save
+    deposit
+  end
+
+  def service_document_content
+    content = HashWithIndifferentAccess.new
+    # For site-specific values, read from the config file:
+    content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
+    content[:sword_verbose] = SWORD_CONFIG[:service_document][:sword_verbose]
+    # content[:http_host] = request.env["HTTP_HOST"]
+    content[:collections] = []
+    COLLECTIONS[:slug].keys.each do |collection_slug|
+      if COLLECTIONS[:slug][collection_slug][:depositors].include? @depositor_user_id
+        content[:collections] << view_context.collection_info_for_service_document(collection_slug)
+      end
+    end
+    content
+  end
+
+  def service_document_xml(content)
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"
     xml.tag!("service", 

@@ -35,6 +35,12 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
         # for test purposes, turn off actual sending of POST request
         @proquest_endpoint.hyacinth_adapter.no_op_post = true
       end
+
+      it 'calls the helper methods' do
+        expect(@proquest_endpoint).to receive(:process_metadata)
+        expect(@proquest_endpoint).to receive(:ingest_into_hyacinth)
+        @proquest_endpoint.handle_deposit @content_dir
+      end
     end
   end
 

@@ -35,6 +35,12 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
         # for test purposes, turn off actual sending of POST request
         @eprints_endpoint.hyacinth_adapter.no_op_post = true
       end
+
+      it 'calls the helper methods' do
+        expect(@eprints_endpoint).to receive(:process_metadata)
+        expect(@eprints_endpoint).to receive(:ingest_into_hyacinth)
+        @eprints_endpoint.handle_deposit @content_dir
+      end
     end
   end
 

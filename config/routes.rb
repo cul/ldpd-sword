@@ -28,8 +28,6 @@ Rails.application.routes.draw do
     get 'resubmit', on: :member
   end
 
-  resources :packages
-
   # Example resource route with options:
   #   resources :products do
   #     member do

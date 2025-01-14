@@ -76,15 +76,6 @@ module Sword
         end
       end
 
-      def process_identifier_uri
-        parent_publication = @hyacinth_adapter.parent_publication ||
-                             Sword::Metadata::ParentPublication.new
-        parent_publication.doi =
-          # remove url prefix, just want the DOI
-          @epdcx_parser.identifier_uri.gsub(/^\S*\/10.1/,'10.1')
-        @hyacinth_adapter.parent_publication = parent_publication
-      end
-
       def process_identifier
         parent_publication = @hyacinth_adapter.parent_publication ||
                              Sword::Metadata::ParentPublication.new
