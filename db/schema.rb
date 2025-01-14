@@ -10,42 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_22_185253) do
-  create_table "collections", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "atom_title", null: false
-    t.string "slug", null: false
-    t.string "hyacinth_project_string_key"
-    t.string "parser"
-    t.text "abstract"
-    t.text "mime_types"
-    t.text "sword_package_types"
-    t.boolean "mediation_enabled", default: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["name"], name: "index_collections_on_name", unique: true
-    t.index ["slug"], name: "index_collections_on_slug", unique: true
-  end
-
-  create_table "depositor_collection_pairings", force: :cascade do |t|
-    t.integer "depositor_id"
-    t.integer "collection_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["collection_id"], name: "index_depositor_collection_pairings_on_collection_id"
-    t.index ["depositor_id"], name: "index_depositor_collection_pairings_on_depositor_id"
-  end
-
-  create_table "depositors", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "basic_authentication_user_id", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.index ["basic_authentication_user_id"], name: "index_depositors_on_basic_authentication_user_id", unique: true
-    t.index ["name"], name: "index_depositors_on_name", unique: true
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2025_01_15_171018) do
   create_table "deposits", force: :cascade do |t|
     t.integer "depositor_id"
     t.integer "collection_id"
@@ -88,9 +53,4 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_22_185253) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
-
-  add_foreign_key "depositor_collection_pairings", "collections"
-  add_foreign_key "depositor_collection_pairings", "depositors"
-  add_foreign_key "deposits", "collections"
-  add_foreign_key "deposits", "depositors"
 end

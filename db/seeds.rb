@@ -23,26 +23,3 @@ SEEDS_CONFIG[:non_admin_users].each do |key, info|
                                 password: info[:password],
                                 password_confirmation: info[:password])
 end
-
-collections = {}
-SEEDS_CONFIG[:collections].each do |key, info|
-  collections[key] = Collection.create(name: info[:name],
-                                       slug: info[:slug],
-                                       atom_title: info[:atom_title],
-                                       hyacinth_project_string_key: info[:hyacinth_project_string_key],
-                                       parser: info[:parser])
-end
-
-depositors = {}
-SEEDS_CONFIG[:depositors].each do |key, info|
-  depositors[key] = Depositor.create(name: info[:name],
-                                     basic_authentication_user_id: info[:basic_authentication_user_id],
-                                     password: info[:password],
-                                     password_confirmation: info[:password_confirmation])
-end
-
-SEEDS_CONFIG[:depositor_collection_pairings].each do |key, info|
-  depositors[info[:depositor]].collections << collections[info[:collection]]
-end
-
-
