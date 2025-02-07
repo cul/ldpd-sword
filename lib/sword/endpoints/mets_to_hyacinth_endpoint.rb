@@ -21,7 +21,8 @@ module Sword
 
       def initialize(collection_slug, depositor_user_id)
         super
-        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+        encoder_class = Sword::Encoders::JsonHyacinth2
+        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
         @mets_parser = Sword::Parsers::MetsParser.new
       end
 
