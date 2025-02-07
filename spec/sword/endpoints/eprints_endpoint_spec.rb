@@ -55,15 +55,15 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
 
     context 'given @epdcx_parser populated with 2 test individuals' do
       it 'info stored in @hyacinth_adapter is correct for first individual' do
-        expect(@eprints_endpoint.hyacinth_adapter.personal_names.first.full_name_naf_format
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.personal_names.first.full_name_naf_format
               ).to eq('Smith, John C')
-        expect(@eprints_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.personal_names.first.role).to eq('author')
       end
 
       it 'info stored in @hyacinth_adapter is correct for second individual' do
-        expect(@eprints_endpoint.hyacinth_adapter.personal_names.second.full_name_naf_format
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.personal_names.second.full_name_naf_format
               ).to eq('Doe, Jane A')
-        expect(@eprints_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.personal_names.second.role).to eq('author')
       end
     end
   end
@@ -92,50 +92,50 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
     end
 
     context 'given a populated EprintsDcXmlParser instance in @epdcx_parser' do
-      it 'sets @hyacinth_adapter.abstract correctly' do
-        expect(@eprints_endpoint.hyacinth_adapter.abstract).to eq('This is a sample terse abstract')
+      it 'sets @hyacinth_adapter.encoder_item.abstract correctly' do
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.abstract).to eq('This is a sample terse abstract')
       end
 
-      it 'sets @hyacinth_adapter.date_issued_start correctly' do
-        expect(@eprints_endpoint.hyacinth_adapter.date_issued_start).to eq('2018')
+      it 'sets @hyacinth_adapter.encoder_item.date_issued_start correctly' do
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.date_issued_start).to eq('2018')
       end
 
-      it 'sets @hyacinth_adapter.notes correctly' do
-        expect(@eprints_endpoint.hyacinth_adapter.notes.first).to be_a Sword::Metadata::Note
-        expect(@eprints_endpoint.hyacinth_adapter.notes.first.content).to eq('Subject_one, Subject_two')
-        expect(@eprints_endpoint.hyacinth_adapter.notes.first.type).to be nil
-        expect(@eprints_endpoint.hyacinth_adapter.notes[1]).to be_a Sword::Metadata::Note
-        expect(@eprints_endpoint.hyacinth_adapter.notes[1].content).to eq('theuser@example.com, theotheruser@example.com')
-        expect(@eprints_endpoint.hyacinth_adapter.notes[1].type).to be nil
+      it 'sets @hyacinth_adapter.encoder_item.notes correctly' do
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes.first).to be_a Sword::Metadata::Note
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes.first.content).to eq('Subject_one, Subject_two')
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes.first.type).to be nil
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes[1]).to be_a Sword::Metadata::Note
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes[1].content).to eq('theuser@example.com, theotheruser@example.com')
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.notes[1].type).to be nil
       end
 
-      it 'sets @hyacinth_adapter.title correctly' do
-        expect(@eprints_endpoint.hyacinth_adapter.title).to eq('This is a Sample Title')
+      it 'sets @hyacinth_adapter.encoder_item.title correctly' do
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.title).to eq('This is a Sample Title')
       end
 
-      context 'in @hyacinth_adapter.parent_publication' do
+      context 'in @hyacinth_adapter.encoder_item.parent_publication' do
         it 'sets doi correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.doi).to eq('10.1186/s13031-018-0173-x')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.doi).to eq('10.1186/s13031-018-0173-x')
         end
 
         it 'sets issue correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.issue).to eq('11')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.issue).to eq('11')
         end
 
         it 'sets publish_date correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.publish_date).to eq('2016')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.publish_date).to eq('2016')
         end
 
         it 'sets start_page correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.start_page).to eq('78')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.start_page).to eq('78')
         end
 
         it 'sets title correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.title).to eq('International Journal of Stuff')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.title).to eq('International Journal of Stuff')
         end
 
         it 'sets volume correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.volume).to eq('10')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.volume).to eq('10')
         end
       end
     end
@@ -153,33 +153,33 @@ RSpec.describe Sword::Endpoints::EprintsEndpoint do
     end
 
     context 'given a populated EprintsDcXmlParser instance in @epdcx_parser without bibliographic citation' do
-      it 'sets @hyacinth_adapter.date_issued_start correctly' do
-        expect(@eprints_endpoint.hyacinth_adapter.date_issued_start).to eq('2018')
+      it 'sets @hyacinth_adapter.encoder_item.date_issued_start correctly' do
+        expect(@eprints_endpoint.hyacinth_adapter.encoder_item.date_issued_start).to eq('2018')
       end
 
-      context 'in @hyacinth_adapter.parent_publication' do
+      context 'in @hyacinth_adapter.encoder_item.parent_publication' do
         it 'sets doi correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.doi).to eq(nil)
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.doi).to eq(nil)
         end
 
         it 'sets issue correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.issue).to eq(nil)
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.issue).to eq(nil)
         end
 
         it 'sets publish_date correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.publish_date).to eq('2018')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.publish_date).to eq('2018')
         end
 
         it 'sets start_page correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.start_page).to eq(nil)
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.start_page).to eq(nil)
         end
 
         it 'sets title correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.title).to eq('The Good Journal')
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.title).to eq('The Good Journal')
         end
 
         it 'sets volume correctly' do
-          expect(@eprints_endpoint.hyacinth_adapter.parent_publication.volume).to eq(nil)
+          expect(@eprints_endpoint.hyacinth_adapter.encoder_item.parent_publication.volume).to eq(nil)
         end
       end
     end

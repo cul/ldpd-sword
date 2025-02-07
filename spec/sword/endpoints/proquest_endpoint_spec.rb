@@ -55,11 +55,11 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     end
 
     context 'given test metadata for degree-related info in @proquest_etd_parser' do
-      it 'sets @hyacinth_adapter.degree correctly' do
-        expect(@proquest_endpoint.hyacinth_adapter.degree.discipline).to eq('History')
-        expect(@proquest_endpoint.hyacinth_adapter.degree.grantor).to eq('Columbia University')
-        expect(@proquest_endpoint.hyacinth_adapter.degree.level).to eq('2')
-        expect(@proquest_endpoint.hyacinth_adapter.degree.name).to eq('Ph.D.')
+      it 'sets @hyacinth_adapter.encoder_item.degree correctly' do
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.degree.discipline).to eq('History')
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.degree.grantor).to eq('Columbia University')
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.degree.level).to eq('2')
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.degree.name).to eq('Ph.D.')
       end
     end
   end
@@ -74,8 +74,8 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     end
 
     context 'given test metadata for subject info in @proquest_etd_parser' do
-      it 'sets @hyacinth_adapter.subjects correctly' do
-        expect(@proquest_endpoint.hyacinth_adapter.subjects).to include *['Flux capacitor','Time travel']
+      it 'sets @hyacinth_adapter.encoder_item.subjects correctly' do
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.subjects).to include *['Flux capacitor','Time travel']
       end
     end
   end
@@ -101,24 +101,24 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
     end
 
     context 'given @proquest_etd_parser populated with 2 test individuals' do
-      it 'info stored in @hyacinth_adapter is correct for first individual' do
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.last_name
+      it 'info stored in @hyacinth_adapter.encoder_item is correct for first individual' do
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.last_name
               ).to eq('Smith')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.first_name
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.first_name
               ).to eq('John')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.middle_name
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.middle_name
               ).to eq('C')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.role).to eq('author')
       end
 
-      it 'info stored in @hyacinth_adapter is correct for second individual' do
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.last_name
+      it 'info stored in @hyacinth_adapter.encoder_item is correct for second individual' do
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.last_name
               ).to eq('Doe')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.first_name
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.first_name
               ).to eq('Jane')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.middle_name
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.middle_name
               ).to eq('A')
-        expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
+        expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.role).to eq('author')
       end
     end
   end
@@ -137,7 +137,7 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0054'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.corporate_names.first.name
                 ).to eq('Teachers College. Science Education')
         end
       end
@@ -148,7 +148,7 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0054'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.corporate_names.first.name
                 ).to eq('Columbia University. History')
         end
       end
@@ -159,7 +159,7 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
           @proquest_endpoint.proquest_etd_parser.institution_name = 'Teachers College, Columbia University'
           @proquest_endpoint.proquest_etd_parser.institution_school_code = '0055'
           @proquest_endpoint.process_institution_info_into_corporate_name
-          expect(@proquest_endpoint.hyacinth_adapter.corporate_names.first.name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.corporate_names.first.name
                 ).to eq('Teachers College. Health and Behavior Studies')
         end
       end
@@ -198,61 +198,61 @@ RSpec.describe Sword::Endpoints::ProquestEndpoint do
 
     context 'given a populated ProquestEtdParser instance in @proquest_etd_parser' do
       context 'populated with 2 test individuals' do
-        it 'info stored in @hyacinth_adapter is correct for first individual' do
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.last_name
+        it 'info stored in @hyacinth_adapter.encoder_item is correct for first individual' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.last_name
                 ).to eq('Smith')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.first_name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.first_name
                 ).to eq('John')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.middle_name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.middle_name
                 ).to eq('C')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.first.role).to eq('author')
         end
 
-        it 'info stored in @hyacinth_adapter is correct for second individual' do
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.last_name
+        it 'info stored in @hyacinth_adapter.encoder_item is correct for second individual' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.last_name
                 ).to eq('Doe')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.first_name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.first_name
                 ).to eq('Jane')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.middle_name
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.middle_name
                 ).to eq('A')
-          expect(@proquest_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.personal_names.second.role).to eq('author')
         end
       end
 
       context 'populated with test document-specific metadata' do
-        it 'sets @hyacinth_adapter.abstract correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.abstract).to eq('This is a sample terse abstract')
+        it 'sets @hyacinth_adapter.encoder_item.abstract correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.abstract).to eq('This is a sample terse abstract')
         end
 
-        it 'sets @hyacinth_adapter.date_issued_start correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.date_issued_start).to eq('2015')
+        it 'sets @hyacinth_adapter.encoder_item.date_issued_start correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.date_issued_start).to eq('2015')
         end
 
-        it 'sets @hyacinth_adapter.title correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.title).to eq('This is a Sample Title')
+        it 'sets @hyacinth_adapter.encoder_item.title correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.title).to eq('This is a Sample Title')
         end
 
       end
 
       context 'with unspecified values for the hard-coded data (since set in code)' do
-        it 'sets @hyacinth_adapter.genre_value correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.genre_value).to eq(Sword::Constants::GENRE_TERM_VALUE_THESES)
+        it 'sets @hyacinth_adapter.encoder_item.genre_value correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.genre_value).to eq(Sword::Constants::GENRE_TERM_VALUE_THESES)
         end
 
-        it 'sets @hyacinth_adapter.genre_uri correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.genre_uri).to eq(Sword::Constants::GENRE_TERM_URI_THESES)
+        it 'sets @hyacinth_adapter.encoder_item.genre_uri correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.genre_uri).to eq(Sword::Constants::GENRE_TERM_URI_THESES)
         end
 
-        it 'sets @hyacinth_adapter.language_value correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.language_value).to eq(Sword::Constants::LANGUAGE_TERM_VALUE_ENGLISH)
+        it 'sets @hyacinth_adapter.encoder_item.language_value correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.language_value).to eq(Sword::Constants::LANGUAGE_TERM_VALUE_ENGLISH)
         end
 
-        it 'sets @hyacinth_adapter.language_uri correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.language_uri).to eq(Sword::Constants::LANGUAGE_TERM_URI_ENGLISH)
+        it 'sets @hyacinth_adapter.encoder_item.language_uri correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.language_uri).to eq(Sword::Constants::LANGUAGE_TERM_URI_ENGLISH)
         end
 
-        it 'sets @hyacinth_adapter.type_of_resource correctly' do
-          expect(@proquest_endpoint.hyacinth_adapter.type_of_resource).to eq(Sword::Constants::TYPE_OF_RESOURCE_VALUE_TEXT)
+        it 'sets @hyacinth_adapter.encoder_item.type_of_resource correctly' do
+          expect(@proquest_endpoint.hyacinth_adapter.encoder_item.type_of_resource).to eq(Sword::Constants::TYPE_OF_RESOURCE_VALUE_TEXT)
         end
       end
     end
