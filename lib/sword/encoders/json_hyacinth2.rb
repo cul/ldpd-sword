@@ -48,7 +48,11 @@ class Sword::Encoders::JsonHyacinth2
     encode_subjects unless @subjects.empty?
     encode_title # should always be a title, can raise error if so
     encode_type_of_resource unless @type_of_resource.nil?
-    encode_use_and_reproduction unless @use_and_reproduction_uri.nil?
+    unless @use_and_reproduction_uri.nil?
+      encode_use_and_reproduction
+    else
+      encode_use_and_reproduction_default
+    end
   end
 
   def encode_abstract
@@ -236,6 +240,14 @@ class Sword::Encoders::JsonHyacinth2
 
   def encode_use_and_reproduction
     use_and_reproduction_data = { uri: @use_and_reproduction_uri }
+    @dynamic_field_data[:use_and_reproduction] = []
+    @dynamic_field_data[:use_and_reproduction] << { use_and_reproduction_term: use_and_reproduction_data }
+  end
+
+  def encode_use_and_reproduction_default
+    use_and_reproduction_data = { uri: 'http://rightsstatements.org/vocab/InC/1.0/',
+                                  authority: 'rightsstatements',
+                                  value: 'In Copyright'}
     @dynamic_field_data[:use_and_reproduction] = []
     @dynamic_field_data[:use_and_reproduction] << { use_and_reproduction_term: use_and_reproduction_data }
   end

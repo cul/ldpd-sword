@@ -389,7 +389,14 @@ RSpec.describe Sword::Encoders::JsonHyacinth2 do
           title: [{
             title_non_sort_portion: nil,
             title_sort_portion: 'Sample Title of Hyacinth Item'
-          }]
+                  }],
+          use_and_reproduction: [{
+                                   use_and_reproduction_term: {
+                                                                uri: 'http://rightsstatements.org/vocab/InC/1.0/',
+                                                                authority: 'rightsstatements',
+                                                                value: 'In Copyright'
+                                   }
+                                 }]
         }
         expect(subject.dynamic_field_data).to eq(expected_data)
       end
