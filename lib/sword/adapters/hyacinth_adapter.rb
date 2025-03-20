@@ -96,19 +96,20 @@ module Sword
                                                                             asset_import_filepath)
       end
 
-      def ingest_asset(parent_pid,
-                       document_filepath)
+      def setup_asset_import_filepath(parent_pid,
+                                      document_filepath)
         asset_import_subdir = File.join(HYACINTH_CONFIG[:upload_subdir_prefix],"swordtmp_#{parent_pid}")
         asset_import_subdir.gsub!(':','')
-        # puts'*************************asset import dir***********************'
-        # puts asset_import_subdir
         fullpath_asset_import_dir = File.join(HYACINTH_CONFIG[:upload_directory], asset_import_subdir)
-        # puts fullpath_asset_import_dir
         FileUtils.mkdir_p(fullpath_asset_import_dir)
         FileUtils.cp(document_filepath,fullpath_asset_import_dir)
         asset_filename = File.basename(document_filepath)
-        asset_import_filepath = File.join(asset_import_subdir,asset_filename)
-        # puts asset_import_filepath
+        File.join(asset_import_subdir,asset_filename)
+      end
+
+      def ingest_asset(parent_pid,
+                       document_filepath)
+        asset_import_filepath = setup_asset_import_filepath(parent_pid, document_filepath)
         # create the hyacinth internal format data
         compose_internal_format_asset(parent_pid,
                                       asset_import_filepath)

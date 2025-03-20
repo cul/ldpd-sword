@@ -33,7 +33,7 @@ module SwordHelper
     deposit.depositor_user_id = depositor_user_id
     deposit.collection_slug = collection_slug
     deposit.deposit_files = documents_to_deposit
-    deposit.title = title
+    deposit.title = title.truncate_words(20).truncate(200, omission: '')
     deposit.item_in_hyacinth = item_pid
     deposit.asset_pids = asset_pids
     deposit.ingest_confirmed = ingest_confirmed

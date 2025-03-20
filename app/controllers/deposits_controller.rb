@@ -26,6 +26,10 @@ class DepositsController < ApplicationController
 
   def resubmit
     original_deposit = Deposit.find(params[:id])
+    resubmit_deposit original_deposit
+  end
+
+  def resubmit_deposit original_deposit
     helpers.resubmit_deposit original_deposit
   end
 

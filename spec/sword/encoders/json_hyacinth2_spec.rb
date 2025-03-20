@@ -181,6 +181,23 @@ RSpec.describe Sword::Encoders::JsonHyacinth2 do
                       }
                   }
                 ]
+            },
+	    {
+              name_term:
+                {
+                  value: "Smithyy, Johnsy Howardyy",
+                  name_type: "personal"
+                },
+              name_role:
+                [
+                  {
+                    name_role_term:
+                      {
+                        uri: "http://id.loc.gov/vocabulary/relators/aut",
+                        value: "Author"
+                      }
+                  }
+                ]
             }
           ]
 
@@ -199,6 +216,11 @@ RSpec.describe Sword::Encoders::JsonHyacinth2 do
           second_personal_name.full_name_naf_format = 'Smithy, Johny Howardy'
           second_personal_name.role = 'thesis_advisor'
           subject.personal_names << second_personal_name
+
+          third_personal_name = Sword::Metadata::PersonalName.new
+          third_personal_name.full_name_naf_format = 'Smithyy, Johnsy Howardyy'
+          third_personal_name.role = 'artist'
+          subject.personal_names << third_personal_name
 
           subject.encode_names
           expect(subject.dynamic_field_data[:name]).to eq(expected_value)

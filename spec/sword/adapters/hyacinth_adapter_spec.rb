@@ -160,14 +160,95 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         JSON.parse(fixture_file_upload('hyacinth_internal_format/dynamic_field_data.json').read, symbolize_names: true)
       @hyacinth_adapter.compose_internal_format_item
       # since this is a spec, do not send POST request to server
-      @hyacinth_adapter.no_op_post = true
-      @hyacinth_adapter.ingest_item
     end
 
     context 'given pertinent instance vars populated with test data' do
       it 'sets the digital_object_type to item (default)' do
+        @hyacinth_adapter.no_op_post = true
+        @hyacinth_adapter.ingest_item
         expect(@hyacinth_adapter.digital_object_data[:digital_object_type][:string_key]).to eq('item')
       end
+    end
+
+    context 'when posting item to Hyacinth' do
+      before(:example) do
+        allow(@hyacinth_adapter).to receive(:pid_last_ingest) { 'cul:123456789' }
+        http_success = double("http_success")
+        allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
+        allow(Rails.logger).to receive(:warn)
+      end
+
+      it 'calls Net::HTTP#start' do
+        @hyacinth_adapter.no_op_post = false
+        expect_any_instance_of(Net::HTTP).to receive(:start)
+        @hyacinth_adapter.ingest_item
+      end
+    end
+  end
+
+  ########################################## #ingest_asset
+  describe '#ingest_asset' do
+    before (:example) do
+      encoder_class = Sword::Encoders::JsonHyacinth2
+      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
+      allow(@hyacinth_adapter).to receive(:setup_asset_import_filepath)
+      allow(@hyacinth_adapter).to receive(:compose_internal_format_asset)
+      http_success = double("http_success")
+      allow(http_success).to receive(:body) { JSON.generate({'pid' => 'ac:1234321'}) }
+      allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
+      @hyacinth_adapter.no_op_post = false
+    end
+
+    it 'calls the expected methods' do
+      expect(@hyacinth_adapter).to receive(:setup_asset_import_filepath)
+      expect(@hyacinth_adapter).to receive(:compose_internal_format_asset)
+      @hyacinth_adapter.ingest_asset('cul:123456789', '/tmp')
+    end
+  end
+
+  describe '#last_ingest_successful?' do
+    context 'given valid response' do
+      before (:example) do
+        encoder_class = Sword::Encoders::JsonHyacinth2
+        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
+        http_success = double("http_success")
+        allow(http_success).to receive(:body) { 'success' }
+        @hyacinth_adapter.instance_variable_set(:@hyacinth_server_response, http_success)
+      end
+
+      it 'returns truthy' do
+        result = @hyacinth_adapter.last_ingest_successful?
+        expect(result).to be_truthy
+      end
+    end
+
+    context 'given invalid response' do
+      before (:example) do
+        encoder_class = Sword::Encoders::JsonHyacinth2
+        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
+        @hyacinth_adapter.instance_variable_set(:@hyacinth_server_response, nil)
+      end
+
+      it 'returns false' do
+        result = @hyacinth_adapter.last_ingest_successful?
+        expect(result).to be(false)
+      end
+    end
+  end
+
+  describe '#setup_asset_import_filepath' do
+    before (:example) do
+      encoder_class = Sword::Encoders::JsonHyacinth2
+      @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
+      @hyacinth_adapter.no_op_post = true
+      allow(FileUtils).to receive(:mkdir_p)
+      allow(FileUtils).to receive(:cp)
+    end
+
+    it 'calls the expected methods' do
+      expect(FileUtils).to receive(:mkdir_p)
+      expect(FileUtils).to receive(:cp)
+      @hyacinth_adapter.setup_asset_import_filepath('cul:123456789', '/tmp')
     end
   end
 

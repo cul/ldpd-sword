@@ -173,7 +173,7 @@ class Sword::Encoders::JsonHyacinth2
         set_personal_name_and_advisor_role personal_name
       else
         # default to author? (check this)
-        set_personal_name_and_advisor_role personal_name
+        set_personal_name_and_author_role personal_name
       end
     end
   end
