@@ -26,7 +26,7 @@ module Sword
         when "eprints"
           Sword::Endpoints::EprintsEndpoint.new(collection_slug, depositor_user_id)
         else
-          # raise an exception here
+          raise "No endpoint available for collection slug: #{collection_slug}, and depositor: #{depositor_user_id}"
         end
       end
     end
