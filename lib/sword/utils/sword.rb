@@ -1,6 +1,7 @@
 require 'builder'
-module SwordHelper
-  def collection_info_for_service_document(collection_slug)
+
+module Sword::Utils::Sword
+  def self.collection_info_for_service_document(collection_slug)
     info = HashWithIndifferentAccess.new
     info[:atom_title] = COLLECTIONS[:slug][collection_slug][:atom_title]
     info[:slug] = collection_slug
@@ -11,7 +12,7 @@ module SwordHelper
     info
   end
 
-  def pull_credentials(request)
+  def self.pull_credentials(request)
     authorization = String.new(request.headers["Authorization"].to_s)
     if(authorization.include? 'Basic ')
       authorization['Basic '] = ''
@@ -21,7 +22,7 @@ module SwordHelper
     end
   end
 
-  def create_deposit(depositor_user_id,
+  def self.create_deposit(depositor_user_id,
                      collection_slug,
                      documents_to_deposit,
                      title,
@@ -42,7 +43,7 @@ module SwordHelper
     deposit
   end
 
-  def service_document_content
+  def self.service_document_content
     content = HashWithIndifferentAccess.new
     # For site-specific values, read from the config file:
     content[:sword_version] = SWORD_CONFIG[:service_document][:sword_version]
@@ -57,19 +58,19 @@ module SwordHelper
     content
   end
 
-  def service_document_xml(content)
+  def self.service_document_xml(content)
     xml = Builder::XmlMarkup.new( :indent => 2 )
     xml.instruct! :xml, :encoding => "utf-8"
-    xml.tag!("service", 
-              {"xmlns"=>"http://www.w3.org/2007/app", 
+    xml.tag!("service",
+              {"xmlns"=>"http://www.w3.org/2007/app",
                "xmlns:atom" => "http://www.w3.org/2005/Atom",
                "xmlns:sword" => "http://purl.org/net/sword/",
                "xmlns:dcterms" => "http://purl.org/dc/terms/"}) do |service|
-  
-      service.tag!("sword:version", content[:sword_version]) 
+
+      service.tag!("sword:version", content[:sword_version])
       service.tag!("sword:verbose", content["sword_verbose"])
       service.tag!("sword:noOp", SWORD_CONFIG[:service_document][:sword_no_op])
-  
+
       service.workspace do |workspace|
         workspace.tag!("atom:title", SWORD_CONFIG[:service_document][:workspace_atom_title])
         content[:collections].each do |collection_info|
@@ -78,7 +79,7 @@ module SwordHelper
             collection.tag!("dcterms:abstract", collection_info[:abstract]) unless collection_info[:abstract].blank?
             unless collection_info[:mime_types].blank?
               collection_info[:mime_types].each do |content_type|
-                collection.accept content_type 
+                collection.accept content_type
               end
             else
               SWORD_CONFIG[:service_document][:default_accept_mime_types].each do |content_type|
@@ -95,7 +96,7 @@ module SwordHelper
               end
             end
             collection.tag!("sword:mediation", collection_info[:mediation_enabled])
-          end 
+          end
         end
       end
     end

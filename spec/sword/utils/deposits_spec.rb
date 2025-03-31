@@ -1,10 +1,6 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-class DummyClass
-  include DepositsHelper
-end
-
-RSpec.describe DepositsHelper do
+RSpec.describe Sword::Utils::Deposits do
   describe 'resubmit_deposit' do
     before(:example) do
       @deposit = Deposit.new
@@ -29,9 +25,8 @@ RSpec.describe DepositsHelper do
     end
 
     it 'calls handle_deposit' do
-      dc = DummyClass.new
       expect(@mets_endpoint).to receive(:handle_deposit)
-      dc.resubmit_deposit(@deposit)
+      described_class.resubmit_deposit(@deposit)
     end
   end
 end
