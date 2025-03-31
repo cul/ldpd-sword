@@ -51,7 +51,7 @@ RSpec.describe SwordHelper do
 
   describe 'service_document_xml' do
     context 'with mime type and package type specified' do
-      it 'returns' do
+      it 'returns service document content' do
         dc = DummyClass.new
         content = HashWithIndifferentAccess.new
         info = HashWithIndifferentAccess.new
@@ -70,7 +70,7 @@ RSpec.describe SwordHelper do
     end
 
     context 'without mime type and package type specified' do
-      it 'returns' do
+      it 'returns service document content' do
         dc = DummyClass.new
         content = HashWithIndifferentAccess.new
         info = HashWithIndifferentAccess.new
