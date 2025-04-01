@@ -26,11 +26,7 @@ class DepositsController < ApplicationController
 
   def resubmit
     original_deposit = Deposit.find(params[:id])
-    resubmit_deposit original_deposit
-  end
-
-  def resubmit_deposit original_deposit
-    helpers.resubmit_deposit original_deposit
+    Sword::Utils::Deposits.resubmit_deposit original_deposit
   end
 
   private
@@ -41,10 +37,5 @@ class DepositsController < ApplicationController
 
     def restrict_to_admin
       redirect_to(deposits_path, notice: "Only admin can perform this action") unless current_user.admin?
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def deposit_params
-      params.fetch(:deposit, {}).permit(:title)
     end
 end

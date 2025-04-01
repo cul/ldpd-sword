@@ -1,6 +1,5 @@
-module DepositsHelper
-  def resubmit_deposit(original_deposit)
-    # original_deposit = Deposit.find(params[:id])
+module Sword::Utils::Deposits
+  def self.resubmit_deposit(original_deposit)
     endpoint = Sword::Endpoints::Endpoint.get_endpoint(original_deposit.collection_slug,
                                                        original_deposit.depositor_user_id)
 

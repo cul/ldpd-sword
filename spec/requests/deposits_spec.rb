@@ -75,8 +75,8 @@ RSpec.describe "Deposits request", type: :request do
       @deposit_id = @deposit.id
     end
 
-    it 'call DepositsHelper::resubmit_deposit' do
-      expect_any_instance_of(DepositsController).to receive(:resubmit_deposit)
+    it 'call Sword::Utils::Deposits.resubmit_deposit' do
+      expect(Sword::Utils::Deposits).to receive(:resubmit_deposit)
       get "/deposits/#{@deposit_id}/resubmit"
     end
   end

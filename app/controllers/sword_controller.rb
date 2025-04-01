@@ -21,20 +21,20 @@ class SwordController < ApplicationController
     request_body = request.body
     @path_to_deposit_contents = Sword::Util::unzip_deposit_file request_body
 
-    log_received_deposit_post(@collection_slug,
+    Sword::Utils::Logging.log_received_deposit_post(@collection_slug,
                               @depositor_user_id,
                               @path_to_deposit_contents)
 
     @endpoint.handle_deposit(@path_to_deposit_contents)
 
-    log_deposit_result_info(@endpoint.deposit_title,
+    Sword::Utils::Logging.log_deposit_result_info(@endpoint.deposit_title,
                             @endpoint.documents_to_deposit,
                             @endpoint.adapter_item_identifier,
                             @endpoint.asset_pids,
                             @path_to_deposit_contents)
 
     # create Deposit instance and store deposit info in database
-    @deposit = create_deposit(@depositor_user_id,
+    @deposit = Sword::Utils::Sword.create_deposit(@depositor_user_id,
                               @collection_slug,
                               @endpoint.documents_to_deposit,
                               @endpoint.deposit_title,
@@ -50,47 +50,8 @@ class SwordController < ApplicationController
   def service_document
     # log basic essential info. Keep it terse! Gonna use :warn level, though not a warning.
     Rails.logger.warn("Received Service Document request. Username: #{@depositor_user_id}")
-    content = helpers.service_document_content
-    render xml: view_context.service_document_xml(content)
-  end
-
-  def log_received_deposit_post(collection_slug,
-                                depositor_user_id,
-                                path_to_deposit_contents)
-    Rails.logger.warn("Received deposit POST. Collection slug: #{collection_slug}, " \
-                      "Username: #{depositor_user_id}, " \
-                      "Path to contents: #{path_to_deposit_contents}")
-  end
-
-  def log_deposit_result_info(title,
-                              files,
-                              item_pid,
-                              asset_pids,
-                              path_content)
-    Rails.logger.warn("Title: #{title.truncate_words(10)}, " \
-                      "Files: #{files}, " \
-                      "Hyacinth item pid: #{item_pid}, " \
-                      "Hyacinth asset pids: #{asset_pids}, " \
-                      "Path to SWORD contents: #{path_content}"
-                     )
-  end
-
-  def create_deposit(depositor_user_id,
-                     collection_slug,
-                     documents_to_deposit,
-                     deposit_title,
-                     adapter_item_identifier,
-                     asset_pids,
-                     confirm_ingest,
-                     path_to_deposit_contents)
-    helpers.create_deposit(depositor_user_id,
-                           collection_slug,
-                           documents_to_deposit,
-                           deposit_title,
-                           adapter_item_identifier,
-                           asset_pids,
-                           confirm_ingest,
-                           path_to_deposit_contents)
+    content = Sword::Utils::Sword.service_document_content
+    render xml: Sword::Utils::Sword.service_document_xml(content)
   end
 
   private
@@ -105,7 +66,7 @@ class SwordController < ApplicationController
 
     def check_basic_http_authentication
       result = false
-      @depositor_user_id, @password = helpers.pull_credentials(request)
+      @depositor_user_id, @password = Sword::Utils::Sword.pull_credentials(request)
       unless DEPOSITORS[:basic_authentication_user_ids].key?(@depositor_user_id)
         warn_msg_reason = "Unknown user/depositor: #{@depositor_user_id}"
         # Rails.logger.warn "Unknown user/depositor: #{@depositor_user_id}"

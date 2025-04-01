@@ -171,8 +171,8 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
     end
 
     context 'when posting item to Hyacinth' do
-      before(:example) do
-        allow(@hyacinth_adapter).to receive(:pid_last_ingest) { 'cul:123456789' }
+      before do
+        allow(@hyacinth_adapter).to receive(:pid_last_ingest).and_return('cul:123456789')
         http_success = double("http_success")
         allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
         allow(Rails.logger).to receive(:warn)
@@ -194,7 +194,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       allow(@hyacinth_adapter).to receive(:setup_asset_import_filepath)
       allow(@hyacinth_adapter).to receive(:compose_internal_format_asset)
       http_success = double("http_success")
-      allow(http_success).to receive(:body) { JSON.generate({'pid' => 'ac:1234321'}) }
+      allow(http_success).to receive(:body) { JSON.generate({ 'pid' => 'ac:1234321' }) }
       allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
       @hyacinth_adapter.no_op_post = false
     end
@@ -212,7 +212,7 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
         encoder_class = Sword::Encoders::JsonHyacinth2
         @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
         http_success = double("http_success")
-        allow(http_success).to receive(:body) { 'success' }
+        allow(http_success).to receive(:body).and_return('success')
         @hyacinth_adapter.instance_variable_set(:@hyacinth_server_response, http_success)
       end
 
@@ -253,13 +253,16 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
   end
 
   describe 'expected_and_retrieved_asset_pids_match?' do
-    before(:example) do
+    before do
       @adapter = Sword::Adapters::HyacinthAdapter.new(Sword::Encoders::JsonHyacinth2)
       http_success = double("http_success")
-      allow(http_success).to receive(:is_a?) { true }
-      allow(http_success).to receive(:body) { JSON.generate({'ordered_child_digital_objects' => [ { 'pid' => 'ac:12344321'} ] } ) }
+      allow(http_success).to receive(:is_a?).and_return(true)
+      allow(http_success).to receive(:body) {
+                               JSON.generate({ 'ordered_child_digital_objects' => [ { 'pid' => 'ac:12344321' } ] })
+                             }
       allow_any_instance_of(Net::HTTP).to receive(:start).and_return(http_success)
     end
+
     it "returns true if pids match" do
       @adapter.instance_variable_set(:@asset_pids, ['ac:12344321'])
       res = @adapter.expected_and_retrieved_asset_pids_match?
