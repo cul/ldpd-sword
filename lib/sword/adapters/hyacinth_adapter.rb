@@ -127,7 +127,7 @@ module Sword
         post_req.basic_auth(HYACINTH_CONFIG[:username],
                             HYACINTH_CONFIG[:password])
         unless @no_op_post
-          Rails.logger.warn("ingest_asset: Sending ingest request to Hyacinth for #{asset_filename} (parent PID: #{parent_pid})") if HYACINTH_CONFIG[:log_ingest]
+          Rails.logger.warn("ingest_asset: Sending ingest request to Hyacinth for #{File.basename(document_filepath)} (parent PID: #{parent_pid})") if HYACINTH_CONFIG[:log_ingest]
           @hyacinth_server_response = Net::HTTP.start(uri.hostname,
                                                uri.port,
                                                use_ssl: HYACINTH_CONFIG[:use_ssl]) { |http| http.request(post_req) }
