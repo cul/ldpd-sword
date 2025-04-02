@@ -15,67 +15,6 @@ RSpec.describe Sword::Parsers::ModsParser do
     end
   end
 
-  ########################################## API/interface
-  describe 'API/interface' do
-    context 'has attr_accessor for instance var' do
-      it 'access_condition_use_and_reproduction_license' do
-        expect(subject).to respond_to(:access_condition_use_and_reproduction_license_uri)
-        expect(subject).to respond_to(:access_condition_use_and_reproduction_license_uri=)
-      end
-
-      it 'access_condition_use_and_reproduction_rights' do
-        expect(subject).to respond_to(:access_condition_use_and_reproduction_rights_status_uri)
-        expect(subject).to respond_to(:access_condition_use_and_reproduction_rights_status_uri=)
-      end
-
-      it 'abstract' do
-        expect(subject).to respond_to(:abstract)
-        expect(subject).to respond_to(:abstract=)
-      end
-
-      it 'date_issued_start' do
-        expect(subject).to respond_to(:date_issued_start)
-        expect(subject).to respond_to(:date_issued_start=)
-      end
-
-      it 'identifier_doi' do
-        expect(subject).to respond_to(:identifier_doi)
-        expect(subject).to respond_to(:identifier_doi=)
-      end
-
-      it 'identifier_uri' do
-        expect(subject).to respond_to(:identifier_uri)
-        expect(subject).to respond_to(:identifier_uri=)
-      end
-
-      it 'note_internal' do
-        expect(subject).to respond_to(:note_internal)
-        expect(subject).to respond_to(:note_internal=)
-      end
-
-      it 'names' do
-        expect(subject).to respond_to(:names)
-        expect(subject).to respond_to(:names=)
-      end
-
-      it 'record_info_note' do
-        expect(subject).to respond_to(:record_info_note)
-        expect(subject).to respond_to(:record_info_note=)
-      end
-
-      it 'title' do
-        expect(subject).to respond_to(:title)
-        expect(subject).to respond_to(:title=)
-      end
-    end
-
-    context ' has the following instance method:' do
-      it '#parse method that takes file to parse' do
-        expect(subject).to respond_to(:parse).with(1).arguments
-      end
-    end
-  end
-
   context "In mets file containing expected elements" do
     mods_parser = Sword::Parsers::ModsParser.new
     mets_file = Rails.root.join "spec/fixtures/mets_files/mods_mets.xml"

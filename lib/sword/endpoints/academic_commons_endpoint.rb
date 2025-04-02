@@ -30,25 +30,25 @@ module Sword
       # This method takes the parsed metadata and maps it to the associated
       # field in HyacinthIngest object
       def process_metadata
-        @hyacinth_adapter.abstract = @mods_parser.abstract
-        @hyacinth_adapter.date_issued_start = @mods_parser.date_issued_start
+        @hyacinth_adapter.encoder_item.abstract = @mods_parser.abstract
+        @hyacinth_adapter.encoder_item.date_issued_start = @mods_parser.date_issued_start
         unless (@mods_parser.identifier_doi.nil? and @mods_parser.identifier_uri.nil?)
           process_doi_uri
         end
-        @hyacinth_adapter.license_uri =
+        @hyacinth_adapter.encoder_item.license_uri =
           @mods_parser.access_condition_use_and_reproduction_license_uri
-        @hyacinth_adapter.notes << Sword::Metadata::Note.new(@mods_parser.note_internal,'internal') unless @mods_parser.note_internal.blank?
+        @hyacinth_adapter.encoder_item.notes << Sword::Metadata::Note.new(@mods_parser.note_internal,'internal') unless @mods_parser.note_internal.blank?
         process_name_metadata
-        @hyacinth_adapter.title = @mods_parser.title
-        @hyacinth_adapter.use_and_reproduction_uri =
+        @hyacinth_adapter.encoder_item.title = @mods_parser.title
+        @hyacinth_adapter.encoder_item.use_and_reproduction_uri =
           @mods_parser.access_condition_use_and_reproduction_rights_status_uri
         @deposit_title = @mods_parser.title
       end
 
       def process_doi_uri
-        @hyacinth_adapter.parent_publication = Sword::Metadata::ParentPublication.new
-        @hyacinth_adapter.parent_publication.doi = @mods_parser.identifier_doi unless @mods_parser.identifier_doi.nil?
-        @hyacinth_adapter.parent_publication.uri = @mods_parser.identifier_uri unless @mods_parser.identifier_uri.nil?
+        @hyacinth_adapter.encoder_item.parent_publication = Sword::Metadata::ParentPublication.new
+        @hyacinth_adapter.encoder_item.parent_publication.doi = @mods_parser.identifier_doi unless @mods_parser.identifier_doi.nil?
+        @hyacinth_adapter.encoder_item.parent_publication.uri = @mods_parser.identifier_uri unless @mods_parser.identifier_uri.nil?
       end
 
       def process_name_metadata
@@ -61,7 +61,7 @@ module Sword
             # following format: 'Last, First M.'
             individual.full_name_naf_format = mods_name.name_part
             individual.uni = mods_name.id
-            @hyacinth_adapter.personal_names << individual
+            @hyacinth_adapter.encoder_item.personal_names << individual
           else
             raise 'AC should only be sending personal names'
           end

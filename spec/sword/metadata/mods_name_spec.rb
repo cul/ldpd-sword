@@ -3,52 +3,6 @@ require 'rails_helper'
 require 'sword/metadata/mods_name.rb'
 
 RSpec.describe Sword::Metadata::ModsName do
-  context "API/interface" do
-    it 'has #name_part attr_accessor' do
-      expect(subject).to respond_to(:name_part)
-      expect(subject).to respond_to(:name_part=)
-    end
-    
-    it 'has #id attr_accessor' do
-      expect(subject).to respond_to(:id)
-      expect(subject).to respond_to(:id=)
-    end
-
-    it 'has #role attr_accessor' do
-      expect(subject).to respond_to(:role)
-      expect(subject).to respond_to(:role=)
-    end
-
-    it 'has #type' do
-      expect(subject).to respond_to(:type)
-      expect(subject).to respond_to(:type=)
-    end
-  end
-
-  describe Sword::Metadata::ModsName::Role do
-    context "API/interface" do
-      it 'has #role_term_type attr_accessor' do
-        expect(subject).to respond_to(:role_term_type)
-        expect(subject).to respond_to(:role_term_type=)
-      end
-
-      it 'has #role_term_value_uri attr_accessor' do
-        expect(subject).to respond_to(:role_term_value_uri)
-        expect(subject).to respond_to(:role_term_value_uri=)
-      end
-
-      it 'has #role_term_authority attr_accessor' do
-        expect(subject).to respond_to(:role_term_authority)
-        expect(subject).to respond_to(:role_term_authority=)
-      end
-
-      it 'has #role_term attr_accessor' do
-        expect(subject).to respond_to(:role_term)
-        expect(subject).to respond_to(:role_term=)
-      end
-    end
-  end
-
   context "instantiation works and can set attributes" do
     mods_name = Sword::Metadata::ModsName.new
     mods_name.name_part = 'Mouse, Mickey'

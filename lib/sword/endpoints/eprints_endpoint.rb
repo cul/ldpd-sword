@@ -44,10 +44,10 @@ module Sword
       def process_metadata
         # fcd1, 08/20/18: May want to make sure there is a title, and throw an
         # exception if there isn't
-        @hyacinth_adapter.title = @epdcx_parser.title
+        @hyacinth_adapter.encoder_item.title = @epdcx_parser.title
 
-        @hyacinth_adapter.abstract = @epdcx_parser.abstract
-        @hyacinth_adapter.date_issued_start = @epdcx_parser.date_available_year
+        @hyacinth_adapter.encoder_item.abstract = @epdcx_parser.abstract
+        @hyacinth_adapter.encoder_item.date_issued_start = @epdcx_parser.date_available_year
 
         process_identifier unless @epdcx_parser.identifier.nil?
         process_name_metadata
@@ -57,9 +57,9 @@ module Sword
 
         # fcd1, 08/20/18: Currently, this is mapped into the parent publication
         # doi, but it's the article doi. Can follow what is currently done for now.
-        # @hyacinth_adapter.doi = @epdcx_parser.identifier_doi
+        # @hyacinth_adapter.encoder_item.doi = @epdcx_parser.identifier_doi
 
-        @deposit_title = @hyacinth_adapter.title
+        @deposit_title = @hyacinth_adapter.encoder_item.title
 
         # fcd1, 09/30/21: Both OJS and Springer Nature use this endpoint.
         # Springer Nature deposits include a bibliographic citation, which
@@ -68,41 +68,32 @@ module Sword
         # bibliographic citation, so other info in the mets.xml file
         # is used to set these two fields
         if @epdcx_parser.bibliographic_citation.nil?
-          parent_publication = @hyacinth_adapter.parent_publication ||
+          parent_publication = @hyacinth_adapter.encoder_item.parent_publication ||
                                Sword::Metadata::ParentPublication.new
           parent_publication.publish_date = @epdcx_parser.date_available_year
           parent_publication.title = @epdcx_parser.publisher
-          @hyacinth_adapter.parent_publication = parent_publication
+          @hyacinth_adapter.encoder_item.parent_publication = parent_publication
         end
       end
 
-      def process_identifier_uri
-        parent_publication = @hyacinth_adapter.parent_publication ||
-                             Sword::Metadata::ParentPublication.new
-        parent_publication.doi =
-          # remove url prefix, just want the DOI
-          @epdcx_parser.identifier_uri.gsub(/^\S*\/10.1/,'10.1')
-        @hyacinth_adapter.parent_publication = parent_publication
-      end
-
       def process_identifier
-        parent_publication = @hyacinth_adapter.parent_publication ||
+        parent_publication = @hyacinth_adapter.encoder_item.parent_publication ||
                              Sword::Metadata::ParentPublication.new
         parent_publication.doi =
           # remove url prefix, just want the DOI
           @epdcx_parser.identifier.gsub(/^\S*\/10.1/,'10.1')
-        @hyacinth_adapter.parent_publication = parent_publication
+        @hyacinth_adapter.encoder_item.parent_publication = parent_publication
       end
 
       def process_bibliographic_citation
-        parent_publication = @hyacinth_adapter.parent_publication ||
+        parent_publication = @hyacinth_adapter.encoder_item.parent_publication ||
                              Sword::Metadata::ParentPublication.new
         parent_publication.issue = @epdcx_parser.bibliographic_citation.issue
         parent_publication.title = @epdcx_parser.bibliographic_citation.title
         parent_publication.publish_date = @epdcx_parser.bibliographic_citation.publish_year
         parent_publication.start_page = @epdcx_parser.bibliographic_citation.start_page
         parent_publication.volume = @epdcx_parser.bibliographic_citation.volume
-        @hyacinth_adapter.parent_publication = parent_publication
+        @hyacinth_adapter.encoder_item.parent_publication = parent_publication
       end
 
       def process_subject_metadata
@@ -112,7 +103,7 @@ module Sword
         @epdcx_parser.subjects.each do |subject|
           subjects_string << subject << ', '
         end
-        @hyacinth_adapter.notes << Sword::Metadata::Note.new(subjects_string.chomp(', '))
+        @hyacinth_adapter.encoder_item.notes << Sword::Metadata::Note.new(subjects_string.chomp(', '))
       end
 
       def process_name_identifier_email_metadata
@@ -123,7 +114,7 @@ module Sword
         @emails.each do |email|
           email_string << email << ', '
         end
-        @hyacinth_adapter.notes << Sword::Metadata::Note.new(email_string.chomp(', '))
+        @hyacinth_adapter.encoder_item.notes << Sword::Metadata::Note.new(email_string.chomp(', '))
       end
 
       def process_name_metadata
@@ -131,7 +122,7 @@ module Sword
           individual = Sword::Metadata::PersonalName.new
           individual.role = 'author'
           individual.full_name_naf_format = creator
-          @hyacinth_adapter.personal_names << individual
+          @hyacinth_adapter.encoder_item.personal_names << individual
         end
       end
     end

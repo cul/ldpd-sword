@@ -24,20 +24,9 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :collections
-  resources :depositors do
-    member do
-      get 'edit_permissions', action: 'edit_permissions', as: 'edit_permissions'
-      # get 'update_permissions', action: 'update_permissions', as: 'update_permissions'
-      post 'remove_permission', action: 'remove_permission', as: 'remove_permission'
-      post 'add_permission', action: 'add_permission', as: 'add_permission'
-    end
-  end
   resources :deposits do
     get 'resubmit', on: :member
   end
-
-  resources :packages
 
   # Example resource route with options:
   #   resources :products do

@@ -4,14 +4,14 @@ module Sword
   class Util
     CONTENTS_SUBDIR = 'contents'
     DEPOSIT_FILENAME = 'deposit.zip'
-    def self.unzip_deposit_file post_request
-      Rails.logger.warn("About to sleep for 2 seconds")
-      sleep(2)
-      Rails.logger.warn("Done sleeping for 2 seconds")
+    def self.unzip_deposit_file post_request_body
+      # Rails.logger.warn("About to sleep for 2 seconds")
+      # sleep(2)
+      # Rails.logger.warn("Done sleeping for 2 seconds")
       save_path = File.join(SWORD_CONFIG[:unzip_dir],"tmp_#{Time.now.to_i}")
       FileUtils.mkdir_p(save_path) unless File.directory?(save_path)
       zip_file = File.join(save_path, DEPOSIT_FILENAME)
-      File.open(zip_file, "wb") { |file| file.write(post_request.body.read) }
+      File.open(zip_file, "wb") { |file| file.write(post_request_body.read) }
       path_to_contents = File.join(save_path, CONTENTS_SUBDIR)
       # create directory where contents of zip file will be saved
       Dir.mkdir path_to_contents

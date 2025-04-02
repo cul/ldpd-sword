@@ -164,58 +164,6 @@ module Sword
           @embargo_release_date = sales_restriction_remove_date_object.strftime('%Y-%m-%d')
         end
       end
-
-      def orig_mods_parse(xmlData_as_nokogiri_xml_element)
-        @abstract = xmlData_as_nokogiri_xml_element.xpath('//mods:abstract').text
-        @date_issued_start = xmlData_as_nokogiri_xml_element.xpath("//mods:originInfo/mods:dateIssued").text
-        @identifier_doi = xmlData_as_nokogiri_xml_element.xpath("//mods:identifier[@type='doi']").text
-        @identifier_uri = xmlData_as_nokogiri_xml_element.xpath("//mods:identifier[@type='uri']").text
-        @note_internal = xmlData_as_nokogiri_xml_element.xpath("//mods:note[@type='internal']").text
-        xmlData_as_nokogiri_xml_element.xpath('//mods:name').each do |mods_name_as_nokogiri_xml_element|
-          names << parseModsName(mods_name_as_nokogiri_xml_element)
-        end
-          @record_info_note = xmlData_as_nokogiri_xml_element.xpath("//mods:recordInfo/mods:recordInfoNote").text
-          @title = xmlData_as_nokogiri_xml_element.xpath('//mods:title').text
-      end
-
-      # fcd1, 07/05/18: Come up with better method name
-      def readInXml(xml_file)
-        # following is basically legacy hypatia code
-        open(xml_file) do |b|
-          file_data = b.read
-          file_data.sub!('xmlns="http://www.etdadmin.com/ns/etdsword"', '')
-          # substitute CRNL for NL
-          file_data.gsub!(/\x0D(\x0A)?/,0x0A.chr)
-          # replace all control characters but NL and TAB
-          file_data.gsub!(/[\x01-\x08]/,'')
-          file_data.gsub!(/[\x0B-\x1F]/,'')
-          Nokogiri::XML(file_data)
-        end
-      end
-
-      def parseModsName nokogiri_xml
-          mods_name = Sword::Metadata::ModsName.new
-          # currently, if multiple <namePart> are contained with one <name>, the contents
-          # of the <nameParts> will be concatenated into one string, in the order in which
-          # they are return by the xpath method. For now, this should be an acceptable default
-          # behavior since we should only get one ,namePart> per <name>. However, if this is
-          # not the case in the future, the code will need to be modified. For exmaple, it can
-          # check the value of the 'type' attribute to see if it is set to 'family' or 'given'
-          # and act accordingly, for example concatenate as "<family>, <given>"
-          mods_name.name_part =
-            nokogiri_xml.xpath('./mods:namePart').map{|e| e.text}.join(' ')
-          mods_name.id = nokogiri_xml['ID']
-          mods_name.type = nokogiri_xml['type']
-          # for now, assume just one <role><roleTerm> per <name>
-          mods_name.role.role_term = nokogiri_xml.xpath('./mods:role/mods:roleTerm').first.text
-          mods_name.role.role_term_type =
-            nokogiri_xml.xpath("./mods:role/mods:roleTerm").first['type']
-          mods_name.role.role_term_authority =
-            nokogiri_xml.xpath("./mods:role/mods:roleTerm").first['authority']
-          mods_name.role.role_term_value_uri =
-            nokogiri_xml.xpath("./mods:role/mods:roleTerm").first['valueURI']
-          mods_name
-      end
     end
   end
 end

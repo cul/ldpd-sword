@@ -35,6 +35,12 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         # for test purposes, turn off actual sending of POST request
         @ac_endpoint.hyacinth_adapter.no_op_post = true
       end
+
+      it 'calls the helper methods' do
+        expect(@ac_endpoint).to receive(:process_metadata)
+        expect(@ac_endpoint).to receive(:ingest_into_hyacinth)
+        @ac_endpoint.handle_deposit @content_dir
+      end
     end
   end
 
@@ -49,7 +55,7 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
       it 'info stored in @hyacinth_adapter is correct for doi' do
         @ac_endpoint.mods_parser.identifier_doi = 'doi:1234234'
         @ac_endpoint.process_doi_uri
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.doi).to eq('doi:1234234')
       end
     end
 
@@ -57,7 +63,7 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
       it 'info stored in @hyacinth_adapter is correct for doi' do
         @ac_endpoint.mods_parser.identifier_uri = 'http://sampleuri'
         @ac_endpoint.process_doi_uri
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.uri).to eq('http://sampleuri')
       end
     end
 
@@ -66,8 +72,8 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
         @ac_endpoint.mods_parser.identifier_doi = 'doi:1234234'
         @ac_endpoint.mods_parser.identifier_uri = 'http://sampleuri'
         @ac_endpoint.process_doi_uri
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.doi).to eq('doi:1234234')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.uri).to eq('http://sampleuri')
       end
     end
   end
@@ -92,17 +98,17 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
 
     context 'given @mods_parser populated with 2 test individuals' do
       it 'info stored in @hyacinth_adapter is correct for first individual' do
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.first.full_name_naf_format
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.first.full_name_naf_format
               ).to eq('Smith, John C.')
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.first.role).to eq('author')
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.first.uni).to eq('jcs1')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.first.role).to eq('author')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.first.uni).to eq('jcs1')
       end
 
       it 'info stored in @hyacinth_adapter is correct for second individual' do
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.second.full_name_naf_format
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.second.full_name_naf_format
               ).to eq('Doe, Jane A.')
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.second.role).to eq('author')
-        expect(@ac_endpoint.hyacinth_adapter.personal_names.second.uni).to eq('jad1')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.second.role).to eq('author')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.personal_names.second.uni).to eq('jad1')
       end
     end
   end
@@ -138,37 +144,37 @@ RSpec.describe Sword::Endpoints::AcademicCommonsEndpoint do
     end
 
     context 'given a populated ModsParser instance in @mods_parser' do
-      it 'sets @hyacinth_adapter.abstract correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.abstract).to eq('This is a sample terse abstract')
+      it 'sets @hyacinth_adapter.encoder_item.abstract correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.abstract).to eq('This is a sample terse abstract')
       end
 
-      it 'sets @hyacinth_adapter.date_issued_start correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.date_issued_start).to eq('2015')
+      it 'sets @hyacinth_adapter.encoder_item.date_issued_start correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.date_issued_start).to eq('2015')
       end
 
-      it 'sets @hyacinth_adapter.parent_publication.doi correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.doi).to eq('doi:1234234')
+      it 'sets @hyacinth_adapter.encoder_item.parent_publication.doi correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.doi).to eq('doi:1234234')
       end
 
-      it 'sets @hyacinth_adapter.parent_publication.uri correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.parent_publication.uri).to eq('http://sampleuri')
+      it 'sets @hyacinth_adapter.encoder_item.parent_publication.uri correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.parent_publication.uri).to eq('http://sampleuri')
       end
 
-      it 'sets @hyacinth_adapter.notes correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.notes.first.content).to eq('Sample note to catalogers.')
-        expect(@ac_endpoint.hyacinth_adapter.notes.first.type).to eq('internal')
+      it 'sets @hyacinth_adapter.encoder_item.notes correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.notes.first.content).to eq('Sample note to catalogers.')
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.notes.first.type).to eq('internal')
       end
 
-      it 'sets @hyacinth_adapter.title correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.title).to eq('This is a Sample Title')
+      it 'sets @hyacinth_adapter.encoder_item.title correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.title).to eq('This is a Sample Title')
       end
 
-      it 'sets @hyacinth_adapter.license_uri correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.license_uri).to eq('https://creativecommons.org/licenses/by/4.0/')
+      it 'sets @hyacinth_adapter.encoder_item.license_uri correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.license_uri).to eq('https://creativecommons.org/licenses/by/4.0/')
       end
 
-      it 'sets @hyacinth_adapter.use_and_reproduction_uri correctly' do
-        expect(@ac_endpoint.hyacinth_adapter.use_and_reproduction_uri).to eq('http://rightsstatements.org/vocab/InC/1.0/')
+      it 'sets @hyacinth_adapter.encoder_item.use_and_reproduction_uri correctly' do
+        expect(@ac_endpoint.hyacinth_adapter.encoder_item.use_and_reproduction_uri).to eq('http://rightsstatements.org/vocab/InC/1.0/')
       end
     end
   end

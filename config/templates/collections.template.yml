@@ -16,6 +16,13 @@ development:
         - secondtestdepositor
 test:
   slug:
+    test-slug:
+      name: 'Test Collection'
+      atom_title: 'Atom Title of Test Collection'
+      hyacinth_project_string_key: sword_test
+      parser: 'test-parser'
+      depositors:
+        - firsttestdepositor
     test-ac:
       name: 'Academic Commons Test Collection'
       atom_title: 'Atom Title of Academic Test Collection'

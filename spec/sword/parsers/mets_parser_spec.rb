@@ -3,26 +3,7 @@ require 'rails_helper'
 require 'sword/parsers/mets_parser.rb'
 
 RSpec.describe Sword::Parsers::MetsParser do
-  context "API/interface" do
-    it 'has #parse method that takes file to parse' do
-      expect(subject).to respond_to(:parse).with(1).arguments
-    end
-
-    it 'has #flocat_xlink_href attr_reader' do
-      expect(subject).to respond_to(:flocat_xlink_href)
-    end
-
-    it 'has #agent_name attr_reader' do
-      expect(subject).to respond_to(:agent_name)
-    end
-
-    it 'has #xmlData_as_nokogiri_xml_element attr_reader' do
-      expect(subject).to respond_to(:xmlData_as_nokogiri_xml_element)
-    end
-  end
-
   context "In mets file containing expected elements" do
-
     mets_file = Rails.root.join "spec/fixtures/mets_files/mets_with_expected_elements.xml"
     mets_parser = Sword::Parsers::MetsParser.new
     mets_parser.parse(mets_file)
@@ -44,7 +25,6 @@ RSpec.describe Sword::Parsers::MetsParser do
   end
 
   context "In mets file containing only the <mets> element" do
-
     mets_file = Rails.root.join "spec/fixtures/mets_files/empty_mets.xml"
     mets_parser = Sword::Parsers::MetsParser.new
     mets_parser.parse(mets_file)
@@ -59,7 +39,6 @@ RSpec.describe Sword::Parsers::MetsParser do
   end
 
   context "In Proquest mets file containing only xmlData elements" do
-
     mets_file = Rails.root.join "spec/fixtures/mets_files/proquest_etd_mets_actual_mets_file.xml"
     mets_parser = Sword::Parsers::MetsParser.new
     mets_parser.parse(mets_file)

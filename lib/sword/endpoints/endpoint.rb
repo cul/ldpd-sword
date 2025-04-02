@@ -15,6 +15,20 @@ module Sword
         @collection_slug = collection_slug
         @depositor_user_id = depositor_user_id
       end
+
+      def self.get_endpoint(collection_slug,
+                            depositor_user_id)
+        case COLLECTIONS[:slug][collection_slug][:parser]
+        when "academic-commons"
+          Sword::Endpoints::AcademicCommonsEndpoint.new(collection_slug, depositor_user_id)
+        when "proquest"
+          Sword::Endpoints::ProquestEndpoint.new(collection_slug, depositor_user_id)
+        when "eprints"
+          Sword::Endpoints::EprintsEndpoint.new(collection_slug, depositor_user_id)
+        else
+          raise "No endpoint available for collection slug: #{collection_slug}, and depositor: #{depositor_user_id}"
+        end
+      end
     end
   end
 end

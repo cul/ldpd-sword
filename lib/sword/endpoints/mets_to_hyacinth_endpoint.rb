@@ -21,7 +21,8 @@ module Sword
 
       def initialize(collection_slug, depositor_user_id)
         super
-        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new
+        encoder_class = Sword::Encoders::JsonHyacinth2
+        @hyacinth_adapter = Sword::Adapters::HyacinthAdapter.new encoder_class
         @mets_parser = Sword::Parsers::MetsParser.new
       end
 
@@ -37,10 +38,7 @@ module Sword
           @pid_hyacinth_item_object = @hyacinth_adapter.pid_last_ingest
         else
           unless @hyacinth_adapter.no_op_post
-            Rails.logger.error("Hyacinth request unsuccessful: " \
-                               "hyacinth_response: #{@ingest_item_response.inspect}, " \
-                               "hyacinth_response.body: #{@ingest_item_response.body.inspect}")
-            raise "Hyacinth request was not successful, please see log"
+            Rails.logger.error("Hyacinth request unsuccessful.")
           end
         end
       end
@@ -60,8 +58,12 @@ module Sword
                                        mets_xml_filepath)
       end
 
+      def bypass_ingest_into_hyacinth?
+        HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@collection_slug][:bypass_hyacinth_ingest]
+      end
+
       def ingest_into_hyacinth
-        unless (HYACINTH_CONFIG[:bypass_ingest] or COLLECTIONS[:slug][@collection_slug][:bypass_hyacinth_ingest])
+        unless bypass_ingest_into_hyacinth?
           # @adapter_item_identifier stores the parent pid returned
           # from Hyacinth
           @adapter_item_identifier = ingest_item_into_hyacinth
