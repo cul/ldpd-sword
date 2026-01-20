@@ -548,8 +548,8 @@ RSpec.describe Sword::Encoders::JsonHyacinth2 do
       end
 
       it 'sets the asset import filepath  correctly' do
-        expect(subject.digital_object_data[:import_file][:import_path]).to eq('/foo/bar/barfoo.txt')
-        expect(subject.digital_object_data[:import_file][:import_type]).to eq('upload_directory')
+        expect(subject.digital_object_data[:import_file][:main][:import_location]).to eq('/foo/bar/barfoo.txt')
+        expect(subject.digital_object_data[:import_file][:main][:import_type]).to eq('upload_directory')
       end
     end
   end
