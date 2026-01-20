@@ -18,7 +18,7 @@ module Sword
 
       def self.get_endpoint(collection_slug,
                             depositor_user_id)
-        case COLLECTIONS[:slug][collection_slug][:parser]
+        case COLLECTIONS.dig(:slug, collection_slug, :parser)
         when "academic-commons"
           Sword::Endpoints::AcademicCommonsEndpoint.new(collection_slug, depositor_user_id)
         when "proquest"

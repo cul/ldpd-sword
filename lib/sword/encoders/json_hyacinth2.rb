@@ -98,9 +98,9 @@ class Sword::Encoders::JsonHyacinth2
   end
 
   def compose_import_file_data(filepath)
-    import_file_data = {}
-    import_file_data[:import_path]=filepath
-    import_file_data[:import_type]='upload_directory'
+    import_file_data = { main: {} }
+    import_file_data[:main][:import_location] = filepath
+    import_file_data[:main][:import_type] = 'upload_directory'
     import_file_data
   end
 

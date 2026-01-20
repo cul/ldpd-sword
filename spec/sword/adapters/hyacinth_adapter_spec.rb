@@ -80,8 +80,8 @@ RSpec.describe Sword::Adapters::HyacinthAdapter do
       end
 
       it 'sets the asset import filepath  correctly' do
-        expect(@hyacinth_adapter.digital_object_data[:import_file][:import_path]).to eq('/foo/bar/barfoo.txt')
-        expect(@hyacinth_adapter.digital_object_data[:import_file][:import_type]).to eq('upload_directory')
+        expect(@hyacinth_adapter.digital_object_data[:import_file][:main][:import_location]).to eq('/foo/bar/barfoo.txt')
+        expect(@hyacinth_adapter.digital_object_data[:import_file][:main][:import_type]).to eq('upload_directory')
       end
     end
   end
